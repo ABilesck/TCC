@@ -1,0 +1,11 @@
+REQUESITOS BÁSICOS (DIAGRAMAS E OUTRAS COISAS):
+
+- Brainstorm OK
+- Cronograma (Precisa Revisar)
+- DER (Precisa Revisar)
+- Diagrama de Classes
+- Diagrama de Contexto
+- Diagrama de Dados
+- Diagrama de Caso de Uso de Baixo Nível
+- Diagrama de Caso de Uso de Alto Nível
+- Esboço das Telas
