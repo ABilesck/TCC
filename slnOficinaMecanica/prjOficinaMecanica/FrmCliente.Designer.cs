@@ -31,10 +31,11 @@
             this.components = new System.ComponentModel.Container();
             this.tcPrincipal = new System.Windows.Forms.TabControl();
             this.tpCadastrar = new System.Windows.Forms.TabPage();
+            this.btnNovo = new System.Windows.Forms.Button();
+            this.tcc_AutomovelDataGridView = new System.Windows.Forms.DataGridView();
             this.btnAddCarro = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.dgvClienteCarro = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.tcDados = new System.Windows.Forms.TabControl();
             this.tpDados = new System.Windows.Forms.TabPage();
@@ -51,12 +52,12 @@
             this.rbtPessoaJuridica = new System.Windows.Forms.RadioButton();
             this.rbtPessoaFisica = new System.Windows.Forms.RadioButton();
             this.tpEndereco = new System.Windows.Forms.TabPage();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCep = new System.Windows.Forms.TextBox();
+            this.txtComplemento = new System.Windows.Forms.TextBox();
+            this.txtBairro = new System.Windows.Forms.TextBox();
+            this.cmbUf = new System.Windows.Forms.ComboBox();
+            this.txtCidade = new System.Windows.Forms.TextBox();
+            this.txtLogradouro = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -64,17 +65,25 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tbPesquisa = new System.Windows.Forms.TabPage();
+            this.btnExcluir = new System.Windows.Forms.Button();
+            this.btnPesquisaCancelar = new System.Windows.Forms.Button();
+            this.tbnAlterar = new System.Windows.Forms.Button();
+            this.btnPesquisar = new System.Windows.Forms.Button();
+            this.dgvCliente = new System.Windows.Forms.DataGridView();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.cmbOrdenar = new System.Windows.Forms.ComboBox();
+            this.cmbFiltro = new System.Windows.Forms.ComboBox();
+            this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tcc_AutomovelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.banco = new prjOficinaMecanica.Banco();
-            this.tcc_ClienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tcc_ClienteTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_ClienteTableAdapter();
-            this.tableAdapterManager = new prjOficinaMecanica.BancoTableAdapters.TableAdapterManager();
-            this.dgvCliente = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,43 +96,82 @@
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tcc_ClienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tcc_ClienteTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_ClienteTableAdapter();
+            this.tableAdapterManager = new prjOficinaMecanica.BancoTableAdapters.TableAdapterManager();
+            this.tcc_AutomovelTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_AutomovelTableAdapter();
             this.tcPrincipal.SuspendLayout();
             this.tpCadastrar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvClienteCarro)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tcc_AutomovelDataGridView)).BeginInit();
             this.tcDados.SuspendLayout();
             this.tpDados.SuspendLayout();
             this.tpEndereco.SuspendLayout();
             this.tbPesquisa.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCliente)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tcc_AutomovelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.banco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_ClienteBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCliente)).BeginInit();
             this.SuspendLayout();
             // 
             // tcPrincipal
             // 
             this.tcPrincipal.Controls.Add(this.tpCadastrar);
             this.tcPrincipal.Controls.Add(this.tbPesquisa);
-            this.tcPrincipal.Location = new System.Drawing.Point(13, 13);
+            this.tcPrincipal.Location = new System.Drawing.Point(12, 13);
             this.tcPrincipal.Name = "tcPrincipal";
             this.tcPrincipal.SelectedIndex = 0;
-            this.tcPrincipal.Size = new System.Drawing.Size(604, 552);
+            this.tcPrincipal.Size = new System.Drawing.Size(607, 552);
             this.tcPrincipal.TabIndex = 0;
             // 
             // tpCadastrar
             // 
+            this.tpCadastrar.AutoScroll = true;
+            this.tpCadastrar.Controls.Add(this.btnNovo);
+            this.tpCadastrar.Controls.Add(this.tcc_AutomovelDataGridView);
             this.tpCadastrar.Controls.Add(this.btnAddCarro);
             this.tpCadastrar.Controls.Add(this.btnSalvar);
             this.tpCadastrar.Controls.Add(this.btnCancelar);
-            this.tpCadastrar.Controls.Add(this.dgvClienteCarro);
             this.tpCadastrar.Controls.Add(this.label1);
             this.tpCadastrar.Controls.Add(this.tcDados);
             this.tpCadastrar.Location = new System.Drawing.Point(4, 22);
             this.tpCadastrar.Name = "tpCadastrar";
             this.tpCadastrar.Padding = new System.Windows.Forms.Padding(3);
-            this.tpCadastrar.Size = new System.Drawing.Size(596, 526);
+            this.tpCadastrar.Size = new System.Drawing.Size(1213, 526);
             this.tpCadastrar.TabIndex = 0;
             this.tpCadastrar.Text = "Cadastrar";
             this.tpCadastrar.UseVisualStyleBackColor = true;
+            // 
+            // btnNovo
+            // 
+            this.btnNovo.Location = new System.Drawing.Point(11, 239);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(75, 23);
+            this.btnNovo.TabIndex = 6;
+            this.btnNovo.Text = "&Novo";
+            this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            // 
+            // tcc_AutomovelDataGridView
+            // 
+            this.tcc_AutomovelDataGridView.AllowUserToAddRows = false;
+            this.tcc_AutomovelDataGridView.AllowUserToDeleteRows = false;
+            this.tcc_AutomovelDataGridView.AutoGenerateColumns = false;
+            this.tcc_AutomovelDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tcc_AutomovelDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn13,
+            this.dataGridViewTextBoxColumn15,
+            this.dataGridViewTextBoxColumn16,
+            this.dataGridViewTextBoxColumn17,
+            this.dataGridViewTextBoxColumn18,
+            this.dataGridViewTextBoxColumn19});
+            this.tcc_AutomovelDataGridView.DataSource = this.tcc_AutomovelBindingSource;
+            this.tcc_AutomovelDataGridView.Location = new System.Drawing.Point(11, 338);
+            this.tcc_AutomovelDataGridView.Name = "tcc_AutomovelDataGridView";
+            this.tcc_AutomovelDataGridView.ReadOnly = true;
+            this.tcc_AutomovelDataGridView.RowHeadersVisible = false;
+            this.tcc_AutomovelDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tcc_AutomovelDataGridView.Size = new System.Drawing.Size(574, 185);
+            this.tcc_AutomovelDataGridView.TabIndex = 5;
             // 
             // btnAddCarro
             // 
@@ -136,29 +184,25 @@
             // 
             // btnSalvar
             // 
+            this.btnSalvar.Enabled = false;
             this.btnSalvar.Location = new System.Drawing.Point(429, 239);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 23);
             this.btnSalvar.TabIndex = 4;
             this.btnSalvar.Text = "&Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnCancelar
             // 
+            this.btnCancelar.Enabled = false;
             this.btnCancelar.Location = new System.Drawing.Point(510, 239);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "&Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
-            // 
-            // dgvClienteCarro
-            // 
-            this.dgvClienteCarro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClienteCarro.Location = new System.Drawing.Point(11, 338);
-            this.dgvClienteCarro.Name = "dgvClienteCarro";
-            this.dgvClienteCarro.Size = new System.Drawing.Size(579, 182);
-            this.dgvClienteCarro.TabIndex = 2;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // label1
             // 
@@ -203,6 +247,7 @@
             // 
             // txtTelefone
             // 
+            this.txtTelefone.Enabled = false;
             this.txtTelefone.Location = new System.Drawing.Point(10, 166);
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Size = new System.Drawing.Size(189, 20);
@@ -210,6 +255,7 @@
             // 
             // txtEmail
             // 
+            this.txtEmail.Enabled = false;
             this.txtEmail.Location = new System.Drawing.Point(10, 126);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(380, 20);
@@ -217,6 +263,7 @@
             // 
             // txtRegistro
             // 
+            this.txtRegistro.Enabled = false;
             this.txtRegistro.Location = new System.Drawing.Point(208, 86);
             this.txtRegistro.Name = "txtRegistro";
             this.txtRegistro.Size = new System.Drawing.Size(182, 20);
@@ -224,6 +271,7 @@
             // 
             // txtDocSocial
             // 
+            this.txtDocSocial.Enabled = false;
             this.txtDocSocial.Location = new System.Drawing.Point(10, 86);
             this.txtDocSocial.Name = "txtDocSocial";
             this.txtDocSocial.Size = new System.Drawing.Size(189, 20);
@@ -231,6 +279,7 @@
             // 
             // txtNome
             // 
+            this.txtNome.Enabled = false;
             this.txtNome.Location = new System.Drawing.Point(10, 46);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(545, 20);
@@ -307,12 +356,12 @@
             // 
             // tpEndereco
             // 
-            this.tpEndereco.Controls.Add(this.textBox5);
-            this.tpEndereco.Controls.Add(this.textBox4);
-            this.tpEndereco.Controls.Add(this.textBox3);
-            this.tpEndereco.Controls.Add(this.comboBox1);
-            this.tpEndereco.Controls.Add(this.textBox2);
-            this.tpEndereco.Controls.Add(this.textBox1);
+            this.tpEndereco.Controls.Add(this.txtCep);
+            this.tpEndereco.Controls.Add(this.txtComplemento);
+            this.tpEndereco.Controls.Add(this.txtBairro);
+            this.tpEndereco.Controls.Add(this.cmbUf);
+            this.tpEndereco.Controls.Add(this.txtCidade);
+            this.tpEndereco.Controls.Add(this.txtLogradouro);
             this.tpEndereco.Controls.Add(this.label9);
             this.tpEndereco.Controls.Add(this.label8);
             this.tpEndereco.Controls.Add(this.label7);
@@ -327,48 +376,54 @@
             this.tpEndereco.Text = "Endereço";
             this.tpEndereco.UseVisualStyleBackColor = true;
             // 
-            // textBox5
+            // txtCep
             // 
-            this.textBox5.Location = new System.Drawing.Point(10, 141);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(171, 20);
-            this.textBox5.TabIndex = 11;
+            this.txtCep.Enabled = false;
+            this.txtCep.Location = new System.Drawing.Point(10, 141);
+            this.txtCep.Name = "txtCep";
+            this.txtCep.Size = new System.Drawing.Size(171, 20);
+            this.txtCep.TabIndex = 11;
             // 
-            // textBox4
+            // txtComplemento
             // 
-            this.textBox4.Location = new System.Drawing.Point(310, 63);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(251, 20);
-            this.textBox4.TabIndex = 10;
+            this.txtComplemento.Enabled = false;
+            this.txtComplemento.Location = new System.Drawing.Point(310, 63);
+            this.txtComplemento.Name = "txtComplemento";
+            this.txtComplemento.Size = new System.Drawing.Size(251, 20);
+            this.txtComplemento.TabIndex = 10;
             // 
-            // textBox3
+            // txtBairro
             // 
-            this.textBox3.Location = new System.Drawing.Point(10, 63);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(294, 20);
-            this.textBox3.TabIndex = 9;
+            this.txtBairro.Enabled = false;
+            this.txtBairro.Location = new System.Drawing.Point(10, 63);
+            this.txtBairro.Name = "txtBairro";
+            this.txtBairro.Size = new System.Drawing.Size(294, 20);
+            this.txtBairro.TabIndex = 9;
             // 
-            // comboBox1
+            // cmbUf
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(396, 102);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 8;
+            this.cmbUf.Enabled = false;
+            this.cmbUf.FormattingEnabled = true;
+            this.cmbUf.Location = new System.Drawing.Point(396, 102);
+            this.cmbUf.Name = "cmbUf";
+            this.cmbUf.Size = new System.Drawing.Size(121, 21);
+            this.cmbUf.TabIndex = 8;
             // 
-            // textBox2
+            // txtCidade
             // 
-            this.textBox2.Location = new System.Drawing.Point(10, 102);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(377, 20);
-            this.textBox2.TabIndex = 7;
+            this.txtCidade.Enabled = false;
+            this.txtCidade.Location = new System.Drawing.Point(10, 102);
+            this.txtCidade.Name = "txtCidade";
+            this.txtCidade.Size = new System.Drawing.Size(377, 20);
+            this.txtCidade.TabIndex = 7;
             // 
-            // textBox1
+            // txtLogradouro
             // 
-            this.textBox1.Location = new System.Drawing.Point(10, 24);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(551, 20);
-            this.textBox1.TabIndex = 6;
+            this.txtLogradouro.Enabled = false;
+            this.txtLogradouro.Location = new System.Drawing.Point(10, 24);
+            this.txtLogradouro.Name = "txtLogradouro";
+            this.txtLogradouro.Size = new System.Drawing.Size(551, 20);
+            this.txtLogradouro.TabIndex = 6;
             // 
             // label9
             // 
@@ -427,100 +482,64 @@
             // tbPesquisa
             // 
             this.tbPesquisa.AutoScroll = true;
+            this.tbPesquisa.Controls.Add(this.btnExcluir);
+            this.tbPesquisa.Controls.Add(this.btnPesquisaCancelar);
+            this.tbPesquisa.Controls.Add(this.tbnAlterar);
+            this.tbPesquisa.Controls.Add(this.btnPesquisar);
             this.tbPesquisa.Controls.Add(this.dgvCliente);
             this.tbPesquisa.Controls.Add(this.label12);
             this.tbPesquisa.Controls.Add(this.label11);
-            this.tbPesquisa.Controls.Add(this.comboBox3);
-            this.tbPesquisa.Controls.Add(this.comboBox2);
-            this.tbPesquisa.Controls.Add(this.textBox6);
+            this.tbPesquisa.Controls.Add(this.cmbOrdenar);
+            this.tbPesquisa.Controls.Add(this.cmbFiltro);
+            this.tbPesquisa.Controls.Add(this.txtPesquisa);
             this.tbPesquisa.Controls.Add(this.label10);
             this.tbPesquisa.Location = new System.Drawing.Point(4, 22);
             this.tbPesquisa.Name = "tbPesquisa";
             this.tbPesquisa.Padding = new System.Windows.Forms.Padding(3);
-            this.tbPesquisa.Size = new System.Drawing.Size(596, 526);
+            this.tbPesquisa.Size = new System.Drawing.Size(599, 526);
             this.tbPesquisa.TabIndex = 1;
             this.tbPesquisa.Text = "Pesquisar";
             this.tbPesquisa.UseVisualStyleBackColor = true;
             // 
-            // label12
+            // btnExcluir
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(469, 7);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(73, 13);
-            this.label12.TabIndex = 5;
-            this.label12.Text = "Organizar por:";
+            this.btnExcluir.Location = new System.Drawing.Point(515, 51);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(75, 23);
+            this.btnExcluir.TabIndex = 10;
+            this.btnExcluir.Text = "&Excluir";
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
-            // label11
+            // btnPesquisaCancelar
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(342, 7);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(74, 13);
-            this.label11.TabIndex = 4;
-            this.label11.Text = "Pesquisar por:";
+            this.btnPesquisaCancelar.Location = new System.Drawing.Point(172, 51);
+            this.btnPesquisaCancelar.Name = "btnPesquisaCancelar";
+            this.btnPesquisaCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnPesquisaCancelar.TabIndex = 9;
+            this.btnPesquisaCancelar.Text = "&Cancelar";
+            this.btnPesquisaCancelar.UseVisualStyleBackColor = true;
+            this.btnPesquisaCancelar.Click += new System.EventHandler(this.btnPesquisaCancelar_Click);
             // 
-            // comboBox3
+            // tbnAlterar
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            "Código",
-            "Nome"});
-            this.comboBox3.Location = new System.Drawing.Point(469, 24);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 3;
-            this.comboBox3.Text = "Código";
+            this.tbnAlterar.Location = new System.Drawing.Point(91, 51);
+            this.tbnAlterar.Name = "tbnAlterar";
+            this.tbnAlterar.Size = new System.Drawing.Size(75, 23);
+            this.tbnAlterar.TabIndex = 8;
+            this.tbnAlterar.Text = "&Alterar";
+            this.tbnAlterar.UseVisualStyleBackColor = true;
+            this.tbnAlterar.Click += new System.EventHandler(this.tbnAlterar_Click);
             // 
-            // comboBox2
+            // btnPesquisar
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Código",
-            "Documento Social",
-            "Nome"});
-            this.comboBox2.Location = new System.Drawing.Point(342, 24);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 2;
-            this.comboBox2.Text = "Selecione";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(10, 24);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(326, 20);
-            this.textBox6.TabIndex = 1;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(7, 7);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(56, 13);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "Pesquisar:";
-            // 
-            // banco
-            // 
-            this.banco.DataSetName = "Banco";
-            this.banco.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tcc_ClienteBindingSource
-            // 
-            this.tcc_ClienteBindingSource.DataMember = "tcc_Cliente";
-            this.tcc_ClienteBindingSource.DataSource = this.banco;
-            // 
-            // tcc_ClienteTableAdapter
-            // 
-            this.tcc_ClienteTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.tcc_AutomovelTableAdapter = null;
-            this.tableAdapterManager.tcc_ClienteTableAdapter = this.tcc_ClienteTableAdapter;
-            this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.btnPesquisar.Location = new System.Drawing.Point(10, 51);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
+            this.btnPesquisar.TabIndex = 7;
+            this.btnPesquisar.Text = "&Pesquisar";
+            this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // dgvCliente
             // 
@@ -542,12 +561,126 @@
             this.dataGridViewTextBoxColumn11,
             this.dataGridViewTextBoxColumn12});
             this.dgvCliente.DataSource = this.tcc_ClienteBindingSource;
-            this.dgvCliente.Location = new System.Drawing.Point(6, 50);
+            this.dgvCliente.Location = new System.Drawing.Point(10, 80);
             this.dgvCliente.Name = "dgvCliente";
             this.dgvCliente.ReadOnly = true;
             this.dgvCliente.RowHeadersVisible = false;
-            this.dgvCliente.Size = new System.Drawing.Size(584, 470);
+            this.dgvCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCliente.Size = new System.Drawing.Size(580, 440);
             this.dgvCliente.TabIndex = 6;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(469, 7);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(73, 13);
+            this.label12.TabIndex = 5;
+            this.label12.Text = "Organizar por:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(342, 7);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(74, 13);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "Pesquisar por:";
+            // 
+            // cmbOrdenar
+            // 
+            this.cmbOrdenar.FormattingEnabled = true;
+            this.cmbOrdenar.Items.AddRange(new object[] {
+            "Código",
+            "Nome"});
+            this.cmbOrdenar.Location = new System.Drawing.Point(469, 24);
+            this.cmbOrdenar.Name = "cmbOrdenar";
+            this.cmbOrdenar.Size = new System.Drawing.Size(121, 21);
+            this.cmbOrdenar.TabIndex = 3;
+            this.cmbOrdenar.Text = "Código";
+            this.cmbOrdenar.SelectedIndexChanged += new System.EventHandler(this.cmbOrdenar_SelectedIndexChanged);
+            // 
+            // cmbFiltro
+            // 
+            this.cmbFiltro.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbFiltro.FormattingEnabled = true;
+            this.cmbFiltro.Items.AddRange(new object[] {
+            "Código",
+            "Documento Social",
+            "Nome"});
+            this.cmbFiltro.Location = new System.Drawing.Point(342, 24);
+            this.cmbFiltro.Name = "cmbFiltro";
+            this.cmbFiltro.Size = new System.Drawing.Size(121, 21);
+            this.cmbFiltro.TabIndex = 2;
+            this.cmbFiltro.Text = "Código";
+            // 
+            // txtPesquisa
+            // 
+            this.txtPesquisa.Location = new System.Drawing.Point(10, 24);
+            this.txtPesquisa.Name = "txtPesquisa";
+            this.txtPesquisa.Size = new System.Drawing.Size(326, 20);
+            this.txtPesquisa.TabIndex = 1;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(7, 7);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(56, 13);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Pesquisar:";
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "IDAutomovel";
+            this.dataGridViewTextBoxColumn13.HeaderText = "IDAutomovel";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.DataPropertyName = "placa";
+            this.dataGridViewTextBoxColumn15.HeaderText = "placa";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            this.dataGridViewTextBoxColumn15.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.DataPropertyName = "modelo";
+            this.dataGridViewTextBoxColumn16.HeaderText = "modelo";
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            this.dataGridViewTextBoxColumn16.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.DataPropertyName = "ano";
+            this.dataGridViewTextBoxColumn17.HeaderText = "ano";
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            this.dataGridViewTextBoxColumn17.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn18
+            // 
+            this.dataGridViewTextBoxColumn18.DataPropertyName = "cor";
+            this.dataGridViewTextBoxColumn18.HeaderText = "cor";
+            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            this.dataGridViewTextBoxColumn18.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn19
+            // 
+            this.dataGridViewTextBoxColumn19.DataPropertyName = "kmRodado";
+            this.dataGridViewTextBoxColumn19.HeaderText = "kmRodado";
+            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
+            this.dataGridViewTextBoxColumn19.ReadOnly = true;
+            // 
+            // tcc_AutomovelBindingSource
+            // 
+            this.tcc_AutomovelBindingSource.DataMember = "tcc_Automovel";
+            this.tcc_AutomovelBindingSource.DataSource = this.banco;
+            // 
+            // banco
+            // 
+            this.banco.DataSetName = "Banco";
+            this.banco.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -633,19 +766,39 @@
             this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             this.dataGridViewTextBoxColumn12.ReadOnly = true;
             // 
+            // tcc_ClienteBindingSource
+            // 
+            this.tcc_ClienteBindingSource.DataMember = "tcc_Cliente";
+            this.tcc_ClienteBindingSource.DataSource = this.banco;
+            // 
+            // tcc_ClienteTableAdapter
+            // 
+            this.tcc_ClienteTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.tcc_AutomovelTableAdapter = null;
+            this.tableAdapterManager.tcc_ClienteTableAdapter = this.tcc_ClienteTableAdapter;
+            this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // tcc_AutomovelTableAdapter
+            // 
+            this.tcc_AutomovelTableAdapter.ClearBeforeFill = true;
+            // 
             // FrmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(639, 577);
+            this.ClientSize = new System.Drawing.Size(621, 577);
             this.Controls.Add(this.tcPrincipal);
             this.Name = "FrmCliente";
-            this.Text = "FrmCliente";
+            this.Text = "Cliente";
             this.Load += new System.EventHandler(this.FrmCliente_Load);
             this.tcPrincipal.ResumeLayout(false);
             this.tpCadastrar.ResumeLayout(false);
             this.tpCadastrar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvClienteCarro)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tcc_AutomovelDataGridView)).EndInit();
             this.tcDados.ResumeLayout(false);
             this.tpDados.ResumeLayout(false);
             this.tpDados.PerformLayout();
@@ -653,9 +806,10 @@
             this.tpEndereco.PerformLayout();
             this.tbPesquisa.ResumeLayout(false);
             this.tbPesquisa.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCliente)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tcc_AutomovelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.banco)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_ClienteBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCliente)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -664,7 +818,6 @@
 
         private System.Windows.Forms.TabControl tcPrincipal;
         private System.Windows.Forms.TabPage tpCadastrar;
-        private System.Windows.Forms.DataGridView dgvClienteCarro;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabControl tcDados;
         private System.Windows.Forms.TabPage tpDados;
@@ -684,12 +837,12 @@
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.RadioButton rbtPessoaJuridica;
         private System.Windows.Forms.RadioButton rbtPessoaFisica;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCep;
+        private System.Windows.Forms.TextBox txtComplemento;
+        private System.Windows.Forms.TextBox txtBairro;
+        private System.Windows.Forms.ComboBox cmbUf;
+        private System.Windows.Forms.TextBox txtCidade;
+        private System.Windows.Forms.TextBox txtLogradouro;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
@@ -698,15 +851,24 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.ComboBox cmbOrdenar;
+        private System.Windows.Forms.ComboBox cmbFiltro;
+        private System.Windows.Forms.TextBox txtPesquisa;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnAddCarro;
         private Banco banco;
         private System.Windows.Forms.BindingSource tcc_ClienteBindingSource;
         private BancoTableAdapters.tcc_ClienteTableAdapter tcc_ClienteTableAdapter;
         private BancoTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.BindingSource tcc_AutomovelBindingSource;
+        private BancoTableAdapters.tcc_AutomovelTableAdapter tcc_AutomovelTableAdapter;
+        private System.Windows.Forms.DataGridView tcc_AutomovelDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
         private System.Windows.Forms.DataGridView dgvCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -720,5 +882,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.Button btnNovo;
+        private System.Windows.Forms.Button btnExcluir;
+        private System.Windows.Forms.Button btnPesquisaCancelar;
+        private System.Windows.Forms.Button tbnAlterar;
+        private System.Windows.Forms.Button btnPesquisar;
     }
 }
