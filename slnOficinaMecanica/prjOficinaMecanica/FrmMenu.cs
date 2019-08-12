@@ -54,5 +54,88 @@ namespace prjOficinaMecanica
             IsMdiContainer = true;
 
         }
+
+        private void MnuMecanico_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in MdiChildren)
+            {
+                if(item is FrmMecanico)
+                {
+                    item.Focus();
+                    return;
+                }
+            }
+            FrmMecanico frmMecanico = new FrmMecanico();
+            frmMecanico.MdiParent = this;
+            frmMecanico.Show();
+        }
+
+        private void orçamentoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in MdiChildren)
+            {
+                if(item is FrmOrcamento)
+                {
+                    item.Focus();
+                    return;
+                }
+            }
+            FrmOrcamento frmOrcamento = new FrmOrcamento();
+            frmOrcamento.MdiParent = this;
+            frmOrcamento.Show();
+        }
+
+        private void produtoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in MdiChildren)
+            {
+                if(item is FrmProduto)
+                {
+                    item.Focus();
+                    return;
+                }
+            }
+            FrmProduto frmProduto = new FrmProduto();
+            frmProduto.MdiParent = this;
+            frmProduto.Show();
+        }
+
+        private void serviçoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in MdiChildren)
+            {
+                if(item is FrmServico)
+                {
+                    item.Focus();
+                    return;
+                }
+            }
+            FrmServico frmServico = new FrmServico();
+            frmServico.MdiParent = this;
+            frmServico.Show();
+        }
+
+        private void verticalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.TileVertical);
+        }
+
+        private void horizontalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.TileHorizontal);
+        }
+
+        private void cascataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.Cascade);
+        }
+
+        private void fecharTodosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in MdiChildren)
+            {
+                item.Close();
+            }
+        }
     }
 }
