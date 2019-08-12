@@ -30,6 +30,14 @@ namespace prjOficinaMecanica
 
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            foreach (Form item in MdiChildren)
+            {
+                if(item is FrmCliente)
+                {
+                    item.Focus();
+                    return;
+                }
+            }
             FrmCliente frmCliente = new FrmCliente();
             frmCliente.MdiParent = this;
             frmCliente.Show();

@@ -33,6 +33,14 @@
             this.tpCadastrar = new System.Windows.Forms.TabPage();
             this.btnNovo = new System.Windows.Forms.Button();
             this.tcc_AutomovelDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tcc_AutomovelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.banco = new prjOficinaMecanica.Banco();
             this.btnAddCarro = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -70,21 +78,16 @@
             this.tbnAlterar = new System.Windows.Forms.Button();
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.dgvCliente = new System.Windows.Forms.DataGridView();
+            this.tcc_ClienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.cmbOrdenar = new System.Windows.Forms.ComboBox();
             this.cmbFiltro = new System.Windows.Forms.ComboBox();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tcc_AutomovelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.banco = new prjOficinaMecanica.Banco();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tcc_ClienteTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_ClienteTableAdapter();
+            this.tableAdapterManager = new prjOficinaMecanica.BancoTableAdapters.TableAdapterManager();
+            this.tcc_AutomovelTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_AutomovelTableAdapter();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -96,20 +99,16 @@
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tcc_ClienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tcc_ClienteTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_ClienteTableAdapter();
-            this.tableAdapterManager = new prjOficinaMecanica.BancoTableAdapters.TableAdapterManager();
-            this.tcc_AutomovelTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_AutomovelTableAdapter();
             this.tcPrincipal.SuspendLayout();
             this.tpCadastrar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_AutomovelDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tcc_AutomovelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.banco)).BeginInit();
             this.tcDados.SuspendLayout();
             this.tpDados.SuspendLayout();
             this.tpEndereco.SuspendLayout();
             this.tbPesquisa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCliente)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tcc_AutomovelBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.banco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_ClienteBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -136,7 +135,7 @@
             this.tpCadastrar.Location = new System.Drawing.Point(4, 22);
             this.tpCadastrar.Name = "tpCadastrar";
             this.tpCadastrar.Padding = new System.Windows.Forms.Padding(3);
-            this.tpCadastrar.Size = new System.Drawing.Size(1213, 526);
+            this.tpCadastrar.Size = new System.Drawing.Size(599, 526);
             this.tpCadastrar.TabIndex = 0;
             this.tpCadastrar.Text = "Cadastrar";
             this.tpCadastrar.UseVisualStyleBackColor = true;
@@ -172,6 +171,58 @@
             this.tcc_AutomovelDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tcc_AutomovelDataGridView.Size = new System.Drawing.Size(574, 185);
             this.tcc_AutomovelDataGridView.TabIndex = 5;
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "IDAutomovel";
+            this.dataGridViewTextBoxColumn13.HeaderText = "IDAutomovel";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.DataPropertyName = "placa";
+            this.dataGridViewTextBoxColumn15.HeaderText = "placa";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            this.dataGridViewTextBoxColumn15.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.DataPropertyName = "modelo";
+            this.dataGridViewTextBoxColumn16.HeaderText = "modelo";
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            this.dataGridViewTextBoxColumn16.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.DataPropertyName = "ano";
+            this.dataGridViewTextBoxColumn17.HeaderText = "ano";
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            this.dataGridViewTextBoxColumn17.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn18
+            // 
+            this.dataGridViewTextBoxColumn18.DataPropertyName = "cor";
+            this.dataGridViewTextBoxColumn18.HeaderText = "cor";
+            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            this.dataGridViewTextBoxColumn18.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn19
+            // 
+            this.dataGridViewTextBoxColumn19.DataPropertyName = "kmRodado";
+            this.dataGridViewTextBoxColumn19.HeaderText = "kmRodado";
+            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
+            this.dataGridViewTextBoxColumn19.ReadOnly = true;
+            // 
+            // tcc_AutomovelBindingSource
+            // 
+            this.tcc_AutomovelBindingSource.DataMember = "tcc_Automovel";
+            this.tcc_AutomovelBindingSource.DataSource = this.banco;
+            // 
+            // banco
+            // 
+            this.banco.DataSetName = "Banco";
+            this.banco.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btnAddCarro
             // 
@@ -548,7 +599,6 @@
             this.dgvCliente.AutoGenerateColumns = false;
             this.dgvCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCliente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
@@ -568,6 +618,11 @@
             this.dgvCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCliente.Size = new System.Drawing.Size(580, 440);
             this.dgvCliente.TabIndex = 6;
+            // 
+            // tcc_ClienteBindingSource
+            // 
+            this.tcc_ClienteBindingSource.DataMember = "tcc_Cliente";
+            this.tcc_ClienteBindingSource.DataSource = this.banco;
             // 
             // label12
             // 
@@ -630,64 +685,20 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "Pesquisar:";
             // 
-            // dataGridViewTextBoxColumn13
+            // tcc_ClienteTableAdapter
             // 
-            this.dataGridViewTextBoxColumn13.DataPropertyName = "IDAutomovel";
-            this.dataGridViewTextBoxColumn13.HeaderText = "IDAutomovel";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.ReadOnly = true;
+            this.tcc_ClienteTableAdapter.ClearBeforeFill = true;
             // 
-            // dataGridViewTextBoxColumn15
+            // tableAdapterManager
             // 
-            this.dataGridViewTextBoxColumn15.DataPropertyName = "placa";
-            this.dataGridViewTextBoxColumn15.HeaderText = "placa";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            this.dataGridViewTextBoxColumn15.ReadOnly = true;
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.tcc_AutomovelTableAdapter = null;
+            this.tableAdapterManager.tcc_ClienteTableAdapter = this.tcc_ClienteTableAdapter;
+            this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // dataGridViewTextBoxColumn16
+            // tcc_AutomovelTableAdapter
             // 
-            this.dataGridViewTextBoxColumn16.DataPropertyName = "modelo";
-            this.dataGridViewTextBoxColumn16.HeaderText = "modelo";
-            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            this.dataGridViewTextBoxColumn16.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn17
-            // 
-            this.dataGridViewTextBoxColumn17.DataPropertyName = "ano";
-            this.dataGridViewTextBoxColumn17.HeaderText = "ano";
-            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            this.dataGridViewTextBoxColumn17.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn18
-            // 
-            this.dataGridViewTextBoxColumn18.DataPropertyName = "cor";
-            this.dataGridViewTextBoxColumn18.HeaderText = "cor";
-            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
-            this.dataGridViewTextBoxColumn18.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn19
-            // 
-            this.dataGridViewTextBoxColumn19.DataPropertyName = "kmRodado";
-            this.dataGridViewTextBoxColumn19.HeaderText = "kmRodado";
-            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
-            this.dataGridViewTextBoxColumn19.ReadOnly = true;
-            // 
-            // tcc_AutomovelBindingSource
-            // 
-            this.tcc_AutomovelBindingSource.DataMember = "tcc_Automovel";
-            this.tcc_AutomovelBindingSource.DataSource = this.banco;
-            // 
-            // banco
-            // 
-            this.banco.DataSetName = "Banco";
-            this.banco.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "IDCliente";
-            this.dataGridViewTextBoxColumn1.HeaderText = "IDCliente";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.tcc_AutomovelTableAdapter.ClearBeforeFill = true;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -766,26 +777,6 @@
             this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             this.dataGridViewTextBoxColumn12.ReadOnly = true;
             // 
-            // tcc_ClienteBindingSource
-            // 
-            this.tcc_ClienteBindingSource.DataMember = "tcc_Cliente";
-            this.tcc_ClienteBindingSource.DataSource = this.banco;
-            // 
-            // tcc_ClienteTableAdapter
-            // 
-            this.tcc_ClienteTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.tcc_AutomovelTableAdapter = null;
-            this.tableAdapterManager.tcc_ClienteTableAdapter = this.tcc_ClienteTableAdapter;
-            this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // tcc_AutomovelTableAdapter
-            // 
-            this.tcc_AutomovelTableAdapter.ClearBeforeFill = true;
-            // 
             // FrmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -799,6 +790,8 @@
             this.tpCadastrar.ResumeLayout(false);
             this.tpCadastrar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_AutomovelDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tcc_AutomovelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.banco)).EndInit();
             this.tcDados.ResumeLayout(false);
             this.tpDados.ResumeLayout(false);
             this.tpDados.PerformLayout();
@@ -807,8 +800,6 @@
             this.tbPesquisa.ResumeLayout(false);
             this.tbPesquisa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCliente)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tcc_AutomovelBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.banco)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_ClienteBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -870,7 +861,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
         private System.Windows.Forms.DataGridView dgvCliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.Button btnNovo;
+        private System.Windows.Forms.Button btnExcluir;
+        private System.Windows.Forms.Button btnPesquisaCancelar;
+        private System.Windows.Forms.Button tbnAlterar;
+        private System.Windows.Forms.Button btnPesquisar;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
@@ -882,10 +877,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.Button btnNovo;
-        private System.Windows.Forms.Button btnExcluir;
-        private System.Windows.Forms.Button btnPesquisaCancelar;
-        private System.Windows.Forms.Button tbnAlterar;
-        private System.Windows.Forms.Button btnPesquisar;
     }
 }

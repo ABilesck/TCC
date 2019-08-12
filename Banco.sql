@@ -1,5 +1,5 @@
---create database tcc_Oficina
--- use tcc_Oficina
+create database tcc_OficinaMecanica
+use tcc_OficinaMecanica
 
 create table tcc_Cliente(
 	IDCliente integer primary key NOT NULL identity(1,1),

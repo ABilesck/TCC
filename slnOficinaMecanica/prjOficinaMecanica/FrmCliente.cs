@@ -241,7 +241,9 @@ namespace prjOficinaMecanica
                 MessageBoxButtons.YesNo,MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2)== DialogResult.Yes)
             {
-                tcc_ClienteTableAdapter.Delete(Convert.ToInt32(dgvCliente[0, dgvCliente.CurrentRow.Index].Value.ToString()));
+                IdCliente = Convert.ToInt32(((DataRowView)tcc_ClienteBindingSource.Current).Row["IDCliente"].ToString());
+                //tcc_ClienteTableAdapter.Delete(Convert.ToInt32(dgvCliente[0, dgvCliente.CurrentRow.Index].Value.ToString()));
+                tcc_ClienteTableAdapter.Delete(IdCliente);
                 btnCancelar_Click(null, null);
                 FrmCliente_Load(null, null);
             }
