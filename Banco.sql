@@ -9,6 +9,7 @@ create table tcc_Cliente(
 	email nvarchar(MAX),
 	--ENDERECO--
 	logradouro nvarchar(30),
+	numero nvarchar(5),
 	bairro nvarchar(30),
 	cidade nvarchar(MAX),
 	complemento nvarchar(30),
@@ -38,6 +39,7 @@ create table tcc_Mecanico(
 	comissao integer,
 	--ENDERECO--
 	logradouro nvarchar(30),
+	numero nvarchar(5),
 	bairro nvarchar(30),
 	cidade nvarchar(MAX),
 	complemento nvarchar(30),
@@ -62,7 +64,7 @@ create table tcc_Orcamento(
 create table tcc_produtoOrcamento(
 	IDOrcamento integer, -- foreign key
 	IDProduto integer, -- foreign key
-	quantidade integer,
+	quantidadeVenda integer,
 	precoUnitario float,
 	primary key(IDOrcamento, IDProduto)
 )
@@ -72,6 +74,7 @@ create table tcc_Servico(
 	IDOrcamento integer, -- foreign key
 	dataInicio datetime,
 	dataFim datetime,
+	notaFiscal nvarchar(MAX),
 	primary key(IDMecanico, IDOrcamento)
 )
 

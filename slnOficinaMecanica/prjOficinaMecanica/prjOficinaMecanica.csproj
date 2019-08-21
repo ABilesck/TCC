@@ -51,6 +51,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Banco.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FrmAutomovel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAutomovel.Designer.cs">
+      <DependentUpon>FrmAutomovel.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmAutomovel.resx">
+      <DependentUpon>FrmAutomovel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCliente.resx">
       <DependentUpon>FrmCliente.cs</DependentUpon>
     </EmbeddedResource>

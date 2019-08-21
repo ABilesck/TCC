@@ -78,16 +78,6 @@
             this.tbnAlterar = new System.Windows.Forms.Button();
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.dgvCliente = new System.Windows.Forms.DataGridView();
-            this.tcc_ClienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.cmbOrdenar = new System.Windows.Forms.ComboBox();
-            this.cmbFiltro = new System.Windows.Forms.ComboBox();
-            this.txtPesquisa = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.tcc_ClienteTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_ClienteTableAdapter();
-            this.tableAdapterManager = new prjOficinaMecanica.BancoTableAdapters.TableAdapterManager();
-            this.tcc_AutomovelTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_AutomovelTableAdapter();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -99,6 +89,16 @@
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tcc_ClienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cmbOrdenar = new System.Windows.Forms.ComboBox();
+            this.cmbFiltro = new System.Windows.Forms.ComboBox();
+            this.txtPesquisa = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tcc_ClienteTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_ClienteTableAdapter();
+            this.tableAdapterManager = new prjOficinaMecanica.BancoTableAdapters.TableAdapterManager();
+            this.tcc_AutomovelTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_AutomovelTableAdapter();
             this.tcPrincipal.SuspendLayout();
             this.tpCadastrar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_AutomovelDataGridView)).BeginInit();
@@ -226,12 +226,14 @@
             // 
             // btnAddCarro
             // 
+            this.btnAddCarro.Enabled = false;
             this.btnAddCarro.Location = new System.Drawing.Point(510, 309);
             this.btnAddCarro.Name = "btnAddCarro";
             this.btnAddCarro.Size = new System.Drawing.Size(75, 23);
             this.btnAddCarro.TabIndex = 5;
             this.btnAddCarro.Text = "Novo carro";
             this.btnAddCarro.UseVisualStyleBackColor = true;
+            this.btnAddCarro.Click += new System.EventHandler(this.btnAddCarro_Click);
             // 
             // btnSalvar
             // 
@@ -619,87 +621,6 @@
             this.dgvCliente.Size = new System.Drawing.Size(580, 440);
             this.dgvCliente.TabIndex = 6;
             // 
-            // tcc_ClienteBindingSource
-            // 
-            this.tcc_ClienteBindingSource.DataMember = "tcc_Cliente";
-            this.tcc_ClienteBindingSource.DataSource = this.banco;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(469, 7);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(73, 13);
-            this.label12.TabIndex = 5;
-            this.label12.Text = "Organizar por:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(342, 7);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(74, 13);
-            this.label11.TabIndex = 4;
-            this.label11.Text = "Pesquisar por:";
-            // 
-            // cmbOrdenar
-            // 
-            this.cmbOrdenar.FormattingEnabled = true;
-            this.cmbOrdenar.Items.AddRange(new object[] {
-            "Código",
-            "Nome"});
-            this.cmbOrdenar.Location = new System.Drawing.Point(469, 24);
-            this.cmbOrdenar.Name = "cmbOrdenar";
-            this.cmbOrdenar.Size = new System.Drawing.Size(121, 21);
-            this.cmbOrdenar.TabIndex = 3;
-            this.cmbOrdenar.Text = "Código";
-            this.cmbOrdenar.SelectedIndexChanged += new System.EventHandler(this.cmbOrdenar_SelectedIndexChanged);
-            // 
-            // cmbFiltro
-            // 
-            this.cmbFiltro.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cmbFiltro.FormattingEnabled = true;
-            this.cmbFiltro.Items.AddRange(new object[] {
-            "Código",
-            "Documento Social",
-            "Nome"});
-            this.cmbFiltro.Location = new System.Drawing.Point(342, 24);
-            this.cmbFiltro.Name = "cmbFiltro";
-            this.cmbFiltro.Size = new System.Drawing.Size(121, 21);
-            this.cmbFiltro.TabIndex = 2;
-            this.cmbFiltro.Text = "Código";
-            // 
-            // txtPesquisa
-            // 
-            this.txtPesquisa.Location = new System.Drawing.Point(10, 24);
-            this.txtPesquisa.Name = "txtPesquisa";
-            this.txtPesquisa.Size = new System.Drawing.Size(326, 20);
-            this.txtPesquisa.TabIndex = 1;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(7, 7);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(56, 13);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "Pesquisar:";
-            // 
-            // tcc_ClienteTableAdapter
-            // 
-            this.tcc_ClienteTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.tcc_AutomovelTableAdapter = null;
-            this.tableAdapterManager.tcc_ClienteTableAdapter = this.tcc_ClienteTableAdapter;
-            this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // tcc_AutomovelTableAdapter
-            // 
-            this.tcc_AutomovelTableAdapter.ClearBeforeFill = true;
-            // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "nome";
@@ -776,6 +697,92 @@
             this.dataGridViewTextBoxColumn12.HeaderText = "registroGeral";
             this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             this.dataGridViewTextBoxColumn12.ReadOnly = true;
+            // 
+            // tcc_ClienteBindingSource
+            // 
+            this.tcc_ClienteBindingSource.DataMember = "tcc_Cliente";
+            this.tcc_ClienteBindingSource.DataSource = this.banco;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(469, 7);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(73, 13);
+            this.label12.TabIndex = 5;
+            this.label12.Text = "Organizar por:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(342, 7);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(74, 13);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "Pesquisar por:";
+            // 
+            // cmbOrdenar
+            // 
+            this.cmbOrdenar.FormattingEnabled = true;
+            this.cmbOrdenar.Items.AddRange(new object[] {
+            "Código",
+            "Nome"});
+            this.cmbOrdenar.Location = new System.Drawing.Point(469, 24);
+            this.cmbOrdenar.Name = "cmbOrdenar";
+            this.cmbOrdenar.Size = new System.Drawing.Size(121, 21);
+            this.cmbOrdenar.TabIndex = 3;
+            this.cmbOrdenar.Text = "Código";
+            this.cmbOrdenar.SelectedIndexChanged += new System.EventHandler(this.cmbOrdenar_SelectedIndexChanged);
+            // 
+            // cmbFiltro
+            // 
+            this.cmbFiltro.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbFiltro.FormattingEnabled = true;
+            this.cmbFiltro.Items.AddRange(new object[] {
+            "Código",
+            "Documento Social",
+            "Nome"});
+            this.cmbFiltro.Location = new System.Drawing.Point(342, 24);
+            this.cmbFiltro.Name = "cmbFiltro";
+            this.cmbFiltro.Size = new System.Drawing.Size(121, 21);
+            this.cmbFiltro.TabIndex = 2;
+            this.cmbFiltro.Text = "Código";
+            // 
+            // txtPesquisa
+            // 
+            this.txtPesquisa.Location = new System.Drawing.Point(10, 24);
+            this.txtPesquisa.Name = "txtPesquisa";
+            this.txtPesquisa.Size = new System.Drawing.Size(326, 20);
+            this.txtPesquisa.TabIndex = 1;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(7, 7);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(56, 13);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Pesquisar:";
+            // 
+            // tcc_ClienteTableAdapter
+            // 
+            this.tcc_ClienteTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.tcc_AutomovelTableAdapter = null;
+            this.tableAdapterManager.tcc_ClienteTableAdapter = this.tcc_ClienteTableAdapter;
+            this.tableAdapterManager.tcc_MecanicoTableAdapter = null;
+            this.tableAdapterManager.tcc_OrcamentoTableAdapter = null;
+            this.tableAdapterManager.tcc_produtoOrcamentoTableAdapter = null;
+            this.tableAdapterManager.tcc_ProdutoTableAdapter = null;
+            this.tableAdapterManager.tcc_ServicoTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // tcc_AutomovelTableAdapter
+            // 
+            this.tcc_AutomovelTableAdapter.ClearBeforeFill = true;
             // 
             // FrmCliente
             // 

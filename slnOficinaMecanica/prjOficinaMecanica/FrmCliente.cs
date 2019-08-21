@@ -13,6 +13,7 @@ namespace prjOficinaMecanica
     public partial class FrmCliente : Form
     {
         int IdCliente = 0;
+        string nomeCliente = "";
         Operacao oper;
 
         public FrmCliente()
@@ -213,18 +214,20 @@ namespace prjOficinaMecanica
 
         private void tbnAlterar_Click(object sender, EventArgs e)
         {
-            IdCliente = Convert.ToInt32(dgvCliente[0, dgvCliente.CurrentRow.Index].Value.ToString());
-            txtNome.Text = dgvCliente[1, dgvCliente.CurrentRow.Index].Value.ToString();
-            txtDocSocial.Text = dgvCliente[2, dgvCliente.CurrentRow.Index].Value.ToString();
-            txtTelefone.Text = dgvCliente[3, dgvCliente.CurrentRow.Index].Value.ToString();
-            txtEmail.Text = dgvCliente[4, dgvCliente.CurrentRow.Index].Value.ToString();
-            txtLogradouro.Text = dgvCliente[5, dgvCliente.CurrentRow.Index].Value.ToString();
-            txtBairro.Text = dgvCliente[6, dgvCliente.CurrentRow.Index].Value.ToString();
-            txtCidade.Text = dgvCliente[7, dgvCliente.CurrentRow.Index].Value.ToString();
-            txtComplemento.Text = dgvCliente[8, dgvCliente.CurrentRow.Index].Value.ToString();
-            cmbUf.Text = dgvCliente[9, dgvCliente.CurrentRow.Index].Value.ToString();
-            txtCep.Text = dgvCliente[10, dgvCliente.CurrentRow.Index].Value.ToString();
-            txtRegistro.Text = dgvCliente[11, dgvCliente.CurrentRow.Index].Value.ToString();
+            IdCliente = IdCliente = Convert.ToInt32(((DataRowView)tcc_ClienteBindingSource.Current).Row["IDCliente"].ToString());
+            //txtNome.Text = dgvCliente[0, dgvCliente.CurrentRow.Index].Value.ToString();
+            txtNome.Text = ((DataRowView)tcc_ClienteBindingSource.Current).Row["nome"].ToString();
+            nomeCliente = txtNome.Text;
+            txtDocSocial.Text = ((DataRowView)tcc_ClienteBindingSource.Current).Row["documentoSocial"].ToString();
+            txtTelefone.Text = ((DataRowView)tcc_ClienteBindingSource.Current).Row["telefone"].ToString();
+            txtEmail.Text = ((DataRowView)tcc_ClienteBindingSource.Current).Row["email"].ToString();
+            txtLogradouro.Text = ((DataRowView)tcc_ClienteBindingSource.Current).Row["logradouro"].ToString();
+            txtBairro.Text = ((DataRowView)tcc_ClienteBindingSource.Current).Row["bairro"].ToString();
+            txtCidade.Text = ((DataRowView)tcc_ClienteBindingSource.Current).Row["cidade"].ToString();
+            txtComplemento.Text = ((DataRowView)tcc_ClienteBindingSource.Current).Row["complemento"].ToString();
+            cmbUf.Text = ((DataRowView)tcc_ClienteBindingSource.Current).Row["uf"].ToString();
+            txtCep.Text = ((DataRowView)tcc_ClienteBindingSource.Current).Row["cep"].ToString();
+            txtRegistro.Text = ((DataRowView)tcc_ClienteBindingSource.Current).Row["registroGeral"].ToString();
 
             HabilitaBotoes(tpCadastrar, true);
             HabilitaCampos(tpDados, true);
@@ -233,6 +236,7 @@ namespace prjOficinaMecanica
             oper = Operacao.alterar;
 
             tcPrincipal.SelectedIndex = 0;
+            btnAddCarro.Enabled = true;
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -247,6 +251,14 @@ namespace prjOficinaMecanica
                 btnCancelar_Click(null, null);
                 FrmCliente_Load(null, null);
             }
+        }
+
+        private void btnAddCarro_Click(object sender, EventArgs e)
+        {
+            FrmAutomovel frmCarro = new FrmAutomovel();
+            frmCarro.idCliente = IdCliente;
+            frmCarro.nomeCliente = nomeCliente;
+            frmCarro.ShowDialog();
         }
     }
     enum Operacao
