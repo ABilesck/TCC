@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 
@@ -18,14 +15,9 @@ namespace prjOficinaMecanica
             InitializeComponent();
         }
 
-        private void FrmMenu_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Close();
         }
 
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -136,6 +128,31 @@ namespace prjOficinaMecanica
             {
                 item.Close();
             }
+        }
+
+        private void FrmMenu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(MessageBox.Show("Deseja fechar o programa?",
+                "Atenção",MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,MessageBoxDefaultButton.Button2)
+                == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void FrmMenu_Load(object sender, EventArgs e)
+        {
+            FrmOrcamento frmOrcamento = new FrmOrcamento();
+            frmOrcamento.MdiParent = this;
+            
+            FrmServico frmServico = new FrmServico();
+            frmServico.MdiParent = this;
+            
+            frmOrcamento.Show();
+            frmServico.Show();
+
+            LayoutMdi(MdiLayout.TileVertical);
         }
     }
 }

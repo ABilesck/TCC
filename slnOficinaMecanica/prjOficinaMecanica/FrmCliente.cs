@@ -1,20 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace prjOficinaMecanica
 {
+    //TODO: inner join no select do automovel para ver o nome do dono
+    //TODO: mudar o design do formulario
+    //TODO: fazer as mascaras das text box
+
     public partial class FrmCliente : Form
     {
         int IdCliente = 0;
         string nomeCliente = "";
         Operacao oper;
+        Utility utility = new Utility();
 
         public FrmCliente()
         {
@@ -37,88 +36,36 @@ namespace prjOficinaMecanica
 
         private void FrmCliente_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'banco.tcc_Automovel' table. You can move, or remove it, as needed.
-            this.tcc_AutomovelTableAdapter.FillByIdCliente(this.banco.tcc_Automovel, IdCliente);
-            // TODO: This line of code loads data into the 'banco.tcc_Cliente' table. You can move, or remove it, as needed.
-            this.tcc_ClienteTableAdapter.Fill(this.banco.tcc_Cliente);
+            tcc_AutomovelTableAdapter.FillByIdCliente(banco.tcc_Automovel, IdCliente);
+
+            tcc_ClienteTableAdapter.Fill(banco.tcc_Cliente);
 
         }
 
         private void dgvCliente_SelectionChanged(object sender, EventArgs e)
         {
             tcPrincipal.TabIndex = 0;
-            FrmCliente_Load(null, null);
+            if (dgvCliente.RowCount > 0)
+            {
+                IdCliente = IdCliente = Convert.ToInt32(((DataRowView)tcc_ClienteBindingSource.Current).Row["IDCliente"].ToString());
+                nomeCliente = ((DataRowView)tcc_ClienteBindingSource.Current).Row["nome"].ToString();
+                tcc_AutomovelTableAdapter.FillByIdCliente(banco.tcc_Automovel, IdCliente);
+            }
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
-            HabilitaBotoes(tpCadastrar, true);
-            HabilitaCampos(tpDados, true);
-            HabilitaCampos(tpEndereco, true);
+            utility.HabilitaBotoes(tpCadastrar, true);
+            utility.HabilitaCampos(pnlCadastro, true);
+            txtNome.Focus();
             oper = Operacao.incluir;
-        }
-
-        private void HabilitaCampos(Control control, bool hab)
-        {
-            foreach (Control c in control.Controls)
-            {
-                if(c is TextBox)
-                {
-                    c.Enabled = hab;
-                }
-                if(c is ComboBox)
-                {
-                    c.Enabled = hab;
-                }
-                if(c is MaskedTextBox)
-                {
-                    c.Enabled = hab;
-                }
-            }
-        }
-        private void LimpaCampos(Control control)
-        {
-            foreach (Control c in control.Controls)
-            {
-                if (c is TextBox)
-                {
-                    c.Text = "";
-                }
-                if (c is ComboBox)
-                {
-                    c.Text = "";
-                }
-                if (c is MaskedTextBox)
-                {
-                    c.Text = "";
-                }
-            }
-        }
-        private void HabilitaBotoes(Control control, bool hab)
-        {
-            foreach (Control c in control.Controls)
-            {
-                if(c is Button)
-                {
-                    if (c.Name.Equals("btnNovo"))
-                    {
-                        c.Enabled = !hab;
-                    }
-                    else
-                    {
-                        c.Enabled = hab;
-                    }
-                }
-            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            HabilitaBotoes(tpCadastrar, false);
-            HabilitaCampos(tpDados, false);
-            HabilitaCampos(tpEndereco, false);
-            LimpaCampos(tpDados);
-            LimpaCampos(tpEndereco);
+            utility.HabilitaBotoes(tpCadastrar, false);
+            utility.HabilitaCampos(pnlCadastro, false);
+            utility.LimpaCampos(pnlCadastro);
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -229,14 +176,12 @@ namespace prjOficinaMecanica
             txtCep.Text = ((DataRowView)tcc_ClienteBindingSource.Current).Row["cep"].ToString();
             txtRegistro.Text = ((DataRowView)tcc_ClienteBindingSource.Current).Row["registroGeral"].ToString();
 
-            HabilitaBotoes(tpCadastrar, true);
-            HabilitaCampos(tpDados, true);
-            HabilitaCampos(tpEndereco, true);
+            utility.HabilitaBotoes(tpCadastrar, true);
+            utility.HabilitaCampos(pnlCadastro, true);
 
             oper = Operacao.alterar;
 
             tcPrincipal.SelectedIndex = 0;
-            btnAddCarro.Enabled = true;
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -247,6 +192,7 @@ namespace prjOficinaMecanica
             {
                 IdCliente = Convert.ToInt32(((DataRowView)tcc_ClienteBindingSource.Current).Row["IDCliente"].ToString());
                 //tcc_ClienteTableAdapter.Delete(Convert.ToInt32(dgvCliente[0, dgvCliente.CurrentRow.Index].Value.ToString()));
+                tcc_AutomovelTableAdapter.Delete(IdCliente);
                 tcc_ClienteTableAdapter.Delete(IdCliente);
                 btnCancelar_Click(null, null);
                 FrmCliente_Load(null, null);
@@ -256,14 +202,24 @@ namespace prjOficinaMecanica
         private void btnAddCarro_Click(object sender, EventArgs e)
         {
             FrmAutomovel frmCarro = new FrmAutomovel();
+            IdCliente = Convert.ToInt32(((DataRowView)tcc_ClienteBindingSource.Current).Row["IDCliente"].ToString());
+            nomeCliente = ((DataRowView)tcc_ClienteBindingSource.Current).Row["nome"].ToString();
             frmCarro.idCliente = IdCliente;
             frmCarro.nomeCliente = nomeCliente;
+            frmCarro.autoNovo = true;
             frmCarro.ShowDialog();
         }
-    }
-    enum Operacao
-    {
-        incluir,
-        alterar
+
+        private void dgvCliente_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            IdCliente = Convert.ToInt32(((DataRowView)tcc_ClienteBindingSource.Current).Row["IDCliente"].ToString());
+            tbnAlterar_Click(null, null);
+        }
+
+        public void Reload()
+        {
+            IdCliente = Convert.ToInt32(((DataRowView)tcc_ClienteBindingSource.Current).Row["IDCliente"].ToString());
+            FrmCliente_Load(null, null);
+        }
     }
 }

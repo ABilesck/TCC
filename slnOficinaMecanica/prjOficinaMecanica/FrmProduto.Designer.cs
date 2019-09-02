@@ -33,20 +33,24 @@
             System.Windows.Forms.Label precoVendaLabel;
             System.Windows.Forms.Label precoCompraLabel;
             System.Windows.Forms.Label quantidadeLabel;
-            this.banco = new prjOficinaMecanica.Banco();
-            this.tcc_ProdutoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tcc_ProdutoTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_ProdutoTableAdapter();
-            this.tableAdapterManager = new prjOficinaMecanica.BancoTableAdapters.TableAdapterManager();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.descricaoTextBox = new System.Windows.Forms.TextBox();
-            this.precoVendaTextBox = new System.Windows.Forms.TextBox();
-            this.precoCompraTextBox = new System.Windows.Forms.TextBox();
-            this.quantidadeNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.btnNovo = new System.Windows.Forms.Button();
+            this.tpDados = new System.Windows.Forms.TabPage();
+            this.btnGravar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnNovo = new System.Windows.Forms.Button();
+            this.nudQuantidade = new System.Windows.Forms.NumericUpDown();
+            this.txtDescricao = new System.Windows.Forms.TextBox();
+            this.txtPrecoVenda = new System.Windows.Forms.TextBox();
+            this.txtPrecoCompra = new System.Windows.Forms.TextBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tcc_ProdutoDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tcc_ProdutoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.banco = new prjOficinaMecanica.Banco();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnPesquisaCancelar = new System.Windows.Forms.Button();
             this.tbnAlterar = new System.Windows.Forms.Button();
@@ -57,54 +61,60 @@
             this.cmbFiltro = new System.Windows.Forms.ComboBox();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.tcc_ProdutoDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tcc_ProdutoTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_ProdutoTableAdapter();
+            this.tableAdapterManager = new prjOficinaMecanica.BancoTableAdapters.TableAdapterManager();
             descricaoLabel = new System.Windows.Forms.Label();
             precoVendaLabel = new System.Windows.Forms.Label();
             precoCompraLabel = new System.Windows.Forms.Label();
             quantidadeLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.banco)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tcc_ProdutoBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tpDados.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudQuantidade)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.quantidadeNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_ProdutoDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tcc_ProdutoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.banco)).BeginInit();
             this.SuspendLayout();
             // 
-            // banco
+            // descricaoLabel
             // 
-            this.banco.DataSetName = "Banco";
-            this.banco.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            descricaoLabel.AutoSize = true;
+            descricaoLabel.Location = new System.Drawing.Point(6, 32);
+            descricaoLabel.Name = "descricaoLabel";
+            descricaoLabel.Size = new System.Drawing.Size(56, 13);
+            descricaoLabel.TabIndex = 2;
+            descricaoLabel.Text = "descricao:";
             // 
-            // tcc_ProdutoBindingSource
+            // precoVendaLabel
             // 
-            this.tcc_ProdutoBindingSource.DataMember = "tcc_Produto";
-            this.tcc_ProdutoBindingSource.DataSource = this.banco;
+            precoVendaLabel.AutoSize = true;
+            precoVendaLabel.Location = new System.Drawing.Point(267, 32);
+            precoVendaLabel.Name = "precoVendaLabel";
+            precoVendaLabel.Size = new System.Drawing.Size(71, 13);
+            precoVendaLabel.TabIndex = 6;
+            precoVendaLabel.Text = "preco Venda:";
             // 
-            // tcc_ProdutoTableAdapter
+            // precoCompraLabel
             // 
-            this.tcc_ProdutoTableAdapter.ClearBeforeFill = true;
+            precoCompraLabel.AutoSize = true;
+            precoCompraLabel.Location = new System.Drawing.Point(267, 71);
+            precoCompraLabel.Name = "precoCompraLabel";
+            precoCompraLabel.Size = new System.Drawing.Size(76, 13);
+            precoCompraLabel.TabIndex = 8;
+            precoCompraLabel.Text = "preco Compra:";
             // 
-            // tableAdapterManager
+            // quantidadeLabel
             // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.tcc_AutomovelTableAdapter = null;
-            this.tableAdapterManager.tcc_ClienteTableAdapter = null;
-            this.tableAdapterManager.tcc_MecanicoTableAdapter = null;
-            this.tableAdapterManager.tcc_OrcamentoTableAdapter = null;
-            this.tableAdapterManager.tcc_produtoOrcamentoTableAdapter = null;
-            this.tableAdapterManager.tcc_ProdutoTableAdapter = this.tcc_ProdutoTableAdapter;
-            this.tableAdapterManager.tcc_ServicoTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            quantidadeLabel.AutoSize = true;
+            quantidadeLabel.Location = new System.Drawing.Point(6, 71);
+            quantidadeLabel.Name = "quantidadeLabel";
+            quantidadeLabel.Size = new System.Drawing.Size(63, 13);
+            quantidadeLabel.TabIndex = 9;
+            quantidadeLabel.Text = "quantidade:";
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tpDados);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
@@ -112,26 +122,86 @@
             this.tabControl1.Size = new System.Drawing.Size(584, 359);
             this.tabControl1.TabIndex = 0;
             // 
-            // tabPage1
+            // tpDados
             // 
-            this.tabPage1.Controls.Add(this.button3);
-            this.tabPage1.Controls.Add(this.btnCancelar);
-            this.tabPage1.Controls.Add(this.btnNovo);
-            this.tabPage1.Controls.Add(quantidadeLabel);
-            this.tabPage1.Controls.Add(this.quantidadeNumericUpDown);
-            this.tabPage1.Controls.Add(descricaoLabel);
-            this.tabPage1.Controls.Add(this.descricaoTextBox);
-            this.tabPage1.Controls.Add(precoVendaLabel);
-            this.tabPage1.Controls.Add(this.precoVendaTextBox);
-            this.tabPage1.Controls.Add(precoCompraLabel);
-            this.tabPage1.Controls.Add(this.precoCompraTextBox);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(437, 333);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Cadastro";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tpDados.Controls.Add(this.btnGravar);
+            this.tpDados.Controls.Add(this.btnCancelar);
+            this.tpDados.Controls.Add(this.btnNovo);
+            this.tpDados.Controls.Add(quantidadeLabel);
+            this.tpDados.Controls.Add(this.nudQuantidade);
+            this.tpDados.Controls.Add(descricaoLabel);
+            this.tpDados.Controls.Add(this.txtDescricao);
+            this.tpDados.Controls.Add(precoVendaLabel);
+            this.tpDados.Controls.Add(this.txtPrecoVenda);
+            this.tpDados.Controls.Add(precoCompraLabel);
+            this.tpDados.Controls.Add(this.txtPrecoCompra);
+            this.tpDados.Location = new System.Drawing.Point(4, 22);
+            this.tpDados.Name = "tpDados";
+            this.tpDados.Padding = new System.Windows.Forms.Padding(3);
+            this.tpDados.Size = new System.Drawing.Size(576, 333);
+            this.tpDados.TabIndex = 0;
+            this.tpDados.Text = "Cadastro";
+            this.tpDados.UseVisualStyleBackColor = true;
+            // 
+            // btnGravar
+            // 
+            this.btnGravar.Enabled = false;
+            this.btnGravar.Location = new System.Drawing.Point(263, 150);
+            this.btnGravar.Name = "btnGravar";
+            this.btnGravar.Size = new System.Drawing.Size(75, 23);
+            this.btnGravar.TabIndex = 13;
+            this.btnGravar.Text = "Gravar";
+            this.btnGravar.UseVisualStyleBackColor = true;
+            this.btnGravar.Click += new System.EventHandler(this.btnGravar_click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Enabled = false;
+            this.btnCancelar.Location = new System.Drawing.Point(347, 150);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 12;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnNovo
+            // 
+            this.btnNovo.Location = new System.Drawing.Point(6, 6);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(75, 23);
+            this.btnNovo.TabIndex = 11;
+            this.btnNovo.Text = "Novo";
+            this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            // 
+            // nudQuantidade
+            // 
+            this.nudQuantidade.Location = new System.Drawing.Point(9, 87);
+            this.nudQuantidade.Name = "nudQuantidade";
+            this.nudQuantidade.Size = new System.Drawing.Size(118, 20);
+            this.nudQuantidade.TabIndex = 10;
+            // 
+            // txtDescricao
+            // 
+            this.txtDescricao.Location = new System.Drawing.Point(9, 48);
+            this.txtDescricao.Name = "txtDescricao";
+            this.txtDescricao.Size = new System.Drawing.Size(239, 20);
+            this.txtDescricao.TabIndex = 3;
+            // 
+            // txtPrecoVenda
+            // 
+            this.txtPrecoVenda.Location = new System.Drawing.Point(270, 48);
+            this.txtPrecoVenda.Name = "txtPrecoVenda";
+            this.txtPrecoVenda.Size = new System.Drawing.Size(152, 20);
+            this.txtPrecoVenda.TabIndex = 7;
+            // 
+            // txtPrecoCompra
+            // 
+            this.txtPrecoCompra.Location = new System.Drawing.Point(270, 87);
+            this.txtPrecoCompra.Name = "txtPrecoCompra";
+            this.txtPrecoCompra.Size = new System.Drawing.Size(152, 20);
+            this.txtPrecoCompra.TabIndex = 9;
             // 
             // tabPage2
             // 
@@ -155,197 +225,6 @@
             this.tabPage2.Text = "Pesquisar";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // descricaoLabel
-            // 
-            descricaoLabel.AutoSize = true;
-            descricaoLabel.Location = new System.Drawing.Point(6, 32);
-            descricaoLabel.Name = "descricaoLabel";
-            descricaoLabel.Size = new System.Drawing.Size(56, 13);
-            descricaoLabel.TabIndex = 2;
-            descricaoLabel.Text = "descricao:";
-            // 
-            // descricaoTextBox
-            // 
-            this.descricaoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tcc_ProdutoBindingSource, "descricao", true));
-            this.descricaoTextBox.Location = new System.Drawing.Point(9, 48);
-            this.descricaoTextBox.Name = "descricaoTextBox";
-            this.descricaoTextBox.Size = new System.Drawing.Size(239, 20);
-            this.descricaoTextBox.TabIndex = 3;
-            // 
-            // precoVendaLabel
-            // 
-            precoVendaLabel.AutoSize = true;
-            precoVendaLabel.Location = new System.Drawing.Point(267, 32);
-            precoVendaLabel.Name = "precoVendaLabel";
-            precoVendaLabel.Size = new System.Drawing.Size(71, 13);
-            precoVendaLabel.TabIndex = 6;
-            precoVendaLabel.Text = "preco Venda:";
-            // 
-            // precoVendaTextBox
-            // 
-            this.precoVendaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tcc_ProdutoBindingSource, "precoVenda", true));
-            this.precoVendaTextBox.Location = new System.Drawing.Point(270, 48);
-            this.precoVendaTextBox.Name = "precoVendaTextBox";
-            this.precoVendaTextBox.Size = new System.Drawing.Size(152, 20);
-            this.precoVendaTextBox.TabIndex = 7;
-            // 
-            // precoCompraLabel
-            // 
-            precoCompraLabel.AutoSize = true;
-            precoCompraLabel.Location = new System.Drawing.Point(267, 71);
-            precoCompraLabel.Name = "precoCompraLabel";
-            precoCompraLabel.Size = new System.Drawing.Size(76, 13);
-            precoCompraLabel.TabIndex = 8;
-            precoCompraLabel.Text = "preco Compra:";
-            // 
-            // precoCompraTextBox
-            // 
-            this.precoCompraTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tcc_ProdutoBindingSource, "precoCompra", true));
-            this.precoCompraTextBox.Location = new System.Drawing.Point(270, 87);
-            this.precoCompraTextBox.Name = "precoCompraTextBox";
-            this.precoCompraTextBox.Size = new System.Drawing.Size(152, 20);
-            this.precoCompraTextBox.TabIndex = 9;
-            // 
-            // quantidadeLabel
-            // 
-            quantidadeLabel.AutoSize = true;
-            quantidadeLabel.Location = new System.Drawing.Point(6, 71);
-            quantidadeLabel.Name = "quantidadeLabel";
-            quantidadeLabel.Size = new System.Drawing.Size(63, 13);
-            quantidadeLabel.TabIndex = 9;
-            quantidadeLabel.Text = "quantidade:";
-            // 
-            // quantidadeNumericUpDown
-            // 
-            this.quantidadeNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.tcc_ProdutoBindingSource, "quantidade", true));
-            this.quantidadeNumericUpDown.Location = new System.Drawing.Point(9, 87);
-            this.quantidadeNumericUpDown.Name = "quantidadeNumericUpDown";
-            this.quantidadeNumericUpDown.Size = new System.Drawing.Size(118, 20);
-            this.quantidadeNumericUpDown.TabIndex = 10;
-            // 
-            // btnNovo
-            // 
-            this.btnNovo.Location = new System.Drawing.Point(6, 6);
-            this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(75, 23);
-            this.btnNovo.TabIndex = 11;
-            this.btnNovo.Text = "Novo";
-            this.btnNovo.UseVisualStyleBackColor = true;
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Location = new System.Drawing.Point(347, 150);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 12;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(263, 150);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "Gravar";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // btnExcluir
-            // 
-            this.btnExcluir.Location = new System.Drawing.Point(485, 56);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(75, 23);
-            this.btnExcluir.TabIndex = 20;
-            this.btnExcluir.Text = "&Excluir";
-            this.btnExcluir.UseVisualStyleBackColor = true;
-            // 
-            // btnPesquisaCancelar
-            // 
-            this.btnPesquisaCancelar.Location = new System.Drawing.Point(168, 56);
-            this.btnPesquisaCancelar.Name = "btnPesquisaCancelar";
-            this.btnPesquisaCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnPesquisaCancelar.TabIndex = 19;
-            this.btnPesquisaCancelar.Text = "&Cancelar";
-            this.btnPesquisaCancelar.UseVisualStyleBackColor = true;
-            // 
-            // tbnAlterar
-            // 
-            this.tbnAlterar.Location = new System.Drawing.Point(87, 56);
-            this.tbnAlterar.Name = "tbnAlterar";
-            this.tbnAlterar.Size = new System.Drawing.Size(75, 23);
-            this.tbnAlterar.TabIndex = 18;
-            this.tbnAlterar.Text = "&Alterar";
-            this.tbnAlterar.UseVisualStyleBackColor = true;
-            // 
-            // btnPesquisar
-            // 
-            this.btnPesquisar.Location = new System.Drawing.Point(6, 56);
-            this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
-            this.btnPesquisar.TabIndex = 17;
-            this.btnPesquisar.Text = "&Pesquisar";
-            this.btnPesquisar.UseVisualStyleBackColor = true;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(439, 12);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(73, 13);
-            this.label12.TabIndex = 16;
-            this.label12.Text = "Organizar por:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(309, 12);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(74, 13);
-            this.label11.TabIndex = 15;
-            this.label11.Text = "Pesquisar por:";
-            // 
-            // cmbOrdenar
-            // 
-            this.cmbOrdenar.FormattingEnabled = true;
-            this.cmbOrdenar.Items.AddRange(new object[] {
-            "Código",
-            "Nome"});
-            this.cmbOrdenar.Location = new System.Drawing.Point(439, 29);
-            this.cmbOrdenar.Name = "cmbOrdenar";
-            this.cmbOrdenar.Size = new System.Drawing.Size(121, 21);
-            this.cmbOrdenar.TabIndex = 14;
-            this.cmbOrdenar.Text = "Código";
-            // 
-            // cmbFiltro
-            // 
-            this.cmbFiltro.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cmbFiltro.FormattingEnabled = true;
-            this.cmbFiltro.Items.AddRange(new object[] {
-            "Código",
-            "Documento Social",
-            "Nome"});
-            this.cmbFiltro.Location = new System.Drawing.Point(312, 29);
-            this.cmbFiltro.Name = "cmbFiltro";
-            this.cmbFiltro.Size = new System.Drawing.Size(121, 21);
-            this.cmbFiltro.TabIndex = 13;
-            this.cmbFiltro.Text = "Código";
-            // 
-            // txtPesquisa
-            // 
-            this.txtPesquisa.Location = new System.Drawing.Point(6, 29);
-            this.txtPesquisa.Name = "txtPesquisa";
-            this.txtPesquisa.Size = new System.Drawing.Size(300, 20);
-            this.txtPesquisa.TabIndex = 12;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 12);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(56, 13);
-            this.label10.TabIndex = 11;
-            this.label10.Text = "Pesquisar:";
-            // 
             // tcc_ProdutoDataGridView
             // 
             this.tcc_ProdutoDataGridView.AllowUserToAddRows = false;
@@ -366,6 +245,7 @@
             this.tcc_ProdutoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tcc_ProdutoDataGridView.Size = new System.Drawing.Size(554, 220);
             this.tcc_ProdutoDataGridView.TabIndex = 20;
+            this.tcc_ProdutoDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tcc_ProdutoDataGridView_CellDoubleClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -403,6 +283,132 @@
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
+            // tcc_ProdutoBindingSource
+            // 
+            this.tcc_ProdutoBindingSource.DataMember = "tcc_Produto";
+            this.tcc_ProdutoBindingSource.DataSource = this.banco;
+            // 
+            // banco
+            // 
+            this.banco.DataSetName = "Banco";
+            this.banco.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Location = new System.Drawing.Point(485, 56);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(75, 23);
+            this.btnExcluir.TabIndex = 20;
+            this.btnExcluir.Text = "&Excluir";
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            // 
+            // btnPesquisaCancelar
+            // 
+            this.btnPesquisaCancelar.Location = new System.Drawing.Point(168, 56);
+            this.btnPesquisaCancelar.Name = "btnPesquisaCancelar";
+            this.btnPesquisaCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnPesquisaCancelar.TabIndex = 19;
+            this.btnPesquisaCancelar.Text = "&Cancelar";
+            this.btnPesquisaCancelar.UseVisualStyleBackColor = true;
+            this.btnPesquisaCancelar.Click += new System.EventHandler(this.btnPesquisaCancelar_Click);
+            // 
+            // tbnAlterar
+            // 
+            this.tbnAlterar.Location = new System.Drawing.Point(87, 56);
+            this.tbnAlterar.Name = "tbnAlterar";
+            this.tbnAlterar.Size = new System.Drawing.Size(75, 23);
+            this.tbnAlterar.TabIndex = 18;
+            this.tbnAlterar.Text = "&Alterar";
+            this.tbnAlterar.UseVisualStyleBackColor = true;
+            this.tbnAlterar.Click += new System.EventHandler(this.tbnAlterar_Click);
+            // 
+            // btnPesquisar
+            // 
+            this.btnPesquisar.Location = new System.Drawing.Point(6, 56);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
+            this.btnPesquisar.TabIndex = 17;
+            this.btnPesquisar.Text = "&Pesquisar";
+            this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(439, 12);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(73, 13);
+            this.label12.TabIndex = 16;
+            this.label12.Text = "Organizar por:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(309, 12);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(74, 13);
+            this.label11.TabIndex = 15;
+            this.label11.Text = "Pesquisar por:";
+            // 
+            // cmbOrdenar
+            // 
+            this.cmbOrdenar.FormattingEnabled = true;
+            this.cmbOrdenar.Items.AddRange(new object[] {
+            "Código",
+            "Nome"});
+            this.cmbOrdenar.Location = new System.Drawing.Point(439, 29);
+            this.cmbOrdenar.Name = "cmbOrdenar";
+            this.cmbOrdenar.Size = new System.Drawing.Size(121, 21);
+            this.cmbOrdenar.TabIndex = 14;
+            this.cmbOrdenar.Text = "Código";
+            this.cmbOrdenar.SelectedIndexChanged += new System.EventHandler(this.cmbOrdenar_SelectedIndexChanged);
+            // 
+            // cmbFiltro
+            // 
+            this.cmbFiltro.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbFiltro.FormattingEnabled = true;
+            this.cmbFiltro.Items.AddRange(new object[] {
+            "Código",
+            "Descrição"});
+            this.cmbFiltro.Location = new System.Drawing.Point(312, 29);
+            this.cmbFiltro.Name = "cmbFiltro";
+            this.cmbFiltro.Size = new System.Drawing.Size(121, 21);
+            this.cmbFiltro.TabIndex = 13;
+            this.cmbFiltro.Text = "Código";
+            // 
+            // txtPesquisa
+            // 
+            this.txtPesquisa.Location = new System.Drawing.Point(6, 29);
+            this.txtPesquisa.Name = "txtPesquisa";
+            this.txtPesquisa.Size = new System.Drawing.Size(300, 20);
+            this.txtPesquisa.TabIndex = 12;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(3, 12);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(56, 13);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "Pesquisar:";
+            // 
+            // tcc_ProdutoTableAdapter
+            // 
+            this.tcc_ProdutoTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.tcc_AutomovelTableAdapter = null;
+            this.tableAdapterManager.tcc_ClienteTableAdapter = null;
+            this.tableAdapterManager.tcc_MecanicoTableAdapter = null;
+            this.tableAdapterManager.tcc_OrcamentoTableAdapter = null;
+            this.tableAdapterManager.tcc_produtoOrcamentoTableAdapter = null;
+            this.tableAdapterManager.tcc_ProdutoTableAdapter = this.tcc_ProdutoTableAdapter;
+            this.tableAdapterManager.tcc_ServicoTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
             // FrmProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -412,15 +418,15 @@
             this.Name = "FrmProduto";
             this.Text = "FrmProduto";
             this.Load += new System.EventHandler(this.FrmProduto_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.banco)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tcc_ProdutoBindingSource)).EndInit();
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.tpDados.ResumeLayout(false);
+            this.tpDados.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudQuantidade)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.quantidadeNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_ProdutoDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tcc_ProdutoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.banco)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -432,14 +438,14 @@
         private BancoTableAdapters.tcc_ProdutoTableAdapter tcc_ProdutoTableAdapter;
         private BancoTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tpDados;
         private System.Windows.Forms.Button btnNovo;
-        private System.Windows.Forms.NumericUpDown quantidadeNumericUpDown;
-        private System.Windows.Forms.TextBox descricaoTextBox;
-        private System.Windows.Forms.TextBox precoVendaTextBox;
-        private System.Windows.Forms.TextBox precoCompraTextBox;
+        private System.Windows.Forms.NumericUpDown nudQuantidade;
+        private System.Windows.Forms.TextBox txtDescricao;
+        private System.Windows.Forms.TextBox txtPrecoVenda;
+        private System.Windows.Forms.TextBox txtPrecoCompra;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnGravar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.DataGridView tcc_ProdutoDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;

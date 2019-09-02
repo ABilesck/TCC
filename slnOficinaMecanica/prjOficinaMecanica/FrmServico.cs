@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace prjOficinaMecanica
 {
+    //TODO: o Formulario todo
     public partial class FrmServico : Form
     {
         public FrmServico()
@@ -27,11 +28,8 @@ namespace prjOficinaMecanica
 
         private void FrmServico_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'banco.tcc_Mecanico' table. You can move, or remove it, as needed.
             this.tcc_MecanicoTableAdapter.Fill(this.banco.tcc_Mecanico);
-            // TODO: This line of code loads data into the 'banco.tcc_Servico' table. You can move, or remove it, as needed.
             this.tcc_ServicoTableAdapter.Fill(this.banco.tcc_Servico);
-            // TODO: This line of code loads data into the 'banco.tcc_Orcamento' table. You can move, or remove it, as needed.
             this.tcc_OrcamentoTableAdapter.Fill(this.banco.tcc_Orcamento);
 
         }

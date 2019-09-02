@@ -35,6 +35,15 @@
             System.Windows.Forms.Label precoUnitarioLabel;
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tcc_produtoOrcamentoDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tcc_produtoOrcamentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.banco = new prjOficinaMecanica.Banco();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnGravar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
@@ -43,25 +52,14 @@
             this.btnCancelarProduto = new System.Windows.Forms.Button();
             this.lblPreco = new System.Windows.Forms.Label();
             this.iDProdutoComboBox = new System.Windows.Forms.ComboBox();
-            this.tccProdutoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.banco = new prjOficinaMecanica.Banco();
             this.quantidadeNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.tcc_produtoOrcamentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnNovoProduto = new System.Windows.Forms.Button();
-            this.tcc_produtoOrcamentoDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.tccClienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.iDAutomovelComboBox = new System.Windows.Forms.ComboBox();
-            this.tcc_OrcamentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tccAutomovelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tcc_OrcamentoDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnPesquisaCancelar = new System.Windows.Forms.Button();
             this.tbnAlterar = new System.Windows.Forms.Button();
@@ -72,35 +70,24 @@
             this.cmbFiltro = new System.Windows.Forms.ComboBox();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.tcc_OrcamentoTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_OrcamentoTableAdapter();
-            this.tableAdapterManager = new prjOficinaMecanica.BancoTableAdapters.TableAdapterManager();
-            this.tcc_produtoOrcamentoTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_produtoOrcamentoTableAdapter();
-            this.tcc_ProdutoTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_ProdutoTableAdapter();
-            this.tccProdutoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.iDProdutoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tccClienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tcc_ClienteTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_ClienteTableAdapter();
-            this.tccAutomovelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tcc_AutomovelTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_AutomovelTableAdapter();
+            this.tcc_produtoOrcamentoTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_produtoOrcamentoTableAdapter();
+            this.tableAdapterManager = new prjOficinaMecanica.BancoTableAdapters.TableAdapterManager();
             iDAutomovelLabel = new System.Windows.Forms.Label();
             iDProdutoLabel = new System.Windows.Forms.Label();
             quantidadeLabel = new System.Windows.Forms.Label();
             precoUnitarioLabel = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tccProdutoBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.banco)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quantidadeNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tcc_produtoOrcamentoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_produtoOrcamentoDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tcc_OrcamentoBindingSource)).BeginInit();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tcc_OrcamentoDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tccProdutoBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iDProdutoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tcc_produtoOrcamentoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.banco)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.quantidadeNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tccClienteBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tccAutomovelBindingSource)).BeginInit();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // iDAutomovelLabel
@@ -146,16 +133,18 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(776, 373);
+            this.tabControl1.Size = new System.Drawing.Size(867, 407);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.tcc_produtoOrcamentoDataGridView);
+            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.btnGravar);
             this.tabPage1.Controls.Add(this.btnCancelar);
             this.tabPage1.Controls.Add(this.btnNovo);
             this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Controls.Add(this.tcc_produtoOrcamentoDataGridView);
             this.tabPage1.Controls.Add(this.comboBox1);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(iDAutomovelLabel);
@@ -163,14 +152,90 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(768, 347);
+            this.tabPage1.Size = new System.Drawing.Size(859, 381);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Cadastro";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // tcc_produtoOrcamentoDataGridView
+            // 
+            this.tcc_produtoOrcamentoDataGridView.AllowUserToAddRows = false;
+            this.tcc_produtoOrcamentoDataGridView.AllowUserToDeleteRows = false;
+            this.tcc_produtoOrcamentoDataGridView.AutoGenerateColumns = false;
+            this.tcc_produtoOrcamentoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tcc_produtoOrcamentoDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn6});
+            this.tcc_produtoOrcamentoDataGridView.DataSource = this.tcc_produtoOrcamentoBindingSource;
+            this.tcc_produtoOrcamentoDataGridView.Location = new System.Drawing.Point(273, 6);
+            this.tcc_produtoOrcamentoDataGridView.Name = "tcc_produtoOrcamentoDataGridView";
+            this.tcc_produtoOrcamentoDataGridView.ReadOnly = true;
+            this.tcc_produtoOrcamentoDataGridView.RowHeadersVisible = false;
+            this.tcc_produtoOrcamentoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tcc_produtoOrcamentoDataGridView.Size = new System.Drawing.Size(579, 355);
+            this.tcc_produtoOrcamentoDataGridView.TabIndex = 19;
+            this.tcc_produtoOrcamentoDataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tcc_produtoOrcamentoDataGridView_CellContentDoubleClick);
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "descricao";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Descrição";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "quantidade";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Quantidade";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "precoUnitario";
+            this.dataGridViewTextBoxColumn4.HeaderText = "preço Unitário";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Subtotal";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Subtotal";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // tcc_produtoOrcamentoBindingSource
+            // 
+            this.tcc_produtoOrcamentoBindingSource.DataMember = "tcc_produtoOrcamento";
+            this.tcc_produtoOrcamentoBindingSource.DataSource = this.banco;
+            // 
+            // banco
+            // 
+            this.banco.DataSetName = "Banco";
+            this.banco.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(9, 129);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(155, 20);
+            this.textBox1.TabIndex = 19;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 113);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 13);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Mao de obra";
+            // 
             // btnGravar
             // 
-            this.btnGravar.Location = new System.Drawing.Point(107, 314);
+            this.btnGravar.Location = new System.Drawing.Point(105, 338);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(75, 23);
             this.btnGravar.TabIndex = 17;
@@ -179,7 +244,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(188, 314);
+            this.btnCancelar.Location = new System.Drawing.Point(186, 338);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 16;
@@ -206,9 +271,9 @@
             this.groupBox1.Controls.Add(this.quantidadeNumericUpDown);
             this.groupBox1.Controls.Add(precoUnitarioLabel);
             this.groupBox1.Controls.Add(this.btnNovoProduto);
-            this.groupBox1.Location = new System.Drawing.Point(9, 117);
+            this.groupBox1.Location = new System.Drawing.Point(9, 155);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(258, 191);
+            this.groupBox1.Size = new System.Drawing.Size(258, 177);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Produtos";
@@ -244,8 +309,7 @@
             // 
             this.iDProdutoComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.iDProdutoComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.iDProdutoComboBox.DataSource = this.tccProdutoBindingSource1;
-            this.iDProdutoComboBox.DisplayMember = "descricao";
+            this.iDProdutoComboBox.DisplayMember = "IDProduto";
             this.iDProdutoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.iDProdutoComboBox.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.iDProdutoComboBox.Location = new System.Drawing.Point(88, 61);
@@ -254,28 +318,12 @@
             this.iDProdutoComboBox.TabIndex = 4;
             this.iDProdutoComboBox.ValueMember = "IDProduto";
             // 
-            // tccProdutoBindingSource1
-            // 
-            this.tccProdutoBindingSource1.DataMember = "tcc_Produto";
-            this.tccProdutoBindingSource1.DataSource = this.banco;
-            // 
-            // banco
-            // 
-            this.banco.DataSetName = "Banco";
-            this.banco.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // quantidadeNumericUpDown
             // 
-            this.quantidadeNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.tcc_produtoOrcamentoBindingSource, "quantidade", true));
             this.quantidadeNumericUpDown.Location = new System.Drawing.Point(88, 88);
             this.quantidadeNumericUpDown.Name = "quantidadeNumericUpDown";
             this.quantidadeNumericUpDown.Size = new System.Drawing.Size(121, 20);
             this.quantidadeNumericUpDown.TabIndex = 6;
-            // 
-            // tcc_produtoOrcamentoBindingSource
-            // 
-            this.tcc_produtoOrcamentoBindingSource.DataMember = "tcc_produtoOrcamento";
-            this.tcc_produtoOrcamentoBindingSource.DataSource = this.banco;
             // 
             // btnNovoProduto
             // 
@@ -285,54 +333,6 @@
             this.btnNovoProduto.TabIndex = 0;
             this.btnNovoProduto.Text = "Novo";
             this.btnNovoProduto.UseVisualStyleBackColor = true;
-            // 
-            // tcc_produtoOrcamentoDataGridView
-            // 
-            this.tcc_produtoOrcamentoDataGridView.AllowUserToAddRows = false;
-            this.tcc_produtoOrcamentoDataGridView.AllowUserToDeleteRows = false;
-            this.tcc_produtoOrcamentoDataGridView.AutoGenerateColumns = false;
-            this.tcc_produtoOrcamentoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tcc_produtoOrcamentoDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
-            this.tcc_produtoOrcamentoDataGridView.DataSource = this.tcc_produtoOrcamentoBindingSource;
-            this.tcc_produtoOrcamentoDataGridView.Location = new System.Drawing.Point(316, 7);
-            this.tcc_produtoOrcamentoDataGridView.Name = "tcc_produtoOrcamentoDataGridView";
-            this.tcc_produtoOrcamentoDataGridView.ReadOnly = true;
-            this.tcc_produtoOrcamentoDataGridView.RowHeadersVisible = false;
-            this.tcc_produtoOrcamentoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tcc_produtoOrcamentoDataGridView.Size = new System.Drawing.Size(446, 330);
-            this.tcc_produtoOrcamentoDataGridView.TabIndex = 12;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "IDOrcamento";
-            this.dataGridViewTextBoxColumn1.HeaderText = "IDOrcamento";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "IDProduto";
-            this.dataGridViewTextBoxColumn2.HeaderText = "IDProduto";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "quantidade";
-            this.dataGridViewTextBoxColumn3.HeaderText = "quantidade";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "precoUnitario";
-            this.dataGridViewTextBoxColumn4.HeaderText = "precoUnitario";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // comboBox1
             // 
@@ -345,6 +345,11 @@
             this.comboBox1.TabIndex = 13;
             this.comboBox1.ValueMember = "IDCliente";
             // 
+            // tccClienteBindingSource
+            // 
+            this.tccClienteBindingSource.DataMember = "tcc_Cliente";
+            this.tccClienteBindingSource.DataSource = this.banco;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -356,7 +361,6 @@
             // 
             // iDAutomovelComboBox
             // 
-            this.iDAutomovelComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tcc_OrcamentoBindingSource, "IDAutomovel", true));
             this.iDAutomovelComboBox.DataSource = this.tccAutomovelBindingSource;
             this.iDAutomovelComboBox.DisplayMember = "modelo";
             this.iDAutomovelComboBox.FormattingEnabled = true;
@@ -366,15 +370,14 @@
             this.iDAutomovelComboBox.TabIndex = 10;
             this.iDAutomovelComboBox.ValueMember = "IDAutomovel";
             // 
-            // tcc_OrcamentoBindingSource
+            // tccAutomovelBindingSource
             // 
-            this.tcc_OrcamentoBindingSource.DataMember = "tcc_Orcamento";
-            this.tcc_OrcamentoBindingSource.DataSource = this.banco;
+            this.tccAutomovelBindingSource.DataMember = "tcc_Automovel";
+            this.tccAutomovelBindingSource.DataSource = this.banco;
             // 
             // tabPage2
             // 
             this.tabPage2.AutoScroll = true;
-            this.tabPage2.Controls.Add(this.tcc_OrcamentoDataGridView);
             this.tabPage2.Controls.Add(this.btnExcluir);
             this.tabPage2.Controls.Add(this.btnPesquisaCancelar);
             this.tabPage2.Controls.Add(this.tbnAlterar);
@@ -388,43 +391,10 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(768, 347);
+            this.tabPage2.Size = new System.Drawing.Size(859, 381);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Pesquisar";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tcc_OrcamentoDataGridView
-            // 
-            this.tcc_OrcamentoDataGridView.AutoGenerateColumns = false;
-            this.tcc_OrcamentoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tcc_OrcamentoDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7});
-            this.tcc_OrcamentoDataGridView.DataSource = this.tcc_OrcamentoBindingSource;
-            this.tcc_OrcamentoDataGridView.Location = new System.Drawing.Point(6, 88);
-            this.tcc_OrcamentoDataGridView.Name = "tcc_OrcamentoDataGridView";
-            this.tcc_OrcamentoDataGridView.Size = new System.Drawing.Size(756, 253);
-            this.tcc_OrcamentoDataGridView.TabIndex = 20;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "IDOrcamento";
-            this.dataGridViewTextBoxColumn5.HeaderText = "IDOrcamento";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "dataConsulta";
-            this.dataGridViewTextBoxColumn6.HeaderText = "dataConsulta";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "IDAutomovel";
-            this.dataGridViewTextBoxColumn7.HeaderText = "IDAutomovel";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             // 
             // btnExcluir
             // 
@@ -522,9 +492,17 @@
             this.label10.TabIndex = 11;
             this.label10.Text = "Pesquisar:";
             // 
-            // tcc_OrcamentoTableAdapter
+            // tcc_ClienteTableAdapter
             // 
-            this.tcc_OrcamentoTableAdapter.ClearBeforeFill = true;
+            this.tcc_ClienteTableAdapter.ClearBeforeFill = true;
+            // 
+            // tcc_AutomovelTableAdapter
+            // 
+            this.tcc_AutomovelTableAdapter.ClearBeforeFill = true;
+            // 
+            // tcc_produtoOrcamentoTableAdapter
+            // 
+            this.tcc_produtoOrcamentoTableAdapter.ClearBeforeFill = true;
             // 
             // tableAdapterManager
             // 
@@ -532,53 +510,17 @@
             this.tableAdapterManager.tcc_AutomovelTableAdapter = null;
             this.tableAdapterManager.tcc_ClienteTableAdapter = null;
             this.tableAdapterManager.tcc_MecanicoTableAdapter = null;
-            this.tableAdapterManager.tcc_OrcamentoTableAdapter = this.tcc_OrcamentoTableAdapter;
+            this.tableAdapterManager.tcc_OrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_produtoOrcamentoTableAdapter = this.tcc_produtoOrcamentoTableAdapter;
-            this.tableAdapterManager.tcc_ProdutoTableAdapter = this.tcc_ProdutoTableAdapter;
+            this.tableAdapterManager.tcc_ProdutoTableAdapter = null;
             this.tableAdapterManager.tcc_ServicoTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // tcc_produtoOrcamentoTableAdapter
-            // 
-            this.tcc_produtoOrcamentoTableAdapter.ClearBeforeFill = true;
-            // 
-            // tcc_ProdutoTableAdapter
-            // 
-            this.tcc_ProdutoTableAdapter.ClearBeforeFill = true;
-            // 
-            // tccProdutoBindingSource
-            // 
-            this.tccProdutoBindingSource.DataMember = "tcc_Produto";
-            this.tccProdutoBindingSource.DataSource = this.banco;
-            // 
-            // iDProdutoBindingSource
-            // 
-            this.iDProdutoBindingSource.DataMember = "IDProduto";
-            this.iDProdutoBindingSource.DataSource = this.tccProdutoBindingSource;
-            // 
-            // tccClienteBindingSource
-            // 
-            this.tccClienteBindingSource.DataMember = "tcc_Cliente";
-            this.tccClienteBindingSource.DataSource = this.banco;
-            // 
-            // tcc_ClienteTableAdapter
-            // 
-            this.tcc_ClienteTableAdapter.ClearBeforeFill = true;
-            // 
-            // tccAutomovelBindingSource
-            // 
-            this.tccAutomovelBindingSource.DataMember = "tcc_Automovel";
-            this.tccAutomovelBindingSource.DataSource = this.banco;
-            // 
-            // tcc_AutomovelTableAdapter
-            // 
-            this.tcc_AutomovelTableAdapter.ClearBeforeFill = true;
             // 
             // FrmOrcamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 387);
+            this.ClientSize = new System.Drawing.Size(886, 434);
             this.Controls.Add(this.tabControl1);
             this.Name = "FrmOrcamento";
             this.Text = "FrmOrcamento";
@@ -586,21 +528,16 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tcc_produtoOrcamentoDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tcc_produtoOrcamentoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.banco)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tccProdutoBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.banco)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quantidadeNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tcc_produtoOrcamentoBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tcc_produtoOrcamentoDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tcc_OrcamentoBindingSource)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tcc_OrcamentoDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tccProdutoBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iDProdutoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tccClienteBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tccAutomovelBindingSource)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -611,17 +548,11 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private Banco banco;
-        private System.Windows.Forms.BindingSource tcc_OrcamentoBindingSource;
-        private BancoTableAdapters.tcc_OrcamentoTableAdapter tcc_OrcamentoTableAdapter;
-        private BancoTableAdapters.TableAdapterManager tableAdapterManager;
-        private BancoTableAdapters.tcc_produtoOrcamentoTableAdapter tcc_produtoOrcamentoTableAdapter;
-        private System.Windows.Forms.BindingSource tcc_produtoOrcamentoBindingSource;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblPreco;
         private System.Windows.Forms.ComboBox iDProdutoComboBox;
         private System.Windows.Forms.NumericUpDown quantidadeNumericUpDown;
         private System.Windows.Forms.Button btnNovoProduto;
-        private System.Windows.Forms.DataGridView tcc_produtoOrcamentoDataGridView;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox iDAutomovelComboBox;
@@ -630,18 +561,6 @@
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Button btnGravar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private BancoTableAdapters.tcc_ProdutoTableAdapter tcc_ProdutoTableAdapter;
-        private System.Windows.Forms.BindingSource tccProdutoBindingSource;
-        private System.Windows.Forms.BindingSource tccProdutoBindingSource1;
-        private System.Windows.Forms.BindingSource iDProdutoBindingSource;
-        private System.Windows.Forms.DataGridView tcc_OrcamentoDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnPesquisaCancelar;
         private System.Windows.Forms.Button tbnAlterar;
@@ -656,5 +575,15 @@
         private BancoTableAdapters.tcc_ClienteTableAdapter tcc_ClienteTableAdapter;
         private System.Windows.Forms.BindingSource tccAutomovelBindingSource;
         private BancoTableAdapters.tcc_AutomovelTableAdapter tcc_AutomovelTableAdapter;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.BindingSource tcc_produtoOrcamentoBindingSource;
+        private BancoTableAdapters.tcc_produtoOrcamentoTableAdapter tcc_produtoOrcamentoTableAdapter;
+        private BancoTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.DataGridView tcc_produtoOrcamentoDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
     }
 }

@@ -75,7 +75,6 @@
     <Compile Include="FrmMenu.Designer.cs">
       <DependentUpon>FrmMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cliente.cs" />
     <Compile Include="FrmOrcamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +95,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility.cs" />
     <EmbeddedResource Include="FrmAutomovel.resx">
       <DependentUpon>FrmAutomovel.cs</DependentUpon>
     </EmbeddedResource>

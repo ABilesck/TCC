@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 namespace prjOficinaMecanica
 {
+    //TODO: fazer tudo, esse nao tem nada
+
     public partial class FrmOrcamento : Form
     {
         public FrmOrcamento()
@@ -17,27 +19,25 @@ namespace prjOficinaMecanica
             InitializeComponent();
         }
 
-        private void tcc_OrcamentoBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        private void FrmOrcamento_Load(object sender, EventArgs e)
         {
-            this.Validate();
-            this.tcc_OrcamentoBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.banco);
+            this.tcc_produtoOrcamentoTableAdapter.Fill(this.banco.tcc_produtoOrcamento);
+            this.tcc_AutomovelTableAdapter.Fill(this.banco.tcc_Automovel);
+            this.tcc_ClienteTableAdapter.Fill(this.banco.tcc_Cliente);
 
         }
 
-        private void FrmOrcamento_Load(object sender, EventArgs e)
+        private void tcc_produtoOrcamentoDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            // TODO: This line of code loads data into the 'banco.tcc_Automovel' table. You can move, or remove it, as needed.
-            this.tcc_AutomovelTableAdapter.Fill(this.banco.tcc_Automovel);
-            // TODO: This line of code loads data into the 'banco.tcc_Cliente' table. You can move, or remove it, as needed.
-            this.tcc_ClienteTableAdapter.Fill(this.banco.tcc_Cliente);
-            // TODO: This line of code loads data into the 'banco.tcc_Produto' table. You can move, or remove it, as needed.
-            this.tcc_ProdutoTableAdapter.Fill(this.banco.tcc_Produto);
-            // TODO: This line of code loads data into the 'banco.tcc_produtoOrcamento' table. You can move, or remove it, as needed.
-            this.tcc_produtoOrcamentoTableAdapter.Fill(this.banco.tcc_produtoOrcamento);
-            // TODO: This line of code loads data into the 'banco.tcc_Orcamento' table. You can move, or remove it, as needed.
-            this.tcc_OrcamentoTableAdapter.Fill(this.banco.tcc_Orcamento);
-
+            FrmProduto frmProduto = new FrmProduto();
+            frmProduto.Alterar(
+                Convert.ToInt32(((DataRowView)tcc_produtoOrcamentoBindingSource.Current).Row["IDProduto"].ToString()),
+                ((DataRowView)tcc_produtoOrcamentoBindingSource.Current).Row["descricao"].ToString(),
+                ((DataRowView)tcc_produtoOrcamentoBindingSource.Current).Row["IDProduto"].ToString(),
+                ((DataRowView)tcc_produtoOrcamentoBindingSource.Current).Row["precoUnitario"].ToString(),
+                Convert.ToInt32(((DataRowView)tcc_produtoOrcamentoBindingSource.Current).Row["quantidade"].ToString())
+                );
+            
         }
     }
 }

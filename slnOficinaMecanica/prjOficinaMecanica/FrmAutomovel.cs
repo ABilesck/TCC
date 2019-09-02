@@ -10,10 +10,14 @@ using System.Windows.Forms;
 
 namespace prjOficinaMecanica
 {
+    //TODO: botoes de cancelar e sair
+
     public partial class FrmAutomovel : Form
     {
         public int idCliente;
+        public int idAutomovel;
         public string nomeCliente;
+        public bool autoNovo;
         public FrmAutomovel()
         {
             InitializeComponent();
@@ -21,17 +25,47 @@ namespace prjOficinaMecanica
 
         private void FrmCarro_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'banco.tcc_Automovel' table. You can move, or remove it, as needed.
-            this.tcc_AutomovelTableAdapter.Fill(this.banco.tcc_Automovel);
+            tcc_AutomovelTableAdapter.Fill(banco.tcc_Automovel);
             lblCliente.Text = "Cliente: " + nomeCliente;
         }
 
-        private void tcc_AutomovelBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        private void btnSalvar_Click(object sender, EventArgs e)
         {
-            this.Validate();
-            this.tcc_AutomovelBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.banco);
+            //TODO: possibilitar alterar um carro
 
+            if (autoNovo)
+            {
+                tcc_AutomovelTableAdapter.Insert(
+                    idCliente,
+                   txtPlaca.Text,
+                   txtModelo.Text,
+                   txtAno.Text,
+                   txtCor.Text, 
+                   txtKm.Text);
+            }
+            else
+            {
+                tcc_AutomovelTableAdapter.Update(
+                    idCliente,
+                    txtPlaca.Text,
+                    txtModelo.Text,
+                    txtAno.Text,
+                    txtCor.Text,
+                    txtKm.Text,
+                    idAutomovel);
+            }
+
+            MessageBox.Show("Salvo com sucesso!",
+                    "Atencão", MessageBoxButtons.OK,MessageBoxIcon.Information);
+
+            //btnCancelar;
+            FrmCarro_Load(null, null);
+        }
+
+        private void FrmAutomovel_FormClosing(object sender, FormClosingEventArgs e)
+        {
+           var form = Application.OpenForms.OfType<FrmCliente>().Single();
+           form.Reload();
         }
     }
 }

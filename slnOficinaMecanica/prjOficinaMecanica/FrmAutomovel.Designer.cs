@@ -39,11 +39,11 @@
             this.tcc_AutomovelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tcc_AutomovelTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_AutomovelTableAdapter();
             this.tableAdapterManager = new prjOficinaMecanica.BancoTableAdapters.TableAdapterManager();
-            this.placaTextBox = new System.Windows.Forms.TextBox();
-            this.modeloTextBox = new System.Windows.Forms.TextBox();
-            this.anoTextBox = new System.Windows.Forms.TextBox();
-            this.corTextBox = new System.Windows.Forms.TextBox();
-            this.kmRodadoTextBox = new System.Windows.Forms.TextBox();
+            this.txtPlaca = new System.Windows.Forms.TextBox();
+            this.txtModelo = new System.Windows.Forms.TextBox();
+            this.txtAno = new System.Windows.Forms.TextBox();
+            this.txtCor = new System.Windows.Forms.TextBox();
+            this.txtKm = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
@@ -55,6 +55,51 @@
             ((System.ComponentModel.ISupportInitialize)(this.banco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_AutomovelBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // placaLabel
+            // 
+            placaLabel.AutoSize = true;
+            placaLabel.Location = new System.Drawing.Point(12, 78);
+            placaLabel.Name = "placaLabel";
+            placaLabel.Size = new System.Drawing.Size(36, 13);
+            placaLabel.TabIndex = 6;
+            placaLabel.Text = "placa:";
+            // 
+            // modeloLabel
+            // 
+            modeloLabel.AutoSize = true;
+            modeloLabel.Location = new System.Drawing.Point(4, 52);
+            modeloLabel.Name = "modeloLabel";
+            modeloLabel.Size = new System.Drawing.Size(44, 13);
+            modeloLabel.TabIndex = 8;
+            modeloLabel.Text = "modelo:";
+            // 
+            // anoLabel
+            // 
+            anoLabel.AutoSize = true;
+            anoLabel.Location = new System.Drawing.Point(21, 104);
+            anoLabel.Name = "anoLabel";
+            anoLabel.Size = new System.Drawing.Size(28, 13);
+            anoLabel.TabIndex = 10;
+            anoLabel.Text = "ano:";
+            // 
+            // corLabel
+            // 
+            corLabel.AutoSize = true;
+            corLabel.Location = new System.Drawing.Point(217, 52);
+            corLabel.Name = "corLabel";
+            corLabel.Size = new System.Drawing.Size(25, 13);
+            corLabel.TabIndex = 12;
+            corLabel.Text = "cor:";
+            // 
+            // kmRodadoLabel
+            // 
+            kmRodadoLabel.AutoSize = true;
+            kmRodadoLabel.Location = new System.Drawing.Point(177, 82);
+            kmRodadoLabel.Name = "kmRodadoLabel";
+            kmRodadoLabel.Size = new System.Drawing.Size(65, 13);
+            kmRodadoLabel.TabIndex = 14;
+            kmRodadoLabel.Text = "km Rodado:";
             // 
             // lblCliente
             // 
@@ -91,85 +136,40 @@
             this.tableAdapterManager.tcc_ServicoTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // placaLabel
+            // txtPlaca
             // 
-            placaLabel.AutoSize = true;
-            placaLabel.Location = new System.Drawing.Point(12, 78);
-            placaLabel.Name = "placaLabel";
-            placaLabel.Size = new System.Drawing.Size(36, 13);
-            placaLabel.TabIndex = 6;
-            placaLabel.Text = "placa:";
+            this.txtPlaca.Location = new System.Drawing.Point(55, 75);
+            this.txtPlaca.Name = "txtPlaca";
+            this.txtPlaca.Size = new System.Drawing.Size(75, 20);
+            this.txtPlaca.TabIndex = 7;
             // 
-            // placaTextBox
+            // txtModelo
             // 
-            this.placaTextBox.Location = new System.Drawing.Point(55, 75);
-            this.placaTextBox.Name = "placaTextBox";
-            this.placaTextBox.Size = new System.Drawing.Size(75, 20);
-            this.placaTextBox.TabIndex = 7;
+            this.txtModelo.Location = new System.Drawing.Point(55, 49);
+            this.txtModelo.Name = "txtModelo";
+            this.txtModelo.Size = new System.Drawing.Size(156, 20);
+            this.txtModelo.TabIndex = 9;
             // 
-            // modeloLabel
+            // txtAno
             // 
-            modeloLabel.AutoSize = true;
-            modeloLabel.Location = new System.Drawing.Point(4, 52);
-            modeloLabel.Name = "modeloLabel";
-            modeloLabel.Size = new System.Drawing.Size(44, 13);
-            modeloLabel.TabIndex = 8;
-            modeloLabel.Text = "modelo:";
+            this.txtAno.Location = new System.Drawing.Point(55, 101);
+            this.txtAno.Name = "txtAno";
+            this.txtAno.Size = new System.Drawing.Size(75, 20);
+            this.txtAno.TabIndex = 11;
             // 
-            // modeloTextBox
+            // txtCor
             // 
-            this.modeloTextBox.Location = new System.Drawing.Point(55, 49);
-            this.modeloTextBox.Name = "modeloTextBox";
-            this.modeloTextBox.Size = new System.Drawing.Size(156, 20);
-            this.modeloTextBox.TabIndex = 9;
+            this.txtCor.Location = new System.Drawing.Point(248, 49);
+            this.txtCor.Name = "txtCor";
+            this.txtCor.Size = new System.Drawing.Size(138, 20);
+            this.txtCor.TabIndex = 13;
             // 
-            // anoLabel
+            // txtKm
             // 
-            anoLabel.AutoSize = true;
-            anoLabel.Location = new System.Drawing.Point(21, 104);
-            anoLabel.Name = "anoLabel";
-            anoLabel.Size = new System.Drawing.Size(28, 13);
-            anoLabel.TabIndex = 10;
-            anoLabel.Text = "ano:";
-            // 
-            // anoTextBox
-            // 
-            this.anoTextBox.Location = new System.Drawing.Point(55, 101);
-            this.anoTextBox.Name = "anoTextBox";
-            this.anoTextBox.Size = new System.Drawing.Size(75, 20);
-            this.anoTextBox.TabIndex = 11;
-            // 
-            // corLabel
-            // 
-            corLabel.AutoSize = true;
-            corLabel.Location = new System.Drawing.Point(217, 52);
-            corLabel.Name = "corLabel";
-            corLabel.Size = new System.Drawing.Size(25, 13);
-            corLabel.TabIndex = 12;
-            corLabel.Text = "cor:";
-            // 
-            // corTextBox
-            // 
-            this.corTextBox.Location = new System.Drawing.Point(248, 49);
-            this.corTextBox.Name = "corTextBox";
-            this.corTextBox.Size = new System.Drawing.Size(138, 20);
-            this.corTextBox.TabIndex = 13;
-            // 
-            // kmRodadoLabel
-            // 
-            kmRodadoLabel.AutoSize = true;
-            kmRodadoLabel.Location = new System.Drawing.Point(177, 82);
-            kmRodadoLabel.Name = "kmRodadoLabel";
-            kmRodadoLabel.Size = new System.Drawing.Size(65, 13);
-            kmRodadoLabel.TabIndex = 14;
-            kmRodadoLabel.Text = "km Rodado:";
-            // 
-            // kmRodadoTextBox
-            // 
-            this.kmRodadoTextBox.Location = new System.Drawing.Point(248, 75);
-            this.kmRodadoTextBox.Name = "kmRodadoTextBox";
-            this.kmRodadoTextBox.Size = new System.Drawing.Size(100, 20);
-            this.kmRodadoTextBox.TabIndex = 15;
+            this.txtKm.Location = new System.Drawing.Point(248, 75);
+            this.txtKm.Name = "txtKm";
+            this.txtKm.Size = new System.Drawing.Size(100, 20);
+            this.txtKm.TabIndex = 15;
             // 
             // btnCancelar
             // 
@@ -197,8 +197,9 @@
             this.btnSalvar.TabIndex = 18;
             this.btnSalvar.Text = "&Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
-            // FrmCarro
+            // FrmAutomovel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -207,18 +208,19 @@
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(placaLabel);
-            this.Controls.Add(this.placaTextBox);
+            this.Controls.Add(this.txtPlaca);
             this.Controls.Add(modeloLabel);
-            this.Controls.Add(this.modeloTextBox);
+            this.Controls.Add(this.txtModelo);
             this.Controls.Add(anoLabel);
-            this.Controls.Add(this.anoTextBox);
+            this.Controls.Add(this.txtAno);
             this.Controls.Add(corLabel);
-            this.Controls.Add(this.corTextBox);
+            this.Controls.Add(this.txtCor);
             this.Controls.Add(kmRodadoLabel);
-            this.Controls.Add(this.kmRodadoTextBox);
+            this.Controls.Add(this.txtKm);
             this.Controls.Add(this.lblCliente);
-            this.Name = "FrmCarro";
+            this.Name = "FrmAutomovel";
             this.Text = "Automovel";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmAutomovel_FormClosing);
             this.Load += new System.EventHandler(this.FrmCarro_Load);
             ((System.ComponentModel.ISupportInitialize)(this.banco)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_AutomovelBindingSource)).EndInit();
@@ -234,11 +236,11 @@
         private System.Windows.Forms.BindingSource tcc_AutomovelBindingSource;
         private BancoTableAdapters.tcc_AutomovelTableAdapter tcc_AutomovelTableAdapter;
         private BancoTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.TextBox placaTextBox;
-        private System.Windows.Forms.TextBox modeloTextBox;
-        private System.Windows.Forms.TextBox anoTextBox;
-        private System.Windows.Forms.TextBox corTextBox;
-        private System.Windows.Forms.TextBox kmRodadoTextBox;
+        private System.Windows.Forms.TextBox txtPlaca;
+        private System.Windows.Forms.TextBox txtModelo;
+        private System.Windows.Forms.TextBox txtAno;
+        private System.Windows.Forms.TextBox txtCor;
+        private System.Windows.Forms.TextBox txtKm;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.Button btnSalvar;
