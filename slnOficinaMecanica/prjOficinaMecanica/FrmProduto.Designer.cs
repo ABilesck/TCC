@@ -35,13 +35,13 @@
             System.Windows.Forms.Label quantidadeLabel;
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpDados = new System.Windows.Forms.TabPage();
+            this.txtPrecoCompra = new System.Windows.Forms.MaskedTextBox();
+            this.txtPrecoVenda = new System.Windows.Forms.MaskedTextBox();
             this.btnGravar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
             this.nudQuantidade = new System.Windows.Forms.NumericUpDown();
             this.txtDescricao = new System.Windows.Forms.TextBox();
-            this.txtPrecoVenda = new System.Windows.Forms.TextBox();
-            this.txtPrecoCompra = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tcc_ProdutoDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -124,6 +124,8 @@
             // 
             // tpDados
             // 
+            this.tpDados.Controls.Add(this.txtPrecoCompra);
+            this.tpDados.Controls.Add(this.txtPrecoVenda);
             this.tpDados.Controls.Add(this.btnGravar);
             this.tpDados.Controls.Add(this.btnCancelar);
             this.tpDados.Controls.Add(this.btnNovo);
@@ -132,9 +134,7 @@
             this.tpDados.Controls.Add(descricaoLabel);
             this.tpDados.Controls.Add(this.txtDescricao);
             this.tpDados.Controls.Add(precoVendaLabel);
-            this.tpDados.Controls.Add(this.txtPrecoVenda);
             this.tpDados.Controls.Add(precoCompraLabel);
-            this.tpDados.Controls.Add(this.txtPrecoCompra);
             this.tpDados.Location = new System.Drawing.Point(4, 22);
             this.tpDados.Name = "tpDados";
             this.tpDados.Padding = new System.Windows.Forms.Padding(3);
@@ -142,6 +142,22 @@
             this.tpDados.TabIndex = 0;
             this.tpDados.Text = "Cadastro";
             this.tpDados.UseVisualStyleBackColor = true;
+            // 
+            // txtPrecoCompra
+            // 
+            this.txtPrecoCompra.Location = new System.Drawing.Point(270, 87);
+            this.txtPrecoCompra.Mask = "$9999.00";
+            this.txtPrecoCompra.Name = "txtPrecoCompra";
+            this.txtPrecoCompra.Size = new System.Drawing.Size(152, 20);
+            this.txtPrecoCompra.TabIndex = 15;
+            // 
+            // txtPrecoVenda
+            // 
+            this.txtPrecoVenda.Location = new System.Drawing.Point(270, 48);
+            this.txtPrecoVenda.Mask = "$9999.00";
+            this.txtPrecoVenda.Name = "txtPrecoVenda";
+            this.txtPrecoVenda.Size = new System.Drawing.Size(152, 20);
+            this.txtPrecoVenda.TabIndex = 14;
             // 
             // btnGravar
             // 
@@ -188,20 +204,6 @@
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(239, 20);
             this.txtDescricao.TabIndex = 3;
-            // 
-            // txtPrecoVenda
-            // 
-            this.txtPrecoVenda.Location = new System.Drawing.Point(270, 48);
-            this.txtPrecoVenda.Name = "txtPrecoVenda";
-            this.txtPrecoVenda.Size = new System.Drawing.Size(152, 20);
-            this.txtPrecoVenda.TabIndex = 7;
-            // 
-            // txtPrecoCompra
-            // 
-            this.txtPrecoCompra.Location = new System.Drawing.Point(270, 87);
-            this.txtPrecoCompra.Name = "txtPrecoCompra";
-            this.txtPrecoCompra.Size = new System.Drawing.Size(152, 20);
-            this.txtPrecoCompra.TabIndex = 9;
             // 
             // tabPage2
             // 
@@ -442,8 +444,6 @@
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.NumericUpDown nudQuantidade;
         private System.Windows.Forms.TextBox txtDescricao;
-        private System.Windows.Forms.TextBox txtPrecoVenda;
-        private System.Windows.Forms.TextBox txtPrecoCompra;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button btnGravar;
         private System.Windows.Forms.Button btnCancelar;
@@ -463,5 +463,7 @@
         private System.Windows.Forms.ComboBox cmbFiltro;
         private System.Windows.Forms.TextBox txtPesquisa;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.MaskedTextBox txtPrecoCompra;
+        private System.Windows.Forms.MaskedTextBox txtPrecoVenda;
     }
 }

@@ -221,5 +221,10 @@ namespace prjOficinaMecanica
             IdCliente = Convert.ToInt32(((DataRowView)tcc_ClienteBindingSource.Current).Row["IDCliente"].ToString());
             FrmCliente_Load(null, null);
         }
+
+        private void tcPrincipal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmbOrdenar_SelectedIndexChanged(null, null);
+        }
     }
 }

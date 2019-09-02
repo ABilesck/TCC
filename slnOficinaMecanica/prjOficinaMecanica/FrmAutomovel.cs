@@ -60,6 +60,7 @@ namespace prjOficinaMecanica
 
             //btnCancelar;
             FrmCarro_Load(null, null);
+            Close();
         }
 
         private void FrmAutomovel_FormClosing(object sender, FormClosingEventArgs e)

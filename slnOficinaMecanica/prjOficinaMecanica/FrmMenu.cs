@@ -143,6 +143,7 @@ namespace prjOficinaMecanica
 
         private void FrmMenu_Load(object sender, EventArgs e)
         {
+            /*
             FrmOrcamento frmOrcamento = new FrmOrcamento();
             frmOrcamento.MdiParent = this;
             
@@ -153,6 +154,7 @@ namespace prjOficinaMecanica
             frmServico.Show();
 
             LayoutMdi(MdiLayout.TileVertical);
+            */
         }
     }
 }

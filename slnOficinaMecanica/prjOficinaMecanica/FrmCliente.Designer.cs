@@ -61,10 +61,8 @@
             this.btnSalvar = new System.Windows.Forms.Button();
             this.tbPesquisa = new System.Windows.Forms.TabPage();
             this.tcc_AutomovelDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -118,6 +116,7 @@
             this.tcPrincipal.SelectedIndex = 0;
             this.tcPrincipal.Size = new System.Drawing.Size(607, 638);
             this.tcPrincipal.TabIndex = 0;
+            this.tcPrincipal.SelectedIndexChanged += new System.EventHandler(this.tcPrincipal_SelectedIndexChanged);
             // 
             // tpCadastrar
             // 
@@ -220,8 +219,38 @@
             // 
             // cmbUf
             // 
+            this.cmbUf.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.cmbUf.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbUf.Enabled = false;
             this.cmbUf.FormattingEnabled = true;
+            this.cmbUf.Items.AddRange(new object[] {
+            "AC",
+            "AL",
+            "AP",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MT",
+            "MS",
+            "MG",
+            "PA",
+            "PB",
+            "PR",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RS",
+            "RO",
+            "RR",
+            "SC",
+            "SP",
+            "SE",
+            "TO"});
             this.cmbUf.Location = new System.Drawing.Point(404, 301);
             this.cmbUf.Name = "cmbUf";
             this.cmbUf.Size = new System.Drawing.Size(121, 21);
@@ -440,10 +469,8 @@
             this.tcc_AutomovelDataGridView.AutoGenerateColumns = false;
             this.tcc_AutomovelDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tcc_AutomovelDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn13,
-            this.dataGridViewTextBoxColumn14,
             this.dataGridViewTextBoxColumn15,
+            this.dataGridViewTextBoxColumn14,
             this.dataGridViewTextBoxColumn16,
             this.dataGridViewTextBoxColumn17,
             this.dataGridViewTextBoxColumn18});
@@ -456,19 +483,13 @@
             this.tcc_AutomovelDataGridView.Size = new System.Drawing.Size(580, 185);
             this.tcc_AutomovelDataGridView.TabIndex = 13;
             // 
-            // dataGridViewTextBoxColumn1
+            // dataGridViewTextBoxColumn15
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "IDAutomovel";
-            this.dataGridViewTextBoxColumn1.HeaderText = "IDAutomovel";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.DataPropertyName = "IDCliente";
-            this.dataGridViewTextBoxColumn13.HeaderText = "IDCliente";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.ReadOnly = true;
+            this.dataGridViewTextBoxColumn15.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn15.DataPropertyName = "modelo";
+            this.dataGridViewTextBoxColumn15.HeaderText = "modelo";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            this.dataGridViewTextBoxColumn15.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn14
             // 
@@ -476,13 +497,6 @@
             this.dataGridViewTextBoxColumn14.HeaderText = "placa";
             this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
             this.dataGridViewTextBoxColumn14.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            this.dataGridViewTextBoxColumn15.DataPropertyName = "modelo";
-            this.dataGridViewTextBoxColumn15.HeaderText = "modelo";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            this.dataGridViewTextBoxColumn15.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn16
             // 
@@ -854,10 +868,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnlCadastro;
         private System.Windows.Forms.DataGridView tcc_AutomovelDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;

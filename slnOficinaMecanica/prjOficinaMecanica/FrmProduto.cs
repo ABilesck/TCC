@@ -26,6 +26,8 @@ namespace prjOficinaMecanica
         private void FrmProduto_Load(object sender, EventArgs e)
         {
             this.tcc_ProdutoTableAdapter.Fill(this.banco.tcc_Produto);
+            txtPrecoCompra.Text = "   000";
+            txtPrecoVenda.Text = "   000";
 
         }
 
