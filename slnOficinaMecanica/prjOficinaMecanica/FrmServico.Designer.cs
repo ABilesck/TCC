@@ -88,36 +88,36 @@
             // iDMecanicoLabel
             // 
             iDMecanicoLabel.AutoSize = true;
-            iDMecanicoLabel.Location = new System.Drawing.Point(11, 58);
+            iDMecanicoLabel.Location = new System.Drawing.Point(11, 71);
             iDMecanicoLabel.Name = "iDMecanicoLabel";
-            iDMecanicoLabel.Size = new System.Drawing.Size(68, 13);
+            iDMecanicoLabel.Size = new System.Drawing.Size(69, 16);
             iDMecanicoLabel.TabIndex = 1;
             iDMecanicoLabel.Text = "IDMecanico:";
             // 
             // iDOrcamentoLabel
             // 
             iDOrcamentoLabel.AutoSize = true;
-            iDOrcamentoLabel.Location = new System.Drawing.Point(6, 31);
+            iDOrcamentoLabel.Location = new System.Drawing.Point(6, 38);
             iDOrcamentoLabel.Name = "iDOrcamentoLabel";
-            iDOrcamentoLabel.Size = new System.Drawing.Size(73, 13);
+            iDOrcamentoLabel.Size = new System.Drawing.Size(77, 16);
             iDOrcamentoLabel.TabIndex = 3;
             iDOrcamentoLabel.Text = "IDOrcamento:";
             // 
             // dataInicioLabel
             // 
             dataInicioLabel.AutoSize = true;
-            dataInicioLabel.Location = new System.Drawing.Point(20, 84);
+            dataInicioLabel.Location = new System.Drawing.Point(20, 103);
             dataInicioLabel.Name = "dataInicioLabel";
-            dataInicioLabel.Size = new System.Drawing.Size(59, 13);
+            dataInicioLabel.Size = new System.Drawing.Size(62, 16);
             dataInicioLabel.TabIndex = 5;
             dataInicioLabel.Text = "data Inicio:";
             // 
             // dataFimLabel
             // 
             dataFimLabel.AutoSize = true;
-            dataFimLabel.Location = new System.Drawing.Point(193, 84);
+            dataFimLabel.Location = new System.Drawing.Point(193, 103);
             dataFimLabel.Name = "dataFimLabel";
-            dataFimLabel.Size = new System.Drawing.Size(50, 13);
+            dataFimLabel.Size = new System.Drawing.Size(54, 16);
             dataFimLabel.TabIndex = 7;
             dataFimLabel.Text = "data Fim:";
             // 
@@ -125,10 +125,11 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(13, 13);
+            this.tabControl1.Location = new System.Drawing.Point(13, 16);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(715, 425);
+            this.tabControl1.Size = new System.Drawing.Size(715, 523);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -146,37 +147,41 @@
             this.tabPage1.Controls.Add(dataFimLabel);
             this.tabPage1.Controls.Add(this.dataFimDateTimePicker);
             this.tabPage1.Controls.Add(this.tcc_OrcamentoDataGridView);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(707, 399);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage1.Size = new System.Drawing.Size(707, 494);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Cadastro";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(224, 370);
+            this.button3.Location = new System.Drawing.Point(224, 455);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(75, 28);
             this.button3.TabIndex = 14;
             this.button3.Text = "Gravar";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(305, 370);
+            this.btnCancelar.Location = new System.Drawing.Point(305, 455);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.Size = new System.Drawing.Size(75, 28);
             this.btnCancelar.TabIndex = 13;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
             // btnNovo
             // 
-            this.btnNovo.Location = new System.Drawing.Point(6, 6);
+            this.btnNovo.Location = new System.Drawing.Point(6, 7);
+            this.btnNovo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(75, 23);
+            this.btnNovo.Size = new System.Drawing.Size(75, 28);
             this.btnNovo.TabIndex = 12;
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = true;
@@ -184,9 +189,9 @@
             // lblOrcamento
             // 
             this.lblOrcamento.AutoSize = true;
-            this.lblOrcamento.Location = new System.Drawing.Point(85, 31);
+            this.lblOrcamento.Location = new System.Drawing.Point(85, 38);
             this.lblOrcamento.Name = "lblOrcamento";
-            this.lblOrcamento.Size = new System.Drawing.Size(13, 13);
+            this.lblOrcamento.Size = new System.Drawing.Size(14, 16);
             this.lblOrcamento.TabIndex = 9;
             this.lblOrcamento.Text = "0";
             // 
@@ -196,9 +201,10 @@
             this.iDMecanicoComboBox.DataSource = this.tccMecanicoBindingSource;
             this.iDMecanicoComboBox.DisplayMember = "razaoSocial";
             this.iDMecanicoComboBox.FormattingEnabled = true;
-            this.iDMecanicoComboBox.Location = new System.Drawing.Point(88, 55);
+            this.iDMecanicoComboBox.Location = new System.Drawing.Point(88, 68);
+            this.iDMecanicoComboBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.iDMecanicoComboBox.Name = "iDMecanicoComboBox";
-            this.iDMecanicoComboBox.Size = new System.Drawing.Size(292, 21);
+            this.iDMecanicoComboBox.Size = new System.Drawing.Size(292, 24);
             this.iDMecanicoComboBox.TabIndex = 2;
             this.iDMecanicoComboBox.ValueMember = "IDMecanico";
             // 
@@ -221,18 +227,20 @@
             // 
             this.dataInicioDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.tcc_ServicoBindingSource, "dataInicio", true));
             this.dataInicioDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dataInicioDateTimePicker.Location = new System.Drawing.Point(88, 82);
+            this.dataInicioDateTimePicker.Location = new System.Drawing.Point(88, 101);
+            this.dataInicioDateTimePicker.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataInicioDateTimePicker.Name = "dataInicioDateTimePicker";
-            this.dataInicioDateTimePicker.Size = new System.Drawing.Size(99, 20);
+            this.dataInicioDateTimePicker.Size = new System.Drawing.Size(99, 23);
             this.dataInicioDateTimePicker.TabIndex = 6;
             // 
             // dataFimDateTimePicker
             // 
             this.dataFimDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.tcc_ServicoBindingSource, "dataFim", true));
             this.dataFimDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dataFimDateTimePicker.Location = new System.Drawing.Point(249, 82);
+            this.dataFimDateTimePicker.Location = new System.Drawing.Point(249, 101);
+            this.dataFimDateTimePicker.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataFimDateTimePicker.Name = "dataFimDateTimePicker";
-            this.dataFimDateTimePicker.Size = new System.Drawing.Size(95, 20);
+            this.dataFimDateTimePicker.Size = new System.Drawing.Size(95, 23);
             this.dataFimDateTimePicker.TabIndex = 8;
             // 
             // tcc_OrcamentoDataGridView
@@ -246,12 +254,13 @@
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3});
             this.tcc_OrcamentoDataGridView.DataSource = this.tcc_OrcamentoBindingSource;
-            this.tcc_OrcamentoDataGridView.Location = new System.Drawing.Point(386, 6);
+            this.tcc_OrcamentoDataGridView.Location = new System.Drawing.Point(386, 7);
+            this.tcc_OrcamentoDataGridView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tcc_OrcamentoDataGridView.Name = "tcc_OrcamentoDataGridView";
             this.tcc_OrcamentoDataGridView.ReadOnly = true;
             this.tcc_OrcamentoDataGridView.RowHeadersVisible = false;
             this.tcc_OrcamentoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tcc_OrcamentoDataGridView.Size = new System.Drawing.Size(306, 387);
+            this.tcc_OrcamentoDataGridView.Size = new System.Drawing.Size(306, 476);
             this.tcc_OrcamentoDataGridView.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn1
@@ -295,9 +304,10 @@
             this.tabPage2.Controls.Add(this.txtPesquisa);
             this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(707, 399);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage2.Size = new System.Drawing.Size(707, 497);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Pesquisar";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -314,12 +324,13 @@
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7});
             this.tcc_ServicoDataGridView.DataSource = this.tcc_ServicoBindingSource;
-            this.tcc_ServicoDataGridView.Location = new System.Drawing.Point(6, 82);
+            this.tcc_ServicoDataGridView.Location = new System.Drawing.Point(6, 101);
+            this.tcc_ServicoDataGridView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tcc_ServicoDataGridView.Name = "tcc_ServicoDataGridView";
             this.tcc_ServicoDataGridView.ReadOnly = true;
             this.tcc_ServicoDataGridView.RowHeadersVisible = false;
             this.tcc_ServicoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tcc_ServicoDataGridView.Size = new System.Drawing.Size(689, 311);
+            this.tcc_ServicoDataGridView.Size = new System.Drawing.Size(689, 383);
             this.tcc_ServicoDataGridView.TabIndex = 20;
             // 
             // dataGridViewTextBoxColumn4
@@ -352,36 +363,40 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(620, 53);
+            this.btnExcluir.Location = new System.Drawing.Point(620, 65);
+            this.btnExcluir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(75, 23);
+            this.btnExcluir.Size = new System.Drawing.Size(75, 28);
             this.btnExcluir.TabIndex = 20;
             this.btnExcluir.Text = "&Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
             // 
             // btnPesquisaCancelar
             // 
-            this.btnPesquisaCancelar.Location = new System.Drawing.Point(168, 53);
+            this.btnPesquisaCancelar.Location = new System.Drawing.Point(168, 65);
+            this.btnPesquisaCancelar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnPesquisaCancelar.Name = "btnPesquisaCancelar";
-            this.btnPesquisaCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnPesquisaCancelar.Size = new System.Drawing.Size(75, 28);
             this.btnPesquisaCancelar.TabIndex = 19;
             this.btnPesquisaCancelar.Text = "&Cancelar";
             this.btnPesquisaCancelar.UseVisualStyleBackColor = true;
             // 
             // tbnAlterar
             // 
-            this.tbnAlterar.Location = new System.Drawing.Point(87, 53);
+            this.tbnAlterar.Location = new System.Drawing.Point(87, 65);
+            this.tbnAlterar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbnAlterar.Name = "tbnAlterar";
-            this.tbnAlterar.Size = new System.Drawing.Size(75, 23);
+            this.tbnAlterar.Size = new System.Drawing.Size(75, 28);
             this.tbnAlterar.TabIndex = 18;
             this.tbnAlterar.Text = "&Alterar";
             this.tbnAlterar.UseVisualStyleBackColor = true;
             // 
             // btnPesquisar
             // 
-            this.btnPesquisar.Location = new System.Drawing.Point(6, 53);
+            this.btnPesquisar.Location = new System.Drawing.Point(6, 65);
+            this.btnPesquisar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
+            this.btnPesquisar.Size = new System.Drawing.Size(75, 28);
             this.btnPesquisar.TabIndex = 17;
             this.btnPesquisar.Text = "&Pesquisar";
             this.btnPesquisar.UseVisualStyleBackColor = true;
@@ -389,18 +404,18 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(574, 9);
+            this.label12.Location = new System.Drawing.Point(574, 11);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(73, 13);
+            this.label12.Size = new System.Drawing.Size(79, 16);
             this.label12.TabIndex = 16;
             this.label12.Text = "Organizar por:";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(447, 9);
+            this.label11.Location = new System.Drawing.Point(447, 11);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(74, 13);
+            this.label11.Size = new System.Drawing.Size(79, 16);
             this.label11.TabIndex = 15;
             this.label11.Text = "Pesquisar por:";
             // 
@@ -410,9 +425,10 @@
             this.cmbOrdenar.Items.AddRange(new object[] {
             "Código",
             "Nome"});
-            this.cmbOrdenar.Location = new System.Drawing.Point(574, 26);
+            this.cmbOrdenar.Location = new System.Drawing.Point(574, 32);
+            this.cmbOrdenar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmbOrdenar.Name = "cmbOrdenar";
-            this.cmbOrdenar.Size = new System.Drawing.Size(121, 21);
+            this.cmbOrdenar.Size = new System.Drawing.Size(121, 24);
             this.cmbOrdenar.TabIndex = 14;
             this.cmbOrdenar.Text = "Código";
             // 
@@ -424,25 +440,27 @@
             "Código",
             "Documento Social",
             "Nome"});
-            this.cmbFiltro.Location = new System.Drawing.Point(447, 26);
+            this.cmbFiltro.Location = new System.Drawing.Point(447, 32);
+            this.cmbFiltro.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmbFiltro.Name = "cmbFiltro";
-            this.cmbFiltro.Size = new System.Drawing.Size(121, 21);
+            this.cmbFiltro.Size = new System.Drawing.Size(121, 24);
             this.cmbFiltro.TabIndex = 13;
             this.cmbFiltro.Text = "Código";
             // 
             // txtPesquisa
             // 
-            this.txtPesquisa.Location = new System.Drawing.Point(6, 26);
+            this.txtPesquisa.Location = new System.Drawing.Point(6, 32);
+            this.txtPesquisa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPesquisa.Name = "txtPesquisa";
-            this.txtPesquisa.Size = new System.Drawing.Size(435, 20);
+            this.txtPesquisa.Size = new System.Drawing.Size(435, 23);
             this.txtPesquisa.TabIndex = 12;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 9);
+            this.label10.Location = new System.Drawing.Point(3, 11);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(56, 13);
+            this.label10.Size = new System.Drawing.Size(60, 16);
             this.label10.TabIndex = 11;
             this.label10.Text = "Pesquisar:";
             // 
@@ -472,10 +490,12 @@
             // 
             // FrmServico
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(734, 450);
+            this.ClientSize = new System.Drawing.Size(734, 554);
             this.Controls.Add(this.tabControl1);
+            this.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmServico";
             this.Text = "FrmServico";
             this.Load += new System.EventHandler(this.FrmServico_Load);
