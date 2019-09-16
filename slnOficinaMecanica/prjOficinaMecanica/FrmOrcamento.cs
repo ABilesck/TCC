@@ -19,8 +19,12 @@ namespace prjOficinaMecanica
             InitializeComponent();
         }
 
+        int idCliente;
+
         private void FrmOrcamento_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'banco.tcc_Produto' table. You can move, or remove it, as needed.
+            this.tcc_ProdutoTableAdapter.Fill(this.banco.tcc_Produto);
             this.tcc_produtoOrcamentoTableAdapter.Fill(this.banco.tcc_produtoOrcamento);
             this.tcc_AutomovelTableAdapter.Fill(this.banco.tcc_Automovel);
             this.tcc_ClienteTableAdapter.Fill(this.banco.tcc_Cliente);
@@ -38,6 +42,33 @@ namespace prjOficinaMecanica
                 Convert.ToInt32(((DataRowView)tcc_produtoOrcamentoBindingSource.Current).Row["quantidade"].ToString())
                 );
             
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                idCliente = (int)cmbCliente.SelectedValue;
+                if(cmbAuto.Items.Count == 0)
+                {
+                    MessageBox.Show("O cliente não possui nenhum automóvel cadastrado!",
+                        "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    tcc_AutomovelTableAdapter.FillByIdCliente(banco.tcc_Automovel, idCliente);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Erro ao selecionar um cliente:\n" + ex.Message,
+                        "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void FrmOrcamento_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            idCliente = 0;
         }
     }
 }

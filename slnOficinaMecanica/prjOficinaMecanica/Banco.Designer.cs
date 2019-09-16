@@ -4954,7 +4954,7 @@ namespace prjOficinaMecanica.BancoTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT IDAutomovel, IDCliente, placa, modelo, ano, cor, kmRodado FROM dbo.tcc_Aut" +
@@ -4963,9 +4963,15 @@ namespace prjOficinaMecanica.BancoTableAdapters {
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = "SELECT        IDAutomovel, IDCliente, placa, modelo, ano, cor, kmRodado\r\nFROM    " +
-                "        tcc_Automovel\r\nWHERE        (IDCliente = @ID)";
+                "        tcc_Automovel\r\nWHERE        (IDCliente = @Cliente)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "IDCliente", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cliente", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "IDCliente", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT        IDAutomovel, IDCliente, placa, modelo, ano, cor, kmRodado\r\nFROM    " +
+                "        tcc_Automovel\r\nWHERE        (IDCliente = @ID)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "IDCliente", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4996,8 +5002,44 @@ namespace prjOficinaMecanica.BancoTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByIdCliente(Banco.tcc_AutomovelDataTable dataTable, global::System.Nullable<int> ID) {
+        public virtual int FillByCliente(Banco.tcc_AutomovelDataTable dataTable, global::System.Nullable<int> Cliente) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((Cliente.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Cliente.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual Banco.tcc_AutomovelDataTable GetDataByCliente(global::System.Nullable<int> Cliente) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((Cliente.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Cliente.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            Banco.tcc_AutomovelDataTable dataTable = new Banco.tcc_AutomovelDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByIdCliente(Banco.tcc_AutomovelDataTable dataTable, global::System.Nullable<int> ID) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((ID.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((int)(ID.Value));
             }
@@ -5016,7 +5058,7 @@ namespace prjOficinaMecanica.BancoTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual Banco.tcc_AutomovelDataTable GetDataByIdCliente(global::System.Nullable<int> ID) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((ID.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((int)(ID.Value));
             }
