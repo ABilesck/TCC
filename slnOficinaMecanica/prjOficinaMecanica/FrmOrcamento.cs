@@ -24,6 +24,7 @@ namespace prjOficinaMecanica
 
         public FrmOrcamento()
         {
+            
             InitializeComponent();
         }
         
@@ -38,6 +39,7 @@ namespace prjOficinaMecanica
             tcc_ProdutoTableAdapter.Fill(banco.tcc_Produto);
             tcc_AutomovelTableAdapter.Fill(banco.tcc_Automovel);
             tcc_ClienteTableAdapter.Fill(banco.tcc_Cliente);
+            txtMaoDeObra.Text = "0,00";
 
         }
 
@@ -71,7 +73,7 @@ namespace prjOficinaMecanica
         {
             utility.HabilitaBotoes(tbpCadastro, true);
             utility.HabilitaCampos(tbpCadastro, true);
-            grbProduto.Enabled = true;
+            //grbProduto.Enabled = true;
             operacao = Operacao.incluir;
         }
 
@@ -80,6 +82,7 @@ namespace prjOficinaMecanica
             utility.HabilitaBotoes(tbpCadastro, false);
             utility.HabilitaCampos(tbpCadastro, false);
             grbProduto.Enabled = false;
+            IdOrcamento = Convert.ToInt32(tcc_OrcamentoTableAdapter.GetLastId());
             tcc_OrcamentoTableAdapter.Fill(banco.tcc_Orcamento);
             tcc_produtoOrcamentoTableAdapter.FillByOrcamento(banco.tcc_produtoOrcamento, IdOrcamento);
             //FrmOrcamento_Load(null, null);
@@ -107,7 +110,7 @@ namespace prjOficinaMecanica
                 IdOrcamento = Convert.ToInt32(tcc_OrcamentoTableAdapter.GetLastId());
                 btnCancelar_Click(null, null);
                 grbProduto.Enabled = true;
-                label6.Text = IdOrcamento.ToString();
+                //label6.Text = IdOrcamento.ToString();
             }
             else if (operacao == Operacao.alterar)
             {
@@ -168,46 +171,35 @@ namespace prjOficinaMecanica
 
         private void dgvOrcamento_SelectionChanged(object sender, EventArgs e)
         {
-            IdOrcamento = Convert.ToInt32(dgvOrcamento[0, dgvOrcamento.CurrentRow.Index].Value.ToString());
-
-            label6.Text = IdOrcamento.ToString();
-
-            tcc_produtoOrcamentoTableAdapter.FillByOrcamento(banco.tcc_produtoOrcamento,
-                Convert.ToInt32(dgvOrcamento[0, dgvOrcamento.CurrentRow.Index].Value.ToString()));
-            if (tcc_produtoOrcamentoDataGridView.Rows.Count != 0)
+            try
             {
-                double Total = Convert.ToDouble(tcc_produtoOrcamentoTableAdapter.
-                TotalOrcamento(IdOrcamento).ToString());
-                txtTotal1.Text = Total.ToString("R$##,##0.00");
-                txtTotal2.Text = Total.ToString("R$##,##0.00");
-            }
-            else
+                if(dgvOrcamento.RowCount > 0)
+                {
+                    var Orcamento = (tcc_OrcamentoBindingSource.Current as DataRowView).Row as Banco.tcc_OrcamentoRow;
+                    IdOrcamento = Convert.ToInt32(Orcamento.IDOrcamento);
+                    tcc_produtoOrcamentoTableAdapter.FillByOrcamento(banco.tcc_produtoOrcamento, IdOrcamento);
+                    //label6.Text = IdOrcamento.ToString();
+                }
+                if(dgvProduto.RowCount > 0)
+                {
+                    double total = Convert.ToDouble(tcc_produtoOrcamentoTableAdapter.TotalOrcamento(IdOrcamento).ToString());
+                    txtTotal1.Text = total.ToString("R$ #,###,##0.00");
+                    txtTotal2.Text = total.ToString("R$ #,###,##0.00");
+                }else
+                {
+                    txtTotal1.Text = "R$ 0,00";
+                    txtTotal2.Text = "R$ 0,00";
+                }
+
+
+            }catch(Exception ex)
             {
-                txtTotal1.Text = "R$0,00";
-                txtTotal2.Text = "R$0,00";
+
             }
         }
-
-        private void dgvOrcamento_SelectionChanged_1(object sender, EventArgs e)
+        private void btnEncerrar_Click(object sender, EventArgs e)
         {
-            IdOrcamento = Convert.ToInt32(dgvOrcamento[0, dgvOrcamento.CurrentRow.Index].Value.ToString());
 
-            label6.Text = IdOrcamento.ToString();
-
-            tcc_produtoOrcamentoTableAdapter.FillByOrcamento(banco.tcc_produtoOrcamento,
-                Convert.ToInt32(dgvOrcamento[0, dgvOrcamento.CurrentRow.Index].Value.ToString()));
-            if (tcc_produtoOrcamentoDataGridView.Rows.Count != 0)
-            {
-                double Total = Convert.ToDouble(tcc_produtoOrcamentoTableAdapter.
-                TotalOrcamento(IdOrcamento).ToString());
-                txtTotal1.Text = Total.ToString("R$##,##0.00");
-                txtTotal2.Text = Total.ToString("R$##,##0.00");
-            }
-            else
-            {
-                txtTotal1.Text = "R$0,00";
-                txtTotal2.Text = "R$0,00";
-            }
         }
     }
 }

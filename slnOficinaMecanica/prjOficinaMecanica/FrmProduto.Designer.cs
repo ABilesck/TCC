@@ -90,7 +90,7 @@
             precoVendaLabel.AutoSize = true;
             precoVendaLabel.Location = new System.Drawing.Point(267, 39);
             precoVendaLabel.Name = "precoVendaLabel";
-            precoVendaLabel.Size = new System.Drawing.Size(71, 16);
+            precoVendaLabel.Size = new System.Drawing.Size(72, 16);
             precoVendaLabel.TabIndex = 6;
             precoVendaLabel.Text = "preco Venda:";
             // 
@@ -99,7 +99,7 @@
             precoCompraLabel.AutoSize = true;
             precoCompraLabel.Location = new System.Drawing.Point(267, 87);
             precoCompraLabel.Name = "precoCompraLabel";
-            precoCompraLabel.Size = new System.Drawing.Size(82, 16);
+            precoCompraLabel.Size = new System.Drawing.Size(83, 16);
             precoCompraLabel.TabIndex = 8;
             precoCompraLabel.Text = "preco Compra:";
             // 
@@ -149,7 +149,6 @@
             // 
             this.txtPrecoCompra.Location = new System.Drawing.Point(270, 107);
             this.txtPrecoCompra.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtPrecoCompra.Mask = "$9999.00";
             this.txtPrecoCompra.Name = "txtPrecoCompra";
             this.txtPrecoCompra.Size = new System.Drawing.Size(152, 23);
             this.txtPrecoCompra.TabIndex = 15;
@@ -158,7 +157,6 @@
             // 
             this.txtPrecoVenda.Location = new System.Drawing.Point(270, 59);
             this.txtPrecoVenda.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtPrecoVenda.Mask = "$9999.00";
             this.txtPrecoVenda.Name = "txtPrecoVenda";
             this.txtPrecoVenda.Size = new System.Drawing.Size(152, 23);
             this.txtPrecoVenda.TabIndex = 14;
@@ -228,11 +226,11 @@
             this.tabPage2.Controls.Add(this.cmbFiltro);
             this.tabPage2.Controls.Add(this.txtPesquisa);
             this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage2.Size = new System.Drawing.Size(576, 416);
+            this.tabPage2.Size = new System.Drawing.Size(576, 413);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Pesquisar";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -355,7 +353,7 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(439, 15);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(79, 16);
+            this.label12.Size = new System.Drawing.Size(80, 16);
             this.label12.TabIndex = 16;
             this.label12.Text = "Organizar por:";
             // 
@@ -364,7 +362,7 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(309, 15);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(79, 16);
+            this.label11.Size = new System.Drawing.Size(80, 16);
             this.label11.TabIndex = 15;
             this.label11.Text = "Pesquisar por:";
             // 
