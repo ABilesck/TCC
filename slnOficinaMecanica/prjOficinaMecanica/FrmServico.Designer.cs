@@ -474,7 +474,6 @@
             this.tableAdapterManager.tcc_AutomovelTableAdapter = null;
             this.tableAdapterManager.tcc_ClienteTableAdapter = null;
             this.tableAdapterManager.tcc_MecanicoTableAdapter = this.tcc_MecanicoTableAdapter;
-            this.tableAdapterManager.tcc_OrcamentoTableAdapter = this.tcc_OrcamentoTableAdapter;
             this.tableAdapterManager.tcc_produtoOrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_ProdutoTableAdapter = null;
             this.tableAdapterManager.tcc_ServicoTableAdapter = this.tcc_ServicoTableAdapter;

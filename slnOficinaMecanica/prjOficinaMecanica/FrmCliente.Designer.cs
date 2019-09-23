@@ -125,10 +125,10 @@
             this.tpCadastrar.Controls.Add(this.btnNovo);
             this.tpCadastrar.Controls.Add(this.btnCancelar);
             this.tpCadastrar.Controls.Add(this.btnSalvar);
-            this.tpCadastrar.Location = new System.Drawing.Point(4, 27);
+            this.tpCadastrar.Location = new System.Drawing.Point(4, 25);
             this.tpCadastrar.Name = "tpCadastrar";
-            this.tpCadastrar.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tpCadastrar.Size = new System.Drawing.Size(599, 754);
+            this.tpCadastrar.Padding = new System.Windows.Forms.Padding(3);
+            this.tpCadastrar.Size = new System.Drawing.Size(599, 756);
             this.tpCadastrar.TabIndex = 0;
             this.tpCadastrar.Text = "Cadastrar";
             this.tpCadastrar.UseVisualStyleBackColor = true;
@@ -259,7 +259,7 @@
             // rbtPessoaJuridica
             // 
             this.rbtPessoaJuridica.AutoSize = true;
-            this.rbtPessoaJuridica.Location = new System.Drawing.Point(106, 15);
+            this.rbtPessoaJuridica.Location = new System.Drawing.Point(109, 15);
             this.rbtPessoaJuridica.Name = "rbtPessoaJuridica";
             this.rbtPessoaJuridica.Size = new System.Drawing.Size(105, 20);
             this.rbtPessoaJuridica.TabIndex = 3;
@@ -457,7 +457,7 @@
             this.tbPesquisa.Controls.Add(this.label10);
             this.tbPesquisa.Location = new System.Drawing.Point(4, 25);
             this.tbPesquisa.Name = "tbPesquisa";
-            this.tbPesquisa.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tbPesquisa.Padding = new System.Windows.Forms.Padding(3);
             this.tbPesquisa.Size = new System.Drawing.Size(599, 756);
             this.tbPesquisa.TabIndex = 1;
             this.tbPesquisa.Text = "Pesquisar";
@@ -770,7 +770,6 @@
             this.tableAdapterManager.tcc_AutomovelTableAdapter = null;
             this.tableAdapterManager.tcc_ClienteTableAdapter = this.tcc_ClienteTableAdapter;
             this.tableAdapterManager.tcc_MecanicoTableAdapter = null;
-            this.tableAdapterManager.tcc_OrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_produtoOrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_ProdutoTableAdapter = null;
             this.tableAdapterManager.tcc_ServicoTableAdapter = null;

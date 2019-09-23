@@ -20,6 +20,10 @@ namespace prjOficinaMecanica
                 {
                     c.Enabled = hab;
                 }
+                if(c is NumericUpDown)
+                {
+                    c.Enabled = hab;
+                }
             }
         }
         public void LimpaCampos(Control control)
