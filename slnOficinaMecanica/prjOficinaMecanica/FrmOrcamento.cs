@@ -14,144 +14,71 @@ namespace prjOficinaMecanica
 
     public partial class FrmOrcamento : Form
     {
-        Utility utility = new Utility();
-        Operacao operacao;
-        Operacao produto;
-        int idCliente;
-        int IdOrcamento;
-
-        double precotemporario;
-
+        private int IdOrcamento;
+        private int IdProduto;
+        private int IdAuto;
+        private int IdCliente;
+        private double MaoDeObra;
+        private double PrecoTemporario;
         public FrmOrcamento()
         {
-            
             InitializeComponent();
         }
-        
+
+        public void Reload()
+        {
+            FrmOrcamento_Load(null, null);
+        }
+
         private void FrmOrcamento_Load(object sender, EventArgs e)
         {
+            // TODO: esta linha de código carrega dados na tabela 'banco1.tcc_Produto'. Você pode movê-la ou removê-la conforme necessário.
+            this.tcc_ProdutoTableAdapter.Fill(this.banco1.tcc_Produto);
+            // TODO: esta linha de código carrega dados na tabela 'banco1.tcc_Produto'. Você pode movê-la ou removê-la conforme necessário.
+            this.tcc_ProdutoTableAdapter.Fill(this.banco.tcc_Produto);
             tcc_OrcamentoTableAdapter.Fill(banco.tcc_Orcamento);
-            if(dgvOrcamento.Rows.Count > 0)
-            {
-                IdOrcamento = Convert.ToInt32(tcc_OrcamentoTableAdapter.GetFirstId().ToString());
-                tcc_produtoOrcamentoTableAdapter.FillByOrcamento(banco.tcc_produtoOrcamento, IdOrcamento);
-            }
-            tcc_ProdutoTableAdapter.Fill(banco.tcc_Produto);
-            tcc_AutomovelTableAdapter.Fill(banco.tcc_Automovel);
-            tcc_ClienteTableAdapter.Fill(banco.tcc_Cliente);
-            txtMaoDeObra.Text = "0,00";
 
-        }
-
-        private void tcc_produtoOrcamentoDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            FrmProduto frmProduto = new FrmProduto();
-            frmProduto.Alterar(
-                Convert.ToInt32(((DataRowView)tcc_produtoOrcamentoBindingSource.Current).Row["IDProduto"].ToString()),
-                ((DataRowView)tcc_produtoOrcamentoBindingSource.Current).Row["descricao"].ToString(),
-                ((DataRowView)tcc_produtoOrcamentoBindingSource.Current).Row["IDProduto"].ToString(),
-                ((DataRowView)tcc_produtoOrcamentoBindingSource.Current).Row["precoUnitario"].ToString(),
-                Convert.ToInt32(((DataRowView)tcc_produtoOrcamentoBindingSource.Current).Row["quantidade"].ToString())
-                );
-            
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if(cmbCliente.SelectedValue != null)
-                    tcc_AutomovelTableAdapter.FillByIdCliente(banco.tcc_Automovel, (int)cmbCliente.SelectedValue);
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            tcc_OrcamentoDataGridView_SelectionChanged(null, null);
+            iDProdutoComboBox_SelectedIndexChanged(null, null);
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
-            utility.HabilitaBotoes(tbpCadastro, true);
-            utility.HabilitaCampos(tbpCadastro, true);
-            //grbProduto.Enabled = true;
-            operacao = Operacao.incluir;
+            FrmCadastroOrcamento cadastroOrcamento = new FrmCadastroOrcamento();
+            cadastroOrcamento.novoCadastro = true;
+            cadastroOrcamento.ShowDialog();
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        
+
+        private void btnAlterar_Click(object sender, EventArgs e)
         {
-            utility.HabilitaBotoes(tbpCadastro, false);
-            utility.HabilitaCampos(tbpCadastro, false);
-            grbProduto.Enabled = false;
-            IdOrcamento = Convert.ToInt32(tcc_OrcamentoTableAdapter.GetLastId());
-            tcc_OrcamentoTableAdapter.Fill(banco.tcc_Orcamento);
-            tcc_produtoOrcamentoTableAdapter.FillByOrcamento(banco.tcc_produtoOrcamento, IdOrcamento);
-            //FrmOrcamento_Load(null, null);
+            FrmCadastroOrcamento cadastroOrcamento = new FrmCadastroOrcamento();
+            cadastroOrcamento.novoCadastro = false;
+            cadastroOrcamento.PreencherCampos(IdCliente, IdAuto, MaoDeObra);
+            cadastroOrcamento.ShowDialog();
         }
 
-        private void btnNovoProduto_Click(object sender, EventArgs e)
+        private void tcc_OrcamentoDataGridView_SelectionChanged(object sender, EventArgs e)
         {
-            utility.HabilitaBotoes(grbProduto, true);
-            utility.HabilitaCampos(grbProduto, true);
-            nudQuantidade.Value = 1;
-            cmbProduto_SelectedIndexChanged(null, null);
-            produto = Operacao.incluir;
-        }
-
-        private void btnGravar_Click(object sender, EventArgs e)
-        {
-            if (operacao == Operacao.incluir)
+            try
             {
-                tcc_OrcamentoTableAdapter.InsertQuery(
-                    DateTime.Now, 
-                    Convert.ToInt32(cmbAuto.SelectedValue),
-                    Convert.ToDouble(txtMaoDeObra.Text));
-                MessageBox.Show("Orçamento criado com sucesso!", "Atenção", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                IdOrcamento = Convert.ToInt32(tcc_OrcamentoTableAdapter.GetLastId());
-                btnCancelar_Click(null, null);
-                grbProduto.Enabled = true;
-                //label6.Text = IdOrcamento.ToString();
+                var Orcamento = (tcc_OrcamentoBindingSource.Current as DataRowView).Row
+                as Banco.tcc_OrcamentoRow;
+                IdOrcamento = Orcamento.IDOrcamento;
+                IdAuto = Orcamento.IDAutomovel;
+                MaoDeObra = Orcamento.MaoDeObra;
+                dgvProdutos_SelectionChanged(null, null);
+                if(IdOrcamento != 0)
+                {
+                    tcc_produtoOrcamentoTableAdapter.FillByOrcamento(banco.tcc_produtoOrcamento, IdOrcamento);
+                }
+
             }
-            else if (operacao == Operacao.alterar)
+            catch(Exception ex)
             {
 
             }
-
-        }
-
-        private void btnGravarProduto_Click(object sender, EventArgs e)
-        {
-            if (operacao == Operacao.incluir)
-            {
-                tcc_produtoOrcamentoTableAdapter.Insert(IdOrcamento, (int)cmbProduto.SelectedValue,
-                    (int)nudQuantidade.Value, precotemporario);
-                MessageBox.Show("Produto adicionado com sucesso!", "Atenção",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                btnCancelar_Click(null, null);
-            }
-            else if (operacao == Operacao.alterar)
-            {
-
-            }
-        }
-
-        private void cmbProduto_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            DataTable produto = tcc_ProdutoTableAdapter.GetDataByDescricao(cmbProduto.Text);
-
-            foreach (DataRow row in produto.Rows)
-            {
-                precotemporario = Convert.ToDouble(row["precoVenda"].ToString());
-            }
-            nudQuantidade.Value = 1;
-            txtPrecoUnit.Text = precotemporario.ToString("R$##,##0.00");
-            txtSubtotal.Text = precotemporario.ToString("R$##,##0.00");
-        }
-
-        private void nudQuantidade_ValueChanged(object sender, EventArgs e)
-        {
-            double subTotal = (int)nudQuantidade.Value * precotemporario;
-            txtSubtotal.Text = subTotal.ToString("R$##,##0.00");
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -160,46 +87,84 @@ namespace prjOficinaMecanica
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
-                IdOrcamento = Convert.ToInt32(((DataRowView)tcc_OrcamentoBindingSource.Current).Row["IDOrcamento"].ToString());
-                //tcc_ClienteTableAdapter.Delete(Convert.ToInt32(dgvCliente[0, dgvCliente.CurrentRow.Index].Value.ToString()));
                 tcc_produtoOrcamentoTableAdapter.DeleteTodos(IdOrcamento);
                 tcc_OrcamentoTableAdapter.DeleteQuery(IdOrcamento);
-                btnCancelar_Click(null, null);
-                FrmOrcamento_Load(null, null);
+                tcc_OrcamentoTableAdapter.Fill(banco.tcc_Orcamento);
             }
         }
 
-        private void dgvOrcamento_SelectionChanged(object sender, EventArgs e)
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            string pesquisa = "%" + txtPesquisa.Text +"%";
+            tcc_OrcamentoTableAdapter.FillByModelo(banco.tcc_Orcamento, pesquisa);
+        }
+
+        private void iDProdutoComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //DataTable produto = tcc_produtoTableAdapter.GetDataByDescricao(cmbProduto.Text);
+            //precoTemp = 0;
+
+            //foreach (DataRow row in produto.Rows)
+            //{
+            //    precoTemp = Convert.ToDouble(row["precoUnit"].ToString());
+            //}
+            //nudQuantidade.Value = 1;
+            //txtPrecoUnit.Text = precoTemp.ToString("R$ #,###,##0.00");
+            //txtSubTotal.Text = precoTemp.ToString("R$ #,###,##0.00");
+            DataTable produto = tcc_ProdutoTableAdapter.GetDataByDescricao(iDProdutoComboBox.Text);
+            PrecoTemporario = 0;
+            foreach (DataRow item in produto.Rows)
+            {
+                PrecoTemporario = Convert.ToDouble(item["precoVenda"].ToString());
+            }
+            quantidadeNumericUpDown.Value = 1;
+            precoUnitarioTextBox.Text = PrecoTemporario.ToString();
+            subtotalTextBox.Text = PrecoTemporario.ToString();
+        }
+
+        private void quantidadeNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            double Subtotal = (int)quantidadeNumericUpDown.Value * PrecoTemporario;
+            subtotalTextBox.Text = Subtotal.ToString();
+        }
+
+        private void btnAddProduto_Click(object sender, EventArgs e)
+        {
+            tcc_produtoOrcamentoTableAdapter.InsertQuery(
+                IdOrcamento,
+                (int)iDProdutoComboBox.SelectedValue,
+                (int)quantidadeNumericUpDown.Value,
+                PrecoTemporario);
+            MessageBox.Show("Produto inserido com sucesso!", "Atenção",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            tcc_OrcamentoDataGridView_SelectionChanged(null, null);
+        }
+
+        private void btnProdutoExcluir_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Deseja excluir o produto selecionado?", "Atenção",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                tcc_produtoOrcamentoTableAdapter.DeleteQuery(IdOrcamento, IdProduto);
+                tcc_produtoOrcamentoTableAdapter.FillByOrcamento(banco.tcc_produtoOrcamento, IdOrcamento);
+            }
+        }
+
+        private void dgvProdutos_SelectionChanged(object sender, EventArgs e)
         {
             try
             {
-                if(dgvOrcamento.RowCount > 0)
-                {
-                    var Orcamento = (tcc_OrcamentoBindingSource.Current as DataRowView).Row as Banco.tcc_OrcamentoRow;
-                    IdOrcamento = Convert.ToInt32(Orcamento.IDOrcamento);
-                    tcc_produtoOrcamentoTableAdapter.FillByOrcamento(banco.tcc_produtoOrcamento, IdOrcamento);
-                    //label6.Text = IdOrcamento.ToString();
-                }
-                if(dgvProduto.RowCount > 0)
-                {
-                    double total = Convert.ToDouble(tcc_produtoOrcamentoTableAdapter.TotalOrcamento(IdOrcamento).ToString());
-                    txtTotal1.Text = total.ToString("R$ #,###,##0.00");
-                    txtTotal2.Text = total.ToString("R$ #,###,##0.00");
-                }else
-                {
-                    txtTotal1.Text = "R$ 0,00";
-                    txtTotal2.Text = "R$ 0,00";
-                }
+                var Produto = (tcc_produtoOrcamentoBindingSource.Current as DataRowView).Row
+                as Banco.tcc_produtoOrcamentoRow;
 
+                IdProduto = Produto.IDProduto;
 
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
 
             }
-        }
-        private void btnEncerrar_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

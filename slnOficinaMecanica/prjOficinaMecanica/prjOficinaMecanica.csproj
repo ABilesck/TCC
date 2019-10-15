@@ -60,6 +60,12 @@
     <Compile Include="FrmAutomovel.Designer.cs">
       <DependentUpon>FrmAutomovel.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCadastroOrcamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCadastroOrcamento.Designer.cs">
+      <DependentUpon>FrmCadastroOrcamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,9 @@
     <Compile Include="Utility.cs" />
     <EmbeddedResource Include="FrmAutomovel.resx">
       <DependentUpon>FrmAutomovel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCadastroOrcamento.resx">
+      <DependentUpon>FrmCadastroOrcamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCliente.resx">
       <DependentUpon>FrmCliente.cs</DependentUpon>

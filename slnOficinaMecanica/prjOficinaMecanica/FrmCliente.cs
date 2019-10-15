@@ -36,7 +36,7 @@ namespace prjOficinaMecanica
 
         private void FrmCliente_Load(object sender, EventArgs e)
         {
-            tcc_AutomovelTableAdapter.FillByIdCliente(banco.tcc_Automovel, IdCliente);
+            tcc_AutomovelTableAdapter.FillByCliente(banco.tcc_Automovel, IdCliente);
 
             tcc_ClienteTableAdapter.Fill(banco.tcc_Cliente);
 
@@ -49,7 +49,7 @@ namespace prjOficinaMecanica
             {
                 IdCliente = IdCliente = Convert.ToInt32(((DataRowView)tcc_ClienteBindingSource.Current).Row["IDCliente"].ToString());
                 nomeCliente = ((DataRowView)tcc_ClienteBindingSource.Current).Row["nome"].ToString();
-                tcc_AutomovelTableAdapter.FillByIdCliente(banco.tcc_Automovel, IdCliente);
+                tcc_AutomovelTableAdapter.FillByCliente(banco.tcc_Automovel, IdCliente);
             }
         }
 
