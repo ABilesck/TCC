@@ -45,7 +45,6 @@
             this.txtCor = new System.Windows.Forms.TextBox();
             this.txtKm = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnLimpar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             placaLabel = new System.Windows.Forms.Label();
             modeloLabel = new System.Windows.Forms.Label();
@@ -59,7 +58,7 @@
             // placaLabel
             // 
             placaLabel.AutoSize = true;
-            placaLabel.Location = new System.Drawing.Point(12, 96);
+            placaLabel.Location = new System.Drawing.Point(33, 96);
             placaLabel.Name = "placaLabel";
             placaLabel.Size = new System.Drawing.Size(38, 16);
             placaLabel.TabIndex = 6;
@@ -68,7 +67,7 @@
             // modeloLabel
             // 
             modeloLabel.AutoSize = true;
-            modeloLabel.Location = new System.Drawing.Point(4, 64);
+            modeloLabel.Location = new System.Drawing.Point(23, 64);
             modeloLabel.Name = "modeloLabel";
             modeloLabel.Size = new System.Drawing.Size(48, 16);
             modeloLabel.TabIndex = 8;
@@ -77,7 +76,7 @@
             // anoLabel
             // 
             anoLabel.AutoSize = true;
-            anoLabel.Location = new System.Drawing.Point(21, 128);
+            anoLabel.Location = new System.Drawing.Point(42, 158);
             anoLabel.Name = "anoLabel";
             anoLabel.Size = new System.Drawing.Size(29, 16);
             anoLabel.TabIndex = 10;
@@ -86,7 +85,7 @@
             // corLabel
             // 
             corLabel.AutoSize = true;
-            corLabel.Location = new System.Drawing.Point(217, 64);
+            corLabel.Location = new System.Drawing.Point(44, 127);
             corLabel.Name = "corLabel";
             corLabel.Size = new System.Drawing.Size(27, 16);
             corLabel.TabIndex = 12;
@@ -95,9 +94,9 @@
             // kmRodadoLabel
             // 
             kmRodadoLabel.AutoSize = true;
-            kmRodadoLabel.Location = new System.Drawing.Point(177, 101);
+            kmRodadoLabel.Location = new System.Drawing.Point(4, 183);
             kmRodadoLabel.Name = "kmRodadoLabel";
-            kmRodadoLabel.Size = new System.Drawing.Size(66, 16);
+            kmRodadoLabel.Size = new System.Drawing.Size(67, 16);
             kmRodadoLabel.TabIndex = 14;
             kmRodadoLabel.Text = "km Rodado:";
             // 
@@ -106,7 +105,7 @@
             this.lblCliente.AutoSize = true;
             this.lblCliente.Location = new System.Drawing.Point(13, 16);
             this.lblCliente.Name = "lblCliente";
-            this.lblCliente.Size = new System.Drawing.Size(48, 16);
+            this.lblCliente.Size = new System.Drawing.Size(49, 16);
             this.lblCliente.TabIndex = 0;
             this.lblCliente.Text = "Cliente: ";
             // 
@@ -130,77 +129,70 @@
             this.tableAdapterManager.tcc_AutomovelTableAdapter = this.tcc_AutomovelTableAdapter;
             this.tableAdapterManager.tcc_ClienteTableAdapter = null;
             this.tableAdapterManager.tcc_MecanicoTableAdapter = null;
+            this.tableAdapterManager.tcc_OrcamentoTableAdapter = null;
+            this.tableAdapterManager.tcc_produtoOrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_ProdutoTableAdapter = null;
             this.tableAdapterManager.tcc_ServicoTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // txtPlaca
             // 
-            this.txtPlaca.Location = new System.Drawing.Point(55, 92);
+            this.txtPlaca.Location = new System.Drawing.Point(77, 93);
             this.txtPlaca.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPlaca.Name = "txtPlaca";
             this.txtPlaca.Size = new System.Drawing.Size(75, 23);
-            this.txtPlaca.TabIndex = 7;
+            this.txtPlaca.TabIndex = 2;
             // 
             // txtModelo
             // 
-            this.txtModelo.Location = new System.Drawing.Point(55, 60);
+            this.txtModelo.Location = new System.Drawing.Point(77, 61);
             this.txtModelo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtModelo.Name = "txtModelo";
             this.txtModelo.Size = new System.Drawing.Size(156, 23);
-            this.txtModelo.TabIndex = 9;
+            this.txtModelo.TabIndex = 1;
             // 
             // txtAno
             // 
-            this.txtAno.Location = new System.Drawing.Point(55, 124);
+            this.txtAno.Location = new System.Drawing.Point(78, 155);
             this.txtAno.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtAno.Name = "txtAno";
             this.txtAno.Size = new System.Drawing.Size(75, 23);
-            this.txtAno.TabIndex = 11;
+            this.txtAno.TabIndex = 4;
             // 
             // txtCor
             // 
-            this.txtCor.Location = new System.Drawing.Point(248, 60);
+            this.txtCor.Location = new System.Drawing.Point(77, 124);
             this.txtCor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCor.Name = "txtCor";
             this.txtCor.Size = new System.Drawing.Size(138, 23);
-            this.txtCor.TabIndex = 13;
+            this.txtCor.TabIndex = 3;
             // 
             // txtKm
             // 
-            this.txtKm.Location = new System.Drawing.Point(248, 92);
+            this.txtKm.Location = new System.Drawing.Point(77, 186);
             this.txtKm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtKm.Name = "txtKm";
             this.txtKm.Size = new System.Drawing.Size(100, 23);
-            this.txtKm.TabIndex = 15;
+            this.txtKm.TabIndex = 5;
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(366, 177);
+            this.btnCancelar.Location = new System.Drawing.Point(326, 183);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 28);
-            this.btnCancelar.TabIndex = 16;
+            this.btnCancelar.TabIndex = 7;
             this.btnCancelar.Text = "&Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
-            // 
-            // btnLimpar
-            // 
-            this.btnLimpar.Location = new System.Drawing.Point(285, 177);
-            this.btnLimpar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(75, 28);
-            this.btnLimpar.TabIndex = 17;
-            this.btnLimpar.Text = "&Limpar";
-            this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(204, 177);
+            this.btnSalvar.Location = new System.Drawing.Point(245, 183);
             this.btnSalvar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 28);
-            this.btnSalvar.TabIndex = 18;
+            this.btnSalvar.TabIndex = 6;
             this.btnSalvar.Text = "&Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
@@ -209,9 +201,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(453, 228);
+            this.ClientSize = new System.Drawing.Size(411, 217);
             this.Controls.Add(this.btnSalvar);
-            this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(placaLabel);
             this.Controls.Add(this.txtPlaca);
@@ -250,7 +241,6 @@
         private System.Windows.Forms.TextBox txtCor;
         private System.Windows.Forms.TextBox txtKm;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.Button btnSalvar;
     }
 }

@@ -45,7 +45,7 @@
             this.tccMecanicoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataInicioDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.dataFimDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.tcc_OrcamentoDataGridView = new System.Windows.Forms.DataGridView();
+            this.dgvOrcamento = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,7 +79,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tcc_ServicoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.banco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tccMecanicoBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tcc_OrcamentoDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrcamento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_OrcamentoBindingSource)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_ServicoDataGridView)).BeginInit();
@@ -108,7 +108,7 @@
             dataInicioLabel.AutoSize = true;
             dataInicioLabel.Location = new System.Drawing.Point(20, 103);
             dataInicioLabel.Name = "dataInicioLabel";
-            dataInicioLabel.Size = new System.Drawing.Size(62, 16);
+            dataInicioLabel.Size = new System.Drawing.Size(63, 16);
             dataInicioLabel.TabIndex = 5;
             dataInicioLabel.Text = "data Inicio:";
             // 
@@ -117,7 +117,7 @@
             dataFimLabel.AutoSize = true;
             dataFimLabel.Location = new System.Drawing.Point(193, 103);
             dataFimLabel.Name = "dataFimLabel";
-            dataFimLabel.Size = new System.Drawing.Size(54, 16);
+            dataFimLabel.Size = new System.Drawing.Size(55, 16);
             dataFimLabel.TabIndex = 7;
             dataFimLabel.Text = "data Fim:";
             // 
@@ -146,7 +146,7 @@
             this.tabPage1.Controls.Add(this.dataInicioDateTimePicker);
             this.tabPage1.Controls.Add(dataFimLabel);
             this.tabPage1.Controls.Add(this.dataFimDateTimePicker);
-            this.tabPage1.Controls.Add(this.tcc_OrcamentoDataGridView);
+            this.tabPage1.Controls.Add(this.dgvOrcamento);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage1.Name = "tabPage1";
@@ -243,25 +243,25 @@
             this.dataFimDateTimePicker.Size = new System.Drawing.Size(95, 23);
             this.dataFimDateTimePicker.TabIndex = 8;
             // 
-            // tcc_OrcamentoDataGridView
+            // dgvOrcamento
             // 
-            this.tcc_OrcamentoDataGridView.AllowUserToAddRows = false;
-            this.tcc_OrcamentoDataGridView.AllowUserToDeleteRows = false;
-            this.tcc_OrcamentoDataGridView.AutoGenerateColumns = false;
-            this.tcc_OrcamentoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tcc_OrcamentoDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvOrcamento.AllowUserToAddRows = false;
+            this.dgvOrcamento.AllowUserToDeleteRows = false;
+            this.dgvOrcamento.AutoGenerateColumns = false;
+            this.dgvOrcamento.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrcamento.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3});
-            this.tcc_OrcamentoDataGridView.DataSource = this.tcc_OrcamentoBindingSource;
-            this.tcc_OrcamentoDataGridView.Location = new System.Drawing.Point(386, 7);
-            this.tcc_OrcamentoDataGridView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tcc_OrcamentoDataGridView.Name = "tcc_OrcamentoDataGridView";
-            this.tcc_OrcamentoDataGridView.ReadOnly = true;
-            this.tcc_OrcamentoDataGridView.RowHeadersVisible = false;
-            this.tcc_OrcamentoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tcc_OrcamentoDataGridView.Size = new System.Drawing.Size(306, 476);
-            this.tcc_OrcamentoDataGridView.TabIndex = 0;
+            this.dgvOrcamento.DataSource = this.tcc_OrcamentoBindingSource;
+            this.dgvOrcamento.Location = new System.Drawing.Point(386, 7);
+            this.dgvOrcamento.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgvOrcamento.Name = "dgvOrcamento";
+            this.dgvOrcamento.ReadOnly = true;
+            this.dgvOrcamento.RowHeadersVisible = false;
+            this.dgvOrcamento.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvOrcamento.Size = new System.Drawing.Size(306, 476);
+            this.dgvOrcamento.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -303,11 +303,11 @@
             this.tabPage2.Controls.Add(this.cmbFiltro);
             this.tabPage2.Controls.Add(this.txtPesquisa);
             this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage2.Size = new System.Drawing.Size(707, 497);
+            this.tabPage2.Size = new System.Drawing.Size(707, 494);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Pesquisar";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -406,7 +406,7 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(574, 11);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(79, 16);
+            this.label12.Size = new System.Drawing.Size(80, 16);
             this.label12.TabIndex = 16;
             this.label12.Text = "Organizar por:";
             // 
@@ -415,7 +415,7 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(447, 11);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(79, 16);
+            this.label11.Size = new System.Drawing.Size(80, 16);
             this.label11.TabIndex = 15;
             this.label11.Text = "Pesquisar por:";
             // 
@@ -474,6 +474,8 @@
             this.tableAdapterManager.tcc_AutomovelTableAdapter = null;
             this.tableAdapterManager.tcc_ClienteTableAdapter = null;
             this.tableAdapterManager.tcc_MecanicoTableAdapter = this.tcc_MecanicoTableAdapter;
+            this.tableAdapterManager.tcc_OrcamentoTableAdapter = null;
+            this.tableAdapterManager.tcc_produtoOrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_ProdutoTableAdapter = null;
             this.tableAdapterManager.tcc_ServicoTableAdapter = this.tcc_ServicoTableAdapter;
             this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
@@ -503,7 +505,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tcc_ServicoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.banco)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tccMecanicoBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tcc_OrcamentoDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrcamento)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_OrcamentoBindingSource)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
@@ -521,7 +523,7 @@
         private System.Windows.Forms.BindingSource tcc_OrcamentoBindingSource;
         private BancoTableAdapters.tcc_OrcamentoTableAdapter tcc_OrcamentoTableAdapter;
         private BancoTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.DataGridView tcc_OrcamentoDataGridView;
+        private System.Windows.Forms.DataGridView dgvOrcamento;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;

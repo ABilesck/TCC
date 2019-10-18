@@ -25,48 +25,15 @@ namespace prjOficinaMecanica
 
         private void FrmProduto_Load(object sender, EventArgs e)
         {
-            this.tcc_ProdutoTableAdapter.Fill(this.banco.tcc_Produto);
-            txtPrecoCompra.Text = "   000";
-            txtPrecoVenda.Text = "   000";
+            tcc_ProdutoTableAdapter.Fill(banco.tcc_Produto);
 
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
-            utility.HabilitaBotoes(tpDados, true);
-            utility.HabilitaCampos(tpDados, true);
-            txtDescricao.Focus();
-            operacao = Operacao.incluir;
-        }
-
-        private void btnGravar_click(object sender, EventArgs e)
-        {
-            if(operacao == Operacao.incluir)
-            {
-                tcc_ProdutoTableAdapter.Insert(
-                    txtDescricao.Text,
-                    Convert.ToInt32(nudQuantidade.Value),
-                    Convert.ToDouble(txtPrecoVenda.Text),
-                    Convert.ToDouble(txtPrecoCompra.Text)
-                    );
-            }
-            else if(operacao == Operacao.alterar)
-            {
-                tcc_ProdutoTableAdapter.Update(
-                    txtDescricao.Text,
-                    Convert.ToInt32(nudQuantidade.Value),
-                    Convert.ToDouble(txtPrecoVenda.Text),
-                    Convert.ToDouble(txtPrecoCompra.Text),
-                    idProduto
-                    );
-            }
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            utility.HabilitaBotoes(tpDados, false);
-            utility.HabilitaCampos(tpDados, false);
-            utility.LimpaCampos(tpDados);
+            FrmCadastroProduto cadastroProduto = new FrmCadastroProduto();
+            cadastroProduto.NovoCadastro = true;
+            cadastroProduto.ShowDialog();
         }
 
         private void btnPesquisar_Click(object sender, EventArgs e)
@@ -86,7 +53,6 @@ namespace prjOficinaMecanica
 
         private void btnPesquisaCancelar_Click(object sender, EventArgs e)
         {
-            btnCancelar_Click(null, null);
             FrmProduto_Load(null, null);
         }
 
@@ -99,25 +65,19 @@ namespace prjOficinaMecanica
                 idProduto = Convert.ToInt32(((DataRowView)tcc_ProdutoBindingSource.Current).Row["IDMecanico"].ToString());
                 //tcc_ClienteTableAdapter.Delete(Convert.ToInt32(dgvCliente[0, dgvCliente.CurrentRow.Index].Value.ToString()));
                 tcc_ProdutoTableAdapter.Delete(idProduto);
-                btnCancelar_Click(null, null);
                 FrmProduto_Load(null, null);
             }
         }
 
-        private void tbnAlterar_Click(object sender, EventArgs e)
+        private void btnAlterar_Click(object sender, EventArgs e)
         {
-            idProduto = Convert.ToInt32(((DataRowView)tcc_ProdutoBindingSource.Current).Row["IDProduto"].ToString());
-            txtDescricao.Text = ((DataRowView)tcc_ProdutoBindingSource.Current).Row["descricao"].ToString();
-            txtPrecoCompra.Text = ((DataRowView)tcc_ProdutoBindingSource.Current).Row["precoCompra"].ToString();
-            txtPrecoVenda.Text = ((DataRowView)tcc_ProdutoBindingSource.Current).Row["precoVenda"].ToString();
-            nudQuantidade.Value = Convert.ToInt32(((DataRowView)tcc_ProdutoBindingSource.Current).Row["quantidade"].ToString());
-
-            utility.HabilitaCampos(tpDados, true);
-            utility.HabilitaBotoes(tpDados, true);
-
-            operacao = Operacao.alterar;
-
-            tabControl1.SelectedIndex = 0;
+            var produto = ((DataRowView)tcc_ProdutoBindingSource.Current).Row as Banco.tcc_ProdutoRow;
+            FrmCadastroProduto cadastroProduto = new FrmCadastroProduto();
+            cadastroProduto.NovoCadastro = false;
+            cadastroProduto.Alterar(produto.descricao,
+                produto.precoVenda.ToString(), produto.precoCompra.ToString(), produto.quantidade);
+            cadastroProduto.IdProduto = produto.IDProduto;
+            cadastroProduto.ShowDialog();
         }
 
         private void cmbOrdenar_SelectedIndexChanged(object sender, EventArgs e)
@@ -139,24 +99,14 @@ namespace prjOficinaMecanica
                 tcc_ProdutoTableAdapter.FillByOrderQuantidadeDesc(banco.tcc_Produto);
             }
         }
-        public void Alterar(int id, string desc, string precoCompra, string precoVenda, int qtde)
-        {
-            idProduto = id;
-            txtDescricao.Text = desc;
-            txtPrecoCompra.Text = precoCompra;
-            txtPrecoVenda.Text = precoVenda;
-            nudQuantidade.Value = qtde;
-
-            utility.HabilitaCampos(tpDados, true);
-            utility.HabilitaBotoes(tpDados, true);
-
-            operacao = Operacao.alterar;
-
-            tabControl1.SelectedIndex = 0;
-        }
         private void tcc_ProdutoDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            tbnAlterar_Click(null, null);
+            btnAlterar_Click(null, null);
+        }
+
+        public void Reload()
+        {
+            FrmProduto_Load(null, null);
         }
     }
 }

@@ -64,6 +64,7 @@
             this.tcc_ProdutoTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_ProdutoTableAdapter();
             this.tcc_OrcamentoTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_OrcamentoTableAdapter();
             this.grbProdutos = new System.Windows.Forms.GroupBox();
+            this.btnProdutoAlterar = new System.Windows.Forms.Button();
             this.btnProdutoExcluir = new System.Windows.Forms.Button();
             this.dgvProdutos = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,6 +80,10 @@
             this.precoUnitarioTextBox = new System.Windows.Forms.TextBox();
             this.subtotalTextBox = new System.Windows.Forms.TextBox();
             this.tccProdutoBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCriarServico = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtTotal = new System.Windows.Forms.RichTextBox();
             iDProdutoLabel = new System.Windows.Forms.Label();
             quantidadeLabel = new System.Windows.Forms.Label();
             precoUnitarioLabel = new System.Windows.Forms.Label();
@@ -97,6 +102,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.banco1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quantidadeNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tccProdutoBindingSource2)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // iDProdutoLabel
@@ -253,6 +259,7 @@
             this.dgvOrcamentos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOrcamentos.Size = new System.Drawing.Size(862, 220);
             this.dgvOrcamentos.TabIndex = 11;
+            this.dgvOrcamentos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrcamentos_CellDoubleClick);
             this.dgvOrcamentos.SelectionChanged += new System.EventHandler(this.tcc_OrcamentoDataGridView_SelectionChanged);
             // 
             // dataGridViewTextBoxColumn5
@@ -359,6 +366,7 @@
             // 
             // grbProdutos
             // 
+            this.grbProdutos.Controls.Add(this.btnProdutoAlterar);
             this.grbProdutos.Controls.Add(this.btnProdutoExcluir);
             this.grbProdutos.Controls.Add(this.dgvProdutos);
             this.grbProdutos.Controls.Add(this.btnAddProduto);
@@ -377,6 +385,15 @@
             this.grbProdutos.TabIndex = 12;
             this.grbProdutos.TabStop = false;
             this.grbProdutos.Text = "Produtos";
+            // 
+            // btnProdutoAlterar
+            // 
+            this.btnProdutoAlterar.Location = new System.Drawing.Point(90, 80);
+            this.btnProdutoAlterar.Name = "btnProdutoAlterar";
+            this.btnProdutoAlterar.Size = new System.Drawing.Size(75, 23);
+            this.btnProdutoAlterar.TabIndex = 15;
+            this.btnProdutoAlterar.Text = "Alterar";
+            this.btnProdutoAlterar.UseVisualStyleBackColor = true;
             // 
             // btnProdutoExcluir
             // 
@@ -453,7 +470,7 @@
             // 
             // btnProdutoCancelar
             // 
-            this.btnProdutoCancelar.Location = new System.Drawing.Point(90, 78);
+            this.btnProdutoCancelar.Location = new System.Drawing.Point(171, 80);
             this.btnProdutoCancelar.Name = "btnProdutoCancelar";
             this.btnProdutoCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnProdutoCancelar.TabIndex = 12;
@@ -498,6 +515,7 @@
             this.precoUnitarioTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tcc_produtoOrcamentoBindingSource, "precoUnitario", true));
             this.precoUnitarioTextBox.Location = new System.Drawing.Point(608, 49);
             this.precoUnitarioTextBox.Name = "precoUnitarioTextBox";
+            this.precoUnitarioTextBox.ReadOnly = true;
             this.precoUnitarioTextBox.Size = new System.Drawing.Size(121, 23);
             this.precoUnitarioTextBox.TabIndex = 7;
             // 
@@ -506,14 +524,61 @@
             this.subtotalTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tcc_produtoOrcamentoBindingSource, "Subtotal", true));
             this.subtotalTextBox.Location = new System.Drawing.Point(735, 50);
             this.subtotalTextBox.Name = "subtotalTextBox";
+            this.subtotalTextBox.ReadOnly = true;
             this.subtotalTextBox.Size = new System.Drawing.Size(121, 23);
             this.subtotalTextBox.TabIndex = 11;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btnCriarServico);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.txtTotal);
+            this.panel1.Location = new System.Drawing.Point(12, 696);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(876, 52);
+            this.panel1.TabIndex = 13;
+            // 
+            // btnCriarServico
+            // 
+            this.btnCriarServico.Font = new System.Drawing.Font("Bahnschrift SemiBold Condensed", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCriarServico.ForeColor = System.Drawing.Color.Red;
+            this.btnCriarServico.Location = new System.Drawing.Point(3, 8);
+            this.btnCriarServico.Name = "btnCriarServico";
+            this.btnCriarServico.Size = new System.Drawing.Size(151, 40);
+            this.btnCriarServico.TabIndex = 3;
+            this.btnCriarServico.Text = "Encerrar Orçamento";
+            this.btnCriarServico.UseVisualStyleBackColor = true;
+            this.btnCriarServico.Click += new System.EventHandler(this.btnCriarServico_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(671, 22);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(34, 16);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Total:";
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.Font = new System.Drawing.Font("Bahnschrift SemiBold SemiConden", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotal.ForeColor = System.Drawing.Color.Red;
+            this.txtTotal.Location = new System.Drawing.Point(711, 8);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.ReadOnly = true;
+            this.txtTotal.Size = new System.Drawing.Size(149, 37);
+            this.txtTotal.TabIndex = 1;
+            this.txtTotal.Text = "R$ 0,00";
             // 
             // FrmOrcamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(894, 699);
+            this.ClientSize = new System.Drawing.Size(894, 758);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.grbProdutos);
             this.Controls.Add(this.dgvOrcamentos);
             this.Controls.Add(this.btnCancelar);
@@ -547,6 +612,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.banco1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quantidadeNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tccProdutoBindingSource2)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -598,5 +665,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.Button btnProdutoAlterar;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.RichTextBox txtTotal;
+        private System.Windows.Forms.Button btnCriarServico;
+        private System.Windows.Forms.Label label4;
     }
 }

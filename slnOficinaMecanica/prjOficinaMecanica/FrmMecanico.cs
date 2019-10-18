@@ -17,77 +17,82 @@ namespace prjOficinaMecanica
             InitializeComponent();
         }
 
-        private void FrmMecanico_Load(object sender, EventArgs e)
+        public void FrmMecanico_Load(object sender, EventArgs e)
         {
             this.tcc_MecanicoTableAdapter.Fill(this.banco.tcc_Mecanico);
 
         }
 
-        private void btnNovo_Click(object sender, EventArgs e)
+        public void Reload()
         {
-            utility.HabilitaCampos(tpDados, true);
-            utility.HabilitaBotoes(tpDados, true);
-            txtRazao.Focus();
-            oper = Operacao.incluir;
-        }
-
-        private void btnSalvar_Click(object sender, EventArgs e)
-        {
-            if(oper == Operacao.incluir)
-            {
-                tcc_MecanicoTableAdapter.Insert(
-                    txtRazao.Text,
-                    txtCnpj.Text,
-                    txtIe.Text,
-                    txtTelefone.Text,
-                    txtEmail.Text,
-                    txtConta.Text,
-                    txtAgencia.Text,
-                    Convert.ToInt32(txtComissao.Text),
-                    txtLogradouro.Text,
-                    txtBairro.Text,
-                    txtCidade.Text,
-                    txtComplemento.Text,
-                    cmbUf.Text,
-                    txtCep.Text
-                    );
-            }
-            else if(oper == Operacao.alterar)
-            {
-                tcc_MecanicoTableAdapter.Update(
-                    txtRazao.Text,
-                    txtCnpj.Text,
-                    txtIe.Text,
-                    txtTelefone.Text,
-                    txtEmail.Text,
-                    txtConta.Text,
-                    txtAgencia.Text,
-                    Convert.ToInt32(txtComissao.Text),
-                    txtLogradouro.Text,
-                    txtBairro.Text,
-                    txtCidade.Text,
-                    txtComplemento.Text,
-                    cmbUf.Text,
-                    txtCep.Text,
-                    idMecanico
-                    );
-            }
-
-            MessageBox.Show("Salvo com sucesso!",
-                    "Atencão", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            btnCancelar_Click(null, null);
             FrmMecanico_Load(null, null);
-
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            utility.HabilitaBotoes(tpDados, false);
-            utility.HabilitaCampos(tpDados, false);
-            utility.HabilitaCampos(grbConta, false);
-            utility.LimpaCampos(tpDados);
-        }
+        //private void btnNovo_Click(object sender, EventArgs e)
+        //{
+        //    utility.HabilitaCampos(tpDados, true);
+        //    utility.HabilitaBotoes(tpDados, true);
+        //    txtRazao.Focus();
+        //    oper = Operacao.incluir;
+        //}
+
+        //private void btnSalvar_Click(object sender, EventArgs e)
+        //{
+        //    if(oper == Operacao.incluir)
+        //    {
+        //        tcc_MecanicoTableAdapter.Insert(
+        //            txtRazao.Text,
+        //            txtCnpj.Text,
+        //            txtIe.Text,
+        //            txtTelefone.Text,
+        //            txtEmail.Text,
+        //            txtConta.Text,
+        //            txtAgencia.Text,
+        //            Convert.ToInt32(txtComissao.Text),
+        //            txtLogradouro.Text,
+        //            txtBairro.Text,
+        //            txtCidade.Text,
+        //            txtComplemento.Text,
+        //            cmbUf.Text,
+        //            txtCep.Text
+        //            );
+        //    }
+        //    else if(oper == Operacao.alterar)
+        //    {
+        //        tcc_MecanicoTableAdapter.Update(
+        //            txtRazao.Text,
+        //            txtCnpj.Text,
+        //            txtIe.Text,
+        //            txtTelefone.Text,
+        //            txtEmail.Text,
+        //            txtConta.Text,
+        //            txtAgencia.Text,
+        //            Convert.ToInt32(txtComissao.Text),
+        //            txtLogradouro.Text,
+        //            txtBairro.Text,
+        //            txtCidade.Text,
+        //            txtComplemento.Text,
+        //            cmbUf.Text,
+        //            txtCep.Text,
+        //            idMecanico
+        //            );
+        //    }
+
+        //    MessageBox.Show("Salvo com sucesso!",
+        //            "Atencão", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        //    //btnCancelar_Click(null, null);
+        //    FrmMecanico_Load(null, null);
+
+        //}
+
+        //private void btnCancelar_Click(object sender, EventArgs e)
+        //{
+        //    utility.HabilitaBotoes(tpDados, false);
+        //    utility.HabilitaCampos(tpDados, false);
+        //    utility.HabilitaCampos(grbConta, false);
+        //    utility.LimpaCampos(tpDados);
+        //}
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
@@ -121,33 +126,19 @@ namespace prjOficinaMecanica
 
         private void tbnAlterar_Click(object sender, EventArgs e)
         {
-            idMecanico = Convert.ToInt32(((DataRowView)tcc_MecanicoBindingSource.Current).Row["IDMecanico"].ToString());
-            txtRazao.Text = ((DataRowView)tcc_MecanicoBindingSource.Current).Row["razaoSocial"].ToString();
-            txtCnpj.Text = ((DataRowView)tcc_MecanicoBindingSource.Current).Row["cnpj"].ToString();
-            txtIe.Text = ((DataRowView)tcc_MecanicoBindingSource.Current).Row["ie"].ToString();
-            txtTelefone.Text = ((DataRowView)tcc_MecanicoBindingSource.Current).Row["telefone"].ToString();
-            txtEmail.Text = ((DataRowView)tcc_MecanicoBindingSource.Current).Row["email"].ToString();
-            txtConta.Text = ((DataRowView)tcc_MecanicoBindingSource.Current).Row["contaBancaria"].ToString();
-            txtAgencia.Text = ((DataRowView)tcc_MecanicoBindingSource.Current).Row["agenciaBancaria"].ToString();
-            txtConta.Text = ((DataRowView)tcc_MecanicoBindingSource.Current).Row["comissao"].ToString();
-            txtLogradouro.Text = ((DataRowView)tcc_MecanicoBindingSource.Current).Row["logradouro"].ToString();
-            txtBairro.Text = ((DataRowView)tcc_MecanicoBindingSource.Current).Row["bairro"].ToString();
-            txtCidade.Text = ((DataRowView)tcc_MecanicoBindingSource.Current).Row["cidade"].ToString();
-            txtComplemento.Text = ((DataRowView)tcc_MecanicoBindingSource.Current).Row["complemento"].ToString();
-            cmbUf.Text = ((DataRowView)tcc_MecanicoBindingSource.Current).Row["uf"].ToString();
-            txtCep.Text = ((DataRowView)tcc_MecanicoBindingSource.Current).Row["cep"].ToString();
-
-            utility.HabilitaCampos(tpDados, true);
-            utility.HabilitaBotoes(tpDados, true);
-
-            oper = Operacao.alterar;
-
-            tabControl.SelectedIndex = 0;
+            var Mecanico = (tcc_MecanicoBindingSource.Current as DataRowView).Row
+                as Banco.tcc_MecanicoRow;
+            FrmCadastroMecanico cadastroMecanico = new FrmCadastroMecanico();
+            cadastroMecanico.NovoCadastro = false;
+            cadastroMecanico.Alterar(Mecanico.IDMecanico, Mecanico.razaoSocial, Mecanico.cnpj,
+                Mecanico.ie, Mecanico.telefone, Mecanico.email, Mecanico.contaBancaria, Mecanico.agenciaBancaria,
+                Mecanico.comissao.ToString(), Mecanico.logradouro, Mecanico.bairro, Mecanico.cidade,
+                Mecanico.complemento, Mecanico.uf, Mecanico.cep);
+            cadastroMecanico.ShowDialog();
         }
 
         private void btnPesquisaCancelar_Click(object sender, EventArgs e)
         {
-            btnCancelar_Click(null, null);
             FrmMecanico_Load(null, null);
         }
 
@@ -160,7 +151,6 @@ namespace prjOficinaMecanica
                 idMecanico = Convert.ToInt32(((DataRowView)tcc_MecanicoBindingSource.Current).Row["IDMecanico"].ToString());
                 //tcc_ClienteTableAdapter.Delete(Convert.ToInt32(dgvCliente[0, dgvCliente.CurrentRow.Index].Value.ToString()));
                 tcc_MecanicoTableAdapter.Delete(idMecanico);
-                btnCancelar_Click(null, null);
                 FrmMecanico_Load(null, null);
             }
         }
@@ -175,6 +165,12 @@ namespace prjOficinaMecanica
             {
                 tcc_MecanicoTableAdapter.FillByOrderRazao(banco.tcc_Mecanico);
             }
+        }
+
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            FrmCadastroMecanico cadastroMecanico = new FrmCadastroMecanico() { NovoCadastro = true};
+            cadastroMecanico.ShowDialog();
         }
     }
 }

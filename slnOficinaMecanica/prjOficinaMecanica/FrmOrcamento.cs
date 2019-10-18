@@ -17,7 +17,6 @@ namespace prjOficinaMecanica
         private int IdOrcamento;
         private int IdProduto;
         private int IdAuto;
-        private int IdCliente;
         private double MaoDeObra;
         private double PrecoTemporario;
         public FrmOrcamento()
@@ -48,14 +47,14 @@ namespace prjOficinaMecanica
             cadastroOrcamento.novoCadastro = true;
             cadastroOrcamento.ShowDialog();
         }
-
-        
-
         private void btnAlterar_Click(object sender, EventArgs e)
         {
+            var Orcamento = (tcc_OrcamentoBindingSource.Current as DataRowView).Row
+                as Banco.tcc_OrcamentoRow;
             FrmCadastroOrcamento cadastroOrcamento = new FrmCadastroOrcamento();
             cadastroOrcamento.novoCadastro = false;
-            cadastroOrcamento.PreencherCampos(IdCliente, IdAuto, MaoDeObra);
+            cadastroOrcamento.IdOrcamento = Orcamento.IDOrcamento;
+            cadastroOrcamento.PreencherCampos(Orcamento.nome, Orcamento.modelo, MaoDeObra);
             cadastroOrcamento.ShowDialog();
         }
 
@@ -69,13 +68,32 @@ namespace prjOficinaMecanica
                 IdAuto = Orcamento.IDAutomovel;
                 MaoDeObra = Orcamento.MaoDeObra;
                 dgvProdutos_SelectionChanged(null, null);
-                if(IdOrcamento != 0)
+                if (IdOrcamento != 0)
                 {
                     tcc_produtoOrcamentoTableAdapter.FillByOrcamento(banco.tcc_produtoOrcamento, IdOrcamento);
                 }
 
+                if (dgvOrcamentos.RowCount > 0)
+                {
+                    if (dgvProdutos.RowCount > 0)
+                    {
+                        double Total = Convert.ToDouble(tcc_produtoOrcamentoTableAdapter.Total(IdOrcamento).ToString());
+                        Total += MaoDeObra;
+                        txtTotal.Text = Total.ToString("R$ #,###,##0.00");
+                    }
+                    else
+                    {
+                        txtTotal.Text = MaoDeObra.ToString("R$ #,###,##0.00");
+                    }
+
+                }
+                else
+                {
+                    txtTotal.Text = "R$ 0,00";
+                }
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -83,34 +101,28 @@ namespace prjOficinaMecanica
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Deseja excluir o orçamento selecionado?", "Atenção",
+            if (dgvOrcamentos.RowCount > 0)
+            {
+                if (MessageBox.Show("Deseja excluir o orçamento selecionado?", "Atenção",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-            {
-                tcc_produtoOrcamentoTableAdapter.DeleteTodos(IdOrcamento);
-                tcc_OrcamentoTableAdapter.DeleteQuery(IdOrcamento);
-                tcc_OrcamentoTableAdapter.Fill(banco.tcc_Orcamento);
+                {
+                    tcc_produtoOrcamentoTableAdapter.DeleteTodos(IdOrcamento);
+                    tcc_OrcamentoTableAdapter.DeleteQuery(IdOrcamento);
+                    tcc_OrcamentoTableAdapter.Fill(banco.tcc_Orcamento);
+                    tcc_OrcamentoDataGridView_SelectionChanged(null, null);
+                }
             }
         }
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            string pesquisa = "%" + txtPesquisa.Text +"%";
+            string pesquisa = "%" + txtPesquisa.Text + "%";
             tcc_OrcamentoTableAdapter.FillByModelo(banco.tcc_Orcamento, pesquisa);
         }
 
         private void iDProdutoComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //DataTable produto = tcc_produtoTableAdapter.GetDataByDescricao(cmbProduto.Text);
-            //precoTemp = 0;
-
-            //foreach (DataRow row in produto.Rows)
-            //{
-            //    precoTemp = Convert.ToDouble(row["precoUnit"].ToString());
-            //}
-            //nudQuantidade.Value = 1;
-            //txtPrecoUnit.Text = precoTemp.ToString("R$ #,###,##0.00");
-            //txtSubTotal.Text = precoTemp.ToString("R$ #,###,##0.00");
             DataTable produto = tcc_ProdutoTableAdapter.GetDataByDescricao(iDProdutoComboBox.Text);
             PrecoTemporario = 0;
             foreach (DataRow item in produto.Rows)
@@ -142,12 +154,16 @@ namespace prjOficinaMecanica
 
         private void btnProdutoExcluir_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Deseja excluir o produto selecionado?", "Atenção",
+            if (dgvProdutos.RowCount > 0)
+            {
+                if (MessageBox.Show("Deseja excluir o produto selecionado?", "Atenção",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-            {
-                tcc_produtoOrcamentoTableAdapter.DeleteQuery(IdOrcamento, IdProduto);
-                tcc_produtoOrcamentoTableAdapter.FillByOrcamento(banco.tcc_produtoOrcamento, IdOrcamento);
+                {
+                    tcc_produtoOrcamentoTableAdapter.DeleteQuery(IdOrcamento, IdProduto);
+                    tcc_produtoOrcamentoTableAdapter.FillByOrcamento(banco.tcc_produtoOrcamento, IdOrcamento);
+                    tcc_OrcamentoDataGridView_SelectionChanged(null, null);
+                }
             }
         }
 
@@ -156,8 +172,7 @@ namespace prjOficinaMecanica
             try
             {
                 var Produto = (tcc_produtoOrcamentoBindingSource.Current as DataRowView).Row
-                as Banco.tcc_produtoOrcamentoRow;
-
+                    as Banco.tcc_produtoOrcamentoRow;
                 IdProduto = Produto.IDProduto;
 
             }
@@ -165,6 +180,19 @@ namespace prjOficinaMecanica
             {
 
             }
+        }
+
+        private void btnCriarServico_Click(object sender, EventArgs e)
+        {
+            FrmServico frmServico = new FrmServico();
+            frmServico.GetOrcamento(IdOrcamento);
+            frmServico.Show();
+
+        }
+
+        private void dgvOrcamentos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnAlterar_Click(null, null);
         }
     }
 }

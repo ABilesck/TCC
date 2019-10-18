@@ -13,6 +13,10 @@ namespace prjOficinaMecanica
     public partial class FrmCadastroOrcamento : Form
     {
         public bool novoCadastro;
+        public int IdOrcamento;
+
+        private string NomeCliente;
+        private string Modelo;
         public FrmCadastroOrcamento()
         {
             InitializeComponent();
@@ -31,14 +35,19 @@ namespace prjOficinaMecanica
                 cmbCliente_SelectedIndexChanged(null, null);
                 txtMaoDeObra.Text = "0,00";
             }
+            else
+            {
+                cmbCliente.Text = NomeCliente;
+                cmbCarro.Text = Modelo;
+            }
                 
 
         }
 
-        public void PreencherCampos(int IdCliente, int IdAuto, double MaoDeObra)
+        public void PreencherCampos(string Cliente, string Auto, double MaoDeObra)
         {
-            cmbCliente.SelectedValue = IdCliente;
-            cmbCarro.SelectedValue = IdAuto;
+            NomeCliente = Cliente;
+            Modelo = Auto;
             txtMaoDeObra.Text = MaoDeObra.ToString();
         }
 
@@ -68,6 +77,14 @@ namespace prjOficinaMecanica
                     DateTime.Now,
                     (int)cmbCarro.SelectedValue,
                     Convert.ToDouble(txtMaoDeObra.Text)
+                    );
+            }
+            else
+            {
+                tcc_OrcamentoTableAdapter.UpdateQuery(
+                    Convert.ToDouble(txtMaoDeObra.Text),
+                    (int)cmbCarro.SelectedValue,
+                    IdOrcamento
                     );
             }
 

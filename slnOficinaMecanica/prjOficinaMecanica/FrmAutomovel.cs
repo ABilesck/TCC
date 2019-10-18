@@ -10,8 +10,6 @@ using System.Windows.Forms;
 
 namespace prjOficinaMecanica
 {
-    //TODO: botoes de cancelar e sair
-
     public partial class FrmAutomovel : Form
     {
         public int idCliente;
@@ -31,8 +29,6 @@ namespace prjOficinaMecanica
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            //TODO: possibilitar alterar um carro
-
             if (autoNovo)
             {
                 tcc_AutomovelTableAdapter.Insert(
@@ -58,8 +54,6 @@ namespace prjOficinaMecanica
             MessageBox.Show("Salvo com sucesso!",
                     "Atencão", MessageBoxButtons.OK,MessageBoxIcon.Information);
 
-            //btnCancelar;
-            FrmCarro_Load(null, null);
             Close();
         }
 
@@ -67,6 +61,21 @@ namespace prjOficinaMecanica
         {
            var form = Application.OpenForms.OfType<FrmCliente>().Single();
            form.Reload();
+        }
+
+        public void Alterar(int idCarro, string placa, string modelo, string ano, string cor, string km)
+        {
+            txtPlaca.Text = placa;
+            txtModelo.Text = modelo;
+            txtAno.Text = ano;
+            txtCor.Text = cor;
+            txtKm.Text = km;
+            idAutomovel = idCarro;
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

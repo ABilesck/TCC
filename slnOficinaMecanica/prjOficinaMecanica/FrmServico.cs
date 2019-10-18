@@ -13,6 +13,8 @@ namespace prjOficinaMecanica
     //TODO: o Formulario todo
     public partial class FrmServico : Form
     {
+        private int idOrcamento;
+
         public FrmServico()
         {
             InitializeComponent();
@@ -30,8 +32,15 @@ namespace prjOficinaMecanica
         {
             this.tcc_MecanicoTableAdapter.Fill(this.banco.tcc_Mecanico);
             this.tcc_ServicoTableAdapter.Fill(this.banco.tcc_Servico);
-            this.tcc_OrcamentoTableAdapter.Fill(this.banco.tcc_Orcamento);
+            if(idOrcamento == 0)
+                this.tcc_OrcamentoTableAdapter.Fill(this.banco.tcc_Orcamento);
 
+        }
+        public void GetOrcamento(int IdO)
+        {
+            idOrcamento = IdO;
+            tcc_OrcamentoTableAdapter.FillById(banco.tcc_Orcamento, idOrcamento);
+            lblOrcamento.Text = idOrcamento.ToString();
         }
     }
 }

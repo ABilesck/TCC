@@ -9,7 +9,7 @@
     <Shape ID="DesignTable:tcc_Automovel" ZOrder="12" X="70" Y="72" Height="267" Width="247" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
     <Shape ID="DesignTable:tcc_Cliente" ZOrder="11" X="381" Y="70" Height="438" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
     <Shape ID="DesignTable:tcc_Mecanico" ZOrder="10" X="1313" Y="70" Height="383" Width="264" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="256" />
-    <Shape ID="DesignTable:tcc_Orcamento" ZOrder="9" X="381" Y="521" Height="267" Width="285" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="140" />
+    <Shape ID="DesignTable:tcc_Orcamento" ZOrder="9" X="381" Y="521" Height="267" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="140" />
     <Shape ID="DesignTable:tcc_Produto" ZOrder="8" X="1030" Y="521" Height="248" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
     <Shape ID="DesignTable:tcc_produtoOrcamento" ZOrder="1" X="682" Y="521" Height="248" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="140" />
     <Shape ID="DesignTable:tcc_Servico" ZOrder="7" X="1606" Y="70" Height="153" Width="208" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="102" />
@@ -46,12 +46,12 @@
     <Connector ID="DesignRelation:IDOrcamento" ZOrder="4" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>666</X>
-          <Y>588</Y>
+          <X>681</X>
+          <Y>645</Y>
         </Point>
         <Point>
           <X>682</X>
-          <Y>588</Y>
+          <Y>645</Y>
         </Point>
       </RoutePoints>
     </Connector>
