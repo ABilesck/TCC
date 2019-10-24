@@ -12,7 +12,6 @@ namespace prjOficinaMecanica
     {
         int IdCliente = 0;
         string nomeCliente = "";
-        Utility utility = new Utility();
 
         public FrmCliente()
         {
@@ -76,16 +75,7 @@ namespace prjOficinaMecanica
 
         private void cmbOrdenar_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbOrdenar.SelectedIndex == 0)
-            {
 
-                tcc_ClienteTableAdapter.FillByOrderID(banco.tcc_Cliente);
-
-            }
-            else if (cmbOrdenar.SelectedIndex == 1)
-            {
-                tcc_ClienteTableAdapter.FillByOrderNome(banco.tcc_Cliente);
-            }
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
