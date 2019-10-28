@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace prjOficinaMecanica
 {
-    //TODO: mascaras das text box
 
     public partial class FrmMecanico : Form
     {
         int idMecanico;
-        Utility utility = new Utility();
-        Operacao oper = new Operacao();
 
         public FrmMecanico()
         {
@@ -28,113 +26,80 @@ namespace prjOficinaMecanica
             FrmMecanico_Load(null, null);
         }
 
-        //private void btnNovo_Click(object sender, EventArgs e)
-        //{
-        //    utility.HabilitaCampos(tpDados, true);
-        //    utility.HabilitaBotoes(tpDados, true);
-        //    txtRazao.Focus();
-        //    oper = Operacao.incluir;
-        //}
-
-        //private void btnSalvar_Click(object sender, EventArgs e)
-        //{
-        //    if(oper == Operacao.incluir)
-        //    {
-        //        tcc_MecanicoTableAdapter.Insert(
-        //            txtRazao.Text,
-        //            txtCnpj.Text,
-        //            txtIe.Text,
-        //            txtTelefone.Text,
-        //            txtEmail.Text,
-        //            txtConta.Text,
-        //            txtAgencia.Text,
-        //            Convert.ToInt32(txtComissao.Text),
-        //            txtLogradouro.Text,
-        //            txtBairro.Text,
-        //            txtCidade.Text,
-        //            txtComplemento.Text,
-        //            cmbUf.Text,
-        //            txtCep.Text
-        //            );
-        //    }
-        //    else if(oper == Operacao.alterar)
-        //    {
-        //        tcc_MecanicoTableAdapter.Update(
-        //            txtRazao.Text,
-        //            txtCnpj.Text,
-        //            txtIe.Text,
-        //            txtTelefone.Text,
-        //            txtEmail.Text,
-        //            txtConta.Text,
-        //            txtAgencia.Text,
-        //            Convert.ToInt32(txtComissao.Text),
-        //            txtLogradouro.Text,
-        //            txtBairro.Text,
-        //            txtCidade.Text,
-        //            txtComplemento.Text,
-        //            cmbUf.Text,
-        //            txtCep.Text,
-        //            idMecanico
-        //            );
-        //    }
-
-        //    MessageBox.Show("Salvo com sucesso!",
-        //            "Atencão", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-        //    //btnCancelar_Click(null, null);
-        //    FrmMecanico_Load(null, null);
-
-        //}
-
-        //private void btnCancelar_Click(object sender, EventArgs e)
-        //{
-        //    utility.HabilitaBotoes(tpDados, false);
-        //    utility.HabilitaCampos(tpDados, false);
-        //    utility.HabilitaCampos(grbConta, false);
-        //    utility.LimpaCampos(tpDados);
-        //}
-
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            if (!txtPesquisa.Text.Equals(""))
+            try
             {
-                if(cmbFiltro.SelectedIndex == 0)
+                if (!txtPesquisa.Text.Equals(""))
                 {
-                    tcc_MecanicoTableAdapter.FillById(banco.tcc_Mecanico,Convert.ToInt32(txtPesquisa.Text));
-                }
-                else if(cmbFiltro.SelectedIndex == 1)
-                {
-                    tcc_MecanicoTableAdapter.FillByRazao(banco.tcc_Mecanico, "%" + txtPesquisa.Text + "%");
-                }
-                else if(cmbFiltro.SelectedIndex == 2)
-                {
-                    tcc_MecanicoTableAdapter.FillByCnpj(banco.tcc_Mecanico, "%" + txtPesquisa.Text + "%");
-                }
+                    if (cmbFiltro.SelectedIndex == 0)
+                    {
+                        tcc_MecanicoTableAdapter.FillById(banco.tcc_Mecanico, Convert.ToInt32(txtPesquisa.Text));
+                    }
+                    else if (cmbFiltro.SelectedIndex == 1)
+                    {
+                        tcc_MecanicoTableAdapter.FillByRazao(banco.tcc_Mecanico, "%" + txtPesquisa.Text + "%");
+                    }
+                    else if (cmbFiltro.SelectedIndex == 2)
+                    {
+                        tcc_MecanicoTableAdapter.FillByCnpj(banco.tcc_Mecanico, "%" + txtPesquisa.Text + "%");
+                    }
 
-                if(dgvMecanico.RowCount == 0)
+                    if (dgvMecanico.RowCount == 0)
+                    {
+                        MessageBox.Show("Não foram encontrados registros com esses parâmetros!", "Erro", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    }
+                }
+                else
                 {
-                    MessageBox.Show("Não foram encontrados registros com esses parâmetros!", "Erro", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                    MessageBox.Show("O campo de pesquisa está vazio!", "Erro", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
             }
-            else
+            catch(NullReferenceException ex)
             {
-                MessageBox.Show("O campo de pesquisa está vazio!", "Erro", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Objeto não encontrado\n" + ex.Message, "Erro ao pesquisar",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            catch(SqlException ex)
+            {
+                MessageBox.Show("Erro no banco de dados\n" + ex.Message, "Erro ao pesquisar",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Erro inesperado\n" + ex.Message, "Erro ao pesquisar",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void tbnAlterar_Click(object sender, EventArgs e)
         {
-            var Mecanico = (tcc_MecanicoBindingSource.Current as DataRowView).Row
+            try
+            {
+                var Mecanico = (tcc_MecanicoBindingSource.Current as DataRowView).Row
                 as Banco.tcc_MecanicoRow;
-            FrmCadastroMecanico cadastroMecanico = new FrmCadastroMecanico();
-            cadastroMecanico.NovoCadastro = false;
-            cadastroMecanico.Alterar(Mecanico.IDMecanico, Mecanico.razaoSocial, Mecanico.cnpj,
-                Mecanico.ie, Mecanico.telefone, Mecanico.email, Mecanico.contaBancaria, Mecanico.agenciaBancaria,
-                Mecanico.comissao.ToString(), Mecanico.logradouro, Mecanico.bairro, Mecanico.cidade,
-                Mecanico.complemento, Mecanico.uf, Mecanico.cep);
-            cadastroMecanico.ShowDialog();
+                FrmCadastroMecanico cadastroMecanico = new FrmCadastroMecanico();
+                cadastroMecanico.NovoCadastro = false;
+                cadastroMecanico.Alterar(Mecanico.IDMecanico, Mecanico.razaoSocial, Mecanico.cnpj,
+                    Mecanico.ie, Mecanico.telefone, Mecanico.email, Mecanico.contaBancaria, Mecanico.agenciaBancaria,
+                    Mecanico.comissao.ToString(), Mecanico.logradouro, Mecanico.bairro, Mecanico.cidade,
+                    Mecanico.complemento, Mecanico.uf, Mecanico.cep);
+                cadastroMecanico.ShowDialog();
+            }
+            catch(NullReferenceException ex)
+            {
+                MessageBox.Show("Erro ao abrir o formulário\n"+ ex.Message, "Erro ao alterar",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Erro inesperado\n" + ex.Message, "Erro ao alterar",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void btnPesquisaCancelar_Click(object sender, EventArgs e)
@@ -144,24 +109,41 @@ namespace prjOficinaMecanica
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Deseja excluir o mecânico selecionado?", "Atenção",
+            try
+            {
+                if (MessageBox.Show("Deseja excluir o mecânico selecionado?", "Atenção",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                {
+                    idMecanico = Convert.ToInt32(((DataRowView)tcc_MecanicoBindingSource.Current).Row["IDMecanico"].ToString());
+                    tcc_MecanicoTableAdapter.Delete(idMecanico);
+                    FrmMecanico_Load(null, null);
+                }
+            }
+            catch(NullReferenceException ex)
             {
-                idMecanico = Convert.ToInt32(((DataRowView)tcc_MecanicoBindingSource.Current).Row["IDMecanico"].ToString());
-                //tcc_ClienteTableAdapter.Delete(Convert.ToInt32(dgvCliente[0, dgvCliente.CurrentRow.Index].Value.ToString()));
-                tcc_MecanicoTableAdapter.Delete(idMecanico);
-                FrmMecanico_Load(null, null);
+                MessageBox.Show("Objeto não encontrado\n" + ex.Message, "Erro ao excluir",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch(SqlException ex)
+            {
+                MessageBox.Show("Erro no banco de dados\n" + ex.Message, "Erro ao excluir",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Erro inesperado\n" + ex.Message, "Erro ao excluir",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void cmbOrdenar_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cmbOrdenar.SelectedIndex == 0)
+            if (cmbOrdenar.SelectedIndex == 0)
             {
                 tcc_MecanicoTableAdapter.Fill(banco.tcc_Mecanico);
             }
-            else if(cmbOrdenar.SelectedIndex == 1)
+            else if (cmbOrdenar.SelectedIndex == 1)
             {
                 tcc_MecanicoTableAdapter.FillByOrderRazao(banco.tcc_Mecanico);
             }
@@ -169,8 +151,21 @@ namespace prjOficinaMecanica
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
-            FrmCadastroMecanico cadastroMecanico = new FrmCadastroMecanico() { NovoCadastro = true};
-            cadastroMecanico.ShowDialog();
+            try
+            {
+                FrmCadastroMecanico cadastroMecanico = new FrmCadastroMecanico() { NovoCadastro = true };
+                cadastroMecanico.ShowDialog();
+            }
+            catch(NullReferenceException ex)
+            {
+                MessageBox.Show("Formulário não encontrado\n" + ex.Message, "Erro ao abrir o formulário",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Erro inesperado\n" + ex.Message, "Erro ao abrir o formulário",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

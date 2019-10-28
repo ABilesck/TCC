@@ -483,6 +483,7 @@
             this.iDProdutoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tcc_produtoOrcamentoBindingSource, "IDProduto", true));
             this.iDProdutoComboBox.DataSource = this.tccProdutoBindingSource3;
             this.iDProdutoComboBox.DisplayMember = "descricao";
+            this.iDProdutoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.iDProdutoComboBox.FormattingEnabled = true;
             this.iDProdutoComboBox.Location = new System.Drawing.Point(9, 49);
             this.iDProdutoComboBox.Name = "iDProdutoComboBox";
@@ -518,6 +519,7 @@
             this.precoUnitarioTextBox.ReadOnly = true;
             this.precoUnitarioTextBox.Size = new System.Drawing.Size(121, 23);
             this.precoUnitarioTextBox.TabIndex = 7;
+            this.precoUnitarioTextBox.Text = "R$ 0,00";
             // 
             // subtotalTextBox
             // 
@@ -527,6 +529,7 @@
             this.subtotalTextBox.ReadOnly = true;
             this.subtotalTextBox.Size = new System.Drawing.Size(121, 23);
             this.subtotalTextBox.TabIndex = 11;
+            this.subtotalTextBox.Text = "R$ 0,00";
             // 
             // panel1
             // 

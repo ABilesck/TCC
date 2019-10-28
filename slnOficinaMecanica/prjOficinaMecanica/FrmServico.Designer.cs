@@ -29,17 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.tcc_ServicoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.banco = new prjOficinaMecanica.Banco();
-            this.tccMecanicoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tcc_OrcamentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tcc_OrcamentoTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_OrcamentoTableAdapter();
-            this.tableAdapterManager = new prjOficinaMecanica.BancoTableAdapters.TableAdapterManager();
-            this.tcc_MecanicoTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_MecanicoTableAdapter();
-            this.tcc_ServicoTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_ServicoTableAdapter();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnPesquisaCancelar = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
@@ -52,62 +44,30 @@
             this.label10 = new System.Windows.Forms.Label();
             this.btnNovo = new System.Windows.Forms.Button();
             this.dgvServico = new System.Windows.Forms.DataGridView();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.btnFinalizar = new System.Windows.Forms.Button();
+            this.tcc_ServicoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.banco = new prjOficinaMecanica.Banco();
+            this.tccMecanicoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tcc_OrcamentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tcc_OrcamentoTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_OrcamentoTableAdapter();
+            this.tableAdapterManager = new prjOficinaMecanica.BancoTableAdapters.TableAdapterManager();
+            this.tcc_MecanicoTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_MecanicoTableAdapter();
+            this.tcc_ServicoTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_ServicoTableAdapter();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.desconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvServico)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_ServicoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.banco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tccMecanicoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_OrcamentoBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvServico)).BeginInit();
             this.SuspendLayout();
-            // 
-            // tcc_ServicoBindingSource
-            // 
-            this.tcc_ServicoBindingSource.DataMember = "tcc_Servico";
-            this.tcc_ServicoBindingSource.DataSource = this.banco;
-            // 
-            // banco
-            // 
-            this.banco.DataSetName = "Banco";
-            this.banco.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tccMecanicoBindingSource
-            // 
-            this.tccMecanicoBindingSource.DataMember = "tcc_Mecanico";
-            this.tccMecanicoBindingSource.DataSource = this.banco;
-            // 
-            // tcc_OrcamentoBindingSource
-            // 
-            this.tcc_OrcamentoBindingSource.DataMember = "tcc_Orcamento";
-            this.tcc_OrcamentoBindingSource.DataSource = this.banco;
-            // 
-            // tcc_OrcamentoTableAdapter
-            // 
-            this.tcc_OrcamentoTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.tcc_AutomovelTableAdapter = null;
-            this.tableAdapterManager.tcc_ClienteTableAdapter = null;
-            this.tableAdapterManager.tcc_MecanicoTableAdapter = this.tcc_MecanicoTableAdapter;
-            this.tableAdapterManager.tcc_OrcamentoTableAdapter = null;
-            this.tableAdapterManager.tcc_produtoOrcamentoTableAdapter = null;
-            this.tableAdapterManager.tcc_ProdutoTableAdapter = null;
-            this.tableAdapterManager.tcc_ServicoTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // tcc_MecanicoTableAdapter
-            // 
-            this.tcc_MecanicoTableAdapter.ClearBeforeFill = true;
-            // 
-            // tcc_ServicoTableAdapter
-            // 
-            this.tcc_ServicoTableAdapter.ClearBeforeFill = true;
             // 
             // btnExcluir
             // 
@@ -157,7 +117,7 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(1024, 48);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(79, 16);
+            this.label12.Size = new System.Drawing.Size(80, 16);
             this.label12.TabIndex = 26;
             this.label12.Text = "Organizar por:";
             // 
@@ -166,7 +126,7 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(897, 48);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(79, 16);
+            this.label11.Size = new System.Drawing.Size(80, 16);
             this.label11.TabIndex = 25;
             this.label11.Text = "Pesquisar por:";
             // 
@@ -235,17 +195,84 @@
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8,
+            this.descricao,
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
+            this.dataGridViewTextBoxColumn4,
+            this.desconto});
             this.dgvServico.DataSource = this.tcc_ServicoBindingSource;
             this.dgvServico.Location = new System.Drawing.Point(12, 137);
             this.dgvServico.Name = "dgvServico";
             this.dgvServico.ReadOnly = true;
             this.dgvServico.RowHeadersVisible = false;
             this.dgvServico.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvServico.Size = new System.Drawing.Size(1136, 405);
+            this.dgvServico.Size = new System.Drawing.Size(1136, 376);
             this.dgvServico.TabIndex = 32;
+            this.dgvServico.SelectionChanged += new System.EventHandler(this.dgvServico_SelectionChanged);
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Font = new System.Drawing.Font("Bahnschrift SemiBold Condensed", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.Location = new System.Drawing.Point(423, 105);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(47, 19);
+            this.lblStatus.TabIndex = 33;
+            this.lblStatus.Text = "Status:";
+            // 
+            // btnFinalizar
+            // 
+            this.btnFinalizar.Location = new System.Drawing.Point(311, 102);
+            this.btnFinalizar.Name = "btnFinalizar";
+            this.btnFinalizar.Size = new System.Drawing.Size(106, 28);
+            this.btnFinalizar.TabIndex = 34;
+            this.btnFinalizar.Text = "&Finalizar serviço";
+            this.btnFinalizar.UseVisualStyleBackColor = true;
+            this.btnFinalizar.Click += new System.EventHandler(this.btnFinalizar_Click);
+            // 
+            // tcc_ServicoBindingSource
+            // 
+            this.tcc_ServicoBindingSource.DataMember = "tcc_Servico";
+            this.tcc_ServicoBindingSource.DataSource = this.banco;
+            // 
+            // banco
+            // 
+            this.banco.DataSetName = "Banco";
+            this.banco.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tccMecanicoBindingSource
+            // 
+            this.tccMecanicoBindingSource.DataMember = "tcc_Mecanico";
+            this.tccMecanicoBindingSource.DataSource = this.banco;
+            // 
+            // tcc_OrcamentoBindingSource
+            // 
+            this.tcc_OrcamentoBindingSource.DataMember = "tcc_Orcamento";
+            this.tcc_OrcamentoBindingSource.DataSource = this.banco;
+            // 
+            // tcc_OrcamentoTableAdapter
+            // 
+            this.tcc_OrcamentoTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.tcc_AutomovelTableAdapter = null;
+            this.tableAdapterManager.tcc_ClienteTableAdapter = null;
+            this.tableAdapterManager.tcc_MecanicoTableAdapter = this.tcc_MecanicoTableAdapter;
+            this.tableAdapterManager.tcc_OrcamentoTableAdapter = null;
+            this.tableAdapterManager.tcc_produtoOrcamentoTableAdapter = null;
+            this.tableAdapterManager.tcc_ProdutoTableAdapter = null;
+            this.tableAdapterManager.tcc_ServicoTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // tcc_MecanicoTableAdapter
+            // 
+            this.tcc_MecanicoTableAdapter.ClearBeforeFill = true;
+            // 
+            // tcc_ServicoTableAdapter
+            // 
+            this.tcc_ServicoTableAdapter.ClearBeforeFill = true;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -271,41 +298,61 @@
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
+            // descricao
+            // 
+            this.descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descricao.DataPropertyName = "descricao";
+            this.descricao.HeaderText = "Descrição";
+            this.descricao.Name = "descricao";
+            this.descricao.ReadOnly = true;
+            // 
             // dataGridViewTextBoxColumn6
             // 
+            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.dataGridViewTextBoxColumn6.DataPropertyName = "dataConsulta";
-            dataGridViewCellStyle4.Format = "dd/MM/yyyy";
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewTextBoxColumn6.HeaderText = "Criação do Orçamento";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 140;
+            this.dataGridViewTextBoxColumn6.Width = 133;
             // 
             // dataGridViewTextBoxColumn3
             // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.dataGridViewTextBoxColumn3.DataPropertyName = "dataInicio";
-            dataGridViewCellStyle5.Format = "dd/MM/yyyy";
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Format = "dd/MM/yyyy";
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewTextBoxColumn3.HeaderText = "Data de Inicio";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 125;
+            this.dataGridViewTextBoxColumn3.Width = 93;
             // 
             // dataGridViewTextBoxColumn4
             // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.dataGridViewTextBoxColumn4.DataPropertyName = "dataFim";
-            dataGridViewCellStyle6.Format = "dd/MM/yyyy";
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Format = "dd/MM/yyyy";
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewTextBoxColumn4.HeaderText = "Data de Entrega";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 125;
+            this.dataGridViewTextBoxColumn4.Width = 104;
+            // 
+            // desconto
+            // 
+            this.desconto.DataPropertyName = "desconto";
+            this.desconto.HeaderText = "Desconto";
+            this.desconto.Name = "desconto";
+            this.desconto.ReadOnly = true;
             // 
             // FrmServico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1160, 554);
+            this.Controls.Add(this.btnFinalizar);
+            this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.dgvServico);
             this.Controls.Add(this.btnNovo);
             this.Controls.Add(this.btnExcluir);
@@ -323,11 +370,11 @@
             this.Name = "FrmServico";
             this.Text = "FrmServico";
             this.Load += new System.EventHandler(this.FrmServico_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvServico)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_ServicoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.banco)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tccMecanicoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_OrcamentoBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvServico)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -354,11 +401,15 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.DataGridView dgvServico;
+        private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Button btnFinalizar;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descricao;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn desconto;
     }
 }

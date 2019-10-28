@@ -41,9 +41,11 @@ namespace prjOficinaMecanica
             if (NovoCadastro)
             {
                 tcc_ServicoTableAdapter.InsertQuery(
-                    (int)cmbMecanico.SelectedValue,
                     Orcamento,
-                    dtpInicio.Value
+                    dtpInicio.Value,
+                    (int)cmbMecanico.SelectedValue,
+                    txtObs.Text,
+                    Convert.ToDouble(txtDesconto.Text)
                     );
             }
             else
@@ -52,6 +54,8 @@ namespace prjOficinaMecanica
                     (int)cmbMecanico.SelectedValue,
                     Orcamento,
                     dtpInicio.Value,
+                    txtObs.Text,
+                    Convert.ToDouble(txtDesconto.Text),
                     mecanico,
                     Orcamento
                     );
