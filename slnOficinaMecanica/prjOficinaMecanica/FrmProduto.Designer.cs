@@ -33,11 +33,6 @@
             this.banco = new prjOficinaMecanica.Banco();
             this.tcc_ProdutoTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_ProdutoTableAdapter();
             this.tableAdapterManager = new prjOficinaMecanica.BancoTableAdapters.TableAdapterManager();
-            this.tcc_ProdutoDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.tbnAlterar = new System.Windows.Forms.Button();
             this.btnPesquisar = new System.Windows.Forms.Button();
@@ -48,6 +43,11 @@
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.btnNovo = new System.Windows.Forms.Button();
+            this.tcc_ProdutoDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_ProdutoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.banco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_ProdutoDataGridView)).BeginInit();
@@ -78,56 +78,6 @@
             this.tableAdapterManager.tcc_ProdutoTableAdapter = this.tcc_ProdutoTableAdapter;
             this.tableAdapterManager.tcc_ServicoTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // tcc_ProdutoDataGridView
-            // 
-            this.tcc_ProdutoDataGridView.AllowUserToAddRows = false;
-            this.tcc_ProdutoDataGridView.AllowUserToDeleteRows = false;
-            this.tcc_ProdutoDataGridView.AutoGenerateColumns = false;
-            this.tcc_ProdutoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tcc_ProdutoDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5});
-            this.tcc_ProdutoDataGridView.DataSource = this.tcc_ProdutoBindingSource;
-            this.tcc_ProdutoDataGridView.Location = new System.Drawing.Point(16, 133);
-            this.tcc_ProdutoDataGridView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tcc_ProdutoDataGridView.Name = "tcc_ProdutoDataGridView";
-            this.tcc_ProdutoDataGridView.ReadOnly = true;
-            this.tcc_ProdutoDataGridView.RowHeadersVisible = false;
-            this.tcc_ProdutoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tcc_ProdutoDataGridView.Size = new System.Drawing.Size(580, 324);
-            this.tcc_ProdutoDataGridView.TabIndex = 30;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "descricao";
-            this.dataGridViewTextBoxColumn2.HeaderText = "descricao";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "quantidade";
-            this.dataGridViewTextBoxColumn3.HeaderText = "quantidade";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "precoVenda";
-            this.dataGridViewTextBoxColumn4.HeaderText = "precoVenda";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "precoCompra";
-            this.dataGridViewTextBoxColumn5.HeaderText = "precoCompra";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
             // btnExcluir
             // 
@@ -235,13 +185,53 @@
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
+            // tcc_ProdutoDataGridView
+            // 
+            this.tcc_ProdutoDataGridView.AutoGenerateColumns = false;
+            this.tcc_ProdutoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tcc_ProdutoDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn6});
+            this.tcc_ProdutoDataGridView.DataSource = this.tcc_ProdutoBindingSource;
+            this.tcc_ProdutoDataGridView.Location = new System.Drawing.Point(16, 132);
+            this.tcc_ProdutoDataGridView.Name = "tcc_ProdutoDataGridView";
+            this.tcc_ProdutoDataGridView.Size = new System.Drawing.Size(580, 326);
+            this.tcc_ProdutoDataGridView.TabIndex = 32;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "IDProduto";
+            this.dataGridViewTextBoxColumn1.HeaderText = "IDProduto";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "descricao";
+            this.dataGridViewTextBoxColumn2.HeaderText = "descricao";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "quantidade";
+            this.dataGridViewTextBoxColumn3.HeaderText = "quantidade";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "precoUnit";
+            this.dataGridViewTextBoxColumn6.HeaderText = "precoUnit";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
             // FrmProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(608, 470);
-            this.Controls.Add(this.btnNovo);
+            this.ClientSize = new System.Drawing.Size(616, 470);
             this.Controls.Add(this.tcc_ProdutoDataGridView);
+            this.Controls.Add(this.btnNovo);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.tbnAlterar);
             this.Controls.Add(this.btnPesquisar);
@@ -270,7 +260,6 @@
         private System.Windows.Forms.BindingSource tcc_ProdutoBindingSource;
         private BancoTableAdapters.tcc_ProdutoTableAdapter tcc_ProdutoTableAdapter;
         private BancoTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.DataGridView tcc_ProdutoDataGridView;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button tbnAlterar;
         private System.Windows.Forms.Button btnPesquisar;
@@ -281,9 +270,12 @@
         private System.Windows.Forms.TextBox txtPesquisa;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnNovo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridView tcc_ProdutoDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
     }
 }

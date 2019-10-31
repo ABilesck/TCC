@@ -44,12 +44,13 @@ namespace prjOficinaMecanica
                     txtCidade.Text,
                     txtComplemento.Text,
                     cmbUf.Text,
-                    txtCep.Text
+                    txtCep.Text,
+                    txtFantasia.Text
                     );
             }
             else
             {
-                tcc_MecanicoTableAdapter.Update(
+                tcc_MecanicoTableAdapter.UpdateQuery(
                     txtRazao.Text,
                     txtCnpj.Text,
                     txtIe.Text,
@@ -64,6 +65,7 @@ namespace prjOficinaMecanica
                     txtComplemento.Text,
                     cmbUf.Text,
                     txtCep.Text,
+                    txtFantasia.Text,
                     idMecanico
                     );
             }

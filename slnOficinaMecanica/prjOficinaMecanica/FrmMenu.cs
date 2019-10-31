@@ -62,7 +62,7 @@ namespace prjOficinaMecanica
             frmMecanico.Show();
         }
 
-        private void orçamentoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void orcamentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             foreach (Form item in MdiChildren)
             {
@@ -92,7 +92,7 @@ namespace prjOficinaMecanica
             frmProduto.Show();
         }
 
-        private void serviçoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void servicoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             foreach (Form item in MdiChildren)
             {
@@ -155,6 +155,80 @@ namespace prjOficinaMecanica
 
             LayoutMdi(MdiLayout.TileVertical);
             */
+        }
+
+        private void TimerHora_Tick(object sender, EventArgs e)
+        {
+            lblHora.Text = DateTime.Now.ToString("dd/MM/yyyy - HH:mm:ss");
+        }
+
+        private void btnCliente_Click(object sender, EventArgs e)
+        {
+            clienteToolStripMenuItem_Click(null, null);
+        }
+
+        private void btnMecanico_Click(object sender, EventArgs e)
+        {
+            MnuMecanico_Click(null, null);
+        }
+
+        private void btnProduto_Click(object sender, EventArgs e)
+        {
+            produtoToolStripMenuItem_Click(null, null);
+        }
+
+        private void btnOrcamento_Click(object sender, EventArgs e)
+        {
+            orcamentoToolStripMenuItem_Click(null, null);
+        }
+
+        private void btnServico_Click(object sender, EventArgs e)
+        {
+            servicoToolStripMenuItem_Click(null, null);
+        }
+
+        private void mnuRelProduto_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in MdiChildren)
+            {
+                if(item is FrmRtpProdutos)
+                {
+                    item.Focus();
+                    return;
+                }
+            }
+            FrmRtpProdutos rtpProdutos = new FrmRtpProdutos() { MdiParent = this };
+            rtpProdutos.Show();
+        }
+
+        private void clienteToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in MdiChildren)
+            {
+                if(item is FrmRtpCliente)
+                {
+                    item.Focus();
+                    return;
+                }
+            }
+
+            FrmRtpCliente rtpCliente = new FrmRtpCliente() { MdiParent = this };
+            rtpCliente.Show();
+        }
+
+        private void mecânicoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in MdiChildren)
+            {
+                if (item is FrmRtpMecanico)
+                {
+                    item.Focus();
+                    return;
+                }
+            }
+
+            FrmRtpMecanico rtpMecanico = new FrmRtpMecanico() { MdiParent = this };
+            rtpMecanico.Show();
         }
     }
 }

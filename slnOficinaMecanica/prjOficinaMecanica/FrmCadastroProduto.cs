@@ -26,17 +26,15 @@ namespace prjOficinaMecanica
                 tcc_ProdutoTableAdapter.Insert(
                     txtDescricao.Text,
                     Convert.ToInt32(nudQuantidade.Value),
-                    Convert.ToDouble(txtPrecoVenda.Text),
-                    Convert.ToDouble(txtPrecoCompra.Text)
+                    Convert.ToDouble(txtPreco.Text)
                     );
             }
             else
             {
-                tcc_ProdutoTableAdapter.Update(
+                tcc_ProdutoTableAdapter.UpdateQuery(
                     txtDescricao.Text,
                     Convert.ToInt32(nudQuantidade.Value),
-                    Convert.ToDouble(txtPrecoVenda.Text),
-                    Convert.ToDouble(txtPrecoCompra.Text),
+                    Convert.ToDouble(txtPreco.Text),
                     IdProduto
                     );
             }
@@ -51,11 +49,10 @@ namespace prjOficinaMecanica
             tcc_ProdutoTableAdapter.Fill(banco.tcc_Produto);
         }
 
-        public void Alterar(string desc, string pVenda, string pCompra, int qtde)
+        public void Alterar(string desc, string preco, int qtde)
         {
             txtDescricao.Text = desc;
-            txtPrecoVenda.Text = pVenda;
-            txtPrecoCompra.Text = pCompra;
+            txtPreco.Text = preco;
             nudQuantidade.Value = qtde;
         }
 
@@ -68,6 +65,11 @@ namespace prjOficinaMecanica
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void txtPreco_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
         }
     }
 }

@@ -37,6 +37,7 @@
             System.Windows.Forms.Label razaoSocialLabel;
             System.Windows.Forms.Label ieLabel;
             System.Windows.Forms.Label cnpjLabel;
+            System.Windows.Forms.Label label1;
             this.banco = new prjOficinaMecanica.Banco();
             this.tcc_MecanicoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tcc_MecanicoTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_MecanicoTableAdapter();
@@ -64,6 +65,7 @@
             this.txtRazao = new System.Windows.Forms.TextBox();
             this.txtIe = new System.Windows.Forms.TextBox();
             this.txtCnpj = new System.Windows.Forms.TextBox();
+            this.txtFantasia = new System.Windows.Forms.TextBox();
             comissaoLabel = new System.Windows.Forms.Label();
             agenciaBancariaLabel = new System.Windows.Forms.Label();
             contaBancariaLabel = new System.Windows.Forms.Label();
@@ -72,10 +74,83 @@
             razaoSocialLabel = new System.Windows.Forms.Label();
             ieLabel = new System.Windows.Forms.Label();
             cnpjLabel = new System.Windows.Forms.Label();
+            label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.banco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_MecanicoBindingSource)).BeginInit();
             this.grbConta.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // comissaoLabel
+            // 
+            comissaoLabel.AutoSize = true;
+            comissaoLabel.Location = new System.Drawing.Point(7, 100);
+            comissaoLabel.Name = "comissaoLabel";
+            comissaoLabel.Size = new System.Drawing.Size(54, 13);
+            comissaoLabel.TabIndex = 4;
+            comissaoLabel.Text = "comissão:";
+            // 
+            // agenciaBancariaLabel
+            // 
+            agenciaBancariaLabel.AutoSize = true;
+            agenciaBancariaLabel.Location = new System.Drawing.Point(175, 37);
+            agenciaBancariaLabel.Name = "agenciaBancariaLabel";
+            agenciaBancariaLabel.Size = new System.Drawing.Size(93, 13);
+            agenciaBancariaLabel.TabIndex = 2;
+            agenciaBancariaLabel.Text = "agencia Bancaria:";
+            // 
+            // contaBancariaLabel
+            // 
+            contaBancariaLabel.AutoSize = true;
+            contaBancariaLabel.Location = new System.Drawing.Point(6, 37);
+            contaBancariaLabel.Name = "contaBancariaLabel";
+            contaBancariaLabel.Size = new System.Drawing.Size(82, 13);
+            contaBancariaLabel.TabIndex = 0;
+            contaBancariaLabel.Text = "conta Bancaria:";
+            // 
+            // emailLabel
+            // 
+            emailLabel.AutoSize = true;
+            emailLabel.Location = new System.Drawing.Point(9, 109);
+            emailLabel.Name = "emailLabel";
+            emailLabel.Size = new System.Drawing.Size(34, 13);
+            emailLabel.TabIndex = 33;
+            emailLabel.Text = "email:";
+            // 
+            // telefoneLabel
+            // 
+            telefoneLabel.AutoSize = true;
+            telefoneLabel.Location = new System.Drawing.Point(9, 157);
+            telefoneLabel.Name = "telefoneLabel";
+            telefoneLabel.Size = new System.Drawing.Size(48, 13);
+            telefoneLabel.TabIndex = 30;
+            telefoneLabel.Text = "telefone:";
+            // 
+            // razaoSocialLabel
+            // 
+            razaoSocialLabel.AutoSize = true;
+            razaoSocialLabel.Location = new System.Drawing.Point(9, 13);
+            razaoSocialLabel.Name = "razaoSocialLabel";
+            razaoSocialLabel.Size = new System.Drawing.Size(68, 13);
+            razaoSocialLabel.TabIndex = 24;
+            razaoSocialLabel.Text = "razao Social:";
+            // 
+            // ieLabel
+            // 
+            ieLabel.AutoSize = true;
+            ieLabel.Location = new System.Drawing.Point(231, 61);
+            ieLabel.Name = "ieLabel";
+            ieLabel.Size = new System.Drawing.Size(18, 13);
+            ieLabel.TabIndex = 27;
+            ieLabel.Text = "ie:";
+            // 
+            // cnpjLabel
+            // 
+            cnpjLabel.AutoSize = true;
+            cnpjLabel.Location = new System.Drawing.Point(9, 61);
+            cnpjLabel.Name = "cnpjLabel";
+            cnpjLabel.Size = new System.Drawing.Size(30, 13);
+            cnpjLabel.TabIndex = 26;
+            cnpjLabel.Text = "cnpj:";
             // 
             // banco
             // 
@@ -128,15 +203,6 @@
             this.grbConta.TabStop = false;
             this.grbConta.Text = "Conta para depósito";
             // 
-            // comissaoLabel
-            // 
-            comissaoLabel.AutoSize = true;
-            comissaoLabel.Location = new System.Drawing.Point(7, 100);
-            comissaoLabel.Name = "comissaoLabel";
-            comissaoLabel.Size = new System.Drawing.Size(54, 13);
-            comissaoLabel.TabIndex = 4;
-            comissaoLabel.Text = "comissão:";
-            // 
             // txtComissao
             // 
             this.txtComissao.Location = new System.Drawing.Point(10, 119);
@@ -145,15 +211,6 @@
             this.txtComissao.Size = new System.Drawing.Size(105, 20);
             this.txtComissao.TabIndex = 5;
             // 
-            // agenciaBancariaLabel
-            // 
-            agenciaBancariaLabel.AutoSize = true;
-            agenciaBancariaLabel.Location = new System.Drawing.Point(175, 37);
-            agenciaBancariaLabel.Name = "agenciaBancariaLabel";
-            agenciaBancariaLabel.Size = new System.Drawing.Size(93, 13);
-            agenciaBancariaLabel.TabIndex = 2;
-            agenciaBancariaLabel.Text = "agencia Bancaria:";
-            // 
             // txtAgencia
             // 
             this.txtAgencia.Location = new System.Drawing.Point(178, 57);
@@ -161,15 +218,6 @@
             this.txtAgencia.Name = "txtAgencia";
             this.txtAgencia.Size = new System.Drawing.Size(149, 20);
             this.txtAgencia.TabIndex = 3;
-            // 
-            // contaBancariaLabel
-            // 
-            contaBancariaLabel.AutoSize = true;
-            contaBancariaLabel.Location = new System.Drawing.Point(6, 37);
-            contaBancariaLabel.Name = "contaBancariaLabel";
-            contaBancariaLabel.Size = new System.Drawing.Size(82, 13);
-            contaBancariaLabel.TabIndex = 0;
-            contaBancariaLabel.Text = "conta Bancaria:";
             // 
             // txtConta
             // 
@@ -194,15 +242,6 @@
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(294, 20);
             this.txtBairro.TabIndex = 47;
-            // 
-            // emailLabel
-            // 
-            emailLabel.AutoSize = true;
-            emailLabel.Location = new System.Drawing.Point(9, 109);
-            emailLabel.Name = "emailLabel";
-            emailLabel.Size = new System.Drawing.Size(34, 13);
-            emailLabel.TabIndex = 33;
-            emailLabel.Text = "email:";
             // 
             // cmbUf
             // 
@@ -268,15 +307,6 @@
             this.label9.TabIndex = 43;
             this.label9.Text = "CEP";
             // 
-            // telefoneLabel
-            // 
-            telefoneLabel.AutoSize = true;
-            telefoneLabel.Location = new System.Drawing.Point(9, 157);
-            telefoneLabel.Name = "telefoneLabel";
-            telefoneLabel.Size = new System.Drawing.Size(48, 13);
-            telefoneLabel.TabIndex = 30;
-            telefoneLabel.Text = "telefone:";
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -312,15 +342,6 @@
             this.label6.TabIndex = 40;
             this.label6.Text = "Complemento";
             // 
-            // razaoSocialLabel
-            // 
-            razaoSocialLabel.AutoSize = true;
-            razaoSocialLabel.Location = new System.Drawing.Point(9, 13);
-            razaoSocialLabel.Name = "razaoSocialLabel";
-            razaoSocialLabel.Size = new System.Drawing.Size(68, 13);
-            razaoSocialLabel.TabIndex = 24;
-            razaoSocialLabel.Text = "razao Social:";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -329,15 +350,6 @@
             this.label5.Size = new System.Drawing.Size(34, 13);
             this.label5.TabIndex = 39;
             this.label5.Text = "Bairro";
-            // 
-            // ieLabel
-            // 
-            ieLabel.AutoSize = true;
-            ieLabel.Location = new System.Drawing.Point(231, 61);
-            ieLabel.Name = "ieLabel";
-            ieLabel.Size = new System.Drawing.Size(18, 13);
-            ieLabel.TabIndex = 27;
-            ieLabel.Text = "ie:";
             // 
             // label4
             // 
@@ -353,7 +365,7 @@
             this.txtRazao.Location = new System.Drawing.Point(12, 33);
             this.txtRazao.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtRazao.Name = "txtRazao";
-            this.txtRazao.Size = new System.Drawing.Size(551, 20);
+            this.txtRazao.Size = new System.Drawing.Size(258, 20);
             this.txtRazao.TabIndex = 25;
             // 
             // txtIe
@@ -372,20 +384,30 @@
             this.txtCnpj.Size = new System.Drawing.Size(216, 20);
             this.txtCnpj.TabIndex = 28;
             // 
-            // cnpjLabel
+            // txtFantasia
             // 
-            cnpjLabel.AutoSize = true;
-            cnpjLabel.Location = new System.Drawing.Point(9, 61);
-            cnpjLabel.Name = "cnpjLabel";
-            cnpjLabel.Size = new System.Drawing.Size(30, 13);
-            cnpjLabel.TabIndex = 26;
-            cnpjLabel.Text = "cnpj:";
+            this.txtFantasia.Location = new System.Drawing.Point(276, 33);
+            this.txtFantasia.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtFantasia.Name = "txtFantasia";
+            this.txtFantasia.Size = new System.Drawing.Size(258, 20);
+            this.txtFantasia.TabIndex = 50;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(273, 13);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(75, 13);
+            label1.TabIndex = 51;
+            label1.Text = "Nome fantasia";
             // 
             // FrmCadastroMecanico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(576, 647);
+            this.Controls.Add(label1);
+            this.Controls.Add(this.txtFantasia);
             this.Controls.Add(this.txtCep);
             this.Controls.Add(this.grbConta);
             this.Controls.Add(this.txtComplemento);
@@ -453,5 +475,6 @@
         private System.Windows.Forms.TextBox txtRazao;
         private System.Windows.Forms.TextBox txtIe;
         private System.Windows.Forms.TextBox txtCnpj;
+        private System.Windows.Forms.TextBox txtFantasia;
     }
 }

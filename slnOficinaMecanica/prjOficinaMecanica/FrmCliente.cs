@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace prjOficinaMecanica
 {
-    //TODO: inner join no select do automovel para ver o nome do dono
-    //TODO: mudar o design do formulario
-    //TODO: fazer as mascaras das text box
-
     public partial class FrmCliente : Form
     {
         int IdCliente = 0;
@@ -28,43 +25,71 @@ namespace prjOficinaMecanica
 
         private void dgvCliente_SelectionChanged(object sender, EventArgs e)
         {
-            //tcPrincipal.TabIndex = 0;
-            if (dgvCliente.RowCount > 0)
+            try
             {
-                var cliente = (tcc_ClienteBindingSource.Current as DataRowView).Row as Banco.tcc_ClienteRow;
+                if (dgvCliente.RowCount > 0)
+                {
+                    var cliente = (tcc_ClienteBindingSource.Current as DataRowView).Row as Banco.tcc_ClienteRow;
 
-                IdCliente = cliente.IDCliente;
-                nomeCliente = cliente.nome;
-                tcc_AutomovelTableAdapter.FillByCliente(banco.tcc_Automovel, IdCliente);
+                    IdCliente = cliente.IDCliente;
+                    nomeCliente = cliente.nome;
+                    tcc_AutomovelTableAdapter.FillByCliente(banco.tcc_Automovel, IdCliente);
+                }
+            }
+            catch(NullReferenceException ex)
+            {
+            }
+            catch(SqlException ex)
+            {
+                MessageBox.Show("Ocorreu um erro no banco de dados\n" + ex.Message, "Erro ao selecionar",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro inesperado\n" + ex.Message, "Erro ao selecionar",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            if (!txtPesquisa.Text.Equals(""))
+            try
             {
-                if (cmbFiltro.SelectedIndex == 0)
+                if (!txtPesquisa.Text.Equals(""))
                 {
-                    tcc_ClienteTableAdapter.FillById(banco.tcc_Cliente,
-                        Convert.ToInt32(txtPesquisa.Text));
+                    if (cmbFiltro.SelectedIndex == 0)
+                    {
+                        tcc_ClienteTableAdapter.FillById(banco.tcc_Cliente,
+                            Convert.ToInt32(txtPesquisa.Text));
 
+                    }
+                    else if (cmbFiltro.SelectedIndex == 1)
+                    {
+                        tcc_ClienteTableAdapter.FillByDocumentoSocial(banco.tcc_Cliente,
+                            "%" + txtPesquisa.Text + "%");
+
+                    }
+                    else if (cmbFiltro.SelectedIndex == 2)
+                    {
+                        tcc_ClienteTableAdapter.FillByNome(banco.tcc_Cliente,
+                            "%" + txtPesquisa.Text + "%");
+
+                    }
                 }
-                else if (cmbFiltro.SelectedIndex == 1)
+                else
                 {
-                    tcc_ClienteTableAdapter.FillByDocumentoSocial(banco.tcc_Cliente,
-                        "%" + txtPesquisa.Text + "%");
-
-                }
-                else if (cmbFiltro.SelectedIndex == 2)
-                {
-                    tcc_ClienteTableAdapter.FillByNome(banco.tcc_Cliente,
-                        "%" + txtPesquisa.Text + "%");
-
+                    MessageBox.Show("O campo de pesquisa está vazio!", "Erro", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
             }
-            else
+            catch(SqlException ex)
             {
-                MessageBox.Show("O campo de pesquisa está vazio!", "Erro", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Ocorreu um erro no banco de dados\n" + ex.Message, "Erro ao pesquisar",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro inesperado\n" + ex.Message, "Erro ao pesquisar",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -80,45 +105,67 @@ namespace prjOficinaMecanica
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Deseja excluir o cliente selecionado e todos seus veiculos cadastrados?", "Atenção",
+            try
+            {
+                if (MessageBox.Show("Deseja excluir o cliente selecionado e todos seus veiculos cadastrados?", "Atenção",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                {
+                    IdCliente = Convert.ToInt32(((DataRowView)tcc_ClienteBindingSource.Current).Row["IDCliente"].ToString());
+                    tcc_AutomovelTableAdapter.DeleteTodos(IdCliente);
+                    tcc_ClienteTableAdapter.Delete(IdCliente);
+                    FrmCliente_Load(null, null);
+                }
+            }
+            catch(NullReferenceException ex)
             {
-                IdCliente = Convert.ToInt32(((DataRowView)tcc_ClienteBindingSource.Current).Row["IDCliente"].ToString());
-                //tcc_ClienteTableAdapter.Delete(Convert.ToInt32(dgvCliente[0, dgvCliente.CurrentRow.Index].Value.ToString()));
-                tcc_AutomovelTableAdapter.DeleteTodos(IdCliente);
-                tcc_ClienteTableAdapter.Delete(IdCliente);
-                FrmCliente_Load(null, null);
+                MessageBox.Show("Ocorreu um erro de objeto\n" + ex.Message, "Erro ao excluir",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch(SqlException ex)
+            {
+                MessageBox.Show("Ocorreu um erro no banco de dados\n" + ex.Message, "Erro ao excluir",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro inesperado\n" + ex.Message, "Erro ao excluir",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnAddCarro_Click(object sender, EventArgs e)
         {
-            FrmAutomovel frmCarro = new FrmAutomovel();
-            IdCliente = Convert.ToInt32(((DataRowView)tcc_ClienteBindingSource.Current).Row["IDCliente"].ToString());
-            nomeCliente = ((DataRowView)tcc_ClienteBindingSource.Current).Row["nome"].ToString();
-            frmCarro.idCliente = IdCliente;
-            frmCarro.nomeCliente = nomeCliente;
-            frmCarro.autoNovo = true;
-            frmCarro.ShowDialog();
+            try
+            {
+                FrmAutomovel frmCarro = new FrmAutomovel();
+                IdCliente = Convert.ToInt32(((DataRowView)tcc_ClienteBindingSource.Current).Row["IDCliente"].ToString());
+                nomeCliente = ((DataRowView)tcc_ClienteBindingSource.Current).Row["nome"].ToString();
+                frmCarro.idCliente = IdCliente;
+                frmCarro.nomeCliente = nomeCliente;
+                frmCarro.autoNovo = true;
+                frmCarro.ShowDialog();
+            }
+            catch(NullReferenceException ex)
+            {
+                MessageBox.Show("Formulário não encontrado\n" + ex.Message, "Erro ao abrir formulário",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro inesperado\n" + ex.Message, "Erro ao abrir formulário",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dgvCliente_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            var cliente = (tcc_ClienteBindingSource.Current as DataRowView).Row as Banco.tcc_ClienteRow;
-
-            FrmCadastroCliente cadastroCliente = new FrmCadastroCliente();
-            cadastroCliente.NovoCadastro = false;
-            cadastroCliente.Alterar(cliente.nome, cliente.documentoSocial, cliente.telefone,
-                cliente.email, cliente.logradouro, cliente.bairro, cliente.cidade, cliente.complemento,
-                cliente.uf, cliente.cep, cliente.registroGeral);
-            cadastroCliente.Id = cliente.IDCliente;
-            cadastroCliente.ShowDialog();
+            btnAlterar_Click(null, null);
         }
 
         public void Reload()
         {
-            IdCliente = Convert.ToInt32(((DataRowView)tcc_ClienteBindingSource.Current).Row["IDCliente"].ToString());
+            //IdCliente = Convert.ToInt32(((DataRowView)tcc_ClienteBindingSource.Current).Row["IDCliente"].ToString());
             FrmCliente_Load(null, null);
         }
 
@@ -129,22 +176,48 @@ namespace prjOficinaMecanica
 
         private void btnNovoCliente_Click(object sender, EventArgs e)
         {
-            FrmCadastroCliente cadastroCliente = new FrmCadastroCliente();
-            cadastroCliente.NovoCadastro = true;
-            cadastroCliente.ShowDialog();
+            try
+            {
+                FrmCadastroCliente cadastroCliente = new FrmCadastroCliente();
+                cadastroCliente.NovoCadastro = true;
+                cadastroCliente.ShowDialog();
+            }
+            catch(NullReferenceException ex)
+            {
+                MessageBox.Show("Formulário não encontrado" + ex.Message, "Erro ao abrir formulário",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro inesperado\n" + ex.Message, "Erro ao abrir formulário",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            var cliente = (tcc_ClienteBindingSource.Current as DataRowView).Row as Banco.tcc_ClienteRow;
+            try
+            {
+                var cliente = (tcc_ClienteBindingSource.Current as DataRowView).Row as Banco.tcc_ClienteRow;
 
-            FrmCadastroCliente cadastroCliente = new FrmCadastroCliente();
-            cadastroCliente.NovoCadastro = false;
-            cadastroCliente.Alterar(cliente.nome, cliente.documentoSocial, cliente.telefone,
-                cliente.email, cliente.logradouro, cliente.bairro, cliente.cidade, cliente.complemento,
-                cliente.uf, cliente.cep, cliente.registroGeral);
-            cadastroCliente.Id = cliente.IDCliente;
-            cadastroCliente.ShowDialog();
+                FrmCadastroCliente cadastroCliente = new FrmCadastroCliente();
+                cadastroCliente.NovoCadastro = false;
+                cadastroCliente.Alterar(cliente.nome, cliente.documentoSocial, cliente.telefone,
+                    cliente.email, cliente.logradouro, cliente.bairro, cliente.cidade, cliente.complemento,
+                    cliente.uf, cliente.cep, cliente.registroGeral);
+                cadastroCliente.Id = cliente.IDCliente;
+                cadastroCliente.ShowDialog();
+            }
+            catch(NullReferenceException ex)
+            {
+                MessageBox.Show("Objeto não encontrado\n" + ex.Message, "Erro ao alterar",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro inesperado\n" + ex.Message, "Erro ao alterar",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dgvCliente_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -154,31 +227,59 @@ namespace prjOficinaMecanica
 
         private void btnAlterarCarro_Click(object sender, EventArgs e)
         {
-            FrmAutomovel frmCarro = new FrmAutomovel();
-            //IdCliente = Convert.ToInt32(((DataRowView)tcc_ClienteBindingSource.Current).Row["IDCliente"].ToString());
-            //nomeCliente = ((DataRowView)tcc_ClienteBindingSource.Current).Row["nome"].ToString();
+            try
+            {
+                FrmAutomovel frmCarro = new FrmAutomovel();
+                var cliente = (tcc_ClienteBindingSource.Current as DataRowView).Row as Banco.tcc_ClienteRow;
+                var carro = (tcc_AutomovelBindingSource.Current as DataRowView).Row as Banco.tcc_AutomovelRow;
 
-            var cliente = (tcc_ClienteBindingSource.Current as DataRowView).Row as Banco.tcc_ClienteRow;
-            var carro = (tcc_AutomovelBindingSource.Current as DataRowView).Row as Banco.tcc_AutomovelRow;
-
-            frmCarro.idCliente = cliente.IDCliente;
-            frmCarro.nomeCliente = cliente.nome;
-            frmCarro.Alterar(carro.IDAutomovel, carro.placa, carro.modelo, 
-                carro.ano, carro.cor, carro.kmRodado);
-            frmCarro.autoNovo = false;
-            frmCarro.ShowDialog();
+                frmCarro.idCliente = cliente.IDCliente;
+                frmCarro.nomeCliente = cliente.nome;
+                frmCarro.Alterar(carro.IDAutomovel, carro.placa, carro.modelo,
+                    carro.ano, carro.cor, carro.kmRodado);
+                frmCarro.autoNovo = false;
+                frmCarro.ShowDialog();
+            }
+            catch(NullReferenceException ex)
+            {
+                MessageBox.Show("Objeto não encontrado\n" + ex.Message, "Erro ao alterar",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro inesperado\n" + ex.Message, "Erro ao alterar",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnExcluirCarro_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Deseja excluir o automovel selecionado?", "Atenção",
+            try
+            {
+                if (MessageBox.Show("Deseja excluir o automovel selecionado?", "Atenção",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                {
+                    var carro = (tcc_AutomovelBindingSource.Current as DataRowView).Row
+                        as Banco.tcc_AutomovelRow;
+                    tcc_AutomovelTableAdapter.Delete(carro.IDAutomovel);
+                    tcc_AutomovelTableAdapter.FillByCliente(banco.tcc_Automovel, IdCliente);
+                }
+            }
+            catch (NullReferenceException ex)
             {
-                var carro = (tcc_AutomovelBindingSource.Current as DataRowView).Row
-                    as Banco.tcc_AutomovelRow;
-                tcc_AutomovelTableAdapter.Delete(carro.IDAutomovel);
-                tcc_AutomovelTableAdapter.FillByCliente(banco.tcc_Automovel,IdCliente);
+                MessageBox.Show("Objeto não encontrado\n" + ex.Message, "Erro ao excluir",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch(SqlException ex)
+            {
+                MessageBox.Show("Ocorreu um erro no banco de dados\n" + ex.Message, "Erro ao excluir",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro inesperado\n" + ex.Message, "Erro ao excluir",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

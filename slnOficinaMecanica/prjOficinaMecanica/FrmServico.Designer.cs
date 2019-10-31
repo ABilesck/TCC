@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnPesquisaCancelar = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
@@ -43,30 +40,30 @@
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.btnNovo = new System.Windows.Forms.Button();
-            this.dgvServico = new System.Windows.Forms.DataGridView();
-            this.lblStatus = new System.Windows.Forms.Label();
-            this.btnFinalizar = new System.Windows.Forms.Button();
             this.tcc_ServicoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.banco = new prjOficinaMecanica.Banco();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.btnFinalizar = new System.Windows.Forms.Button();
             this.tccMecanicoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tcc_OrcamentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tcc_OrcamentoTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_OrcamentoTableAdapter();
             this.tableAdapterManager = new prjOficinaMecanica.BancoTableAdapters.TableAdapterManager();
             this.tcc_MecanicoTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_MecanicoTableAdapter();
             this.tcc_ServicoTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_ServicoTableAdapter();
+            this.dgvServico = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.desconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvServico)).BeginInit();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_ServicoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.banco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tccMecanicoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_OrcamentoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvServico)).BeginInit();
             this.SuspendLayout();
             // 
             // btnExcluir
@@ -185,30 +182,15 @@
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
-            // dgvServico
+            // tcc_ServicoBindingSource
             // 
-            this.dgvServico.AllowUserToAddRows = false;
-            this.dgvServico.AllowUserToDeleteRows = false;
-            this.dgvServico.AutoGenerateColumns = false;
-            this.dgvServico.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvServico.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8,
-            this.descricao,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.desconto});
-            this.dgvServico.DataSource = this.tcc_ServicoBindingSource;
-            this.dgvServico.Location = new System.Drawing.Point(12, 137);
-            this.dgvServico.Name = "dgvServico";
-            this.dgvServico.ReadOnly = true;
-            this.dgvServico.RowHeadersVisible = false;
-            this.dgvServico.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvServico.Size = new System.Drawing.Size(1136, 376);
-            this.dgvServico.TabIndex = 32;
-            this.dgvServico.SelectionChanged += new System.EventHandler(this.dgvServico_SelectionChanged);
+            this.tcc_ServicoBindingSource.DataMember = "tcc_Servico";
+            this.tcc_ServicoBindingSource.DataSource = this.banco;
+            // 
+            // banco
+            // 
+            this.banco.DataSetName = "Banco";
+            this.banco.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // lblStatus
             // 
@@ -229,16 +211,6 @@
             this.btnFinalizar.Text = "&Finalizar serviço";
             this.btnFinalizar.UseVisualStyleBackColor = true;
             this.btnFinalizar.Click += new System.EventHandler(this.btnFinalizar_Click);
-            // 
-            // tcc_ServicoBindingSource
-            // 
-            this.tcc_ServicoBindingSource.DataMember = "tcc_Servico";
-            this.tcc_ServicoBindingSource.DataSource = this.banco;
-            // 
-            // banco
-            // 
-            this.banco.DataSetName = "Banco";
-            this.banco.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tccMecanicoBindingSource
             // 
@@ -274,86 +246,94 @@
             // 
             this.tcc_ServicoTableAdapter.ClearBeforeFill = true;
             // 
+            // dgvServico
+            // 
+            this.dgvServico.AllowUserToAddRows = false;
+            this.dgvServico.AllowUserToDeleteRows = false;
+            this.dgvServico.AutoGenerateColumns = false;
+            this.dgvServico.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvServico.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn11});
+            this.dgvServico.DataSource = this.tcc_ServicoBindingSource;
+            this.dgvServico.Location = new System.Drawing.Point(12, 137);
+            this.dgvServico.Name = "dgvServico";
+            this.dgvServico.ReadOnly = true;
+            this.dgvServico.RowHeadersVisible = false;
+            this.dgvServico.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvServico.Size = new System.Drawing.Size(1136, 405);
+            this.dgvServico.TabIndex = 34;
+            // 
             // dataGridViewTextBoxColumn5
             // 
-            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn5.DataPropertyName = "razaoSocial";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Mecânico";
+            this.dataGridViewTextBoxColumn5.HeaderText = "razaoSocial";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "modelo";
-            this.dataGridViewTextBoxColumn7.HeaderText = "Automovel";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
             // dataGridViewTextBoxColumn8
             // 
-            this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn8.DataPropertyName = "nome";
-            this.dataGridViewTextBoxColumn8.HeaderText = "Cliente";
+            this.dataGridViewTextBoxColumn8.HeaderText = "nome";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
-            // descricao
+            // dataGridViewTextBoxColumn7
             // 
-            this.descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descricao.DataPropertyName = "descricao";
-            this.descricao.HeaderText = "Descrição";
-            this.descricao.Name = "descricao";
-            this.descricao.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "dataConsulta";
-            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewTextBoxColumn6.HeaderText = "Criação do Orçamento";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 133;
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "modelo";
+            this.dataGridViewTextBoxColumn7.HeaderText = "modelo";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn3
             // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.dataGridViewTextBoxColumn3.DataPropertyName = "dataInicio";
-            dataGridViewCellStyle2.Format = "dd/MM/yyyy";
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Data de Inicio";
+            this.dataGridViewTextBoxColumn3.HeaderText = "dataInicio";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 93;
             // 
             // dataGridViewTextBoxColumn4
             // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.dataGridViewTextBoxColumn4.DataPropertyName = "dataFim";
-            dataGridViewCellStyle3.Format = "dd/MM/yyyy";
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewTextBoxColumn4.HeaderText = "Data de Entrega";
+            this.dataGridViewTextBoxColumn4.HeaderText = "dataFim";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 104;
             // 
-            // desconto
+            // dataGridViewTextBoxColumn10
             // 
-            this.desconto.DataPropertyName = "desconto";
-            this.desconto.HeaderText = "Desconto";
-            this.desconto.Name = "desconto";
-            this.desconto.ReadOnly = true;
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "descricao";
+            this.dataGridViewTextBoxColumn10.HeaderText = "descricao";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "MaoDeObra";
+            this.dataGridViewTextBoxColumn9.HeaderText = "MaoDeObra";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "desconto";
+            this.dataGridViewTextBoxColumn11.HeaderText = "desconto";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
             // 
             // FrmServico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1160, 554);
+            this.ClientSize = new System.Drawing.Size(1168, 554);
+            this.Controls.Add(this.dgvServico);
             this.Controls.Add(this.btnFinalizar);
             this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.dgvServico);
             this.Controls.Add(this.btnNovo);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnPesquisaCancelar);
@@ -370,11 +350,11 @@
             this.Name = "FrmServico";
             this.Text = "FrmServico";
             this.Load += new System.EventHandler(this.FrmServico_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvServico)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_ServicoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.banco)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tccMecanicoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_OrcamentoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvServico)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -400,16 +380,16 @@
         private System.Windows.Forms.TextBox txtPesquisa;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnNovo;
-        private System.Windows.Forms.DataGridView dgvServico;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Button btnFinalizar;
+        private System.Windows.Forms.DataGridView dgvServico;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descricao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn desconto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
     }
 }

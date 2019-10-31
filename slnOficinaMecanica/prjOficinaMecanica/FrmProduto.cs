@@ -113,7 +113,7 @@ namespace prjOficinaMecanica
                 FrmCadastroProduto cadastroProduto = new FrmCadastroProduto();
                 cadastroProduto.NovoCadastro = false;
                 cadastroProduto.Alterar(produto.descricao,
-                    produto.precoVenda.ToString(), produto.precoCompra.ToString(), produto.quantidade);
+                    produto.precoUnit.ToString(), produto.quantidade);
                 cadastroProduto.IdProduto = produto.IDProduto;
                 cadastroProduto.ShowDialog();
             }

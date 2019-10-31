@@ -31,10 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label quantidadeLabel;
             System.Windows.Forms.Label descricaoLabel;
-            System.Windows.Forms.Label precoVendaLabel;
             System.Windows.Forms.Label precoCompraLabel;
-            this.txtPrecoCompra = new System.Windows.Forms.MaskedTextBox();
-            this.txtPrecoVenda = new System.Windows.Forms.MaskedTextBox();
             this.btnGravar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.nudQuantidade = new System.Windows.Forms.NumericUpDown();
@@ -43,52 +40,14 @@
             this.tcc_ProdutoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tcc_ProdutoTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_ProdutoTableAdapter();
             this.tableAdapterManager = new prjOficinaMecanica.BancoTableAdapters.TableAdapterManager();
+            this.txtPreco = new System.Windows.Forms.MaskedTextBox();
             quantidadeLabel = new System.Windows.Forms.Label();
             descricaoLabel = new System.Windows.Forms.Label();
-            precoVendaLabel = new System.Windows.Forms.Label();
             precoCompraLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantidade)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.banco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_ProdutoBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // txtPrecoCompra
-            // 
-            this.txtPrecoCompra.Location = new System.Drawing.Point(269, 77);
-            this.txtPrecoCompra.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtPrecoCompra.Name = "txtPrecoCompra";
-            this.txtPrecoCompra.Size = new System.Drawing.Size(152, 20);
-            this.txtPrecoCompra.TabIndex = 26;
-            // 
-            // txtPrecoVenda
-            // 
-            this.txtPrecoVenda.Location = new System.Drawing.Point(269, 29);
-            this.txtPrecoVenda.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtPrecoVenda.Name = "txtPrecoVenda";
-            this.txtPrecoVenda.Size = new System.Drawing.Size(152, 20);
-            this.txtPrecoVenda.TabIndex = 25;
-            // 
-            // btnGravar
-            // 
-            this.btnGravar.Location = new System.Drawing.Point(262, 155);
-            this.btnGravar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnGravar.Name = "btnGravar";
-            this.btnGravar.Size = new System.Drawing.Size(75, 28);
-            this.btnGravar.TabIndex = 24;
-            this.btnGravar.Text = "Gravar";
-            this.btnGravar.UseVisualStyleBackColor = true;
-            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Location = new System.Drawing.Point(346, 155);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 28);
-            this.btnCancelar.TabIndex = 23;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // quantidadeLabel
             // 
@@ -99,14 +58,6 @@
             quantidadeLabel.TabIndex = 20;
             quantidadeLabel.Text = "quantidade:";
             // 
-            // nudQuantidade
-            // 
-            this.nudQuantidade.Location = new System.Drawing.Point(8, 77);
-            this.nudQuantidade.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.nudQuantidade.Name = "nudQuantidade";
-            this.nudQuantidade.Size = new System.Drawing.Size(118, 20);
-            this.nudQuantidade.TabIndex = 21;
-            // 
             // descricaoLabel
             // 
             descricaoLabel.AutoSize = true;
@@ -116,31 +67,62 @@
             descricaoLabel.TabIndex = 16;
             descricaoLabel.Text = "descricao:";
             // 
+            // precoCompraLabel
+            // 
+            precoCompraLabel.AutoSize = true;
+            precoCompraLabel.Location = new System.Drawing.Point(250, 59);
+            precoCompraLabel.Name = "precoCompraLabel";
+            precoCompraLabel.Size = new System.Drawing.Size(74, 13);
+            precoCompraLabel.TabIndex = 19;
+            precoCompraLabel.Text = "Preço Unitário";
+            // 
+            // btnGravar
+            // 
+            this.btnGravar.Location = new System.Drawing.Point(249, 106);
+            this.btnGravar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnGravar.Name = "btnGravar";
+            this.btnGravar.Size = new System.Drawing.Size(75, 28);
+            this.btnGravar.TabIndex = 24;
+            this.btnGravar.Text = "Gravar";
+            this.btnGravar.UseVisualStyleBackColor = true;
+            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(330, 106);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 28);
+            this.btnCancelar.TabIndex = 23;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // nudQuantidade
+            // 
+            this.nudQuantidade.Location = new System.Drawing.Point(8, 77);
+            this.nudQuantidade.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.nudQuantidade.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudQuantidade.Name = "nudQuantidade";
+            this.nudQuantidade.Size = new System.Drawing.Size(118, 20);
+            this.nudQuantidade.TabIndex = 21;
+            this.nudQuantidade.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // txtDescricao
             // 
             this.txtDescricao.Location = new System.Drawing.Point(8, 29);
             this.txtDescricao.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(239, 20);
+            this.txtDescricao.Size = new System.Drawing.Size(395, 20);
             this.txtDescricao.TabIndex = 17;
-            // 
-            // precoVendaLabel
-            // 
-            precoVendaLabel.AutoSize = true;
-            precoVendaLabel.Location = new System.Drawing.Point(266, 9);
-            precoVendaLabel.Name = "precoVendaLabel";
-            precoVendaLabel.Size = new System.Drawing.Size(71, 13);
-            precoVendaLabel.TabIndex = 18;
-            precoVendaLabel.Text = "preco Venda:";
-            // 
-            // precoCompraLabel
-            // 
-            precoCompraLabel.AutoSize = true;
-            precoCompraLabel.Location = new System.Drawing.Point(266, 57);
-            precoCompraLabel.Name = "precoCompraLabel";
-            precoCompraLabel.Size = new System.Drawing.Size(76, 13);
-            precoCompraLabel.TabIndex = 19;
-            precoCompraLabel.Text = "preco Compra:";
             // 
             // banco
             // 
@@ -168,20 +150,27 @@
             this.tableAdapterManager.tcc_ServicoTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // txtPreco
+            // 
+            this.txtPreco.Location = new System.Drawing.Point(253, 76);
+            this.txtPreco.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtPreco.Name = "txtPreco";
+            this.txtPreco.Size = new System.Drawing.Size(152, 20);
+            this.txtPreco.TabIndex = 26;
+            this.txtPreco.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.txtPreco_MaskInputRejected);
+            // 
             // FrmCadastroProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(436, 194);
-            this.Controls.Add(this.txtPrecoCompra);
-            this.Controls.Add(this.txtPrecoVenda);
+            this.ClientSize = new System.Drawing.Size(415, 143);
+            this.Controls.Add(this.txtPreco);
             this.Controls.Add(this.btnGravar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(quantidadeLabel);
             this.Controls.Add(this.nudQuantidade);
             this.Controls.Add(descricaoLabel);
             this.Controls.Add(this.txtDescricao);
-            this.Controls.Add(precoVendaLabel);
             this.Controls.Add(precoCompraLabel);
             this.Name = "FrmCadastroProduto";
             this.Text = "FrmCadastroProduto";
@@ -196,9 +185,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.MaskedTextBox txtPrecoCompra;
-        private System.Windows.Forms.MaskedTextBox txtPrecoVenda;
         private System.Windows.Forms.Button btnGravar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.NumericUpDown nudQuantidade;
@@ -207,5 +193,6 @@
         private System.Windows.Forms.BindingSource tcc_ProdutoBindingSource;
         private BancoTableAdapters.tcc_ProdutoTableAdapter tcc_ProdutoTableAdapter;
         private BancoTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.MaskedTextBox txtPreco;
     }
 }
