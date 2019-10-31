@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -38,31 +39,44 @@ namespace prjOficinaMecanica
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            if (NovoCadastro)
+            try
             {
-                tcc_ServicoTableAdapter.InsertQuery(
-                    Orcamento,
-                    dtpInicio.Value,
-                    (int)cmbMecanico.SelectedValue,
-                    txtObs.Text,
-                    Convert.ToDouble(txtDesconto.Text)
-                    );
+                if (NovoCadastro)
+                {
+                    tcc_ServicoTableAdapter.InsertQuery(
+                        Orcamento,
+                        dtpInicio.Value,
+                        (int)cmbMecanico.SelectedValue,
+                        txtObs.Text,
+                        Convert.ToDouble(txtDesconto.Text)
+                        );
+                }
+                else
+                {
+                    tcc_ServicoTableAdapter.UpdateQuery(
+                        (int)cmbMecanico.SelectedValue,
+                        Orcamento,
+                        dtpInicio.Value,
+                        txtObs.Text,
+                        Convert.ToDouble(txtDesconto.Text),
+                        mecanico,
+                        Orcamento
+                        );
+                }
+                MessageBox.Show("Salvo com sucesso!", "Atenção",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Close();
             }
-            else
+            catch(SqlException ex)
             {
-                tcc_ServicoTableAdapter.UpdateQuery(
-                    (int)cmbMecanico.SelectedValue,
-                    Orcamento,
-                    dtpInicio.Value,
-                    txtObs.Text,
-                    Convert.ToDouble(txtDesconto.Text),
-                    mecanico,
-                    Orcamento
-                    );
+                MessageBox.Show("Erro no banco de dados\n" + ex.Message , "Erro ao salvar",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            MessageBox.Show("Salvo com sucesso!", "Atenção",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Close();
+            catch(Exception ex)
+            {
+                MessageBox.Show("Erro inesperado\n" + ex.Message, "Erro ao salvar",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void tcc_OrcamentoDataGridView_SelectionChanged(object sender, EventArgs e)

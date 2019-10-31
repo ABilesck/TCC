@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -28,41 +29,53 @@ namespace prjOficinaMecanica
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (NovoCadastro)
+            try
             {
-                tcc_ClienteTableAdapter.Insert(
-                    txtNome.Text,
-                    txtDocSocial.Text,
-                    txtTelefone.Text,
-                    txtEmail.Text,
-                    txtLogradouro.Text,
-                    txtBairro.Text,
-                    txtCidade.Text,
-                    txtComplemento.Text,
-                    cmbUf.Text,
-                    txtCep.Text,
-                    txtRegistro.Text);
+                if (NovoCadastro)
+                {
+                    tcc_ClienteTableAdapter.Insert(
+                        txtNome.Text,
+                        txtDocSocial.Text,
+                        txtTelefone.Text,
+                        txtEmail.Text,
+                        txtLogradouro.Text,
+                        txtBairro.Text,
+                        txtCidade.Text,
+                        txtComplemento.Text,
+                        cmbUf.Text,
+                        txtCep.Text,
+                        txtRegistro.Text);
+                }
+                else
+                {
+                    tcc_ClienteTableAdapter.UpdateQuery(
+                        txtNome.Text,
+                        txtDocSocial.Text,
+                        txtTelefone.Text,
+                        txtEmail.Text,
+                        txtLogradouro.Text,
+                        txtBairro.Text,
+                        txtCidade.Text,
+                        txtComplemento.Text,
+                        cmbUf.Text,
+                        txtCep.Text,
+                        txtRegistro.Text,
+                        Id);
+                }
+                MessageBox.Show("Cliente salvo com sucesso!", "Atenção",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Close();
             }
-            else
+            catch (SqlException ex)
             {
-                tcc_ClienteTableAdapter.UpdateQuery(
-                    txtNome.Text,
-                    txtDocSocial.Text,
-                    txtTelefone.Text,
-                    txtEmail.Text,
-                    txtLogradouro.Text,
-                    txtBairro.Text,
-                    txtCidade.Text,
-                    txtComplemento.Text,
-                    cmbUf.Text,
-                    txtCep.Text,
-                    txtRegistro.Text,
-                    Id);
+                MessageBox.Show("Erro no banco de dados\n" + ex.Message, "Erro ao salvar",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            MessageBox.Show("Cliente salvo com sucesso!", "Atenção",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Utility.LimpaCampos(this);
-            Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro inesperado\n" + ex.Message, "Erro ao salvar",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void FrmCadastroCliente_FormClosing(object sender, FormClosingEventArgs e)

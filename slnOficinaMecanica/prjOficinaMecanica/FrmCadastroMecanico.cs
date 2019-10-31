@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -28,51 +29,64 @@ namespace prjOficinaMecanica
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (NovoCadastro)
+            try
             {
-                tcc_MecanicoTableAdapter.Insert(
-                    txtRazao.Text,
-                    txtCnpj.Text,
-                    txtIe.Text,
-                    txtTelefone.Text,
-                    txtEmail.Text,
-                    txtConta.Text,
-                    txtAgencia.Text,
-                    Convert.ToInt32(txtComissao.Text),
-                    txtLogradouro.Text,
-                    txtBairro.Text,
-                    txtCidade.Text,
-                    txtComplemento.Text,
-                    cmbUf.Text,
-                    txtCep.Text,
-                    txtFantasia.Text
-                    );
-            }
-            else
-            {
-                tcc_MecanicoTableAdapter.UpdateQuery(
-                    txtRazao.Text,
-                    txtCnpj.Text,
-                    txtIe.Text,
-                    txtTelefone.Text,
-                    txtEmail.Text,
-                    txtConta.Text,
-                    txtAgencia.Text,
-                    Convert.ToInt32(txtComissao.Text),
-                    txtLogradouro.Text,
-                    txtBairro.Text,
-                    txtCidade.Text,
-                    txtComplemento.Text,
-                    cmbUf.Text,
-                    txtCep.Text,
-                    txtFantasia.Text,
-                    idMecanico
-                    );
-            }
+                if (NovoCadastro)
+                {
+                    tcc_MecanicoTableAdapter.Insert(
+                        txtRazao.Text,
+                        txtCnpj.Text,
+                        txtIe.Text,
+                        txtTelefone.Text,
+                        txtEmail.Text,
+                        txtConta.Text,
+                        txtAgencia.Text,
+                        Convert.ToInt32(txtComissao.Text),
+                        txtLogradouro.Text,
+                        txtBairro.Text,
+                        txtCidade.Text,
+                        txtComplemento.Text,
+                        cmbUf.Text,
+                        txtCep.Text,
+                        txtFantasia.Text
+                        );
+                }
+                else
+                {
+                    tcc_MecanicoTableAdapter.UpdateQuery(
+                        txtRazao.Text,
+                        txtCnpj.Text,
+                        txtIe.Text,
+                        txtTelefone.Text,
+                        txtEmail.Text,
+                        txtConta.Text,
+                        txtAgencia.Text,
+                        Convert.ToInt32(txtComissao.Text),
+                        txtLogradouro.Text,
+                        txtBairro.Text,
+                        txtCidade.Text,
+                        txtComplemento.Text,
+                        cmbUf.Text,
+                        txtCep.Text,
+                        txtFantasia.Text,
+                        idMecanico
+                        );
+                }
 
-            MessageBox.Show("Salvo com sucesso!",
-                    "Atencão", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Close();
+                MessageBox.Show("Salvo com sucesso!",
+                        "Atencão", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Erro no banco de dados\n" + ex.Message, "Erro ao salvar",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro inesperado\n" + ex.Message, "Erro ao salvar",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -29,32 +30,46 @@ namespace prjOficinaMecanica
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (autoNovo)
+            try
             {
-                tcc_AutomovelTableAdapter.Insert(
-                    idCliente,
-                   txtPlaca.Text,
-                   txtModelo.Text,
-                   txtAno.Text,
-                   txtCor.Text, 
-                   txtKm.Text);
+                if (autoNovo)
+                {
+                    tcc_AutomovelTableAdapter.Insert(
+                        idCliente,
+                       txtPlaca.Text,
+                       txtModelo.Text,
+                       txtAno.Text,
+                       txtCor.Text,
+                       txtKm.Text);
+                }
+                else
+                {
+                    tcc_AutomovelTableAdapter.Update(
+                        idCliente,
+                        txtPlaca.Text,
+                        txtModelo.Text,
+                        txtAno.Text,
+                        txtCor.Text,
+                        txtKm.Text,
+                        idAutomovel);
+                }
+
+                MessageBox.Show("Salvo com sucesso!",
+                        "Atencão", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                Close();
             }
-            else
+            catch (SqlException ex)
             {
-                tcc_AutomovelTableAdapter.Update(
-                    idCliente,
-                    txtPlaca.Text,
-                    txtModelo.Text,
-                    txtAno.Text,
-                    txtCor.Text,
-                    txtKm.Text,
-                    idAutomovel);
+                MessageBox.Show("Erro no banco de dados\n" + ex.Message, "Erro ao salvar",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            MessageBox.Show("Salvo com sucesso!",
-                    "Atencão", MessageBoxButtons.OK,MessageBoxIcon.Information);
-
-            Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro inesperado\n" + ex.Message, "Erro ao salvar",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void FrmAutomovel_FormClosing(object sender, FormClosingEventArgs e)

@@ -44,7 +44,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.btnNovo = new System.Windows.Forms.Button();
             this.tcc_ProdutoDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -187,43 +186,45 @@
             // 
             // tcc_ProdutoDataGridView
             // 
+            this.tcc_ProdutoDataGridView.AccessibleName = "Produto";
+            this.tcc_ProdutoDataGridView.AllowUserToAddRows = false;
+            this.tcc_ProdutoDataGridView.AllowUserToDeleteRows = false;
             this.tcc_ProdutoDataGridView.AutoGenerateColumns = false;
             this.tcc_ProdutoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tcc_ProdutoDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn6});
             this.tcc_ProdutoDataGridView.DataSource = this.tcc_ProdutoBindingSource;
             this.tcc_ProdutoDataGridView.Location = new System.Drawing.Point(16, 132);
             this.tcc_ProdutoDataGridView.Name = "tcc_ProdutoDataGridView";
+            this.tcc_ProdutoDataGridView.ReadOnly = true;
+            this.tcc_ProdutoDataGridView.RowHeadersVisible = false;
+            this.tcc_ProdutoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tcc_ProdutoDataGridView.Size = new System.Drawing.Size(580, 326);
             this.tcc_ProdutoDataGridView.TabIndex = 32;
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "IDProduto";
-            this.dataGridViewTextBoxColumn1.HeaderText = "IDProduto";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
             // dataGridViewTextBoxColumn2
             // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn2.DataPropertyName = "descricao";
             this.dataGridViewTextBoxColumn2.HeaderText = "descricao";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "quantidade";
             this.dataGridViewTextBoxColumn3.HeaderText = "quantidade";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.DataPropertyName = "precoUnit";
             this.dataGridViewTextBoxColumn6.HeaderText = "precoUnit";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
             // FrmProduto
             // 
@@ -244,7 +245,7 @@
             this.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmProduto";
-            this.Text = "FrmProduto";
+            this.Text = "Produto";
             this.Load += new System.EventHandler(this.FrmProduto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tcc_ProdutoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.banco)).EndInit();
@@ -273,7 +274,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridView tcc_ProdutoDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;

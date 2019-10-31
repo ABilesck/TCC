@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -71,27 +72,40 @@ namespace prjOficinaMecanica
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (novoCadastro)
+            try
             {
-                tcc_OrcamentoTableAdapter.InsertQuery(
-                    DateTime.Now,
-                    (int)cmbCarro.SelectedValue,
-                    Convert.ToDouble(txtMaoDeObra.Text)
-                    );
-            }
-            else
-            {
-                tcc_OrcamentoTableAdapter.UpdateQuery(
-                    Convert.ToDouble(txtMaoDeObra.Text),
-                    (int)cmbCarro.SelectedValue,
-                    IdOrcamento
-                    );
-            }
+                if (novoCadastro)
+                {
+                    tcc_OrcamentoTableAdapter.InsertQuery(
+                        DateTime.Now,
+                        (int)cmbCarro.SelectedValue,
+                        Convert.ToDouble(txtMaoDeObra.Text)
+                        );
+                }
+                else
+                {
+                    tcc_OrcamentoTableAdapter.UpdateQuery(
+                        Convert.ToDouble(txtMaoDeObra.Text),
+                        (int)cmbCarro.SelectedValue,
+                        IdOrcamento
+                        );
+                }
 
-            MessageBox.Show("Salvo com sucesso!",
-                    "Atencão", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            FrmCadastroOrcamento_Load(null, null);
-            Close();
+                MessageBox.Show("Salvo com sucesso!",
+                        "Atencão", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                FrmCadastroOrcamento_Load(null, null);
+                Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Erro no banco de dados\n" + ex.Message, "Erro ao salvar",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro inesperado\n" + ex.Message, "Erro ao salvar",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void FrmCadastroOrcamento_FormClosing(object sender, FormClosingEventArgs e)

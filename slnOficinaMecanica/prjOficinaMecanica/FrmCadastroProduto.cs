@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -21,28 +22,41 @@ namespace prjOficinaMecanica
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            if (NovoCadastro)
+            try
             {
-                tcc_ProdutoTableAdapter.Insert(
-                    txtDescricao.Text,
-                    Convert.ToInt32(nudQuantidade.Value),
-                    Convert.ToDouble(txtPreco.Text)
-                    );
+                if (NovoCadastro)
+                {
+                    tcc_ProdutoTableAdapter.Insert(
+                        txtDescricao.Text,
+                        Convert.ToInt32(nudQuantidade.Value),
+                        Convert.ToDouble(txtPreco.Text)
+                        );
+                }
+                else
+                {
+                    tcc_ProdutoTableAdapter.UpdateQuery(
+                        txtDescricao.Text,
+                        Convert.ToInt32(nudQuantidade.Value),
+                        Convert.ToDouble(txtPreco.Text),
+                        IdProduto
+                        );
+                }
+
+                MessageBox.Show("Salvo com sucesso!", "Atenção",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                Close();
             }
-            else
+            catch (SqlException ex)
             {
-                tcc_ProdutoTableAdapter.UpdateQuery(
-                    txtDescricao.Text,
-                    Convert.ToInt32(nudQuantidade.Value),
-                    Convert.ToDouble(txtPreco.Text),
-                    IdProduto
-                    );
+                MessageBox.Show("Erro no banco de dados\n" + ex.Message, "Erro ao salvar",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            MessageBox.Show("Salvo com sucesso!", "Atenção", 
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro inesperado\n" + ex.Message, "Erro ao salvar",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void FrmCadastroProduto_Load(object sender, EventArgs e)
         {
