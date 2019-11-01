@@ -5,11 +5,14 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using System.Configuration;
+using System.Collections.Specialized;
 
 namespace prjOficinaMecanica
 {
     public partial class FrmMenu : Form
     {
+        public string Tema = ConfigurationManager.AppSettings.Get("tema");
         public FrmMenu()
         {
             InitializeComponent();
@@ -141,20 +144,10 @@ namespace prjOficinaMecanica
             }
         }
 
-        private void FrmMenu_Load(object sender, EventArgs e)
+        public void FrmMenu_Load(object sender, EventArgs e)
         {
-            /*
-            FrmOrcamento frmOrcamento = new FrmOrcamento();
-            frmOrcamento.MdiParent = this;
-            
-            FrmServico frmServico = new FrmServico();
-            frmServico.MdiParent = this;
-            
-            frmOrcamento.Show();
-            frmServico.Show();
-
-            LayoutMdi(MdiLayout.TileVertical);
-            */
+            AplicarTema(Tema);
+            MessageBox.Show("Tema: " + Tema);
         }
 
         private void TimerHora_Tick(object sender, EventArgs e)
@@ -229,6 +222,90 @@ namespace prjOficinaMecanica
 
             FrmRtpMecanico rtpMecanico = new FrmRtpMecanico() { MdiParent = this };
             rtpMecanico.Show();
+        }
+
+        private void configuraçõesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in MdiChildren)
+            {
+                if(item is FrmConfigurar)
+                {
+                    item.Focus();
+                    return;
+                }
+            }
+            FrmConfigurar configurar = new FrmConfigurar() { MdiParent = this };
+            configurar.Show();
+        }
+
+        public void AplicarTema(string tema)
+        {
+            if (tema.Equals("Claro"))
+            {
+                foreach (var item in Controls)
+                {
+                    if(item is Label)
+                    {
+                        ((Label)item).ForeColor = Color.Black;
+                    }
+                    if(item is MenuStrip)
+                    {
+                        ((MenuStrip)item).BackColor = Color.White;
+                        ((MenuStrip)item).ForeColor = Color.Black;
+                    }
+                    if(item is StatusStrip)
+                    {
+                        ((StatusStrip)item).BackColor = Color.White;
+                        ((StatusStrip)item).ForeColor = Color.Black;
+                    }
+                    if(item is ToolStrip)
+                    {
+                        ((ToolStrip)item).BackColor = Color.White;
+                        ((ToolStrip)item).ForeColor = Color.Black;
+                    }
+                    if (item is ToolStripMenuItem)
+                    {
+                        ((ToolStripMenuItem)item).ForeColor = Color.White;
+                    }
+                    if (item is ToolStripStatusLabel)
+                    {
+                        ((ToolStripStatusLabel)item).ForeColor = Color.White;
+                    }
+                }
+            }
+            else
+            {
+                foreach (var item in Controls)
+                {
+                    if (item is Label)
+                    {
+                        ((Label)item).ForeColor = Color.White;
+                    }
+                    if (item is MenuStrip)
+                    {
+                        ((MenuStrip)item).BackColor = Color.Gray;
+                        ((MenuStrip)item).ForeColor = Color.White;
+                    }
+                    if (item is StatusStrip)
+                    {
+                        ((StatusStrip)item).BackColor = Color.Gray;
+                        ((StatusStrip)item).ForeColor = Color.White;
+                    }
+                    if (item is ToolStrip)
+                    {
+                        ((ToolStrip)item).BackColor = Color.Gray;
+                        ((ToolStrip)item).ForeColor = Color.Black;
+                    }
+                    if(item is ToolStripMenuItem)
+                    {
+                        ((ToolStripMenuItem)item).ForeColor = Color.Black;
+                    }
+                    if (item is ToolStripStatusLabel)
+                    {
+                        ((ToolStripStatusLabel)item).ForeColor = Color.Black;
+                    }
+                }
+            }
         }
     }
 }

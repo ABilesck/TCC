@@ -55,6 +55,7 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configuraçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnCliente = new System.Windows.Forms.ToolStripButton();
             this.btnMecanico = new System.Windows.Forms.ToolStripButton();
@@ -98,7 +99,8 @@
             this.relatórioToolStripMenuItem,
             this.janelaToolStripMenuItem,
             this.sobreToolStripMenuItem,
-            this.ajudaToolStripMenuItem});
+            this.ajudaToolStripMenuItem,
+            this.configuraçõesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.MdiWindowListItem = this.janelaToolStripMenuItem;
             this.menuStrip1.Name = "menuStrip1";
@@ -183,34 +185,34 @@
             // clienteToolStripMenuItem1
             // 
             this.clienteToolStripMenuItem1.Name = "clienteToolStripMenuItem1";
-            this.clienteToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.clienteToolStripMenuItem1.Size = new System.Drawing.Size(140, 22);
             this.clienteToolStripMenuItem1.Text = "&Cliente";
             this.clienteToolStripMenuItem1.Click += new System.EventHandler(this.clienteToolStripMenuItem1_Click);
             // 
             // mecânicoToolStripMenuItem1
             // 
             this.mecânicoToolStripMenuItem1.Name = "mecânicoToolStripMenuItem1";
-            this.mecânicoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.mecânicoToolStripMenuItem1.Size = new System.Drawing.Size(140, 22);
             this.mecânicoToolStripMenuItem1.Text = "&Mecânico";
             this.mecânicoToolStripMenuItem1.Click += new System.EventHandler(this.mecânicoToolStripMenuItem1_Click);
             // 
             // mnuRelProduto
             // 
             this.mnuRelProduto.Name = "mnuRelProduto";
-            this.mnuRelProduto.Size = new System.Drawing.Size(180, 22);
+            this.mnuRelProduto.Size = new System.Drawing.Size(140, 22);
             this.mnuRelProduto.Text = "&Produto";
             this.mnuRelProduto.Click += new System.EventHandler(this.mnuRelProduto_Click);
             // 
             // orçamentoToolStripMenuItem1
             // 
             this.orçamentoToolStripMenuItem1.Name = "orçamentoToolStripMenuItem1";
-            this.orçamentoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.orçamentoToolStripMenuItem1.Size = new System.Drawing.Size(140, 22);
             this.orçamentoToolStripMenuItem1.Text = "&Orçamento";
             // 
             // serviçoToolStripMenuItem1
             // 
             this.serviçoToolStripMenuItem1.Name = "serviçoToolStripMenuItem1";
-            this.serviçoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.serviçoToolStripMenuItem1.Size = new System.Drawing.Size(140, 22);
             this.serviçoToolStripMenuItem1.Text = "&Serviço";
             // 
             // janelaToolStripMenuItem
@@ -276,6 +278,13 @@
             this.ajudaToolStripMenuItem.Size = new System.Drawing.Size(53, 22);
             this.ajudaToolStripMenuItem.Text = "A&juda";
             // 
+            // configuraçõesToolStripMenuItem
+            // 
+            this.configuraçõesToolStripMenuItem.Name = "configuraçõesToolStripMenuItem";
+            this.configuraçõesToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+            this.configuraçõesToolStripMenuItem.Text = "&Configurações";
+            this.configuraçõesToolStripMenuItem.Click += new System.EventHandler(this.configuraçõesToolStripMenuItem_Click);
+            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -286,7 +295,7 @@
             this.btnServico});
             this.toolStrip1.Location = new System.Drawing.Point(0, 26);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.toolStrip1.Size = new System.Drawing.Size(850, 25);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
@@ -440,6 +449,7 @@
         private System.Windows.Forms.ToolStripButton btnProduto;
         private System.Windows.Forms.ToolStripButton btnOrcamento;
         private System.Windows.Forms.ToolStripButton btnServico;
+        private System.Windows.Forms.ToolStripMenuItem configuraçõesToolStripMenuItem;
     }
 }
 

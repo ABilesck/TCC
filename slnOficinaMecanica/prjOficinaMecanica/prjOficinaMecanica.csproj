@@ -52,6 +52,7 @@
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -72,6 +73,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Banco.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Config.cs" />
     <Compile Include="FrmAutomovel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +115,12 @@
     </Compile>
     <Compile Include="FrmCliente.Designer.cs">
       <DependentUpon>FrmCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConfigurar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConfigurar.Designer.cs">
+      <DependentUpon>FrmConfigurar.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmMecanico.cs">
       <SubType>Form</SubType>
@@ -192,6 +200,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCliente.resx">
       <DependentUpon>FrmCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConfigurar.resx">
+      <DependentUpon>FrmConfigurar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMecanico.resx">
       <DependentUpon>FrmMecanico.cs</DependentUpon>
