@@ -34,6 +34,7 @@
             System.Windows.Forms.Label anoLabel;
             System.Windows.Forms.Label corLabel;
             System.Windows.Forms.Label kmRodadoLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAutomovel));
             this.lblCliente = new System.Windows.Forms.Label();
             this.banco = new prjOficinaMecanica.Banco();
             this.tcc_AutomovelBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -132,7 +133,6 @@
             this.tableAdapterManager.tcc_OrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_produtoOrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_ProdutoTableAdapter = null;
-            this.tableAdapterManager.tcc_ServicoTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // txtPlaca
@@ -216,6 +216,7 @@
             this.Controls.Add(this.txtKm);
             this.Controls.Add(this.lblCliente);
             this.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmAutomovel";
             this.Text = "Automovel";

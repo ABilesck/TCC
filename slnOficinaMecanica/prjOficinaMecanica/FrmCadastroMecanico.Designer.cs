@@ -38,6 +38,7 @@
             System.Windows.Forms.Label ieLabel;
             System.Windows.Forms.Label cnpjLabel;
             System.Windows.Forms.Label label1;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadastroMecanico));
             this.banco = new prjOficinaMecanica.Banco();
             this.tcc_MecanicoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tcc_MecanicoTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_MecanicoTableAdapter();
@@ -152,6 +153,15 @@
             cnpjLabel.TabIndex = 26;
             cnpjLabel.Text = "cnpj:";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(273, 13);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(75, 13);
+            label1.TabIndex = 51;
+            label1.Text = "Nome fantasia";
+            // 
             // banco
             // 
             this.banco.DataSetName = "Banco";
@@ -175,7 +185,6 @@
             this.tableAdapterManager.tcc_OrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_produtoOrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_ProdutoTableAdapter = null;
-            this.tableAdapterManager.tcc_ServicoTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // txtCep
@@ -392,15 +401,6 @@
             this.txtFantasia.Size = new System.Drawing.Size(258, 20);
             this.txtFantasia.TabIndex = 50;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(273, 13);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(75, 13);
-            label1.TabIndex = 51;
-            label1.Text = "Nome fantasia";
-            // 
             // FrmCadastroMecanico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -433,6 +433,7 @@
             this.Controls.Add(this.txtIe);
             this.Controls.Add(this.txtCnpj);
             this.Controls.Add(cnpjLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmCadastroMecanico";
             this.Text = "FrmCadastroMecanico";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCadastroMecanico_FormClosing);

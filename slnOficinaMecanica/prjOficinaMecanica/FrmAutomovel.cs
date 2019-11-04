@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -17,6 +18,8 @@ namespace prjOficinaMecanica
         public int idAutomovel;
         public string nomeCliente;
         public bool autoNovo;
+
+        string Tema = ConfigurationManager.AppSettings.Get("tema");
         public FrmAutomovel()
         {
             InitializeComponent();
@@ -24,6 +27,11 @@ namespace prjOficinaMecanica
 
         private void FrmCarro_Load(object sender, EventArgs e)
         {
+            if (Tema.Equals("Claro"))
+                Temas.AplicarTema(this, Color.White, Color.Black);
+            else
+                Temas.AplicarTema(this, Color.Gray, Color.White);
+
             tcc_AutomovelTableAdapter.Fill(banco.tcc_Automovel);
             lblCliente.Text = "Cliente: " + nomeCliente;
         }

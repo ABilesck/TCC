@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -11,11 +12,12 @@ using System.Windows.Forms;
 
 namespace prjOficinaMecanica
 {
-    //TODO: design
 
     public partial class FrmProduto : Form
     {
         int idProduto;
+
+        string Tema = ConfigurationManager.AppSettings.Get("tema");
 
         public FrmProduto()
         {
@@ -24,6 +26,12 @@ namespace prjOficinaMecanica
 
         private void FrmProduto_Load(object sender, EventArgs e)
         {
+            if (Tema.Equals("Claro"))
+                Temas.AplicarTema(this, Color.White, Color.Black);
+            else
+                Temas.AplicarTema(this, Color.Gray, Color.White);
+
+
             tcc_ProdutoTableAdapter.Fill(banco.tcc_Produto);
 
         }

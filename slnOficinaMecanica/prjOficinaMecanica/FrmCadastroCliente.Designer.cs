@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.txtCep = new System.Windows.Forms.TextBox();
-            this.txtTelefone = new System.Windows.Forms.TextBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadastroCliente));
             this.txtComplemento = new System.Windows.Forms.TextBox();
             this.rbtPessoaFisica = new System.Windows.Forms.RadioButton();
             this.txtBairro = new System.Windows.Forms.TextBox();
@@ -38,11 +37,9 @@
             this.cmbUf = new System.Windows.Forms.ComboBox();
             this.rbtPessoaJuridica = new System.Windows.Forms.RadioButton();
             this.txtCidade = new System.Windows.Forms.TextBox();
-            this.txtRegistro = new System.Windows.Forms.TextBox();
             this.txtLogradouro = new System.Windows.Forms.TextBox();
             this.lblNome = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtDocSocial = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.lblDocSocial = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -59,23 +56,13 @@
             this.tableAdapterManager = new prjOficinaMecanica.BancoTableAdapters.TableAdapterManager();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
+            this.txtDocSocial = new System.Windows.Forms.MaskedTextBox();
+            this.txtRegistro = new System.Windows.Forms.MaskedTextBox();
+            this.txtCep = new System.Windows.Forms.MaskedTextBox();
+            this.txtTelefone = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.banco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_ClienteBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // txtCep
-            // 
-            this.txtCep.Location = new System.Drawing.Point(15, 416);
-            this.txtCep.Name = "txtCep";
-            this.txtCep.Size = new System.Drawing.Size(140, 20);
-            this.txtCep.TabIndex = 35;
-            // 
-            // txtTelefone
-            // 
-            this.txtTelefone.Location = new System.Drawing.Point(15, 208);
-            this.txtTelefone.Name = "txtTelefone";
-            this.txtTelefone.Size = new System.Drawing.Size(189, 20);
-            this.txtTelefone.TabIndex = 37;
             // 
             // txtComplemento
             // 
@@ -114,6 +101,7 @@
             // 
             this.cmbUf.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.cmbUf.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbUf.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbUf.FormattingEnabled = true;
             this.cmbUf.Items.AddRange(new object[] {
             "AC",
@@ -165,13 +153,6 @@
             this.txtCidade.Size = new System.Drawing.Size(377, 20);
             this.txtCidade.TabIndex = 27;
             // 
-            // txtRegistro
-            // 
-            this.txtRegistro.Location = new System.Drawing.Point(213, 110);
-            this.txtRegistro.Name = "txtRegistro";
-            this.txtRegistro.Size = new System.Drawing.Size(182, 20);
-            this.txtRegistro.TabIndex = 34;
-            // 
             // txtLogradouro
             // 
             this.txtLogradouro.Location = new System.Drawing.Point(15, 272);
@@ -196,13 +177,6 @@
             this.label9.Size = new System.Drawing.Size(28, 13);
             this.label9.TabIndex = 23;
             this.label9.Text = "CEP";
-            // 
-            // txtDocSocial
-            // 
-            this.txtDocSocial.Location = new System.Drawing.Point(15, 110);
-            this.txtDocSocial.Name = "txtDocSocial";
-            this.txtDocSocial.Size = new System.Drawing.Size(189, 20);
-            this.txtDocSocial.TabIndex = 32;
             // 
             // label8
             // 
@@ -315,7 +289,6 @@
             this.tableAdapterManager.tcc_OrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_produtoOrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_ProdutoTableAdapter = null;
-            this.tableAdapterManager.tcc_ServicoTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // btnCancelar
@@ -338,15 +311,52 @@
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
+            // txtDocSocial
+            // 
+            this.txtDocSocial.Location = new System.Drawing.Point(15, 110);
+            this.txtDocSocial.Mask = "000.000.000-00";
+            this.txtDocSocial.Name = "txtDocSocial";
+            this.txtDocSocial.Size = new System.Drawing.Size(189, 20);
+            this.txtDocSocial.TabIndex = 41;
+            this.txtDocSocial.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // txtRegistro
+            // 
+            this.txtRegistro.Location = new System.Drawing.Point(209, 110);
+            this.txtRegistro.Name = "txtRegistro";
+            this.txtRegistro.Size = new System.Drawing.Size(174, 20);
+            this.txtRegistro.TabIndex = 42;
+            this.txtRegistro.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // txtCep
+            // 
+            this.txtCep.Location = new System.Drawing.Point(15, 413);
+            this.txtCep.Mask = "00000-000";
+            this.txtCep.Name = "txtCep";
+            this.txtCep.Size = new System.Drawing.Size(138, 20);
+            this.txtCep.TabIndex = 43;
+            this.txtCep.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // txtTelefone
+            // 
+            this.txtTelefone.Location = new System.Drawing.Point(15, 205);
+            this.txtTelefone.Mask = "(00)#0000-0000";
+            this.txtTelefone.Name = "txtTelefone";
+            this.txtTelefone.Size = new System.Drawing.Size(189, 20);
+            this.txtTelefone.TabIndex = 44;
+            this.txtTelefone.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
             // FrmCadastroCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(576, 471);
+            this.Controls.Add(this.txtTelefone);
+            this.Controls.Add(this.txtCep);
+            this.Controls.Add(this.txtRegistro);
+            this.Controls.Add(this.txtDocSocial);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.txtCep);
-            this.Controls.Add(this.txtTelefone);
             this.Controls.Add(this.txtComplemento);
             this.Controls.Add(this.rbtPessoaFisica);
             this.Controls.Add(this.txtBairro);
@@ -354,11 +364,9 @@
             this.Controls.Add(this.cmbUf);
             this.Controls.Add(this.rbtPessoaJuridica);
             this.Controls.Add(this.txtCidade);
-            this.Controls.Add(this.txtRegistro);
             this.Controls.Add(this.txtLogradouro);
             this.Controls.Add(this.lblNome);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.txtDocSocial);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.lblDocSocial);
             this.Controls.Add(this.label7);
@@ -369,6 +377,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmCadastroCliente";
             this.Text = "FrmCadastroCliente";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCadastroCliente_FormClosing);
@@ -381,9 +390,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtCep;
-        private System.Windows.Forms.TextBox txtTelefone;
         private System.Windows.Forms.TextBox txtComplemento;
         private System.Windows.Forms.RadioButton rbtPessoaFisica;
         private System.Windows.Forms.TextBox txtBairro;
@@ -391,11 +397,9 @@
         private System.Windows.Forms.ComboBox cmbUf;
         private System.Windows.Forms.RadioButton rbtPessoaJuridica;
         private System.Windows.Forms.TextBox txtCidade;
-        private System.Windows.Forms.TextBox txtRegistro;
         private System.Windows.Forms.TextBox txtLogradouro;
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtDocSocial;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblDocSocial;
         private System.Windows.Forms.Label label7;
@@ -412,5 +416,9 @@
         private BancoTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnSalvar;
+        private System.Windows.Forms.MaskedTextBox txtDocSocial;
+        private System.Windows.Forms.MaskedTextBox txtRegistro;
+        private System.Windows.Forms.MaskedTextBox txtCep;
+        private System.Windows.Forms.MaskedTextBox txtTelefone;
     }
 }

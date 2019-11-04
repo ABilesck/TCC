@@ -34,6 +34,7 @@
             System.Windows.Forms.Label precoUnitarioLabel;
             System.Windows.Forms.Label subtotalLabel;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmOrcamento));
             this.btnNovo = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
@@ -353,7 +354,6 @@
             this.tableAdapterManager.tcc_OrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_produtoOrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_ProdutoTableAdapter = null;
-            this.tableAdapterManager.tcc_ServicoTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // tcc_ProdutoTableAdapter
@@ -596,6 +596,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnNovo);
             this.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmOrcamento";
             this.Text = "FrmOrcamento";

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -11,7 +12,6 @@ using System.Windows.Forms;
 
 namespace prjOficinaMecanica
 {
-    //TODO: fazer tudo, esse nao tem nada
 
     public partial class FrmOrcamento : Form
     {
@@ -20,6 +20,8 @@ namespace prjOficinaMecanica
         private int IdAuto;
         private double MaoDeObra;
         private double PrecoTemporario;
+
+        string Tema = ConfigurationManager.AppSettings.Get("tema");
         public FrmOrcamento()
         {
             InitializeComponent();
@@ -32,6 +34,12 @@ namespace prjOficinaMecanica
 
         private void FrmOrcamento_Load(object sender, EventArgs e)
         {
+            if (Tema.Equals("Claro"))
+                Temas.AplicarTema(this, Color.White, Color.Black);
+            else
+                Temas.AplicarTema(this, Color.Gray, Color.White);
+
+
             tcc_ProdutoTableAdapter.Fill(banco1.tcc_Produto);
             tcc_ProdutoTableAdapter.Fill(banco.tcc_Produto);
             tcc_OrcamentoTableAdapter.Fill(banco.tcc_Orcamento);
@@ -205,7 +213,7 @@ namespace prjOficinaMecanica
             PrecoTemporario = 0;
             foreach (DataRow item in produto.Rows)
             {
-                PrecoTemporario = Convert.ToDouble(item["precoVenda"].ToString());
+                PrecoTemporario = Convert.ToDouble(item["precoUnit"].ToString());
             }
             quantidadeNumericUpDown.Value = 1;
             precoUnitarioTextBox.Text = PrecoTemporario.ToString("R$ #,###,##0.00");

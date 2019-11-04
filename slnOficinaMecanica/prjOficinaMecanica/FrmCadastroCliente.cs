@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -15,7 +16,7 @@ namespace prjOficinaMecanica
     {
         public bool NovoCadastro;
         public int Id;
-        private Utility Utility = new Utility();
+        string Tema = ConfigurationManager.AppSettings.Get("tema");
 
         public FrmCadastroCliente()
         {
@@ -24,6 +25,11 @@ namespace prjOficinaMecanica
 
         private void FrmCadastroCliente_Load(object sender, EventArgs e)
         {
+            if (Tema.Equals("Claro"))
+                Temas.AplicarTema(this, Color.White, Color.Black);
+            else
+                Temas.AplicarTema(this, Color.Gray, Color.White);
+
             tcc_ClienteTableAdapter.Fill(banco.tcc_Cliente);
         }
 

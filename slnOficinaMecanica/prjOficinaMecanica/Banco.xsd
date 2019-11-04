@@ -836,19 +836,14 @@ WHERE        (IDOrcamento = @id)</CommandText>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tcc_ServicoTableAdapter" GeneratorDataComponentClassName="tcc_ServicoTableAdapter" Name="tcc_Servico" UserDataComponentName="tcc_ServicoTableAdapter">
             <MainSource>
               <DbSource ConnectionRef="tcc_OficinaMecanicaConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
-                <InsertCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText />
-                    <Parameters />
-                  </DbCommand>
-                </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        tcc_Servico.IDMecanico, tcc_Servico.IDOrcamento, tcc_Servico.dataInicio, tcc_Servico.dataFim, tcc_Mecanico.razaoSocial, tcc_Orcamento.dataConsulta, tcc_Automovel.modelo, tcc_Cliente.nome, tcc_Orcamento.MaoDeObra, 
-                         tcc_Servico.descricao, tcc_Servico.desconto, tcc_Mecanico.fantasia, tcc_Orcamento.IDOrcamento AS Expr1
+                    <CommandText>SELECT        tcc_Servico.IDMecanico, tcc_Mecanico.fantasia, tcc_Servico.IDOrcamento, tcc_Orcamento.MaoDeObra, tcc_Orcamento.IDAutomovel, tcc_Automovel.modelo, tcc_Automovel.IDCliente, tcc_Cliente.nome, 
+                         tcc_produtoOrcamento.quantidade * tcc_produtoOrcamento.precoUnitario + tcc_Orcamento.MaoDeObra - tcc_Servico.desconto AS Total, tcc_Servico.dataInicio, tcc_Servico.dataFim
 FROM            tcc_Servico INNER JOIN
-                         tcc_Mecanico ON tcc_Servico.IDMecanico = tcc_Mecanico.IDMecanico INNER JOIN
+                         tcc_produtoOrcamento ON tcc_Servico.IDOrcamento = tcc_produtoOrcamento.IDOrcamento INNER JOIN
                          tcc_Orcamento ON tcc_Servico.IDOrcamento = tcc_Orcamento.IDOrcamento INNER JOIN
+                         tcc_Mecanico ON tcc_Servico.IDMecanico = tcc_Mecanico.IDMecanico INNER JOIN
                          tcc_Automovel ON tcc_Orcamento.IDAutomovel = tcc_Automovel.IDAutomovel INNER JOIN
                          tcc_Cliente ON tcc_Automovel.IDCliente = tcc_Cliente.IDCliente</CommandText>
                     <Parameters />
@@ -859,15 +854,15 @@ FROM            tcc_Servico INNER JOIN
             <Mappings>
               <Mapping SourceColumn="IDMecanico" DataSetColumn="IDMecanico" />
               <Mapping SourceColumn="IDOrcamento" DataSetColumn="IDOrcamento" />
-              <Mapping SourceColumn="dataInicio" DataSetColumn="dataInicio" />
-              <Mapping SourceColumn="dataFim" DataSetColumn="dataFim" />
-              <Mapping SourceColumn="razaoSocial" DataSetColumn="razaoSocial" />
-              <Mapping SourceColumn="dataConsulta" DataSetColumn="dataConsulta" />
               <Mapping SourceColumn="modelo" DataSetColumn="modelo" />
               <Mapping SourceColumn="nome" DataSetColumn="nome" />
               <Mapping SourceColumn="MaoDeObra" DataSetColumn="MaoDeObra" />
-              <Mapping SourceColumn="descricao" DataSetColumn="descricao" />
-              <Mapping SourceColumn="desconto" DataSetColumn="desconto" />
+              <Mapping SourceColumn="fantasia" DataSetColumn="fantasia" />
+              <Mapping SourceColumn="IDAutomovel" DataSetColumn="IDAutomovel" />
+              <Mapping SourceColumn="IDCliente" DataSetColumn="IDCliente" />
+              <Mapping SourceColumn="Total" DataSetColumn="Total" />
+              <Mapping SourceColumn="dataInicio" DataSetColumn="dataInicio" />
+              <Mapping SourceColumn="dataFim" DataSetColumn="dataFim" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="tcc_OficinaMecanicaConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteQuery" Modifier="Public" Name="DeleteQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteQuery">
@@ -953,6 +948,55 @@ FROM            tcc_Automovel INNER JOIN
               <Mapping SourceColumn="modelo" DataSetColumn="modelo" />
               <Mapping SourceColumn="placa" DataSetColumn="placa" />
               <Mapping SourceColumn="ano" DataSetColumn="ano" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="RptServicoTableAdapter" GeneratorDataComponentClassName="RptServicoTableAdapter" Name="RptServico" UserDataComponentName="RptServicoTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="tcc_OficinaMecanicaConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>
+SELECT        tcc_Servico.IDMecanico, tcc_Mecanico.razaoSocial, tcc_Mecanico.cnpj, tcc_Mecanico.contaBancaria, tcc_Mecanico.agenciaBancaria, tcc_Mecanico.comissao, tcc_Servico.IDOrcamento, tcc_Orcamento.MaoDeObra, 
+                         tcc_Orcamento.IDAutomovel, tcc_Automovel.modelo, tcc_Automovel.IDCliente, tcc_Cliente.nome, tcc_produtoOrcamento.IDProduto, tcc_Produto.descricao, tcc_produtoOrcamento.quantidade, tcc_produtoOrcamento.precoUnitario, 
+                         tcc_Servico.dataInicio, tcc_Servico.dataFim, tcc_Servico.desconto, tcc_Servico.descricao, 
+                         tcc_produtoOrcamento.quantidade * tcc_produtoOrcamento.precoUnitario + tcc_Orcamento.MaoDeObra - tcc_Servico.desconto AS Total, 
+                         (tcc_produtoOrcamento.quantidade * tcc_produtoOrcamento.precoUnitario + tcc_Orcamento.MaoDeObra - tcc_Servico.desconto) * tcc_Mecanico.comissao / 100 AS Comissao
+FROM            tcc_produtoOrcamento INNER JOIN
+                         tcc_Servico INNER JOIN
+                         tcc_Mecanico ON tcc_Servico.IDMecanico = tcc_Mecanico.IDMecanico ON tcc_produtoOrcamento.IDOrcamento = tcc_Servico.IDOrcamento INNER JOIN
+                         tcc_Orcamento ON tcc_Servico.IDOrcamento = tcc_Orcamento.IDOrcamento INNER JOIN
+                         tcc_Cliente INNER JOIN
+                         tcc_Automovel ON tcc_Cliente.IDCliente = tcc_Automovel.IDCliente ON tcc_Orcamento.IDAutomovel = tcc_Automovel.IDAutomovel INNER JOIN
+                         tcc_Produto ON tcc_produtoOrcamento.IDProduto = tcc_Produto.IDProduto</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="IDMecanico" DataSetColumn="IDMecanico" />
+              <Mapping SourceColumn="IDOrcamento" DataSetColumn="IDOrcamento" />
+              <Mapping SourceColumn="MaoDeObra" DataSetColumn="MaoDeObra" />
+              <Mapping SourceColumn="IDAutomovel" DataSetColumn="IDAutomovel" />
+              <Mapping SourceColumn="modelo" DataSetColumn="modelo" />
+              <Mapping SourceColumn="IDCliente" DataSetColumn="IDCliente" />
+              <Mapping SourceColumn="nome" DataSetColumn="nome" />
+              <Mapping SourceColumn="Total" DataSetColumn="Total" />
+              <Mapping SourceColumn="dataInicio" DataSetColumn="dataInicio" />
+              <Mapping SourceColumn="dataFim" DataSetColumn="dataFim" />
+              <Mapping SourceColumn="razaoSocial" DataSetColumn="razaoSocial" />
+              <Mapping SourceColumn="cnpj" DataSetColumn="cnpj" />
+              <Mapping SourceColumn="contaBancaria" DataSetColumn="contaBancaria" />
+              <Mapping SourceColumn="agenciaBancaria" DataSetColumn="agenciaBancaria" />
+              <Mapping SourceColumn="comissao" DataSetColumn="comissao" />
+              <Mapping SourceColumn="IDProduto" DataSetColumn="IDProduto" />
+              <Mapping SourceColumn="descricao" DataSetColumn="descricao" />
+              <Mapping SourceColumn="quantidade" DataSetColumn="quantidade" />
+              <Mapping SourceColumn="precoUnitario" DataSetColumn="precoUnitario" />
+              <Mapping SourceColumn="desconto" DataSetColumn="desconto" />
+              <Mapping SourceColumn="descricao1" DataSetColumn="descricao1" />
+              <Mapping SourceColumn="Comissao1" DataSetColumn="Comissao1" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -1260,16 +1304,6 @@ FROM            tcc_Automovel INNER JOIN
             <xs:sequence>
               <xs:element name="IDMecanico" msprop:Generator_ColumnVarNameInTable="columnIDMecanico" msprop:Generator_ColumnPropNameInRow="IDMecanico" msprop:Generator_ColumnPropNameInTable="IDMecanicoColumn" msprop:Generator_UserColumnName="IDMecanico" type="xs:int" />
               <xs:element name="IDOrcamento" msprop:Generator_ColumnVarNameInTable="columnIDOrcamento" msprop:Generator_ColumnPropNameInRow="IDOrcamento" msprop:Generator_ColumnPropNameInTable="IDOrcamentoColumn" msprop:Generator_UserColumnName="IDOrcamento" type="xs:int" />
-              <xs:element name="dataInicio" msprop:Generator_ColumnVarNameInTable="columndataInicio" msprop:Generator_ColumnPropNameInRow="dataInicio" msprop:Generator_ColumnPropNameInTable="dataInicioColumn" msprop:Generator_UserColumnName="dataInicio" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="dataFim" msprop:Generator_ColumnVarNameInTable="columndataFim" msprop:Generator_ColumnPropNameInRow="dataFim" msprop:Generator_ColumnPropNameInTable="dataFimColumn" msprop:Generator_UserColumnName="dataFim" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="razaoSocial" msprop:Generator_ColumnVarNameInTable="columnrazaoSocial" msprop:Generator_ColumnPropNameInRow="razaoSocial" msprop:Generator_ColumnPropNameInTable="razaoSocialColumn" msprop:Generator_UserColumnName="razaoSocial" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="dataConsulta" msprop:Generator_ColumnVarNameInTable="columndataConsulta" msprop:Generator_ColumnPropNameInRow="dataConsulta" msprop:Generator_ColumnPropNameInTable="dataConsultaColumn" msprop:Generator_UserColumnName="dataConsulta" type="xs:dateTime" minOccurs="0" />
               <xs:element name="modelo" msprop:Generator_ColumnVarNameInTable="columnmodelo" msprop:Generator_ColumnPropNameInRow="modelo" msprop:Generator_ColumnPropNameInTable="modeloColumn" msprop:Generator_UserColumnName="modelo" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -1285,14 +1319,18 @@ FROM            tcc_Automovel INNER JOIN
                 </xs:simpleType>
               </xs:element>
               <xs:element name="MaoDeObra" msprop:Generator_ColumnVarNameInTable="columnMaoDeObra" msprop:Generator_ColumnPropNameInRow="MaoDeObra" msprop:Generator_ColumnPropNameInTable="MaoDeObraColumn" msprop:Generator_UserColumnName="MaoDeObra" type="xs:double" minOccurs="0" />
-              <xs:element name="descricao" msprop:Generator_ColumnVarNameInTable="columndescricao" msprop:Generator_ColumnPropNameInRow="descricao" msprop:Generator_ColumnPropNameInTable="descricaoColumn" msprop:Generator_UserColumnName="descricao" minOccurs="0">
+              <xs:element name="fantasia" msprop:Generator_ColumnVarNameInTable="columnfantasia" msprop:Generator_ColumnPropNameInRow="fantasia" msprop:Generator_ColumnPropNameInTable="fantasiaColumn" msprop:Generator_UserColumnName="fantasia" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2147483647" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="desconto" msprop:Generator_ColumnVarNameInTable="columndesconto" msprop:Generator_ColumnPropNameInRow="desconto" msprop:Generator_ColumnPropNameInTable="descontoColumn" msprop:Generator_UserColumnName="desconto" type="xs:double" minOccurs="0" />
+              <xs:element name="IDAutomovel" msprop:Generator_ColumnVarNameInTable="columnIDAutomovel" msprop:Generator_ColumnPropNameInRow="IDAutomovel" msprop:Generator_ColumnPropNameInTable="IDAutomovelColumn" msprop:Generator_UserColumnName="IDAutomovel" type="xs:int" minOccurs="0" />
+              <xs:element name="IDCliente" msprop:Generator_ColumnVarNameInTable="columnIDCliente" msprop:Generator_ColumnPropNameInRow="IDCliente" msprop:Generator_ColumnPropNameInTable="IDClienteColumn" msprop:Generator_UserColumnName="IDCliente" type="xs:int" minOccurs="0" />
+              <xs:element name="Total" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:double" minOccurs="0" />
+              <xs:element name="dataInicio" msprop:Generator_ColumnVarNameInTable="columndataInicio" msprop:Generator_ColumnPropNameInRow="dataInicio" msprop:Generator_ColumnPropNameInTable="dataInicioColumn" msprop:Generator_UserColumnName="dataInicio" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="dataFim" msprop:Generator_ColumnVarNameInTable="columndataFim" msprop:Generator_ColumnPropNameInRow="dataFim" msprop:Generator_ColumnPropNameInTable="dataFimColumn" msprop:Generator_UserColumnName="dataFim" type="xs:dateTime" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1336,6 +1374,82 @@ FROM            tcc_Automovel INNER JOIN
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="RptServico" msprop:Generator_TableClassName="RptServicoDataTable" msprop:Generator_TableVarName="tableRptServico" msprop:Generator_TablePropName="RptServico" msprop:Generator_RowDeletingName="RptServicoRowDeleting" msprop:Generator_RowChangingName="RptServicoRowChanging" msprop:Generator_RowEvHandlerName="RptServicoRowChangeEventHandler" msprop:Generator_RowDeletedName="RptServicoRowDeleted" msprop:Generator_UserTableName="RptServico" msprop:Generator_RowChangedName="RptServicoRowChanged" msprop:Generator_RowEvArgName="RptServicoRowChangeEvent" msprop:Generator_RowClassName="RptServicoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IDMecanico" msprop:Generator_ColumnVarNameInTable="columnIDMecanico" msprop:Generator_ColumnPropNameInRow="IDMecanico" msprop:Generator_ColumnPropNameInTable="IDMecanicoColumn" msprop:Generator_UserColumnName="IDMecanico" type="xs:int" />
+              <xs:element name="IDOrcamento" msprop:Generator_ColumnVarNameInTable="columnIDOrcamento" msprop:Generator_ColumnPropNameInRow="IDOrcamento" msprop:Generator_ColumnPropNameInTable="IDOrcamentoColumn" msprop:Generator_UserColumnName="IDOrcamento" type="xs:int" />
+              <xs:element name="MaoDeObra" msprop:Generator_ColumnVarNameInTable="columnMaoDeObra" msprop:Generator_ColumnPropNameInRow="MaoDeObra" msprop:Generator_ColumnPropNameInTable="MaoDeObraColumn" msprop:Generator_UserColumnName="MaoDeObra" type="xs:double" minOccurs="0" />
+              <xs:element name="IDAutomovel" msprop:Generator_ColumnVarNameInTable="columnIDAutomovel" msprop:Generator_ColumnPropNameInRow="IDAutomovel" msprop:Generator_ColumnPropNameInTable="IDAutomovelColumn" msprop:Generator_UserColumnName="IDAutomovel" type="xs:int" minOccurs="0" />
+              <xs:element name="modelo" msprop:Generator_ColumnVarNameInTable="columnmodelo" msprop:Generator_ColumnPropNameInRow="modelo" msprop:Generator_ColumnPropNameInTable="modeloColumn" msprop:Generator_UserColumnName="modelo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IDCliente" msprop:Generator_ColumnVarNameInTable="columnIDCliente" msprop:Generator_ColumnPropNameInRow="IDCliente" msprop:Generator_ColumnPropNameInTable="IDClienteColumn" msprop:Generator_UserColumnName="IDCliente" type="xs:int" minOccurs="0" />
+              <xs:element name="nome" msprop:Generator_ColumnVarNameInTable="columnnome" msprop:Generator_ColumnPropNameInRow="nome" msprop:Generator_ColumnPropNameInTable="nomeColumn" msprop:Generator_UserColumnName="nome" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Total" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:double" minOccurs="0" />
+              <xs:element name="dataInicio" msprop:Generator_ColumnVarNameInTable="columndataInicio" msprop:Generator_ColumnPropNameInRow="dataInicio" msprop:Generator_ColumnPropNameInTable="dataInicioColumn" msprop:Generator_UserColumnName="dataInicio" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="dataFim" msprop:Generator_ColumnVarNameInTable="columndataFim" msprop:Generator_ColumnPropNameInRow="dataFim" msprop:Generator_ColumnPropNameInTable="dataFimColumn" msprop:Generator_UserColumnName="dataFim" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="razaoSocial" msprop:Generator_ColumnVarNameInTable="columnrazaoSocial" msprop:Generator_ColumnPropNameInRow="razaoSocial" msprop:Generator_ColumnPropNameInTable="razaoSocialColumn" msprop:Generator_UserColumnName="razaoSocial" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cnpj" msprop:Generator_ColumnVarNameInTable="columncnpj" msprop:Generator_ColumnPropNameInRow="cnpj" msprop:Generator_ColumnPropNameInTable="cnpjColumn" msprop:Generator_UserColumnName="cnpj" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="contaBancaria" msprop:Generator_ColumnVarNameInTable="columncontaBancaria" msprop:Generator_ColumnPropNameInRow="contaBancaria" msprop:Generator_ColumnPropNameInTable="contaBancariaColumn" msprop:Generator_UserColumnName="contaBancaria" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="agenciaBancaria" msprop:Generator_ColumnVarNameInTable="columnagenciaBancaria" msprop:Generator_ColumnPropNameInRow="agenciaBancaria" msprop:Generator_ColumnPropNameInTable="agenciaBancariaColumn" msprop:Generator_UserColumnName="agenciaBancaria" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="comissao" msprop:Generator_ColumnVarNameInTable="columncomissao" msprop:Generator_ColumnPropNameInRow="comissao" msprop:Generator_ColumnPropNameInTable="comissaoColumn" msprop:Generator_UserColumnName="comissao" type="xs:int" minOccurs="0" />
+              <xs:element name="IDProduto" msprop:Generator_ColumnVarNameInTable="columnIDProduto" msprop:Generator_ColumnPropNameInRow="IDProduto" msprop:Generator_ColumnPropNameInTable="IDProdutoColumn" msprop:Generator_UserColumnName="IDProduto" type="xs:int" />
+              <xs:element name="descricao" msprop:Generator_ColumnVarNameInTable="columndescricao" msprop:Generator_ColumnPropNameInRow="descricao" msprop:Generator_ColumnPropNameInTable="descricaoColumn" msprop:Generator_UserColumnName="descricao" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="quantidade" msprop:Generator_ColumnVarNameInTable="columnquantidade" msprop:Generator_ColumnPropNameInRow="quantidade" msprop:Generator_ColumnPropNameInTable="quantidadeColumn" msprop:Generator_UserColumnName="quantidade" type="xs:int" minOccurs="0" />
+              <xs:element name="precoUnitario" msprop:Generator_ColumnVarNameInTable="columnprecoUnitario" msprop:Generator_ColumnPropNameInRow="precoUnitario" msprop:Generator_ColumnPropNameInTable="precoUnitarioColumn" msprop:Generator_UserColumnName="precoUnitario" type="xs:double" minOccurs="0" />
+              <xs:element name="desconto" msprop:Generator_ColumnVarNameInTable="columndesconto" msprop:Generator_ColumnPropNameInRow="desconto" msprop:Generator_ColumnPropNameInTable="descontoColumn" msprop:Generator_UserColumnName="desconto" type="xs:double" minOccurs="0" />
+              <xs:element name="descricao1" msprop:Generator_ColumnVarNameInTable="columndescricao1" msprop:Generator_ColumnPropNameInRow="descricao1" msprop:Generator_ColumnPropNameInTable="descricao1Column" msprop:Generator_UserColumnName="descricao1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1073741823" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Comissao1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnComissao1" msprop:Generator_ColumnPropNameInRow="Comissao1" msprop:Generator_ColumnPropNameInTable="Comissao1Column" msprop:Generator_UserColumnName="Comissao1" type="xs:double" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1385,6 +1499,8 @@ FROM            tcc_Automovel INNER JOIN
       <msdata:Relationship name="IDProduto" msdata:parent="tcc_Produto" msdata:child="tcc_produtoOrcamento" msdata:parentkey="IDProduto" msdata:childkey="IDProduto" msprop:Generator_UserChildTable="tcc_produtoOrcamento" msprop:Generator_ChildPropName="Gettcc_produtoOrcamentoRows" msprop:Generator_UserRelationName="IDProduto" msprop:Generator_RelationVarName="relationIDProduto" msprop:Generator_UserParentTable="tcc_Produto" msprop:Generator_ParentPropName="tcc_ProdutoRow" />
       <msdata:Relationship name="IDMecanico" msdata:parent="tcc_Mecanico" msdata:child="tcc_Servico" msdata:parentkey="IDMecanico" msdata:childkey="IDMecanico" msprop:Generator_UserChildTable="tcc_Servico" msprop:Generator_ChildPropName="Gettcc_ServicoRows" msprop:Generator_UserRelationName="IDMecanico" msprop:Generator_RelationVarName="relationIDMecanico" msprop:Generator_UserParentTable="tcc_Mecanico" msprop:Generator_ParentPropName="tcc_MecanicoRow" />
       <msdata:Relationship name="IDCliente1" msdata:parent="tcc_Cliente" msdata:child="ReportCliente" msdata:parentkey="IDCliente" msdata:childkey="IDCliente" msprop:Generator_UserChildTable="ReportCliente" msprop:Generator_ChildPropName="GetReportClienteRows" msprop:Generator_UserRelationName="IDCliente1" msprop:Generator_ParentPropName="tcc_ClienteRow" msprop:Generator_RelationVarName="relationIDCliente1" msprop:Generator_UserParentTable="tcc_Cliente" />
+      <msdata:Relationship name="IDCliente2" msdata:parent="tcc_Cliente" msdata:child="tcc_Servico" msdata:parentkey="IDCliente" msdata:childkey="IDCliente" msprop:Generator_UserChildTable="tcc_Servico" msprop:Generator_ChildPropName="Gettcc_ServicoRows" msprop:Generator_UserRelationName="IDCliente2" msprop:Generator_RelationVarName="relationIDCliente2" msprop:Generator_UserParentTable="tcc_Cliente" msprop:Generator_ParentPropName="tcc_ClienteRow" />
+      <msdata:Relationship name="IDCliente3" msdata:parent="tcc_Cliente" msdata:child="RptServico" msdata:parentkey="IDCliente" msdata:childkey="IDCliente" msprop:Generator_UserChildTable="RptServico" msprop:Generator_ChildPropName="GetRptServicoRows" msprop:Generator_UserRelationName="IDCliente3" msprop:Generator_ParentPropName="tcc_ClienteRow" msprop:Generator_RelationVarName="relationIDCliente3" msprop:Generator_UserParentTable="tcc_Cliente" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

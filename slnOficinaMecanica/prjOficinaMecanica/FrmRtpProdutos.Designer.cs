@@ -30,13 +30,24 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.Banco = new prjOficinaMecanica.Banco();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRtpProdutos));
             this.tcc_ProdutoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Banco = new prjOficinaMecanica.Banco();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.tcc_ProdutoTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_ProdutoTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.Banco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_ProdutoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Banco)).BeginInit();
             this.SuspendLayout();
+            // 
+            // tcc_ProdutoBindingSource
+            // 
+            this.tcc_ProdutoBindingSource.DataMember = "tcc_Produto";
+            this.tcc_ProdutoBindingSource.DataSource = this.Banco;
+            // 
+            // Banco
+            // 
+            this.Banco.DataSetName = "Banco";
+            this.Banco.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
@@ -51,16 +62,6 @@
             this.reportViewer1.Size = new System.Drawing.Size(911, 523);
             this.reportViewer1.TabIndex = 0;
             // 
-            // Banco
-            // 
-            this.Banco.DataSetName = "Banco";
-            this.Banco.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tcc_ProdutoBindingSource
-            // 
-            this.tcc_ProdutoBindingSource.DataMember = "tcc_Produto";
-            this.tcc_ProdutoBindingSource.DataSource = this.Banco;
-            // 
             // tcc_ProdutoTableAdapter
             // 
             this.tcc_ProdutoTableAdapter.ClearBeforeFill = true;
@@ -71,11 +72,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(911, 523);
             this.Controls.Add(this.reportViewer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmRtpProdutos";
             this.Text = "FrmRtpProdutos";
             this.Load += new System.EventHandler(this.FrmRtpProdutos_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.Banco)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_ProdutoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Banco)).EndInit();
             this.ResumeLayout(false);
 
         }

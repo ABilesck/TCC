@@ -51,6 +51,7 @@
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -146,6 +147,12 @@
     <Compile Include="FrmProduto.Designer.cs">
       <DependentUpon>FrmProduto.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmRelacaoServicos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRelacaoServicos.Designer.cs">
+      <DependentUpon>FrmRelacaoServicos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmRtpCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +186,7 @@
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="Temas.cs" />
     <Compile Include="Utility.cs" />
     <EmbeddedResource Include="FrmAutomovel.resx">
       <DependentUpon>FrmAutomovel.cs</DependentUpon>
@@ -215,6 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProduto.resx">
       <DependentUpon>FrmProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRelacaoServicos.resx">
+      <DependentUpon>FrmRelacaoServicos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRtpCliente.resx">
       <DependentUpon>FrmRtpCliente.cs</DependentUpon>

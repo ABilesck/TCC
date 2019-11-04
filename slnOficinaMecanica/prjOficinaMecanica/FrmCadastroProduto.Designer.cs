@@ -32,6 +32,7 @@
             System.Windows.Forms.Label quantidadeLabel;
             System.Windows.Forms.Label descricaoLabel;
             System.Windows.Forms.Label precoCompraLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadastroProduto));
             this.btnGravar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.nudQuantidade = new System.Windows.Forms.NumericUpDown();
@@ -147,7 +148,6 @@
             this.tableAdapterManager.tcc_OrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_produtoOrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_ProdutoTableAdapter = this.tcc_ProdutoTableAdapter;
-            this.tableAdapterManager.tcc_ServicoTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // txtPreco
@@ -172,6 +172,7 @@
             this.Controls.Add(descricaoLabel);
             this.Controls.Add(this.txtDescricao);
             this.Controls.Add(precoCompraLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmCadastroProduto";
             this.Text = "FrmCadastroProduto";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCadastroProduto_FormClosing);

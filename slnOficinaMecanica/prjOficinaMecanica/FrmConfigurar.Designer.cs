@@ -32,12 +32,21 @@
             this.cmbTema = new System.Windows.Forms.ComboBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.rbtSim = new System.Windows.Forms.RadioButton();
+            this.rbtNao = new System.Windows.Forms.RadioButton();
+            this.cmbForm = new System.Windows.Forms.ComboBox();
+            this.grpSenha = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtSenha = new System.Windows.Forms.TextBox();
+            this.txtRepetirSenha = new System.Windows.Forms.TextBox();
+            this.grpSenha.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Location = new System.Drawing.Point(13, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 0;
@@ -45,19 +54,21 @@
             // 
             // cmbTema
             // 
+            this.cmbTema.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbTema.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTema.FormattingEnabled = true;
             this.cmbTema.Items.AddRange(new object[] {
             "Claro",
             "Escuro"});
-            this.cmbTema.Location = new System.Drawing.Point(56, 10);
+            this.cmbTema.Location = new System.Drawing.Point(53, 12);
             this.cmbTema.Name = "cmbTema";
-            this.cmbTema.Size = new System.Drawing.Size(183, 21);
+            this.cmbTema.Size = new System.Drawing.Size(237, 21);
             this.cmbTema.TabIndex = 1;
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(164, 79);
+            this.btnCancelar.Location = new System.Drawing.Point(215, 195);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 2;
@@ -67,7 +78,7 @@
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(83, 79);
+            this.btnSalvar.Location = new System.Drawing.Point(134, 195);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 23);
             this.btnSalvar.TabIndex = 3;
@@ -75,17 +86,113 @@
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 46);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(142, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Abrir formulário ao inicializar?";
+            // 
+            // rbtSim
+            // 
+            this.rbtSim.AutoSize = true;
+            this.rbtSim.Location = new System.Drawing.Point(191, 44);
+            this.rbtSim.Name = "rbtSim";
+            this.rbtSim.Size = new System.Drawing.Size(42, 17);
+            this.rbtSim.TabIndex = 5;
+            this.rbtSim.Text = "Sim";
+            this.rbtSim.UseVisualStyleBackColor = true;
+            this.rbtSim.CheckedChanged += new System.EventHandler(this.rbtSim_CheckedChanged);
+            // 
+            // rbtNao
+            // 
+            this.rbtNao.AutoSize = true;
+            this.rbtNao.Checked = true;
+            this.rbtNao.Location = new System.Drawing.Point(239, 44);
+            this.rbtNao.Name = "rbtNao";
+            this.rbtNao.Size = new System.Drawing.Size(45, 17);
+            this.rbtNao.TabIndex = 6;
+            this.rbtNao.TabStop = true;
+            this.rbtNao.Text = "Não";
+            this.rbtNao.UseVisualStyleBackColor = true;
+            this.rbtNao.CheckedChanged += new System.EventHandler(this.rbtNao_CheckedChanged);
+            // 
+            // cmbForm
+            // 
+            this.cmbForm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbForm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbForm.Enabled = false;
+            this.cmbForm.FormattingEnabled = true;
+            this.cmbForm.Items.AddRange(new object[] {
+            "Nenhum",
+            "Cliente",
+            "Mecânico",
+            "Orçamento",
+            "Serviço"});
+            this.cmbForm.Location = new System.Drawing.Point(19, 72);
+            this.cmbForm.Name = "cmbForm";
+            this.cmbForm.Size = new System.Drawing.Size(271, 21);
+            this.cmbForm.TabIndex = 7;
+            // 
+            // grpSenha
+            // 
+            this.grpSenha.Controls.Add(this.txtRepetirSenha);
+            this.grpSenha.Controls.Add(this.txtSenha);
+            this.grpSenha.Controls.Add(this.label3);
+            this.grpSenha.Location = new System.Drawing.Point(19, 100);
+            this.grpSenha.Name = "grpSenha";
+            this.grpSenha.Size = new System.Drawing.Size(271, 89);
+            this.grpSenha.TabIndex = 8;
+            this.grpSenha.TabStop = false;
+            this.grpSenha.Text = "Definir Senha:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 43);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(78, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Repetir Senha:";
+            // 
+            // txtSenha
+            // 
+            this.txtSenha.Location = new System.Drawing.Point(10, 20);
+            this.txtSenha.Name = "txtSenha";
+            this.txtSenha.PasswordChar = '*';
+            this.txtSenha.Size = new System.Drawing.Size(241, 20);
+            this.txtSenha.TabIndex = 1;
+            // 
+            // txtRepetirSenha
+            // 
+            this.txtRepetirSenha.Location = new System.Drawing.Point(10, 59);
+            this.txtRepetirSenha.Name = "txtRepetirSenha";
+            this.txtRepetirSenha.PasswordChar = '*';
+            this.txtRepetirSenha.Size = new System.Drawing.Size(241, 20);
+            this.txtRepetirSenha.TabIndex = 2;
+            // 
             // FrmConfigurar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(251, 110);
+            this.ClientSize = new System.Drawing.Size(298, 225);
+            this.Controls.Add(this.grpSenha);
+            this.Controls.Add(this.cmbForm);
+            this.Controls.Add(this.rbtNao);
+            this.Controls.Add(this.rbtSim);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.cmbTema);
             this.Controls.Add(this.label1);
             this.Name = "FrmConfigurar";
-            this.Text = "FrmConfigurar";
+            this.Text = "Configurações";
+            this.Load += new System.EventHandler(this.FrmConfigurar_Load);
+            this.grpSenha.ResumeLayout(false);
+            this.grpSenha.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -97,5 +204,13 @@
         private System.Windows.Forms.ComboBox cmbTema;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnSalvar;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.RadioButton rbtSim;
+        private System.Windows.Forms.RadioButton rbtNao;
+        private System.Windows.Forms.ComboBox cmbForm;
+        private System.Windows.Forms.GroupBox grpSenha;
+        private System.Windows.Forms.TextBox txtRepetirSenha;
+        private System.Windows.Forms.TextBox txtSenha;
+        private System.Windows.Forms.Label label3;
     }
 }

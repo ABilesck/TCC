@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -15,6 +16,8 @@ namespace prjOficinaMecanica
     {
         public bool NovoCadastro;
         public int idMecanico;
+
+        string Tema = ConfigurationManager.AppSettings.Get("tema");
         public FrmCadastroMecanico()
         {
             InitializeComponent();
@@ -22,7 +25,12 @@ namespace prjOficinaMecanica
         }
         private void FrmCadastroMecanico_Load(object sender, EventArgs e)
         {
-            // TODO: esta linha de código carrega dados na tabela 'banco.tcc_Mecanico'. Você pode movê-la ou removê-la conforme necessário.
+            if (Tema.Equals("Claro"))
+                Temas.AplicarTema(this, Color.White, Color.Black);
+            else
+                Temas.AplicarTema(this, Color.Gray, Color.White);
+
+
             this.tcc_MecanicoTableAdapter.Fill(this.banco.tcc_Mecanico);
 
         }

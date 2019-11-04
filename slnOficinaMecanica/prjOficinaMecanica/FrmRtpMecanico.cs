@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace prjOficinaMecanica
 {
     public partial class FrmRtpMecanico : Form
     {
+        string Tema = ConfigurationManager.AppSettings.Get("tema");
         public FrmRtpMecanico()
         {
             InitializeComponent();
@@ -19,7 +21,12 @@ namespace prjOficinaMecanica
 
         private void FrmRtpMecanico_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'Banco.tcc_Mecanico' table. You can move, or remove it, as needed.
+            if (Tema.Equals("Claro"))
+                Temas.AplicarTema(this, Color.White, Color.Black);
+            else
+                Temas.AplicarTema(this, Color.Gray, Color.White);
+
+
             this.tcc_MecanicoTableAdapter.Fill(this.Banco.tcc_Mecanico);
 
             this.reportViewer1.RefreshReport();

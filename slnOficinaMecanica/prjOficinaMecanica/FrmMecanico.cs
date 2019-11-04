@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace prjOficinaMecanica
@@ -9,6 +11,7 @@ namespace prjOficinaMecanica
     public partial class FrmMecanico : Form
     {
         int idMecanico;
+        string Tema = ConfigurationManager.AppSettings.Get("tema");
 
         public FrmMecanico()
         {
@@ -17,8 +20,12 @@ namespace prjOficinaMecanica
 
         public void FrmMecanico_Load(object sender, EventArgs e)
         {
-            this.tcc_MecanicoTableAdapter.Fill(this.banco.tcc_Mecanico);
+            if (Tema.Equals("Claro"))
+                Temas.AplicarTema(this, Color.White, Color.Black);
+            else
+                Temas.AplicarTema(this, Color.Gray, Color.White);
 
+            this.tcc_MecanicoTableAdapter.Fill(this.banco.tcc_Mecanico);
         }
 
         public void Reload()

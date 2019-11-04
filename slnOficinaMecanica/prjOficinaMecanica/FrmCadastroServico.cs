@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -16,13 +17,20 @@ namespace prjOficinaMecanica
         public bool NovoCadastro;
         public int Orcamento;
         public int mecanico;
+
+        string Tema = ConfigurationManager.AppSettings.Get("tema");
         public FrmCadastroServico()
         {
             InitializeComponent();
         }
         private void FrmCadastroServico_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'banco.tcc_Mecanico' table. You can move, or remove it, as needed.
+            if (Tema.Equals("Claro"))
+                Temas.AplicarTema(this, Color.White, Color.Black);
+            else
+                Temas.AplicarTema(this, Color.Gray, Color.White);
+
+
             this.tcc_MecanicoTableAdapter.Fill(this.banco.tcc_Mecanico);
             tcc_ServicoTableAdapter.Fill(banco.tcc_Servico);
             if (NovoCadastro)

@@ -30,13 +30,24 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.Banco = new prjOficinaMecanica.Banco();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRtpMecanico));
             this.tcc_MecanicoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Banco = new prjOficinaMecanica.Banco();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.tcc_MecanicoTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_MecanicoTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.Banco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_MecanicoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Banco)).BeginInit();
             this.SuspendLayout();
+            // 
+            // tcc_MecanicoBindingSource
+            // 
+            this.tcc_MecanicoBindingSource.DataMember = "tcc_Mecanico";
+            this.tcc_MecanicoBindingSource.DataSource = this.Banco;
+            // 
+            // Banco
+            // 
+            this.Banco.DataSetName = "Banco";
+            this.Banco.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
@@ -51,16 +62,6 @@
             this.reportViewer1.Size = new System.Drawing.Size(800, 450);
             this.reportViewer1.TabIndex = 0;
             // 
-            // Banco
-            // 
-            this.Banco.DataSetName = "Banco";
-            this.Banco.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tcc_MecanicoBindingSource
-            // 
-            this.tcc_MecanicoBindingSource.DataMember = "tcc_Mecanico";
-            this.tcc_MecanicoBindingSource.DataSource = this.Banco;
-            // 
             // tcc_MecanicoTableAdapter
             // 
             this.tcc_MecanicoTableAdapter.ClearBeforeFill = true;
@@ -71,11 +72,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.reportViewer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmRtpMecanico";
             this.Text = "FrmRtpMecanico";
             this.Load += new System.EventHandler(this.FrmRtpMecanico_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.Banco)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_MecanicoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Banco)).EndInit();
             this.ResumeLayout(false);
 
         }

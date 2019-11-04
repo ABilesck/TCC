@@ -13,6 +13,7 @@ namespace prjOficinaMecanica
     public partial class FrmMenu : Form
     {
         public string Tema = ConfigurationManager.AppSettings.Get("tema");
+        public string form = ConfigurationManager.AppSettings.Get("abrirForm");
         public FrmMenu()
         {
             InitializeComponent();
@@ -27,7 +28,7 @@ namespace prjOficinaMecanica
         {
             foreach (Form item in MdiChildren)
             {
-                if(item is FrmCliente)
+                if (item is FrmCliente)
                 {
                     item.Focus();
                     return;
@@ -54,7 +55,7 @@ namespace prjOficinaMecanica
         {
             foreach (Form item in MdiChildren)
             {
-                if(item is FrmMecanico)
+                if (item is FrmMecanico)
                 {
                     item.Focus();
                     return;
@@ -69,7 +70,7 @@ namespace prjOficinaMecanica
         {
             foreach (Form item in MdiChildren)
             {
-                if(item is FrmOrcamento)
+                if (item is FrmOrcamento)
                 {
                     item.Focus();
                     return;
@@ -84,7 +85,7 @@ namespace prjOficinaMecanica
         {
             foreach (Form item in MdiChildren)
             {
-                if(item is FrmProduto)
+                if (item is FrmProduto)
                 {
                     item.Focus();
                     return;
@@ -99,7 +100,7 @@ namespace prjOficinaMecanica
         {
             foreach (Form item in MdiChildren)
             {
-                if(item is FrmServico)
+                if (item is FrmServico)
                 {
                     item.Focus();
                     return;
@@ -135,9 +136,9 @@ namespace prjOficinaMecanica
 
         private void FrmMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(MessageBox.Show("Deseja fechar o programa?",
-                "Atenção",MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question,MessageBoxDefaultButton.Button2)
+            if (MessageBox.Show("Deseja fechar o programa?",
+                "Atenção", MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)
                 == DialogResult.No)
             {
                 e.Cancel = true;
@@ -146,8 +147,12 @@ namespace prjOficinaMecanica
 
         public void FrmMenu_Load(object sender, EventArgs e)
         {
-            AplicarTema(Tema);
-            MessageBox.Show("Tema: " + Tema);
+            if (Tema.Equals("Claro"))
+                Temas.AplicarTema(this, Color.White, Color.Black);
+            else
+                Temas.AplicarTema(this, Color.Gray, Color.White);
+
+            AbrirFormulario(form);
         }
 
         private void TimerHora_Tick(object sender, EventArgs e)
@@ -184,7 +189,7 @@ namespace prjOficinaMecanica
         {
             foreach (Form item in MdiChildren)
             {
-                if(item is FrmRtpProdutos)
+                if (item is FrmRtpProdutos)
                 {
                     item.Focus();
                     return;
@@ -198,7 +203,7 @@ namespace prjOficinaMecanica
         {
             foreach (Form item in MdiChildren)
             {
-                if(item is FrmRtpCliente)
+                if (item is FrmRtpCliente)
                 {
                     item.Focus();
                     return;
@@ -228,7 +233,7 @@ namespace prjOficinaMecanica
         {
             foreach (Form item in MdiChildren)
             {
-                if(item is FrmConfigurar)
+                if (item is FrmConfigurar)
                 {
                     item.Focus();
                     return;
@@ -238,74 +243,57 @@ namespace prjOficinaMecanica
             configurar.Show();
         }
 
-        public void AplicarTema(string tema)
+        public void AbrirFormulario(string f)
         {
-            if (tema.Equals("Claro"))
+            if (!f.Equals("Nenhum"))
             {
-                foreach (var item in Controls)
+                switch (f)
                 {
-                    if(item is Label)
-                    {
-                        ((Label)item).ForeColor = Color.Black;
-                    }
-                    if(item is MenuStrip)
-                    {
-                        ((MenuStrip)item).BackColor = Color.White;
-                        ((MenuStrip)item).ForeColor = Color.Black;
-                    }
-                    if(item is StatusStrip)
-                    {
-                        ((StatusStrip)item).BackColor = Color.White;
-                        ((StatusStrip)item).ForeColor = Color.Black;
-                    }
-                    if(item is ToolStrip)
-                    {
-                        ((ToolStrip)item).BackColor = Color.White;
-                        ((ToolStrip)item).ForeColor = Color.Black;
-                    }
-                    if (item is ToolStripMenuItem)
-                    {
-                        ((ToolStripMenuItem)item).ForeColor = Color.White;
-                    }
-                    if (item is ToolStripStatusLabel)
-                    {
-                        ((ToolStripStatusLabel)item).ForeColor = Color.White;
-                    }
+                    case "Cliente":
+
+                        clienteToolStripMenuItem_Click(null, null);
+
+                        break;
+
+                    case "Mecânico":
+
+                        MnuMecanico_Click(null, null);
+
+                        break;
+
+                    case "Produto":
+
+                        produtoToolStripMenuItem_Click(null, null);
+
+                        break;
+
+                    case "Orçamento":
+
+                        orcamentoToolStripMenuItem_Click(null, null);
+
+                        break;
+
+                    case "Serviço":
+
+                        servicoToolStripMenuItem_Click(null, null);
+
+                        break;
                 }
             }
-            else
+        }
+
+        private void serviçoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in MdiChildren)
             {
-                foreach (var item in Controls)
+                if(item is FrmRelacaoServicos)
                 {
-                    if (item is Label)
-                    {
-                        ((Label)item).ForeColor = Color.White;
-                    }
-                    if (item is MenuStrip)
-                    {
-                        ((MenuStrip)item).BackColor = Color.Gray;
-                        ((MenuStrip)item).ForeColor = Color.White;
-                    }
-                    if (item is StatusStrip)
-                    {
-                        ((StatusStrip)item).BackColor = Color.Gray;
-                        ((StatusStrip)item).ForeColor = Color.White;
-                    }
-                    if (item is ToolStrip)
-                    {
-                        ((ToolStrip)item).BackColor = Color.Gray;
-                        ((ToolStrip)item).ForeColor = Color.Black;
-                    }
-                    if(item is ToolStripMenuItem)
-                    {
-                        ((ToolStripMenuItem)item).ForeColor = Color.Black;
-                    }
-                    if (item is ToolStripStatusLabel)
-                    {
-                        ((ToolStripStatusLabel)item).ForeColor = Color.Black;
-                    }
+                    item.Focus();
+                    return;
                 }
             }
+            FrmRelacaoServicos frmRelacaoServicos = new FrmRelacaoServicos() { MdiParent = this };
+            frmRelacaoServicos.Show();
         }
     }
 }

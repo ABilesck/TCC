@@ -31,19 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label iDMecanicoLabel;
             System.Windows.Forms.Label dataInicioLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadastroServico));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tcc_OrcamentoDataGridView = new System.Windows.Forms.DataGridView();
-            this.tcc_produtoOrcamentoDataGridView = new System.Windows.Forms.DataGridView();
-            this.dtpInicio = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtDesconto = new System.Windows.Forms.MaskedTextBox();
-            this.txtObs = new System.Windows.Forms.RichTextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnGravar = new System.Windows.Forms.Button();
-            this.tcc_ServicoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.banco = new prjOficinaMecanica.Banco();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +42,8 @@
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tcc_OrcamentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.banco = new prjOficinaMecanica.Banco();
+            this.tcc_produtoOrcamentoDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,6 +51,14 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tcc_produtoOrcamentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dtpInicio = new System.Windows.Forms.DateTimePicker();
+            this.tcc_ServicoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtDesconto = new System.Windows.Forms.MaskedTextBox();
+            this.txtObs = new System.Windows.Forms.RichTextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnGravar = new System.Windows.Forms.Button();
             this.tcc_produtoOrcamentoTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_produtoOrcamentoTableAdapter();
             this.tableAdapterManager = new prjOficinaMecanica.BancoTableAdapters.TableAdapterManager();
             this.tcc_OrcamentoTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_OrcamentoTableAdapter();
@@ -70,14 +71,32 @@
             dataInicioLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_OrcamentoDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tcc_produtoOrcamentoDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tcc_ServicoBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.banco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_OrcamentoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.banco)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tcc_produtoOrcamentoDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_produtoOrcamentoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tcc_ServicoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tccMecanicoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tccMecanicoBindingSource1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // iDMecanicoLabel
+            // 
+            iDMecanicoLabel.AutoSize = true;
+            iDMecanicoLabel.Location = new System.Drawing.Point(17, 25);
+            iDMecanicoLabel.Name = "iDMecanicoLabel";
+            iDMecanicoLabel.Size = new System.Drawing.Size(57, 13);
+            iDMecanicoLabel.TabIndex = 1;
+            iDMecanicoLabel.Text = "Mecânico:";
+            // 
+            // dataInicioLabel
+            // 
+            dataInicioLabel.AutoSize = true;
+            dataInicioLabel.Location = new System.Drawing.Point(15, 52);
+            dataInicioLabel.Name = "dataInicioLabel";
+            dataInicioLabel.Size = new System.Drawing.Size(59, 13);
+            dataInicioLabel.TabIndex = 5;
+            dataInicioLabel.Text = "data Inicio:";
             // 
             // groupBox1
             // 
@@ -123,6 +142,58 @@
             this.tcc_OrcamentoDataGridView.TabIndex = 3;
             this.tcc_OrcamentoDataGridView.SelectionChanged += new System.EventHandler(this.tcc_OrcamentoDataGridView_SelectionChanged);
             // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "IDOrcamento";
+            this.dataGridViewTextBoxColumn7.HeaderText = "IDOrcamento";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "dataConsulta";
+            this.dataGridViewTextBoxColumn8.HeaderText = "dataConsulta";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "IDAutomovel";
+            this.dataGridViewTextBoxColumn9.HeaderText = "IDAutomovel";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "modelo";
+            this.dataGridViewTextBoxColumn10.HeaderText = "modelo";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "nome";
+            this.dataGridViewTextBoxColumn11.HeaderText = "nome";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "MaoDeObra";
+            this.dataGridViewTextBoxColumn12.HeaderText = "MaoDeObra";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.ReadOnly = true;
+            // 
+            // tcc_OrcamentoBindingSource
+            // 
+            this.tcc_OrcamentoBindingSource.DataMember = "tcc_Orcamento";
+            this.tcc_OrcamentoBindingSource.DataSource = this.banco;
+            // 
+            // banco
+            // 
+            this.banco.DataSetName = "Banco";
+            this.banco.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // tcc_produtoOrcamentoDataGridView
             // 
             this.tcc_produtoOrcamentoDataGridView.AllowUserToAddRows = false;
@@ -143,23 +214,52 @@
             this.tcc_produtoOrcamentoDataGridView.Size = new System.Drawing.Size(763, 198);
             this.tcc_produtoOrcamentoDataGridView.TabIndex = 4;
             // 
-            // iDMecanicoLabel
+            // dataGridViewTextBoxColumn1
             // 
-            iDMecanicoLabel.AutoSize = true;
-            iDMecanicoLabel.Location = new System.Drawing.Point(17, 25);
-            iDMecanicoLabel.Name = "iDMecanicoLabel";
-            iDMecanicoLabel.Size = new System.Drawing.Size(57, 13);
-            iDMecanicoLabel.TabIndex = 1;
-            iDMecanicoLabel.Text = "Mecânico:";
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "IDOrcamento";
+            this.dataGridViewTextBoxColumn1.HeaderText = "IDOrcamento";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
-            // dataInicioLabel
+            // dataGridViewTextBoxColumn2
             // 
-            dataInicioLabel.AutoSize = true;
-            dataInicioLabel.Location = new System.Drawing.Point(15, 52);
-            dataInicioLabel.Name = "dataInicioLabel";
-            dataInicioLabel.Size = new System.Drawing.Size(59, 13);
-            dataInicioLabel.TabIndex = 5;
-            dataInicioLabel.Text = "data Inicio:";
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "IDProduto";
+            this.dataGridViewTextBoxColumn2.HeaderText = "IDProduto";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "quantidade";
+            this.dataGridViewTextBoxColumn3.HeaderText = "quantidade";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "precoUnitario";
+            this.dataGridViewTextBoxColumn4.HeaderText = "precoUnitario";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "descricao";
+            this.dataGridViewTextBoxColumn5.HeaderText = "descricao";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Subtotal";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Subtotal";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // tcc_produtoOrcamentoBindingSource
+            // 
+            this.tcc_produtoOrcamentoBindingSource.DataMember = "tcc_produtoOrcamento";
+            this.tcc_produtoOrcamentoBindingSource.DataSource = this.banco;
             // 
             // dtpInicio
             // 
@@ -169,6 +269,11 @@
             this.dtpInicio.Name = "dtpInicio";
             this.dtpInicio.Size = new System.Drawing.Size(99, 20);
             this.dtpInicio.TabIndex = 6;
+            // 
+            // tcc_ServicoBindingSource
+            // 
+            this.tcc_ServicoBindingSource.DataMember = "tcc_Servico";
+            this.tcc_ServicoBindingSource.DataSource = this.banco;
             // 
             // label2
             // 
@@ -223,110 +328,6 @@
             this.btnGravar.UseVisualStyleBackColor = true;
             this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
-            // tcc_ServicoBindingSource
-            // 
-            this.tcc_ServicoBindingSource.DataMember = "tcc_Servico";
-            this.tcc_ServicoBindingSource.DataSource = this.banco;
-            // 
-            // banco
-            // 
-            this.banco.DataSetName = "Banco";
-            this.banco.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "IDOrcamento";
-            this.dataGridViewTextBoxColumn7.HeaderText = "IDOrcamento";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "dataConsulta";
-            this.dataGridViewTextBoxColumn8.HeaderText = "dataConsulta";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "IDAutomovel";
-            this.dataGridViewTextBoxColumn9.HeaderText = "IDAutomovel";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "modelo";
-            this.dataGridViewTextBoxColumn10.HeaderText = "modelo";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "nome";
-            this.dataGridViewTextBoxColumn11.HeaderText = "nome";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "MaoDeObra";
-            this.dataGridViewTextBoxColumn12.HeaderText = "MaoDeObra";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.ReadOnly = true;
-            // 
-            // tcc_OrcamentoBindingSource
-            // 
-            this.tcc_OrcamentoBindingSource.DataMember = "tcc_Orcamento";
-            this.tcc_OrcamentoBindingSource.DataSource = this.banco;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "IDOrcamento";
-            this.dataGridViewTextBoxColumn1.HeaderText = "IDOrcamento";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "IDProduto";
-            this.dataGridViewTextBoxColumn2.HeaderText = "IDProduto";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "quantidade";
-            this.dataGridViewTextBoxColumn3.HeaderText = "quantidade";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "precoUnitario";
-            this.dataGridViewTextBoxColumn4.HeaderText = "precoUnitario";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "descricao";
-            this.dataGridViewTextBoxColumn5.HeaderText = "descricao";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Subtotal";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Subtotal";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // tcc_produtoOrcamentoBindingSource
-            // 
-            this.tcc_produtoOrcamentoBindingSource.DataMember = "tcc_produtoOrcamento";
-            this.tcc_produtoOrcamentoBindingSource.DataSource = this.banco;
-            // 
             // tcc_produtoOrcamentoTableAdapter
             // 
             this.tcc_produtoOrcamentoTableAdapter.ClearBeforeFill = true;
@@ -340,7 +341,6 @@
             this.tableAdapterManager.tcc_OrcamentoTableAdapter = this.tcc_OrcamentoTableAdapter;
             this.tableAdapterManager.tcc_produtoOrcamentoTableAdapter = this.tcc_produtoOrcamentoTableAdapter;
             this.tableAdapterManager.tcc_ProdutoTableAdapter = null;
-            this.tableAdapterManager.tcc_ServicoTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // tcc_OrcamentoTableAdapter
@@ -392,6 +392,7 @@
             this.Controls.Add(dataInicioLabel);
             this.Controls.Add(this.dtpInicio);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmCadastroServico";
             this.Text = "FrmCadastroServico";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCadastroServico_FormClosing);
@@ -399,11 +400,11 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_OrcamentoDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tcc_produtoOrcamentoDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tcc_ServicoBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.banco)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_OrcamentoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.banco)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tcc_produtoOrcamentoDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_produtoOrcamentoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tcc_ServicoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tccMecanicoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tccMecanicoBindingSource1)).EndInit();
             this.ResumeLayout(false);

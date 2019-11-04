@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -18,6 +19,8 @@ namespace prjOficinaMecanica
 
         private string NomeCliente;
         private string Modelo;
+
+        string Tema = ConfigurationManager.AppSettings.Get("tema");
         public FrmCadastroOrcamento()
         {
             InitializeComponent();
@@ -25,11 +28,13 @@ namespace prjOficinaMecanica
 
         private void FrmCadastroOrcamento_Load(object sender, EventArgs e)
         {
-            // TODO: esta linha de código carrega dados na tabela 'banco.tcc_Cliente'. Você pode movê-la ou removê-la conforme necessário.
+            if (Tema.Equals("Claro"))
+                Temas.AplicarTema(this, Color.White, Color.Black);
+            else
+                Temas.AplicarTema(this, Color.Gray, Color.White);
+
             this.tcc_ClienteTableAdapter.Fill(this.banco.tcc_Cliente);
-            // TODO: esta linha de código carrega dados na tabela 'banco.tcc_Automovel'. Você pode movê-la ou removê-la conforme necessário.
             this.tcc_AutomovelTableAdapter.Fill(this.banco.tcc_Automovel);
-            // TODO: esta linha de código carrega dados na tabela 'banco.tcc_Orcamento'. Você pode movê-la ou removê-la conforme necessário.
             this.tcc_OrcamentoTableAdapter.Fill(this.banco.tcc_Orcamento);
             if (novoCadastro)
             {

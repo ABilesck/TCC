@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label iDAutomovelLabel;
             System.Windows.Forms.Label maoDeObraLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadastroOrcamento));
             this.banco = new prjOficinaMecanica.Banco();
             this.tcc_OrcamentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tcc_OrcamentoTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_OrcamentoTableAdapter();
@@ -94,8 +95,9 @@
             this.tableAdapterManager.tcc_AutomovelTableAdapter = this.tcc_AutomovelTableAdapter;
             this.tableAdapterManager.tcc_ClienteTableAdapter = this.tcc_ClienteTableAdapter;
             this.tableAdapterManager.tcc_MecanicoTableAdapter = null;
+            this.tableAdapterManager.tcc_OrcamentoTableAdapter = null;
+            this.tableAdapterManager.tcc_produtoOrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_ProdutoTableAdapter = null;
-            this.tableAdapterManager.tcc_ServicoTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // tcc_AutomovelTableAdapter
@@ -203,6 +205,7 @@
             this.Controls.Add(iDAutomovelLabel);
             this.Controls.Add(maoDeObraLabel);
             this.Controls.Add(this.txtMaoDeObra);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmCadastroOrcamento";
             this.Text = "FrmCadastroOrcamento";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCadastroOrcamento_FormClosing);

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -16,12 +17,20 @@ namespace prjOficinaMecanica
         private int idOrcamento;
         private bool Finalizado;
 
+        string Tema = ConfigurationManager.AppSettings.Get("tema");
+
         public FrmServico()
         {
             InitializeComponent();
         }
         public void FrmServico_Load(object sender, EventArgs e)
         {
+            if (Tema.Equals("Claro"))
+                Temas.AplicarTema(this, Color.White, Color.Black);
+            else
+                Temas.AplicarTema(this, Color.Gray, Color.White);
+
+
             tcc_MecanicoTableAdapter.Fill(this.banco.tcc_Mecanico);
             tcc_ServicoTableAdapter.Fill(this.banco.tcc_Servico);
 
@@ -53,7 +62,7 @@ namespace prjOficinaMecanica
                 mecanico = servico.IDMecanico,
                 NovoCadastro = false
             };
-            cadastroServico.Alterar(servico.razaoSocial, servico.dataInicio);
+            cadastroServico.Alterar(servico.fantasia, servico.dataInicio);
             cadastroServico.ShowDialog();
         }
 

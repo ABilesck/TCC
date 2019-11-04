@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace prjOficinaMecanica
@@ -9,6 +12,8 @@ namespace prjOficinaMecanica
     {
         int IdCliente = 0;
         string nomeCliente = "";
+        string Tema = ConfigurationManager.AppSettings.Get("tema");
+        string Senha = ConfigurationManager.AppSettings.Get("senha");
 
         public FrmCliente()
         {
@@ -17,6 +22,11 @@ namespace prjOficinaMecanica
 
         private void FrmCliente_Load(object sender, EventArgs e)
         {
+            if (Tema.Equals("Claro"))
+                Temas.AplicarTema(this, Color.White, Color.Black);
+            else
+                Temas.AplicarTema(this, Color.Gray, Color.White);
+
             tcc_AutomovelTableAdapter.FillByCliente(banco.tcc_Automovel, IdCliente);
 
             tcc_ClienteTableAdapter.Fill(banco.tcc_Cliente);
@@ -58,17 +68,11 @@ namespace prjOficinaMecanica
                 {
                     if (cmbFiltro.SelectedIndex == 0)
                     {
-                        tcc_ClienteTableAdapter.FillById(banco.tcc_Cliente,
-                            Convert.ToInt32(txtPesquisa.Text));
-
-                    }
-                    else if (cmbFiltro.SelectedIndex == 1)
-                    {
                         tcc_ClienteTableAdapter.FillByDocumentoSocial(banco.tcc_Cliente,
                             "%" + txtPesquisa.Text + "%");
 
                     }
-                    else if (cmbFiltro.SelectedIndex == 2)
+                    else if (cmbFiltro.SelectedIndex == 1)
                     {
                         tcc_ClienteTableAdapter.FillByNome(banco.tcc_Cliente,
                             "%" + txtPesquisa.Text + "%");
@@ -100,21 +104,47 @@ namespace prjOficinaMecanica
 
         private void cmbOrdenar_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if(cmbOrdenar.SelectedIndex == 0)
+            {
+                tcc_ClienteTableAdapter.FillByOrderID(banco.tcc_Cliente);
+            }
+            else if (cmbOrdenar.SelectedIndex == 1)
+            {
+                tcc_ClienteTableAdapter.FillByOrderNome(banco.tcc_Cliente);
+            }
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             try
             {
-                if (MessageBox.Show("Deseja excluir o cliente selecionado e todos seus veiculos cadastrados?", "Atenção",
+                if(dgvCliente.RowCount > 0)
+                {
+                    if (MessageBox.Show("Deseja excluir o cliente selecionado e todos seus veiculos cadastrados?", "Atenção",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-                {
-                    IdCliente = Convert.ToInt32(((DataRowView)tcc_ClienteBindingSource.Current).Row["IDCliente"].ToString());
-                    tcc_AutomovelTableAdapter.DeleteTodos(IdCliente);
-                    tcc_ClienteTableAdapter.Delete(IdCliente);
-                    FrmCliente_Load(null, null);
+                    {
+                        string input = Interaction.InputBox("Informe a senha:", "Excluir", "*", 100, 200);
+                        if (input != "")
+                        {
+                            if (input == Senha)
+                            {
+                                IdCliente = Convert.ToInt32(((DataRowView)tcc_ClienteBindingSource.Current).Row["IDCliente"].ToString());
+                                tcc_AutomovelTableAdapter.DeleteTodos(IdCliente);
+                                tcc_ClienteTableAdapter.Delete(IdCliente);
+                                FrmCliente_Load(null, null);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Senha incorreta", "Erro ao excluir",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            return;
+                        }
+                    }
                 }
             }
             catch(NullReferenceException ex)
@@ -280,6 +310,62 @@ namespace prjOficinaMecanica
             {
                 MessageBox.Show("Ocorreu um erro inesperado\n" + ex.Message, "Erro ao excluir",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvCliente_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if(dgvCliente.Columns[e.ColumnIndex].DataPropertyName == "documentoSocial")
+            {
+                if (e.Value != null)
+                {
+                    string stringValue = (string)e.Value;
+                    if (stringValue != "")
+                    {
+                        stringValue = stringValue.Substring(0, 3) + "." + stringValue.Substring(3, 3) + "."
+                            + stringValue.Substring(6, 3) + "-" + stringValue.Substring(9, 2);
+                        e.Value = stringValue;
+                    }
+                }
+            }else if(dgvCliente.Columns[e.ColumnIndex].DataPropertyName == "telefone")
+            {
+                if (e.Value != null)
+                {
+                    string stringValue = (string)e.Value;
+                    if (stringValue != "")
+                    {
+                        stringValue = "(" + stringValue.Substring(0, 2) + ")" + stringValue.Substring(2, 5)
+                            + "-" + stringValue.Substring(7, 4);
+                        e.Value = stringValue;
+                    }
+                }
+            }else if(dgvCliente.Columns[e.ColumnIndex].DataPropertyName == "cep")
+            {
+                if (e.Value != null)
+                {
+                    string stringValue = (string)e.Value;
+                    if (stringValue != "")
+                    {
+                        stringValue = stringValue.Substring(0, 5) + "-" + stringValue.Substring(5, 3);
+                        e.Value = stringValue;
+                    }
+                }
+            }
+        }
+
+        private void tcc_AutomovelDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvAuto.Columns[e.ColumnIndex].DataPropertyName == "placa")
+            {
+                if (e.Value != null)
+                {
+                    string stringValue = (string)e.Value;
+                    if (stringValue != "")
+                    {
+                        stringValue = stringValue.Substring(0, 3) + "-" + stringValue.Substring(3, 4);
+                        e.Value = stringValue;
+                    }
+                }
             }
         }
     }
