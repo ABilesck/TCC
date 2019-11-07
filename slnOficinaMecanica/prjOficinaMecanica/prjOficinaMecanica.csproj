@@ -75,6 +75,12 @@
       <DependentUpon>Banco.xsd</DependentUpon>
     </Compile>
     <Compile Include="Config.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmAutomovel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +129,12 @@
     <Compile Include="FrmConfigurar.Designer.cs">
       <DependentUpon>FrmConfigurar.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmFolhaOrcamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFolhaOrcamento.Designer.cs">
+      <DependentUpon>FrmFolhaOrcamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMecanico.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +153,12 @@
     <Compile Include="FrmOrcamento.Designer.cs">
       <DependentUpon>FrmOrcamento.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmOrdemDeServico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmOrdemDeServico.Designer.cs">
+      <DependentUpon>FrmOrdemDeServico.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmProduto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +170,12 @@
     </Compile>
     <Compile Include="FrmRelacaoServicos.Designer.cs">
       <DependentUpon>FrmRelacaoServicos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRelMecanico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRelMecanico.Designer.cs">
+      <DependentUpon>FrmRelMecanico.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmRtpCliente.cs">
       <SubType>Form</SubType>
@@ -188,6 +212,10 @@
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Temas.cs" />
     <Compile Include="Utility.cs" />
+    <EmbeddedResource Include="FolhaOrcamento.rdlc" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmAutomovel.resx">
       <DependentUpon>FrmAutomovel.cs</DependentUpon>
     </EmbeddedResource>
@@ -212,6 +240,9 @@
     <EmbeddedResource Include="FrmConfigurar.resx">
       <DependentUpon>FrmConfigurar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmFolhaOrcamento.resx">
+      <DependentUpon>FrmFolhaOrcamento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMecanico.resx">
       <DependentUpon>FrmMecanico.cs</DependentUpon>
     </EmbeddedResource>
@@ -221,11 +252,17 @@
     <EmbeddedResource Include="FrmOrcamento.resx">
       <DependentUpon>FrmOrcamento.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmOrdemDeServico.resx">
+      <DependentUpon>FrmOrdemDeServico.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmProduto.resx">
       <DependentUpon>FrmProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRelacaoServicos.resx">
       <DependentUpon>FrmRelacaoServicos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRelMecanico.resx">
+      <DependentUpon>FrmRelMecanico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRtpCliente.resx">
       <DependentUpon>FrmRtpCliente.cs</DependentUpon>
@@ -239,6 +276,7 @@
     <EmbeddedResource Include="FrmServico.resx">
       <DependentUpon>FrmServico.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OrdemDeServico.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -249,9 +287,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RelMecanico.rdlc" />
+    <EmbeddedResource Include="rptCliente.rdlc" />
     <EmbeddedResource Include="RtpMecanico.rdlc" />
     <EmbeddedResource Include="RptProdutos.rdlc" />
-    <EmbeddedResource Include="RtpClientes.rdlc" />
     <EmbeddedResource Include="SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>

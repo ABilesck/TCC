@@ -145,7 +145,7 @@
             this.tableAdapterManager.tcc_AutomovelTableAdapter = null;
             this.tableAdapterManager.tcc_ClienteTableAdapter = null;
             this.tableAdapterManager.tcc_MecanicoTableAdapter = null;
-            this.tableAdapterManager.tcc_OrcamentoTableAdapter = null;
+            //this.tableAdapterManager.tcc_OrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_produtoOrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_ProdutoTableAdapter = this.tcc_ProdutoTableAdapter;
             this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;

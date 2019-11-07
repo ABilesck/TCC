@@ -62,9 +62,7 @@
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.cmbOrdenar = new System.Windows.Forms.ComboBox();
             this.cmbFiltro = new System.Windows.Forms.ComboBox();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -103,7 +101,6 @@
             this.tableAdapterManager.tcc_AutomovelTableAdapter = null;
             this.tableAdapterManager.tcc_ClienteTableAdapter = this.tcc_ClienteTableAdapter;
             this.tableAdapterManager.tcc_MecanicoTableAdapter = null;
-            this.tableAdapterManager.tcc_OrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_produtoOrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_ProdutoTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
@@ -192,9 +189,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 409);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 16);
+            this.label1.Size = new System.Drawing.Size(49, 16);
             this.label1.TabIndex = 25;
-            this.label1.Text = "Carros";
+            this.label1.Text = "Veículos";
             // 
             // btnExcluir
             // 
@@ -209,6 +206,7 @@
             // 
             // btnPesquisaCancelar
             // 
+            this.btnPesquisaCancelar.Enabled = false;
             this.btnPesquisaCancelar.Location = new System.Drawing.Point(174, 92);
             this.btnPesquisaCancelar.Name = "btnPesquisaCancelar";
             this.btnPesquisaCancelar.Size = new System.Drawing.Size(75, 29);
@@ -353,53 +351,28 @@
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             this.dataGridViewTextBoxColumn11.ReadOnly = true;
             // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(1056, 37);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(80, 16);
-            this.label12.TabIndex = 19;
-            this.label12.Text = "Organizar por:";
-            // 
             // label11
             // 
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(929, 37);
+            this.label11.Location = new System.Drawing.Point(1052, 38);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(80, 16);
             this.label11.TabIndex = 18;
             this.label11.Text = "Pesquisar por:";
             // 
-            // cmbOrdenar
-            // 
-            this.cmbOrdenar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbOrdenar.FormattingEnabled = true;
-            this.cmbOrdenar.Items.AddRange(new object[] {
-            "Código",
-            "Nome"});
-            this.cmbOrdenar.Location = new System.Drawing.Point(1056, 58);
-            this.cmbOrdenar.Name = "cmbOrdenar";
-            this.cmbOrdenar.Size = new System.Drawing.Size(121, 24);
-            this.cmbOrdenar.TabIndex = 17;
-            this.cmbOrdenar.Text = "Código";
-            this.cmbOrdenar.SelectedIndexChanged += new System.EventHandler(this.cmbOrdenar_SelectedIndexChanged);
-            // 
             // cmbFiltro
             // 
             this.cmbFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbFiltro.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFiltro.FormattingEnabled = true;
             this.cmbFiltro.Items.AddRange(new object[] {
             "Documento Social",
             "Nome"});
-            this.cmbFiltro.Location = new System.Drawing.Point(929, 58);
+            this.cmbFiltro.Location = new System.Drawing.Point(1055, 57);
             this.cmbFiltro.Name = "cmbFiltro";
             this.cmbFiltro.Size = new System.Drawing.Size(121, 24);
             this.cmbFiltro.TabIndex = 16;
-            this.cmbFiltro.Text = "Código";
             // 
             // txtPesquisa
             // 
@@ -407,7 +380,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPesquisa.Location = new System.Drawing.Point(12, 58);
             this.txtPesquisa.Name = "txtPesquisa";
-            this.txtPesquisa.Size = new System.Drawing.Size(911, 23);
+            this.txtPesquisa.Size = new System.Drawing.Size(1037, 23);
             this.txtPesquisa.TabIndex = 15;
             // 
             // label10
@@ -466,9 +439,7 @@
             this.Controls.Add(this.tbnAlterar);
             this.Controls.Add(this.btnPesquisar);
             this.Controls.Add(this.dgvCliente);
-            this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.cmbOrdenar);
             this.Controls.Add(this.cmbFiltro);
             this.Controls.Add(this.txtPesquisa);
             this.Controls.Add(this.label10);
@@ -503,9 +474,7 @@
         private System.Windows.Forms.Button tbnAlterar;
         private System.Windows.Forms.Button btnPesquisar;
         private System.Windows.Forms.DataGridView dgvCliente;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox cmbOrdenar;
         private System.Windows.Forms.ComboBox cmbFiltro;
         private System.Windows.Forms.TextBox txtPesquisa;
         private System.Windows.Forms.Label label10;

@@ -111,5 +111,23 @@ namespace prjOficinaMecanica
         {
             Close();
         }
+
+        private void rbtPessoaJuridica_CheckedChanged(object sender, EventArgs e)
+        {
+
+            //76971068000180
+            if (rbtPessoaJuridica.Checked)
+                txtDocSocial.Mask = "00.000.000/0000-00";
+            else
+                txtDocSocial.Mask = "000.000.000-00";
+        }
+
+        private void rbtPessoaFisica_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtPessoaJuridica.Checked)
+                txtDocSocial.Mask = "00.000.000/0000-00";
+            else
+                txtDocSocial.Mask = "000.000.000-00";
+        }
     }
 }

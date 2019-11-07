@@ -45,7 +45,6 @@
             this.mecânicoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuRelProduto = new System.Windows.Forms.ToolStripMenuItem();
             this.orçamentoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.serviçoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.janelaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.horizontalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,6 +61,7 @@
             this.btnProduto = new System.Windows.Forms.ToolStripButton();
             this.btnOrcamento = new System.Windows.Forms.ToolStripButton();
             this.btnServico = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblHora = new System.Windows.Forms.ToolStripStatusLabel();
@@ -181,8 +181,7 @@
             this.clienteToolStripMenuItem1,
             this.mecânicoToolStripMenuItem1,
             this.mnuRelProduto,
-            this.orçamentoToolStripMenuItem1,
-            this.serviçoToolStripMenuItem1});
+            this.orçamentoToolStripMenuItem1});
             this.relatórioToolStripMenuItem.Name = "relatórioToolStripMenuItem";
             this.relatórioToolStripMenuItem.Size = new System.Drawing.Size(73, 22);
             this.relatórioToolStripMenuItem.Text = "&Relatório";
@@ -213,13 +212,7 @@
             this.orçamentoToolStripMenuItem1.Name = "orçamentoToolStripMenuItem1";
             this.orçamentoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.orçamentoToolStripMenuItem1.Text = "&Orçamento";
-            // 
-            // serviçoToolStripMenuItem1
-            // 
-            this.serviçoToolStripMenuItem1.Name = "serviçoToolStripMenuItem1";
-            this.serviçoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.serviçoToolStripMenuItem1.Text = "&Serviço";
-            this.serviçoToolStripMenuItem1.Click += new System.EventHandler(this.serviçoToolStripMenuItem1_Click);
+            this.orçamentoToolStripMenuItem1.Click += new System.EventHandler(this.orçamentoToolStripMenuItem1_Click);
             // 
             // janelaToolStripMenuItem
             // 
@@ -298,7 +291,8 @@
             this.btnMecanico,
             this.btnProduto,
             this.btnOrcamento,
-            this.btnServico});
+            this.btnServico,
+            this.toolStripButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 26);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -355,6 +349,16 @@
             this.btnServico.Size = new System.Drawing.Size(23, 22);
             this.btnServico.Text = "Serviço";
             this.btnServico.Click += new System.EventHandler(this.btnServico_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // statusStrip1
             // 
@@ -439,7 +443,6 @@
         private System.Windows.Forms.ToolStripMenuItem mecânicoToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem mnuRelProduto;
         private System.Windows.Forms.ToolStripMenuItem orçamentoToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem serviçoToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem verticalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem horizontalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cascataToolStripMenuItem;
@@ -457,6 +460,7 @@
         private System.Windows.Forms.ToolStripButton btnOrcamento;
         private System.Windows.Forms.ToolStripButton btnServico;
         private System.Windows.Forms.ToolStripMenuItem configuraçõesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }
 

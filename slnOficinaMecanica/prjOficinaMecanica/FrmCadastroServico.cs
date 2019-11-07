@@ -32,16 +32,11 @@ namespace prjOficinaMecanica
 
 
             this.tcc_MecanicoTableAdapter.Fill(this.banco.tcc_Mecanico);
-            tcc_ServicoTableAdapter.Fill(banco.tcc_Servico);
-            if (NovoCadastro)
+            //tcc_ServicoTableAdapter.Fill(banco.tcc_Servico);
+            if (Orcamento == 0)
                 tcc_OrcamentoTableAdapter.Fill(banco.tcc_Orcamento);
             else
                 tcc_OrcamentoTableAdapter.FillById(banco.tcc_Orcamento, Orcamento);
-
-            if (NovoCadastro)
-                tcc_produtoOrcamentoTableAdapter.Fill(banco.tcc_produtoOrcamento);
-            else
-                tcc_produtoOrcamentoTableAdapter.FillByOrcamento(banco.tcc_produtoOrcamento, Orcamento);
 
         }
 
@@ -52,12 +47,15 @@ namespace prjOficinaMecanica
                 if (NovoCadastro)
                 {
                     tcc_ServicoTableAdapter.InsertQuery(
+                        (int)cmbMecanico.SelectedValue,
                         Orcamento,
                         dtpInicio.Value,
-                        (int)cmbMecanico.SelectedValue,
                         txtObs.Text,
                         Convert.ToDouble(txtDesconto.Text)
                         );
+                    MessageBox.Show("Salvo com sucesso!", "Atenção",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Close();
                 }
                 else
                 {
@@ -65,15 +63,14 @@ namespace prjOficinaMecanica
                         (int)cmbMecanico.SelectedValue,
                         Orcamento,
                         dtpInicio.Value,
-                        txtObs.Text,
                         Convert.ToDouble(txtDesconto.Text),
                         mecanico,
                         Orcamento
                         );
-                }
-                MessageBox.Show("Salvo com sucesso!", "Atenção",
+                    MessageBox.Show("Salvo com sucesso!", "Atenção",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Close();
+                    Close();
+                }
             }
             catch(SqlException ex)
             {
@@ -96,8 +93,15 @@ namespace prjOficinaMecanica
 
         private void FrmCadastroServico_FormClosing(object sender, FormClosingEventArgs e)
         {
-            var form = Application.OpenForms.OfType<FrmServico>().Single();
-            form.Reload();
+            try
+            {
+                var form = Application.OpenForms.OfType<FrmServico>().Single();
+                if (form != null)
+                    form.Reload();
+            }catch(InvalidOperationException ex)
+            {
+            }
+            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

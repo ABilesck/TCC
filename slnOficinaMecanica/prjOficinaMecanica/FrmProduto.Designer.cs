@@ -37,9 +37,7 @@
             this.btnExcluir = new System.Windows.Forms.Button();
             this.tbnAlterar = new System.Windows.Forms.Button();
             this.btnPesquisar = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.cmbOrdenar = new System.Windows.Forms.ComboBox();
             this.cmbFiltro = new System.Windows.Forms.ComboBox();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -48,6 +46,7 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_ProdutoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.banco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_ProdutoDataGridView)).BeginInit();
@@ -73,7 +72,6 @@
             this.tableAdapterManager.tcc_AutomovelTableAdapter = null;
             this.tableAdapterManager.tcc_ClienteTableAdapter = null;
             this.tableAdapterManager.tcc_MecanicoTableAdapter = null;
-            this.tableAdapterManager.tcc_OrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_produtoOrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_ProdutoTableAdapter = this.tcc_ProdutoTableAdapter;
             this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
@@ -111,58 +109,33 @@
             this.btnPesquisar.UseVisualStyleBackColor = true;
             this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(472, 43);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(80, 16);
-            this.label12.TabIndex = 26;
-            this.label12.Text = "Organizar por:";
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(345, 43);
+            this.label11.Location = new System.Drawing.Point(472, 43);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(80, 16);
             this.label11.TabIndex = 25;
             this.label11.Text = "Pesquisar por:";
             // 
-            // cmbOrdenar
-            // 
-            this.cmbOrdenar.FormattingEnabled = true;
-            this.cmbOrdenar.Items.AddRange(new object[] {
-            "Código",
-            "Nome"});
-            this.cmbOrdenar.Location = new System.Drawing.Point(475, 64);
-            this.cmbOrdenar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cmbOrdenar.Name = "cmbOrdenar";
-            this.cmbOrdenar.Size = new System.Drawing.Size(121, 24);
-            this.cmbOrdenar.TabIndex = 24;
-            this.cmbOrdenar.Text = "Código";
-            this.cmbOrdenar.SelectedIndexChanged += new System.EventHandler(this.cmbOrdenar_SelectedIndexChanged);
-            // 
             // cmbFiltro
             // 
-            this.cmbFiltro.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFiltro.FormattingEnabled = true;
             this.cmbFiltro.Items.AddRange(new object[] {
-            "Código",
             "Descrição"});
-            this.cmbFiltro.Location = new System.Drawing.Point(348, 63);
+            this.cmbFiltro.Location = new System.Drawing.Point(475, 64);
             this.cmbFiltro.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmbFiltro.Name = "cmbFiltro";
             this.cmbFiltro.Size = new System.Drawing.Size(121, 24);
             this.cmbFiltro.TabIndex = 23;
-            this.cmbFiltro.Text = "Código";
             // 
             // txtPesquisa
             // 
             this.txtPesquisa.Location = new System.Drawing.Point(16, 64);
             this.txtPesquisa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPesquisa.Name = "txtPesquisa";
-            this.txtPesquisa.Size = new System.Drawing.Size(326, 23);
+            this.txtPesquisa.Size = new System.Drawing.Size(453, 23);
             this.txtPesquisa.TabIndex = 22;
             // 
             // label10
@@ -226,19 +199,28 @@
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(178, 97);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 28);
+            this.btnCancelar.TabIndex = 33;
+            this.btnCancelar.Text = "&Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            // 
             // FrmProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(616, 470);
+            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.tcc_ProdutoDataGridView);
             this.Controls.Add(this.btnNovo);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.tbnAlterar);
             this.Controls.Add(this.btnPesquisar);
-            this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.cmbOrdenar);
             this.Controls.Add(this.cmbFiltro);
             this.Controls.Add(this.txtPesquisa);
             this.Controls.Add(this.label10);
@@ -265,9 +247,7 @@
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button tbnAlterar;
         private System.Windows.Forms.Button btnPesquisar;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox cmbOrdenar;
         private System.Windows.Forms.ComboBox cmbFiltro;
         private System.Windows.Forms.TextBox txtPesquisa;
         private System.Windows.Forms.Label label10;
@@ -278,5 +258,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }

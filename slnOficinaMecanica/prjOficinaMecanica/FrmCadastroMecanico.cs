@@ -15,7 +15,7 @@ namespace prjOficinaMecanica
     public partial class FrmCadastroMecanico : Form
     {
         public bool NovoCadastro;
-        public int idMecanico;
+        public int id;
 
         string Tema = ConfigurationManager.AppSettings.Get("tema");
         public FrmCadastroMecanico()
@@ -32,7 +32,6 @@ namespace prjOficinaMecanica
 
 
             this.tcc_MecanicoTableAdapter.Fill(this.banco.tcc_Mecanico);
-
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -77,7 +76,7 @@ namespace prjOficinaMecanica
                         cmbUf.Text,
                         txtCep.Text,
                         txtFantasia.Text,
-                        idMecanico
+                        id
                         );
                 }
 
@@ -108,11 +107,12 @@ namespace prjOficinaMecanica
             form.Reload();
         }
 
-        public void Alterar(int idMecanico, string razao, string cnpj, string ie, string tel,
+        public void Alterar(int idMecanico, string razao,string fantasia, string cnpj, string ie, string tel,
             string email, string conta, string agencia, string comissao, string logradouro,
             string bairro, string cidade, string complemento, string uf, string cep)
         {
             txtRazao.Text = razao;
+            txtFantasia.Text = fantasia;
             txtCnpj.Text = cnpj;
             txtIe.Text = ie;
             txtTelefone.Text = tel;
@@ -126,6 +126,12 @@ namespace prjOficinaMecanica
             txtComplemento.Text = complemento;
             cmbUf.Text = uf;
             txtCep.Text = cep;
+            id = idMecanico;
+        }
+
+        private void txtTelefone_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
         }
     }
 }

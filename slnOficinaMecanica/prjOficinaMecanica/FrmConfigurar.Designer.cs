@@ -37,9 +37,10 @@
             this.rbtNao = new System.Windows.Forms.RadioButton();
             this.cmbForm = new System.Windows.Forms.ComboBox();
             this.grpSenha = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtSenha = new System.Windows.Forms.TextBox();
             this.txtRepetirSenha = new System.Windows.Forms.TextBox();
+            this.txtSenha = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnSenha = new System.Windows.Forms.Button();
             this.grpSenha.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,7 +69,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(215, 195);
+            this.btnCancelar.Location = new System.Drawing.Point(215, 224);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 2;
@@ -78,7 +79,7 @@
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(134, 195);
+            this.btnSalvar.Location = new System.Drawing.Point(134, 224);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 23);
             this.btnSalvar.TabIndex = 3;
@@ -142,12 +143,29 @@
             this.grpSenha.Controls.Add(this.txtRepetirSenha);
             this.grpSenha.Controls.Add(this.txtSenha);
             this.grpSenha.Controls.Add(this.label3);
-            this.grpSenha.Location = new System.Drawing.Point(19, 100);
+            this.grpSenha.Enabled = false;
+            this.grpSenha.Location = new System.Drawing.Point(19, 129);
             this.grpSenha.Name = "grpSenha";
             this.grpSenha.Size = new System.Drawing.Size(271, 89);
             this.grpSenha.TabIndex = 8;
             this.grpSenha.TabStop = false;
             this.grpSenha.Text = "Definir Senha:";
+            // 
+            // txtRepetirSenha
+            // 
+            this.txtRepetirSenha.Location = new System.Drawing.Point(10, 59);
+            this.txtRepetirSenha.Name = "txtRepetirSenha";
+            this.txtRepetirSenha.PasswordChar = '*';
+            this.txtRepetirSenha.Size = new System.Drawing.Size(241, 20);
+            this.txtRepetirSenha.TabIndex = 2;
+            // 
+            // txtSenha
+            // 
+            this.txtSenha.Location = new System.Drawing.Point(10, 20);
+            this.txtSenha.Name = "txtSenha";
+            this.txtSenha.PasswordChar = '*';
+            this.txtSenha.Size = new System.Drawing.Size(241, 20);
+            this.txtSenha.TabIndex = 1;
             // 
             // label3
             // 
@@ -158,27 +176,22 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Repetir Senha:";
             // 
-            // txtSenha
+            // btnSenha
             // 
-            this.txtSenha.Location = new System.Drawing.Point(10, 20);
-            this.txtSenha.Name = "txtSenha";
-            this.txtSenha.PasswordChar = '*';
-            this.txtSenha.Size = new System.Drawing.Size(241, 20);
-            this.txtSenha.TabIndex = 1;
-            // 
-            // txtRepetirSenha
-            // 
-            this.txtRepetirSenha.Location = new System.Drawing.Point(10, 59);
-            this.txtRepetirSenha.Name = "txtRepetirSenha";
-            this.txtRepetirSenha.PasswordChar = '*';
-            this.txtRepetirSenha.Size = new System.Drawing.Size(241, 20);
-            this.txtRepetirSenha.TabIndex = 2;
+            this.btnSenha.Location = new System.Drawing.Point(19, 100);
+            this.btnSenha.Name = "btnSenha";
+            this.btnSenha.Size = new System.Drawing.Size(271, 23);
+            this.btnSenha.TabIndex = 9;
+            this.btnSenha.Text = "Alterar Senha";
+            this.btnSenha.UseVisualStyleBackColor = true;
+            this.btnSenha.Click += new System.EventHandler(this.btnSenha_Click);
             // 
             // FrmConfigurar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(298, 225);
+            this.ClientSize = new System.Drawing.Size(298, 255);
+            this.Controls.Add(this.btnSenha);
             this.Controls.Add(this.grpSenha);
             this.Controls.Add(this.cmbForm);
             this.Controls.Add(this.rbtNao);
@@ -212,5 +225,6 @@
         private System.Windows.Forms.TextBox txtRepetirSenha;
         private System.Windows.Forms.TextBox txtSenha;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnSenha;
     }
 }

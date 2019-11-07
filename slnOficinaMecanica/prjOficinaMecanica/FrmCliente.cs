@@ -46,15 +46,15 @@ namespace prjOficinaMecanica
                     tcc_AutomovelTableAdapter.FillByCliente(banco.tcc_Automovel, IdCliente);
                 }
             }
-            catch(NullReferenceException ex)
+            catch (NullReferenceException ex)
             {
             }
-            catch(SqlException ex)
+            catch (SqlException ex)
             {
                 MessageBox.Show("Ocorreu um erro no banco de dados\n" + ex.Message, "Erro ao selecionar",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Ocorreu um erro inesperado\n" + ex.Message, "Erro ao selecionar",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -66,17 +66,20 @@ namespace prjOficinaMecanica
             {
                 if (!txtPesquisa.Text.Equals(""))
                 {
-                    if (cmbFiltro.SelectedIndex == 0)
+                    if (cmbFiltro.Text.Equals("Documento Social"))
                     {
                         tcc_ClienteTableAdapter.FillByDocumentoSocial(banco.tcc_Cliente,
                             "%" + txtPesquisa.Text + "%");
+                        btnPesquisaCancelar.Enabled = true;
+                        txtPesquisa.Text = "";
 
                     }
-                    else if (cmbFiltro.SelectedIndex == 1)
+                    else
                     {
                         tcc_ClienteTableAdapter.FillByNome(banco.tcc_Cliente,
                             "%" + txtPesquisa.Text + "%");
-
+                        btnPesquisaCancelar.Enabled = true;
+                        txtPesquisa.Text = "";
                     }
                 }
                 else
@@ -85,12 +88,12 @@ namespace prjOficinaMecanica
                         MessageBoxIcon.Error);
                 }
             }
-            catch(SqlException ex)
+            catch (SqlException ex)
             {
                 MessageBox.Show("Ocorreu um erro no banco de dados\n" + ex.Message, "Erro ao pesquisar",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Ocorreu um erro inesperado\n" + ex.Message, "Erro ao pesquisar",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -100,25 +103,15 @@ namespace prjOficinaMecanica
         private void btnPesquisaCancelar_Click(object sender, EventArgs e)
         {
             FrmCliente_Load(null, null);
+            btnPesquisaCancelar.Enabled = false;
         }
 
-        private void cmbOrdenar_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(cmbOrdenar.SelectedIndex == 0)
-            {
-                tcc_ClienteTableAdapter.FillByOrderID(banco.tcc_Cliente);
-            }
-            else if (cmbOrdenar.SelectedIndex == 1)
-            {
-                tcc_ClienteTableAdapter.FillByOrderNome(banco.tcc_Cliente);
-            }
-        }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             try
             {
-                if(dgvCliente.RowCount > 0)
+                if (dgvCliente.RowCount > 0)
                 {
                     if (MessageBox.Show("Deseja excluir o cliente selecionado e todos seus veiculos cadastrados?", "Atenção",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question,
@@ -140,24 +133,20 @@ namespace prjOficinaMecanica
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
-                        else
-                        {
-                            return;
-                        }
                     }
                 }
             }
-            catch(NullReferenceException ex)
+            catch (NullReferenceException ex)
             {
                 MessageBox.Show("Ocorreu um erro de objeto\n" + ex.Message, "Erro ao excluir",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(SqlException ex)
+            catch (SqlException ex)
             {
                 MessageBox.Show("Ocorreu um erro no banco de dados\n" + ex.Message, "Erro ao excluir",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Ocorreu um erro inesperado\n" + ex.Message, "Erro ao excluir",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -176,12 +165,12 @@ namespace prjOficinaMecanica
                 frmCarro.autoNovo = true;
                 frmCarro.ShowDialog();
             }
-            catch(NullReferenceException ex)
+            catch (NullReferenceException ex)
             {
                 MessageBox.Show("Formulário não encontrado\n" + ex.Message, "Erro ao abrir formulário",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Ocorreu um erro inesperado\n" + ex.Message, "Erro ao abrir formulário",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -199,10 +188,6 @@ namespace prjOficinaMecanica
             FrmCliente_Load(null, null);
         }
 
-        private void tcPrincipal_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cmbOrdenar_SelectedIndexChanged(null, null);
-        }
 
         private void btnNovoCliente_Click(object sender, EventArgs e)
         {
@@ -212,12 +197,12 @@ namespace prjOficinaMecanica
                 cadastroCliente.NovoCadastro = true;
                 cadastroCliente.ShowDialog();
             }
-            catch(NullReferenceException ex)
+            catch (NullReferenceException ex)
             {
                 MessageBox.Show("Formulário não encontrado" + ex.Message, "Erro ao abrir formulário",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Ocorreu um erro inesperado\n" + ex.Message, "Erro ao abrir formulário",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -228,22 +213,34 @@ namespace prjOficinaMecanica
         {
             try
             {
-                var cliente = (tcc_ClienteBindingSource.Current as DataRowView).Row as Banco.tcc_ClienteRow;
+                string input = Interaction.InputBox("Informe a senha:", "Alterar", "", 100, 200);
+                if (input != "")
+                {
+                    if (input == Senha)
+                    {
+                        var cliente = (tcc_ClienteBindingSource.Current as DataRowView).Row as Banco.tcc_ClienteRow;
 
-                FrmCadastroCliente cadastroCliente = new FrmCadastroCliente();
-                cadastroCliente.NovoCadastro = false;
-                cadastroCliente.Alterar(cliente.nome, cliente.documentoSocial, cliente.telefone,
-                    cliente.email, cliente.logradouro, cliente.bairro, cliente.cidade, cliente.complemento,
-                    cliente.uf, cliente.cep, cliente.registroGeral);
-                cadastroCliente.Id = cliente.IDCliente;
-                cadastroCliente.ShowDialog();
+                        FrmCadastroCliente cadastroCliente = new FrmCadastroCliente();
+                        cadastroCliente.NovoCadastro = false;
+                        cadastroCliente.Alterar(cliente.nome, cliente.documentoSocial, cliente.telefone,
+                            cliente.email, cliente.logradouro, cliente.bairro, cliente.cidade, cliente.complemento,
+                            cliente.uf, cliente.cep, cliente.registroGeral);
+                        cadastroCliente.Id = cliente.IDCliente;
+                        cadastroCliente.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Senha incorreta", "Erro ao alterar",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
-            catch(NullReferenceException ex)
+            catch (NullReferenceException ex)
             {
                 MessageBox.Show("Objeto não encontrado\n" + ex.Message, "Erro ao alterar",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Ocorreu um erro inesperado\n" + ex.Message, "Erro ao alterar",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -259,23 +256,35 @@ namespace prjOficinaMecanica
         {
             try
             {
-                FrmAutomovel frmCarro = new FrmAutomovel();
-                var cliente = (tcc_ClienteBindingSource.Current as DataRowView).Row as Banco.tcc_ClienteRow;
-                var carro = (tcc_AutomovelBindingSource.Current as DataRowView).Row as Banco.tcc_AutomovelRow;
+                string input = Interaction.InputBox("Informe a senha:", "Alterar", "", 100, 200);
+                if (input != "")
+                {
+                    if (input == Senha)
+                    {
+                        FrmAutomovel frmCarro = new FrmAutomovel();
+                        var cliente = (tcc_ClienteBindingSource.Current as DataRowView).Row as Banco.tcc_ClienteRow;
+                        var carro = (tcc_AutomovelBindingSource.Current as DataRowView).Row as Banco.tcc_AutomovelRow;
 
-                frmCarro.idCliente = cliente.IDCliente;
-                frmCarro.nomeCliente = cliente.nome;
-                frmCarro.Alterar(carro.IDAutomovel, carro.placa, carro.modelo,
-                    carro.ano, carro.cor, carro.kmRodado);
-                frmCarro.autoNovo = false;
-                frmCarro.ShowDialog();
+                        frmCarro.idCliente = cliente.IDCliente;
+                        frmCarro.nomeCliente = cliente.nome;
+                        frmCarro.Alterar(carro.IDAutomovel, carro.placa, carro.modelo,
+                            carro.ano, carro.cor, carro.kmRodado);
+                        frmCarro.autoNovo = false;
+                        frmCarro.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Senha incorreta", "Erro ao alterar",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
-            catch(NullReferenceException ex)
+            catch (NullReferenceException ex)
             {
                 MessageBox.Show("Objeto não encontrado\n" + ex.Message, "Erro ao alterar",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Ocorreu um erro inesperado\n" + ex.Message, "Erro ao alterar",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -290,10 +299,22 @@ namespace prjOficinaMecanica
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
-                    var carro = (tcc_AutomovelBindingSource.Current as DataRowView).Row
+                    string input = Interaction.InputBox("Informe a senha:", "Excluir", "", 100, 200);
+                    if (input != "")
+                    {
+                        if (input == Senha)
+                        {
+                            var carro = (tcc_AutomovelBindingSource.Current as DataRowView).Row
                         as Banco.tcc_AutomovelRow;
-                    tcc_AutomovelTableAdapter.Delete(carro.IDAutomovel);
-                    tcc_AutomovelTableAdapter.FillByCliente(banco.tcc_Automovel, IdCliente);
+                            tcc_AutomovelTableAdapter.Delete(carro.IDAutomovel);
+                            tcc_AutomovelTableAdapter.FillByCliente(banco.tcc_Automovel, IdCliente);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Senha incorreta", "Erro ao excluir",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                 }
             }
             catch (NullReferenceException ex)
@@ -301,12 +322,12 @@ namespace prjOficinaMecanica
                 MessageBox.Show("Objeto não encontrado\n" + ex.Message, "Erro ao excluir",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(SqlException ex)
+            catch (SqlException ex)
             {
                 MessageBox.Show("Ocorreu um erro no banco de dados\n" + ex.Message, "Erro ao excluir",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Ocorreu um erro inesperado\n" + ex.Message, "Erro ao excluir",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -315,19 +336,33 @@ namespace prjOficinaMecanica
 
         private void dgvCliente_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if(dgvCliente.Columns[e.ColumnIndex].DataPropertyName == "documentoSocial")
+            if (dgvCliente.Columns[e.ColumnIndex].DataPropertyName == "documentoSocial")
             {
                 if (e.Value != null)
                 {
                     string stringValue = (string)e.Value;
                     if (stringValue != "")
                     {
-                        stringValue = stringValue.Substring(0, 3) + "." + stringValue.Substring(3, 3) + "."
+                        if (stringValue.Length == 11)
+                        {
+                            stringValue = stringValue.Substring(0, 3) + "." +
+                                stringValue.Substring(3, 3) + "."
                             + stringValue.Substring(6, 3) + "-" + stringValue.Substring(9, 2);
+                        }
+                        else
+                        {
+                            //76.971.068/0001-80
+                            //00.000.000/0000-00
+                            //76971068000180
+                            stringValue = stringValue.Substring(0, 2) + "." +
+                                stringValue.Substring(2, 3) + "." + stringValue.Substring(5, 3) + "/"
+                                + stringValue.Substring(8, 4) + "-" + stringValue.Substring(12, 2);
+                        }
                         e.Value = stringValue;
                     }
                 }
-            }else if(dgvCliente.Columns[e.ColumnIndex].DataPropertyName == "telefone")
+            }
+            else if (dgvCliente.Columns[e.ColumnIndex].DataPropertyName == "telefone")
             {
                 if (e.Value != null)
                 {
@@ -339,7 +374,8 @@ namespace prjOficinaMecanica
                         e.Value = stringValue;
                     }
                 }
-            }else if(dgvCliente.Columns[e.ColumnIndex].DataPropertyName == "cep")
+            }
+            else if (dgvCliente.Columns[e.ColumnIndex].DataPropertyName == "cep")
             {
                 if (e.Value != null)
                 {
@@ -362,7 +398,7 @@ namespace prjOficinaMecanica
                     string stringValue = (string)e.Value;
                     if (stringValue != "")
                     {
-                        stringValue = stringValue.Substring(0, 3) + "-" + stringValue.Substring(3, 4);
+                        stringValue = stringValue.Substring(0, 3).ToUpper() + "-" + stringValue.Substring(3, 4);
                         e.Value = stringValue;
                     }
                 }

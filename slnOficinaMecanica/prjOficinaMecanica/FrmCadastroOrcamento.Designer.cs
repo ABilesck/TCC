@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label iDAutomovelLabel;
             System.Windows.Forms.Label maoDeObraLabel;
+            System.Windows.Forms.Label label2;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadastroOrcamento));
             this.banco = new prjOficinaMecanica.Banco();
             this.tcc_OrcamentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -48,8 +49,10 @@
             this.btnSalvar = new System.Windows.Forms.Button();
             this.cmbCarro = new System.Windows.Forms.ComboBox();
             this.tccAutomovelBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.txtDescricao = new System.Windows.Forms.MaskedTextBox();
             iDAutomovelLabel = new System.Windows.Forms.Label();
             maoDeObraLabel = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.banco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcc_OrcamentoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tccAutomovelBindingSource)).BeginInit();
@@ -69,11 +72,20 @@
             // maoDeObraLabel
             // 
             maoDeObraLabel.AutoSize = true;
-            maoDeObraLabel.Location = new System.Drawing.Point(9, 102);
+            maoDeObraLabel.Location = new System.Drawing.Point(9, 126);
             maoDeObraLabel.Name = "maoDeObraLabel";
             maoDeObraLabel.Size = new System.Drawing.Size(74, 13);
             maoDeObraLabel.TabIndex = 10;
             maoDeObraLabel.Text = "Mao De Obra:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(25, 91);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(58, 13);
+            label2.TabIndex = 17;
+            label2.Text = "Descrição:";
             // 
             // banco
             // 
@@ -95,7 +107,6 @@
             this.tableAdapterManager.tcc_AutomovelTableAdapter = this.tcc_AutomovelTableAdapter;
             this.tableAdapterManager.tcc_ClienteTableAdapter = this.tcc_ClienteTableAdapter;
             this.tableAdapterManager.tcc_MecanicoTableAdapter = null;
-            this.tableAdapterManager.tcc_OrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_produtoOrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_ProdutoTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
@@ -115,8 +126,7 @@
             // 
             // txtMaoDeObra
             // 
-            this.txtMaoDeObra.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tcc_OrcamentoBindingSource, "MaoDeObra", true));
-            this.txtMaoDeObra.Location = new System.Drawing.Point(89, 99);
+            this.txtMaoDeObra.Location = new System.Drawing.Point(89, 123);
             this.txtMaoDeObra.Name = "txtMaoDeObra";
             this.txtMaoDeObra.Size = new System.Drawing.Size(200, 20);
             this.txtMaoDeObra.TabIndex = 3;
@@ -157,7 +167,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(400, 148);
+            this.btnCancelar.Location = new System.Drawing.Point(399, 152);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 5;
@@ -167,7 +177,7 @@
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(319, 148);
+            this.btnSalvar.Location = new System.Drawing.Point(318, 152);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 23);
             this.btnSalvar.TabIndex = 4;
@@ -185,17 +195,27 @@
             this.cmbCarro.Size = new System.Drawing.Size(280, 21);
             this.cmbCarro.TabIndex = 15;
             this.cmbCarro.ValueMember = "IDAutomovel";
+            this.cmbCarro.SelectedIndexChanged += new System.EventHandler(this.cmbCarro_SelectedIndexChanged);
             // 
             // tccAutomovelBindingSource1
             // 
             this.tccAutomovelBindingSource1.DataMember = "tcc_Automovel";
             this.tccAutomovelBindingSource1.DataSource = this.banco;
             // 
+            // txtDescricao
+            // 
+            this.txtDescricao.Location = new System.Drawing.Point(89, 88);
+            this.txtDescricao.Name = "txtDescricao";
+            this.txtDescricao.Size = new System.Drawing.Size(336, 20);
+            this.txtDescricao.TabIndex = 16;
+            // 
             // FrmCadastroOrcamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(486, 182);
+            this.ClientSize = new System.Drawing.Size(486, 188);
+            this.Controls.Add(label2);
+            this.Controls.Add(this.txtDescricao);
             this.Controls.Add(this.cmbCarro);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.btnCancelar);
@@ -238,5 +258,6 @@
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.ComboBox cmbCarro;
         private System.Windows.Forms.BindingSource tccAutomovelBindingSource1;
+        private System.Windows.Forms.MaskedTextBox txtDescricao;
     }
 }

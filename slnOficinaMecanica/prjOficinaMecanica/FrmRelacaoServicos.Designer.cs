@@ -30,40 +30,52 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.Banco = new prjOficinaMecanica.Banco();
             this.RptServicoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Banco = new prjOficinaMecanica.Banco();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.RptServicoTableAdapter = new prjOficinaMecanica.BancoTableAdapters.RptServicoTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.Banco)).BeginInit();
+            this.OrdemServicoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.OrdemServicoTableAdapter = new prjOficinaMecanica.BancoTableAdapters.OrdemServicoTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.RptServicoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Banco)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OrdemServicoBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // reportViewer1
-            // 
-            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = this.RptServicoBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "prjOficinaMecanica.RptRelacaoServicos.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(800, 450);
-            this.reportViewer1.TabIndex = 0;
-            // 
-            // Banco
-            // 
-            this.Banco.DataSetName = "Banco";
-            this.Banco.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // RptServicoBindingSource
             // 
             this.RptServicoBindingSource.DataMember = "RptServico";
             this.RptServicoBindingSource.DataSource = this.Banco;
             // 
+            // Banco
+            // 
+            this.Banco.DataSetName = "Banco";
+            this.Banco.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = this.OrdemServicoBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "prjOficinaMecanica.OrdemDeServico.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(800, 450);
+            this.reportViewer1.TabIndex = 0;
+            // 
             // RptServicoTableAdapter
             // 
             this.RptServicoTableAdapter.ClearBeforeFill = true;
+            // 
+            // OrdemServicoBindingSource
+            // 
+            this.OrdemServicoBindingSource.DataMember = "OrdemServico";
+            this.OrdemServicoBindingSource.DataSource = this.Banco;
+            // 
+            // OrdemServicoTableAdapter
+            // 
+            this.OrdemServicoTableAdapter.ClearBeforeFill = true;
             // 
             // FrmRelacaoServicos
             // 
@@ -74,8 +86,9 @@
             this.Name = "FrmRelacaoServicos";
             this.Text = "FrmRelacaoServicos";
             this.Load += new System.EventHandler(this.FrmRelacaoServicos_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.Banco)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RptServicoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Banco)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OrdemServicoBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -86,5 +99,7 @@
         private System.Windows.Forms.BindingSource RptServicoBindingSource;
         private Banco Banco;
         private BancoTableAdapters.RptServicoTableAdapter RptServicoTableAdapter;
+        private System.Windows.Forms.BindingSource OrdemServicoBindingSource;
+        private BancoTableAdapters.OrdemServicoTableAdapter OrdemServicoTableAdapter;
     }
 }

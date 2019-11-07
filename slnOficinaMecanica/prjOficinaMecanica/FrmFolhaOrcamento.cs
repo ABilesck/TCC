@@ -10,19 +10,17 @@ using System.Windows.Forms;
 
 namespace prjOficinaMecanica
 {
-    public partial class FrmRelacaoServicos : Form
+    public partial class FrmFolhaOrcamento : Form
     {
-        public FrmRelacaoServicos()
+        public FrmFolhaOrcamento()
         {
             InitializeComponent();
         }
 
-        private void FrmRelacaoServicos_Load(object sender, EventArgs e)
+        private void FrmFolhaOrcamento_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'Banco.OrdemServico' table. You can move, or remove it, as needed.
-            this.OrdemServicoTableAdapter.Fill(this.Banco.OrdemServico,4,10);
-            // TODO: This line of code loads data into the 'Banco.RptServico' table. You can move, or remove it, as needed.
-            
+            this.RelOrcamentoTableAdapter.Fill(this.Banco.RelOrcamento);
 
             this.reportViewer1.RefreshReport();
         }

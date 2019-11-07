@@ -14,9 +14,12 @@
 
 
 
-namespace prjOficinaMecanica.BancoTableAdapters {
-    
-    
+namespace prjOficinaMecanica.BancoTableAdapters
+{
+    partial class RptServicoTableAdapter
+    {
+    }
+
     public partial class tcc_MecanicoTableAdapter {
     }
 }

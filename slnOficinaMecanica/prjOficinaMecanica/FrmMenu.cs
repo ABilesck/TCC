@@ -218,14 +218,14 @@ namespace prjOficinaMecanica
         {
             foreach (Form item in MdiChildren)
             {
-                if (item is FrmRtpMecanico)
+                if (item is FrmRelMecanico)
                 {
                     item.Focus();
                     return;
                 }
             }
 
-            FrmRtpMecanico rtpMecanico = new FrmRtpMecanico() { MdiParent = this };
+            FrmRelMecanico rtpMecanico = new FrmRelMecanico() { MdiParent = this };
             rtpMecanico.Show();
         }
 
@@ -294,6 +294,26 @@ namespace prjOficinaMecanica
             }
             FrmRelacaoServicos frmRelacaoServicos = new FrmRelacaoServicos() { MdiParent = this };
             frmRelacaoServicos.Show();
+        }
+
+        private void orçamentoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in MdiChildren)
+            {
+                if(item is FrmFolhaOrcamento)
+                {
+                    item.Focus();
+                    return;
+                }
+            }
+            FrmFolhaOrcamento folhaOrcamento = new FrmFolhaOrcamento() { MdiParent = this };
+            folhaOrcamento.Show();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            Form1 form1 = new Form1() { MdiParent = this };
+            form1.Show();
         }
     }
 }

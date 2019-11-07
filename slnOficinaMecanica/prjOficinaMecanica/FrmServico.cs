@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -18,6 +19,7 @@ namespace prjOficinaMecanica
         private bool Finalizado;
 
         string Tema = ConfigurationManager.AppSettings.Get("tema");
+        string Senha = ConfigurationManager.AppSettings.Get("senha");
 
         public FrmServico()
         {
@@ -32,7 +34,12 @@ namespace prjOficinaMecanica
 
 
             tcc_MecanicoTableAdapter.Fill(this.banco.tcc_Mecanico);
-            tcc_ServicoTableAdapter.Fill(this.banco.tcc_Servico);
+            tcc_ServicoTableAdapter.Fill(banco.tcc_Servico);
+
+            if (dgvServico.Rows.Count > 0)
+            {
+                dgvServico_SelectionChanged(null, null);
+            }
 
         }
         public void GetOrcamento(int IdO)
@@ -55,15 +62,27 @@ namespace prjOficinaMecanica
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            var servico = (tcc_ServicoBindingSource.Current as DataRowView).Row as Banco.tcc_ServicoRow;
-            FrmCadastroServico cadastroServico = new FrmCadastroServico()
+            string input = Interaction.InputBox("Informe a senha:", "Alterar", "*", 100, 200);
+            if (input != "")
             {
-                Orcamento = servico.IDOrcamento,
-                mecanico = servico.IDMecanico,
-                NovoCadastro = false
-            };
-            cadastroServico.Alterar(servico.fantasia, servico.dataInicio);
-            cadastroServico.ShowDialog();
+                if (input == Senha)
+                {
+                    var servico = (tcc_ServicoBindingSource.Current as DataRowView).Row as Banco.tcc_ServicoRow;
+                    FrmCadastroServico cadastroServico = new FrmCadastroServico()
+                    {
+                        Orcamento = servico.IDOrcamento,
+                        mecanico = servico.IDMecanico,
+                        NovoCadastro = false
+                    };
+                    cadastroServico.Alterar(servico.razaoSocial, servico.dataInicio);
+                    cadastroServico.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Senha incorreta", "Erro ao alterar",
+            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void btnPesquisaCancelar_Click(object sender, EventArgs e)
@@ -83,11 +102,23 @@ namespace prjOficinaMecanica
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question,
                     MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                     {
-                        tcc_ServicoTableAdapter.DeleteQuery(servico.IDMecanico, servico.IDOrcamento);
-                        FrmServico_Load(null, null);
+                        string input = Interaction.InputBox("Informe a senha:", "Excluir", "*", 100, 200);
+                        if (input != "")
+                        {
+                            if (input == Senha)
+                            {
+                                tcc_ServicoTableAdapter.DeleteQuery(servico.IDMecanico, servico.IDOrcamento);
+                                FrmServico_Load(null, null);
 
-                        MessageBox.Show("Serviço excluido com sucesso!", "Atenção",
-                            MessageBoxButtons.OK, MessageBoxIcon.Question);
+                                MessageBox.Show("Serviço excluido com sucesso!", "Atenção",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Question);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Senha incorreta", "Erro ao excluir",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
                     }
                 }
 
@@ -98,7 +129,7 @@ namespace prjOficinaMecanica
                     "\n" + ex.Message, "Erro no Banco de Dados",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Ocorreu um erro inesperado" +
                     "\n" + ex.Message, "Erro",
@@ -110,9 +141,9 @@ namespace prjOficinaMecanica
         {
             try
             {
-                if(dgvServico.Rows.Count > 0)
+                if (dgvServico.Rows.Count > 0)
                 {
-                    if (dgvServico[5, dgvServico.CurrentRow.Index].Value.ToString() == "")
+                    if (dgvServico[4, dgvServico.CurrentRow.Index].Value.ToString() == "")
                     {
                         //nao finalizado
                         lblStatus.ForeColor = Color.Red;
@@ -132,12 +163,12 @@ namespace prjOficinaMecanica
                     lblStatus.ForeColor = Color.Black;
                     lblStatus.Text = "Nenhum serviço selecionado!";
                 }
-                
+
             }
             catch (NullReferenceException ex)
             {
             }
-            catch(SqlException ex)
+            catch (SqlException ex)
             {
                 MessageBox.Show("Ocorreu um erro no banco de dados" +
                     "\n" + ex.Message, "Erro",
@@ -171,7 +202,7 @@ namespace prjOficinaMecanica
                 tcc_ServicoTableAdapter.Fill(banco.tcc_Servico);
 
             }
-            catch(NullReferenceException ex)
+            catch (NullReferenceException ex)
             {
                 MessageBox.Show("Ocorreu um erro na referencia de objeto" +
                     "\n" + ex.Message, "Erro",
@@ -183,13 +214,30 @@ namespace prjOficinaMecanica
                     "\n" + ex.Message, "Erro",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Ocorreu um erro inesperado" +
                     "\n" + ex.Message, "Erro",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void btnOrdem_Click(object sender, EventArgs e)
+        {
+            var servico = (tcc_ServicoBindingSource.Current as DataRowView).Row as Banco.tcc_ServicoRow;
+            FrmOrdemDeServico ordemDeServico = new FrmOrdemDeServico()
+            {
+                mecanico = servico.IDMecanico,
+                Orcamento = servico.IDOrcamento
+            };
+            ordemDeServico.ShowDialog();
+        }
+        public void CriarServicoPeloOrcamento(int orc)
+        {
+            FrmCadastroServico cadastroServico = new FrmCadastroServico()
+            { Orcamento = orc, NovoCadastro = true };
+            cadastroServico.ShowDialog();
         }
     }
 }

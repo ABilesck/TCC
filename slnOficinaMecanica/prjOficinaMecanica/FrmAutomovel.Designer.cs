@@ -40,13 +40,13 @@
             this.tcc_AutomovelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tcc_AutomovelTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_AutomovelTableAdapter();
             this.tableAdapterManager = new prjOficinaMecanica.BancoTableAdapters.TableAdapterManager();
-            this.txtPlaca = new System.Windows.Forms.TextBox();
             this.txtModelo = new System.Windows.Forms.TextBox();
             this.txtAno = new System.Windows.Forms.TextBox();
             this.txtCor = new System.Windows.Forms.TextBox();
             this.txtKm = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
+            this.txtPlaca = new System.Windows.Forms.MaskedTextBox();
             placaLabel = new System.Windows.Forms.Label();
             modeloLabel = new System.Windows.Forms.Label();
             anoLabel = new System.Windows.Forms.Label();
@@ -130,18 +130,9 @@
             this.tableAdapterManager.tcc_AutomovelTableAdapter = this.tcc_AutomovelTableAdapter;
             this.tableAdapterManager.tcc_ClienteTableAdapter = null;
             this.tableAdapterManager.tcc_MecanicoTableAdapter = null;
-            this.tableAdapterManager.tcc_OrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_produtoOrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_ProdutoTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // txtPlaca
-            // 
-            this.txtPlaca.Location = new System.Drawing.Point(77, 93);
-            this.txtPlaca.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtPlaca.Name = "txtPlaca";
-            this.txtPlaca.Size = new System.Drawing.Size(75, 23);
-            this.txtPlaca.TabIndex = 2;
             // 
             // txtModelo
             // 
@@ -197,15 +188,24 @@
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
+            // txtPlaca
+            // 
+            this.txtPlaca.Location = new System.Drawing.Point(77, 91);
+            this.txtPlaca.Mask = "AAA-0000";
+            this.txtPlaca.Name = "txtPlaca";
+            this.txtPlaca.Size = new System.Drawing.Size(100, 23);
+            this.txtPlaca.TabIndex = 15;
+            this.txtPlaca.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
             // FrmAutomovel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(411, 217);
+            this.Controls.Add(this.txtPlaca);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(placaLabel);
-            this.Controls.Add(this.txtPlaca);
             this.Controls.Add(modeloLabel);
             this.Controls.Add(this.txtModelo);
             this.Controls.Add(anoLabel);
@@ -236,12 +236,12 @@
         private System.Windows.Forms.BindingSource tcc_AutomovelBindingSource;
         private BancoTableAdapters.tcc_AutomovelTableAdapter tcc_AutomovelTableAdapter;
         private BancoTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.TextBox txtPlaca;
         private System.Windows.Forms.TextBox txtModelo;
         private System.Windows.Forms.TextBox txtAno;
         private System.Windows.Forms.TextBox txtCor;
         private System.Windows.Forms.TextBox txtKm;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnSalvar;
+        private System.Windows.Forms.MaskedTextBox txtPlaca;
     }
 }

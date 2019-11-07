@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -22,6 +23,7 @@ namespace prjOficinaMecanica
         private double PrecoTemporario;
 
         string Tema = ConfigurationManager.AppSettings.Get("tema");
+        string Senha = ConfigurationManager.AppSettings.Get("senha");
         public FrmOrcamento()
         {
             InitializeComponent();
@@ -39,12 +41,10 @@ namespace prjOficinaMecanica
             else
                 Temas.AplicarTema(this, Color.Gray, Color.White);
 
-
-            tcc_ProdutoTableAdapter.Fill(banco1.tcc_Produto);
             tcc_ProdutoTableAdapter.Fill(banco.tcc_Produto);
             tcc_OrcamentoTableAdapter.Fill(banco.tcc_Orcamento);
+            tcc_produtoOrcamentoTableAdapter.FillByOrcamento(banco.tcc_produtoOrcamento, IdOrcamento);
 
-            tcc_OrcamentoDataGridView_SelectionChanged(null, null);
             iDProdutoComboBox_SelectedIndexChanged(null, null);
         }
 
@@ -52,35 +52,48 @@ namespace prjOficinaMecanica
         {
             try
             {
-                FrmCadastroOrcamento cadastroOrcamento = new FrmCadastroOrcamento() 
+                FrmCadastroOrcamento cadastroOrcamento = new FrmCadastroOrcamento()
                 {
-                    novoCadastro = true 
+                    novoCadastro = true
                 };
                 cadastroOrcamento.ShowDialog();
             }
-            catch(NullReferenceException ex)
+            catch (NullReferenceException ex)
             {
                 MessageBox.Show("Erro ao abrir o formulário\n" + ex.Message, "Erro no cadastro",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro inesperado\n" + ex.Message, "Erro no cadastro",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             try
             {
-                var Orcamento = (tcc_OrcamentoBindingSource.Current as DataRowView).Row
-                as Banco.tcc_OrcamentoRow;
-                FrmCadastroOrcamento cadastroOrcamento = new FrmCadastroOrcamento();
-                cadastroOrcamento.novoCadastro = false;
-                cadastroOrcamento.IdOrcamento = Orcamento.IDOrcamento;
-                cadastroOrcamento.PreencherCampos(Orcamento.nome, Orcamento.modelo, MaoDeObra);
-                cadastroOrcamento.ShowDialog();
+                string input = Interaction.InputBox("Informe a senha:", "Alterar", "*", 100, 200);
+                if (input != "")
+                {
+                    if (input == Senha)
+                    {
+                        var Orcamento = (tcc_OrcamentoBindingSource.Current as DataRowView).Row
+                            as Banco.tcc_OrcamentoRow;
+                        FrmCadastroOrcamento cadastroOrcamento = new FrmCadastroOrcamento();
+                        cadastroOrcamento.novoCadastro = false;
+                        cadastroOrcamento.IdOrcamento = Orcamento.IDOrcamento;
+                        cadastroOrcamento.PreencherCampos(Orcamento.nome, Orcamento.modelo,
+                            MaoDeObra, Orcamento.descricao);
+                        cadastroOrcamento.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Senha incorreta", "Erro ao alterar",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
             catch (NullReferenceException ex)
             {
@@ -103,7 +116,6 @@ namespace prjOficinaMecanica
                 IdOrcamento = Orcamento.IDOrcamento;
                 IdAuto = Orcamento.IDAutomovel;
                 MaoDeObra = Orcamento.MaoDeObra;
-                dgvProdutos_SelectionChanged(null, null);
                 if (IdOrcamento != 0)
                 {
                     tcc_produtoOrcamentoTableAdapter.FillByOrcamento(banco.tcc_produtoOrcamento, IdOrcamento);
@@ -132,12 +144,12 @@ namespace prjOficinaMecanica
             catch (NullReferenceException ex)
             {
             }
-            catch(SqlException ex)
+            catch (SqlException ex)
             {
                 MessageBox.Show("Erro ao preecher as tabelas\n" + ex.Message, "Erro nas tabelas",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro inesperado\n" + ex.Message, "Erro nas tabelas",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -154,24 +166,35 @@ namespace prjOficinaMecanica
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question,
                     MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                     {
-                        tcc_produtoOrcamentoTableAdapter.DeleteTodos(IdOrcamento);
-                        tcc_OrcamentoTableAdapter.DeleteQuery(IdOrcamento);
-                        tcc_OrcamentoTableAdapter.Fill(banco.tcc_Orcamento);
-                        tcc_OrcamentoDataGridView_SelectionChanged(null, null);
+                        string input = Interaction.InputBox("Informe a senha:", "Excluir", "*", 100, 200);
+                        if (input != "")
+                        {
+                            if (input == Senha)
+                            {
+                                tcc_produtoOrcamentoTableAdapter.DeleteTodos(IdOrcamento);
+                                tcc_OrcamentoTableAdapter.DeleteQuery(IdOrcamento);
+                                FrmOrcamento_Load(null, null);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Senha incorreta", "Erro ao excluir",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
                     }
                 }
             }
-            catch(NullReferenceException ex)
+            catch (NullReferenceException ex)
             {
                 MessageBox.Show("Erro ao selecionar item para excluir\n" + ex.Message, "Erro ao excluir",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(SqlException ex)
+            catch (SqlException ex)
             {
                 MessageBox.Show("Erro no banco de dados\n" + ex.Message, "Erro ao excluir",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro inesperado\n" + ex.Message, "Erro ao excluir",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -184,13 +207,28 @@ namespace prjOficinaMecanica
             {
                 if (!txtPesquisa.Text.Equals(""))
                 {
-                    string pesquisa = "%" + txtPesquisa.Text + "%";
-                    tcc_OrcamentoTableAdapter.FillByModelo(banco.tcc_Orcamento, pesquisa);
+                    if (cmbFiltro.Text.Equals("Cliente"))
+                    {
+                        tcc_OrcamentoTableAdapter.FillByCliente(banco.tcc_Orcamento,
+                            "%" + txtPesquisa.Text + "%");
+                    }
+                    else if (cmbFiltro.Text.Equals("Veiculo"))
+                    {
+                        tcc_OrcamentoTableAdapter.FillByVeiculo(banco.tcc_Orcamento,
+                            "%" + txtPesquisa.Text + "%");
+                    }
+                    else
+                    {
+                        tcc_OrcamentoTableAdapter.FillByDescricao(banco.tcc_Orcamento,
+                            "%" + txtPesquisa.Text + "%");
+                    }
+                    btnCancelar.Enabled = true;
+                    txtPesquisa.Text = "";
                 }
                 else
                 {
-                    MessageBox.Show("Escreva um valor para pesquisar", "Atenção",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Campo de pesquisa vazio!", "Atenção",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (SqlException ex)
@@ -198,13 +236,13 @@ namespace prjOficinaMecanica
                 MessageBox.Show("Erro no banco de dados\n" + ex.Message, "Erro ao pesquisar",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro inesperado\n" + ex.Message, "Erro ao pesquisar",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
-            
+
+
         }
 
         private void iDProdutoComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -237,14 +275,13 @@ namespace prjOficinaMecanica
                 PrecoTemporario);
                 MessageBox.Show("Produto inserido com sucesso!", "Atenção",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-                tcc_OrcamentoDataGridView_SelectionChanged(null, null);
             }
-            catch(SqlException ex)
+            catch (SqlException ex)
             {
                 MessageBox.Show("Erro no banco de dados\n" + ex.Message, "Erro ao inserir produto",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro inesperado\n" + ex.Message, "Erro ao inserir produto",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -267,58 +304,39 @@ namespace prjOficinaMecanica
                     }
                 }
             }
-            catch(NullReferenceException ex)
+            catch (NullReferenceException ex)
             {
                 MessageBox.Show("Nenhum objeto selecionado\n" + ex.Message, "Erro ao excluir",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(SqlException ex)
+            catch (SqlException ex)
             {
                 MessageBox.Show("Erro no banco de dados\n" + ex.Message, "Erro ao excluir",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro inesperado\n" + ex.Message, "Erro ao excluir",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
-        private void dgvProdutos_SelectionChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                var Produto = (tcc_produtoOrcamentoBindingSource.Current as DataRowView).Row
-                    as Banco.tcc_produtoOrcamentoRow;
-                IdProduto = Produto.IDProduto;
-
-            }
-            catch (NullReferenceException ex)
-            {
-
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Nenhum inesperado\n" + ex.Message, "Erro na tabela de produtos",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         private void btnCriarServico_Click(object sender, EventArgs e)
         {
             try
             {
+                var orcamento = (tcc_OrcamentoBindingSource.Current as DataRowView).Row as Banco.tcc_OrcamentoRow;
                 FrmServico frmServico = new FrmServico();
-                frmServico.GetOrcamento(IdOrcamento);
-                frmServico.Show();
+                frmServico.CriarServicoPeloOrcamento(orcamento.IDOrcamento);
             }
-            catch(NullReferenceException ex)
+            catch (NullReferenceException ex)
             {
                 MessageBox.Show("Erro ao criar o serviço\n" + ex.Message, "Erro ao abrir formulário",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro inesperado\n" + ex.Message, "Erro ao abrir formulário",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -328,6 +346,12 @@ namespace prjOficinaMecanica
         private void dgvOrcamentos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             btnAlterar_Click(null, null);
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            FrmOrcamento_Load(null, null);
+            btnCancelar.Enabled = false;
         }
     }
 }

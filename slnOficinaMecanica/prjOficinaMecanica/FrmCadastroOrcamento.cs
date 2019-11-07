@@ -50,11 +50,12 @@ namespace prjOficinaMecanica
 
         }
 
-        public void PreencherCampos(string Cliente, string Auto, double MaoDeObra)
+        public void PreencherCampos(string Cliente, string Auto, double MaoDeObra, string desc)
         {
             NomeCliente = Cliente;
             Modelo = Auto;
             txtMaoDeObra.Text = MaoDeObra.ToString();
+            txtDescricao.Text = desc;
         }
 
         private void cmbCliente_SelectedIndexChanged(object sender, EventArgs e)
@@ -62,7 +63,12 @@ namespace prjOficinaMecanica
             try
             {
                 if (cmbCliente.SelectedValue != null)
+                {
                     tcc_AutomovelTableAdapter.FillByCliente(banco.tcc_Automovel, (int)cmbCliente.SelectedValue);
+                    var auto = (tccAutomovelBindingSource.Current as DataRowView).Row as Banco.tcc_AutomovelRow;
+                    txtPlaca.Text = auto.placa;
+                }
+                    
             }
             catch (Exception ex)
             {
@@ -84,7 +90,8 @@ namespace prjOficinaMecanica
                     tcc_OrcamentoTableAdapter.InsertQuery(
                         DateTime.Now,
                         (int)cmbCarro.SelectedValue,
-                        Convert.ToDouble(txtMaoDeObra.Text)
+                        Convert.ToDouble(txtMaoDeObra.Text),
+                        txtDescricao.Text
                         );
                 }
                 else
@@ -92,6 +99,7 @@ namespace prjOficinaMecanica
                     tcc_OrcamentoTableAdapter.UpdateQuery(
                         Convert.ToDouble(txtMaoDeObra.Text),
                         (int)cmbCarro.SelectedValue,
+                        txtDescricao.Text,
                         IdOrcamento
                         );
                 }
@@ -117,6 +125,15 @@ namespace prjOficinaMecanica
         {
             var form = Application.OpenForms.OfType<FrmOrcamento>().Single();
             form.Reload();
+        }
+
+        private void cmbCarro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cmbCarro.SelectedValue != null)
+            {
+                var auto = (tccAutomovelBindingSource.Current as DataRowView).Row as Banco.tcc_AutomovelRow;
+                txtPlaca.Text = auto.placa;
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -93,6 +94,23 @@ namespace prjOficinaMecanica
                 Temas.AplicarTema(this, Color.White, Color.Black);
             else
                 Temas.AplicarTema(this, Color.Gray, Color.White);
+        }
+
+        private void btnSenha_Click(object sender, EventArgs e)
+        {
+            string input = Interaction.InputBox("Informe a senha:", "Alterar", "*", 100, 200);
+            if(input != "")
+            {
+                if(Senha == input)
+                {
+                    grpSenha.Enabled = true;
+                }
+                else
+                {
+                    MessageBox.Show("Senha incorreta!", "Atenção", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

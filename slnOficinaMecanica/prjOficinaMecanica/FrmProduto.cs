@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -18,6 +19,7 @@ namespace prjOficinaMecanica
         int idProduto;
 
         string Tema = ConfigurationManager.AppSettings.Get("tema");
+        string Senha = ConfigurationManager.AppSettings.Get("senha");
 
         public FrmProduto()
         {
@@ -49,33 +51,29 @@ namespace prjOficinaMecanica
             {
                 if (!txtPesquisa.Text.Equals(""))
                 {
-                    if (cmbFiltro.SelectedIndex == 0)
-                    {
-                        tcc_ProdutoTableAdapter.FillById(banco.tcc_Produto, Convert.ToInt32(txtPesquisa.Text));
-                    }
-                    else if (cmbFiltro.SelectedIndex == 1)
+                    if (cmbFiltro.Text.Equals("Descrição"))
                     {
                         tcc_ProdutoTableAdapter.FillByDescricao(banco.tcc_Produto, "%" + txtPesquisa.Text + "%");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Escreva o valor desejado no campo de pesquisa", "Atenção",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("O campo de pesquisa está vazio!", "Atenção",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtPesquisa.Focus();
                 }
             }
-            catch(SqlException ex)
+            catch (SqlException ex)
             {
                 MessageBox.Show("Erro no banco de dados\n" + ex.Message, "Erro ao pesquisar",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro inesperado\n" + ex.Message, "Erro ao pesquisar",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
         private void btnPesquisaCancelar_Click(object sender, EventArgs e)
@@ -91,22 +89,34 @@ namespace prjOficinaMecanica
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
-                    idProduto = Convert.ToInt32(((DataRowView)tcc_ProdutoBindingSource.Current).Row["IDMecanico"].ToString());
-                    tcc_ProdutoTableAdapter.Delete(idProduto);
-                    FrmProduto_Load(null, null);
+                    string input = Interaction.InputBox("Informe a senha:", "Excluir", "*", 100, 200);
+                    if (input != "")
+                    {
+                        if (input == Senha)
+                        {
+                            idProduto = Convert.ToInt32(((DataRowView)tcc_ProdutoBindingSource.Current).Row["IDProduto"].ToString());
+                            tcc_ProdutoTableAdapter.Delete(idProduto);
+                            FrmProduto_Load(null, null);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Senha incorreta", "Erro ao excluir",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                 }
             }
-            catch(NullReferenceException ex)
+            catch (NullReferenceException ex)
             {
                 MessageBox.Show("Objeto não encontrado\n" + ex.Message, "Erro ao excluir",
-                    MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(SqlException ex)
+            catch (SqlException ex)
             {
                 MessageBox.Show("Erro no banco de dados\n" + ex.Message, "Erro ao excluir",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro inesperado\n" + ex.Message, "Erro ao excluir",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -117,46 +127,40 @@ namespace prjOficinaMecanica
         {
             try
             {
-                var produto = ((DataRowView)tcc_ProdutoBindingSource.Current).Row as Banco.tcc_ProdutoRow;
-                FrmCadastroProduto cadastroProduto = new FrmCadastroProduto();
-                cadastroProduto.NovoCadastro = false;
-                cadastroProduto.Alterar(produto.descricao,
-                    produto.precoUnit.ToString(), produto.quantidade);
-                cadastroProduto.IdProduto = produto.IDProduto;
-                cadastroProduto.ShowDialog();
+                string input = Interaction.InputBox("Informe a senha:", "Alterar", "*", 100, 200);
+                if (input != "")
+                {
+                    if (input == Senha)
+                    {
+                        var produto = ((DataRowView)tcc_ProdutoBindingSource.Current).Row as Banco.tcc_ProdutoRow;
+                        FrmCadastroProduto cadastroProduto = new FrmCadastroProduto();
+                        cadastroProduto.NovoCadastro = false;
+                        cadastroProduto.Alterar(produto.descricao,
+                            produto.precoUnit.ToString(), produto.quantidade);
+                        cadastroProduto.IdProduto = produto.IDProduto;
+                        cadastroProduto.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Senha incorreta", "Erro ao alterar",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
             }
             catch (NullReferenceException ex)
             {
                 MessageBox.Show("Erro ao abrir o formulário\n" + ex.Message, "Erro ao alterar",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro inesperado\n" + ex.Message, "Erro ao alterar",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
-        private void cmbOrdenar_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbOrdenar.SelectedIndex == 0)
-            {
-                tcc_ProdutoTableAdapter.Fill(banco.tcc_Produto);
-            }
-            else if (cmbOrdenar.SelectedIndex == 1)
-            {
-                tcc_ProdutoTableAdapter.FillByOrderDescricao(banco.tcc_Produto);
-            }
-            else if(cmbOrdenar.SelectedIndex == 2)
-            {
-                tcc_ProdutoTableAdapter.FillByOrderQuantidadeAsc(banco.tcc_Produto);
-            }
-            else if(cmbOrdenar.SelectedIndex == 3)
-            {
-                tcc_ProdutoTableAdapter.FillByOrderQuantidadeDesc(banco.tcc_Produto);
-            }
-        }
         private void tcc_ProdutoDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             btnAlterar_Click(null, null);

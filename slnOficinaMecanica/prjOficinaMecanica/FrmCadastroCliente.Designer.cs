@@ -69,7 +69,7 @@
             this.txtComplemento.Location = new System.Drawing.Point(315, 320);
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(251, 20);
-            this.txtComplemento.TabIndex = 33;
+            this.txtComplemento.TabIndex = 7;
             // 
             // rbtPessoaFisica
             // 
@@ -82,20 +82,21 @@
             this.rbtPessoaFisica.TabStop = true;
             this.rbtPessoaFisica.Text = "Pessoa Física";
             this.rbtPessoaFisica.UseVisualStyleBackColor = true;
+            this.rbtPessoaFisica.CheckedChanged += new System.EventHandler(this.rbtPessoaFisica_CheckedChanged);
             // 
             // txtBairro
             // 
             this.txtBairro.Location = new System.Drawing.Point(15, 320);
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(294, 20);
-            this.txtBairro.TabIndex = 31;
+            this.txtBairro.TabIndex = 6;
             // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(15, 160);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(380, 20);
-            this.txtEmail.TabIndex = 36;
+            this.txtEmail.TabIndex = 3;
             // 
             // cmbUf
             // 
@@ -134,7 +135,7 @@
             this.cmbUf.Location = new System.Drawing.Point(401, 368);
             this.cmbUf.Name = "cmbUf";
             this.cmbUf.Size = new System.Drawing.Size(121, 21);
-            this.cmbUf.TabIndex = 28;
+            this.cmbUf.TabIndex = 9;
             // 
             // rbtPessoaJuridica
             // 
@@ -145,20 +146,21 @@
             this.rbtPessoaJuridica.TabIndex = 19;
             this.rbtPessoaJuridica.Text = "Pessoa Jurídica";
             this.rbtPessoaJuridica.UseVisualStyleBackColor = true;
+            this.rbtPessoaJuridica.CheckedChanged += new System.EventHandler(this.rbtPessoaJuridica_CheckedChanged);
             // 
             // txtCidade
             // 
             this.txtCidade.Location = new System.Drawing.Point(15, 368);
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(377, 20);
-            this.txtCidade.TabIndex = 27;
+            this.txtCidade.TabIndex = 8;
             // 
             // txtLogradouro
             // 
             this.txtLogradouro.Location = new System.Drawing.Point(15, 272);
             this.txtLogradouro.Name = "txtLogradouro";
             this.txtLogradouro.Size = new System.Drawing.Size(551, 20);
-            this.txtLogradouro.TabIndex = 25;
+            this.txtLogradouro.TabIndex = 5;
             // 
             // lblNome
             // 
@@ -210,7 +212,7 @@
             this.txtNome.Location = new System.Drawing.Point(15, 61);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(545, 20);
-            this.txtNome.TabIndex = 30;
+            this.txtNome.TabIndex = 0;
             // 
             // label6
             // 
@@ -286,7 +288,6 @@
             this.tableAdapterManager.tcc_AutomovelTableAdapter = null;
             this.tableAdapterManager.tcc_ClienteTableAdapter = this.tcc_ClienteTableAdapter;
             this.tableAdapterManager.tcc_MecanicoTableAdapter = null;
-            this.tableAdapterManager.tcc_OrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_produtoOrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_ProdutoTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
@@ -296,7 +297,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(491, 442);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 39;
+            this.btnCancelar.TabIndex = 12;
             this.btnCancelar.Text = "&Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -306,7 +307,7 @@
             this.btnSalvar.Location = new System.Drawing.Point(410, 442);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 23);
-            this.btnSalvar.TabIndex = 40;
+            this.btnSalvar.TabIndex = 11;
             this.btnSalvar.Text = "&Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
@@ -317,7 +318,7 @@
             this.txtDocSocial.Mask = "000.000.000-00";
             this.txtDocSocial.Name = "txtDocSocial";
             this.txtDocSocial.Size = new System.Drawing.Size(189, 20);
-            this.txtDocSocial.TabIndex = 41;
+            this.txtDocSocial.TabIndex = 1;
             this.txtDocSocial.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // txtRegistro
@@ -325,7 +326,7 @@
             this.txtRegistro.Location = new System.Drawing.Point(209, 110);
             this.txtRegistro.Name = "txtRegistro";
             this.txtRegistro.Size = new System.Drawing.Size(174, 20);
-            this.txtRegistro.TabIndex = 42;
+            this.txtRegistro.TabIndex = 2;
             this.txtRegistro.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // txtCep
@@ -334,7 +335,7 @@
             this.txtCep.Mask = "00000-000";
             this.txtCep.Name = "txtCep";
             this.txtCep.Size = new System.Drawing.Size(138, 20);
-            this.txtCep.TabIndex = 43;
+            this.txtCep.TabIndex = 10;
             this.txtCep.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // txtTelefone
@@ -343,7 +344,7 @@
             this.txtTelefone.Mask = "(00)#0000-0000";
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Size = new System.Drawing.Size(189, 20);
-            this.txtTelefone.TabIndex = 44;
+            this.txtTelefone.TabIndex = 4;
             this.txtTelefone.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // FrmCadastroCliente

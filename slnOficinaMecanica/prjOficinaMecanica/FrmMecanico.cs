@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -12,6 +13,7 @@ namespace prjOficinaMecanica
     {
         int idMecanico;
         string Tema = ConfigurationManager.AppSettings.Get("tema");
+        string Senha = ConfigurationManager.AppSettings.Get("senha");
 
         public FrmMecanico()
         {
@@ -39,15 +41,15 @@ namespace prjOficinaMecanica
             {
                 if (!txtPesquisa.Text.Equals(""))
                 {
-                    if (cmbFiltro.SelectedIndex == 0)
-                    {
-                        tcc_MecanicoTableAdapter.FillById(banco.tcc_Mecanico, Convert.ToInt32(txtPesquisa.Text));
-                    }
-                    else if (cmbFiltro.SelectedIndex == 1)
+                    if (cmbFiltro.Text.Equals("Razão Social"))
                     {
                         tcc_MecanicoTableAdapter.FillByRazao(banco.tcc_Mecanico, "%" + txtPesquisa.Text + "%");
                     }
-                    else if (cmbFiltro.SelectedIndex == 2)
+                    else if (cmbFiltro.Text.Equals("Apelido"))
+                    {
+                        tcc_MecanicoTableAdapter.FillByApelido(banco.tcc_Mecanico, "%" + txtPesquisa.Text + "%");
+                    }
+                    else
                     {
                         tcc_MecanicoTableAdapter.FillByCnpj(banco.tcc_Mecanico, "%" + txtPesquisa.Text + "%");
                     }
@@ -57,6 +59,8 @@ namespace prjOficinaMecanica
                         MessageBox.Show("Não foram encontrados registros com esses parâmetros!", "Erro", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     }
+                    btnPesquisaCancelar.Enabled = true;
+                    txtPesquisa.Text = "";
                 }
                 else
                 {
@@ -64,54 +68,67 @@ namespace prjOficinaMecanica
                         MessageBoxIcon.Error);
                 }
             }
-            catch(NullReferenceException ex)
+            catch (NullReferenceException ex)
             {
                 MessageBox.Show("Objeto não encontrado\n" + ex.Message, "Erro ao pesquisar",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(SqlException ex)
+            catch (SqlException ex)
             {
                 MessageBox.Show("Erro no banco de dados\n" + ex.Message, "Erro ao pesquisar",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro inesperado\n" + ex.Message, "Erro ao pesquisar",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
         private void tbnAlterar_Click(object sender, EventArgs e)
         {
             try
             {
-                var Mecanico = (tcc_MecanicoBindingSource.Current as DataRowView).Row
-                as Banco.tcc_MecanicoRow;
-                FrmCadastroMecanico cadastroMecanico = new FrmCadastroMecanico();
-                cadastroMecanico.NovoCadastro = false;
-                cadastroMecanico.Alterar(Mecanico.IDMecanico, Mecanico.razaoSocial, Mecanico.cnpj,
-                    Mecanico.ie, Mecanico.telefone, Mecanico.email, Mecanico.contaBancaria, Mecanico.agenciaBancaria,
-                    Mecanico.comissao.ToString(), Mecanico.logradouro, Mecanico.bairro, Mecanico.cidade,
-                    Mecanico.complemento, Mecanico.uf, Mecanico.cep);
-                cadastroMecanico.ShowDialog();
+                string input = Interaction.InputBox("Informe a senha:", "Alterar", "*", 100, 200);
+                if (input != "")
+                {
+                    if (input == Senha)
+                    {
+                        var Mecanico = (tcc_MecanicoBindingSource.Current as DataRowView).Row
+                            as Banco.tcc_MecanicoRow;
+                        FrmCadastroMecanico cadastroMecanico = new FrmCadastroMecanico();
+                        cadastroMecanico.Alterar(Mecanico.IDMecanico, Mecanico.razaoSocial, Mecanico.fantasia, Mecanico.cnpj,
+                            Mecanico.ie, Mecanico.telefone, Mecanico.email, Mecanico.contaBancaria, Mecanico.agenciaBancaria,
+                            Mecanico.comissao.ToString(), Mecanico.logradouro, Mecanico.bairro, Mecanico.cidade,
+                            Mecanico.complemento, Mecanico.uf, Mecanico.cep);
+                        cadastroMecanico.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Senha incorreta", "Erro ao alterar",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
             }
-            catch(NullReferenceException ex)
+            catch (NullReferenceException ex)
             {
-                MessageBox.Show("Erro ao abrir o formulário\n"+ ex.Message, "Erro ao alterar",
+                MessageBox.Show("Erro ao abrir o formulário\n" + ex.Message, "Erro ao alterar",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro inesperado\n" + ex.Message, "Erro ao alterar",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
         private void btnPesquisaCancelar_Click(object sender, EventArgs e)
         {
             FrmMecanico_Load(null, null);
+            btnPesquisaCancelar.Enabled = false;
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -122,37 +139,37 @@ namespace prjOficinaMecanica
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
-                    idMecanico = Convert.ToInt32(((DataRowView)tcc_MecanicoBindingSource.Current).Row["IDMecanico"].ToString());
-                    tcc_MecanicoTableAdapter.Delete(idMecanico);
-                    FrmMecanico_Load(null, null);
+                    string input = Interaction.InputBox("Informe a senha:", "Excluir", "*", 100, 200);
+                    if (input != "")
+                    {
+                        if (input == Senha)
+                        {
+                            idMecanico = Convert.ToInt32(((DataRowView)tcc_MecanicoBindingSource.Current).Row["IDMecanico"].ToString());
+                            tcc_MecanicoTableAdapter.Delete(idMecanico);
+                            FrmMecanico_Load(null, null);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Senha incorreta", "Erro ao excluir",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                 }
             }
-            catch(NullReferenceException ex)
+            catch (NullReferenceException ex)
             {
                 MessageBox.Show("Objeto não encontrado\n" + ex.Message, "Erro ao excluir",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(SqlException ex)
+            catch (SqlException ex)
             {
                 MessageBox.Show("Erro no banco de dados\n" + ex.Message, "Erro ao excluir",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro inesperado\n" + ex.Message, "Erro ao excluir",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void cmbOrdenar_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbOrdenar.SelectedIndex == 0)
-            {
-                tcc_MecanicoTableAdapter.Fill(banco.tcc_Mecanico);
-            }
-            else if (cmbOrdenar.SelectedIndex == 1)
-            {
-                tcc_MecanicoTableAdapter.FillByOrderRazao(banco.tcc_Mecanico);
             }
         }
 
@@ -163,15 +180,61 @@ namespace prjOficinaMecanica
                 FrmCadastroMecanico cadastroMecanico = new FrmCadastroMecanico() { NovoCadastro = true };
                 cadastroMecanico.ShowDialog();
             }
-            catch(NullReferenceException ex)
+            catch (NullReferenceException ex)
             {
                 MessageBox.Show("Formulário não encontrado\n" + ex.Message, "Erro ao abrir o formulário",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro inesperado\n" + ex.Message, "Erro ao abrir o formulário",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvMecanico_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvMecanico.Columns[e.ColumnIndex].DataPropertyName == "cnpj")
+            {
+                if (e.Value != null)
+                {
+                    string stringValue = (string)e.Value;
+                    if (stringValue != "")
+                    {
+                        //76.971.068/0001-80
+                        //00.000.000/0000-00
+                        //76971068000180
+                        stringValue = stringValue.Substring(0, 2) + "." +
+                            stringValue.Substring(2, 3) + "." + stringValue.Substring(5, 3) + "/"
+                            + stringValue.Substring(8, 4) + "-" + stringValue.Substring(12, 2);
+                        e.Value = stringValue;
+                    }
+                }
+            }
+            else if (dgvMecanico.Columns[e.ColumnIndex].DataPropertyName == "telefone")
+            {
+                if (e.Value != null)
+                {
+                    string stringValue = (string)e.Value;
+                    if (stringValue != "")
+                    {
+                        stringValue = "(" + stringValue.Substring(0, 2) + ")" + stringValue.Substring(2, 5)
+                            + "-" + stringValue.Substring(7, 4);
+                        e.Value = stringValue;
+                    }
+                }
+            }
+            else if (dgvMecanico.Columns[e.ColumnIndex].DataPropertyName == "cep")
+            {
+                if (e.Value != null)
+                {
+                    string stringValue = (string)e.Value;
+                    if (stringValue != "")
+                    {
+                        stringValue = stringValue.Substring(0, 5) + "-" + stringValue.Substring(5, 3);
+                        e.Value = stringValue;
+                    }
+                }
             }
         }
     }

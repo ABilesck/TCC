@@ -43,7 +43,6 @@
             this.tcc_MecanicoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tcc_MecanicoTableAdapter = new prjOficinaMecanica.BancoTableAdapters.tcc_MecanicoTableAdapter();
             this.tableAdapterManager = new prjOficinaMecanica.BancoTableAdapters.TableAdapterManager();
-            this.txtCep = new System.Windows.Forms.TextBox();
             this.grbConta = new System.Windows.Forms.GroupBox();
             this.txtComissao = new System.Windows.Forms.TextBox();
             this.txtAgencia = new System.Windows.Forms.TextBox();
@@ -59,14 +58,15 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtTelefone = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtRazao = new System.Windows.Forms.TextBox();
             this.txtIe = new System.Windows.Forms.TextBox();
-            this.txtCnpj = new System.Windows.Forms.TextBox();
             this.txtFantasia = new System.Windows.Forms.TextBox();
+            this.txtCnpj = new System.Windows.Forms.MaskedTextBox();
+            this.txtTelefone = new System.Windows.Forms.MaskedTextBox();
+            this.txtCep = new System.Windows.Forms.MaskedTextBox();
             comissaoLabel = new System.Windows.Forms.Label();
             agenciaBancariaLabel = new System.Windows.Forms.Label();
             contaBancariaLabel = new System.Windows.Forms.Label();
@@ -182,18 +182,9 @@
             this.tableAdapterManager.tcc_AutomovelTableAdapter = null;
             this.tableAdapterManager.tcc_ClienteTableAdapter = null;
             this.tableAdapterManager.tcc_MecanicoTableAdapter = this.tcc_MecanicoTableAdapter;
-            this.tableAdapterManager.tcc_OrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_produtoOrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_ProdutoTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // txtCep
-            // 
-            this.txtCep.Location = new System.Drawing.Point(12, 550);
-            this.txtCep.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtCep.Name = "txtCep";
-            this.txtCep.Size = new System.Drawing.Size(171, 20);
-            this.txtCep.TabIndex = 49;
             // 
             // grbConta
             // 
@@ -218,7 +209,8 @@
             this.txtComissao.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtComissao.Name = "txtComissao";
             this.txtComissao.Size = new System.Drawing.Size(105, 20);
-            this.txtComissao.TabIndex = 5;
+            this.txtComissao.TabIndex = 8;
+            this.txtComissao.Text = "0";
             // 
             // txtAgencia
             // 
@@ -226,7 +218,7 @@
             this.txtAgencia.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtAgencia.Name = "txtAgencia";
             this.txtAgencia.Size = new System.Drawing.Size(149, 20);
-            this.txtAgencia.TabIndex = 3;
+            this.txtAgencia.TabIndex = 7;
             // 
             // txtConta
             // 
@@ -234,7 +226,7 @@
             this.txtConta.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtConta.Name = "txtConta";
             this.txtConta.Size = new System.Drawing.Size(163, 20);
-            this.txtConta.TabIndex = 1;
+            this.txtConta.TabIndex = 6;
             // 
             // txtComplemento
             // 
@@ -242,7 +234,7 @@
             this.txtComplemento.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(251, 20);
-            this.txtComplemento.TabIndex = 48;
+            this.txtComplemento.TabIndex = 11;
             // 
             // txtBairro
             // 
@@ -250,16 +242,17 @@
             this.txtBairro.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(294, 20);
-            this.txtBairro.TabIndex = 47;
+            this.txtBairro.TabIndex = 10;
             // 
             // cmbUf
             // 
+            this.cmbUf.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbUf.FormattingEnabled = true;
             this.cmbUf.Location = new System.Drawing.Point(398, 502);
             this.cmbUf.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmbUf.Name = "cmbUf";
             this.cmbUf.Size = new System.Drawing.Size(121, 21);
-            this.cmbUf.TabIndex = 46;
+            this.cmbUf.TabIndex = 13;
             // 
             // btnSalvar
             // 
@@ -267,7 +260,7 @@
             this.btnSalvar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 28);
-            this.btnSalvar.TabIndex = 34;
+            this.btnSalvar.TabIndex = 15;
             this.btnSalvar.Text = "&Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
@@ -278,7 +271,7 @@
             this.txtCidade.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(377, 20);
-            this.txtCidade.TabIndex = 45;
+            this.txtCidade.TabIndex = 12;
             // 
             // txtEmail
             // 
@@ -286,7 +279,7 @@
             this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(400, 20);
-            this.txtEmail.TabIndex = 36;
+            this.txtEmail.TabIndex = 4;
             // 
             // txtLogradouro
             // 
@@ -294,7 +287,7 @@
             this.txtLogradouro.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtLogradouro.Name = "txtLogradouro";
             this.txtLogradouro.Size = new System.Drawing.Size(551, 20);
-            this.txtLogradouro.TabIndex = 44;
+            this.txtLogradouro.TabIndex = 9;
             // 
             // btnCancelar
             // 
@@ -302,7 +295,7 @@
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 28);
-            this.btnCancelar.TabIndex = 31;
+            this.btnCancelar.TabIndex = 16;
             this.btnCancelar.Text = "&Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -333,14 +326,6 @@
             this.label7.Size = new System.Drawing.Size(40, 13);
             this.label7.TabIndex = 41;
             this.label7.Text = "Cidade";
-            // 
-            // txtTelefone
-            // 
-            this.txtTelefone.Location = new System.Drawing.Point(12, 177);
-            this.txtTelefone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtTelefone.Name = "txtTelefone";
-            this.txtTelefone.Size = new System.Drawing.Size(216, 20);
-            this.txtTelefone.TabIndex = 32;
             // 
             // label6
             // 
@@ -375,7 +360,7 @@
             this.txtRazao.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtRazao.Name = "txtRazao";
             this.txtRazao.Size = new System.Drawing.Size(258, 20);
-            this.txtRazao.TabIndex = 25;
+            this.txtRazao.TabIndex = 0;
             // 
             // txtIe
             // 
@@ -383,15 +368,7 @@
             this.txtIe.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtIe.Name = "txtIe";
             this.txtIe.Size = new System.Drawing.Size(229, 20);
-            this.txtIe.TabIndex = 29;
-            // 
-            // txtCnpj
-            // 
-            this.txtCnpj.Location = new System.Drawing.Point(12, 81);
-            this.txtCnpj.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtCnpj.Name = "txtCnpj";
-            this.txtCnpj.Size = new System.Drawing.Size(216, 20);
-            this.txtCnpj.TabIndex = 28;
+            this.txtIe.TabIndex = 3;
             // 
             // txtFantasia
             // 
@@ -399,16 +376,46 @@
             this.txtFantasia.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtFantasia.Name = "txtFantasia";
             this.txtFantasia.Size = new System.Drawing.Size(258, 20);
-            this.txtFantasia.TabIndex = 50;
+            this.txtFantasia.TabIndex = 1;
+            // 
+            // txtCnpj
+            // 
+            this.txtCnpj.Location = new System.Drawing.Point(11, 81);
+            this.txtCnpj.Mask = "00,000,000/0000-00";
+            this.txtCnpj.Name = "txtCnpj";
+            this.txtCnpj.Size = new System.Drawing.Size(215, 20);
+            this.txtCnpj.TabIndex = 2;
+            this.txtCnpj.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // txtTelefone
+            // 
+            this.txtTelefone.Location = new System.Drawing.Point(13, 174);
+            this.txtTelefone.Mask = "(00)#0000-0000";
+            this.txtTelefone.Name = "txtTelefone";
+            this.txtTelefone.Size = new System.Drawing.Size(187, 20);
+            this.txtTelefone.TabIndex = 5;
+            this.txtTelefone.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.txtTelefone.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.txtTelefone_MaskInputRejected);
+            // 
+            // txtCep
+            // 
+            this.txtCep.Location = new System.Drawing.Point(12, 547);
+            this.txtCep.Mask = "00000-000";
+            this.txtCep.Name = "txtCep";
+            this.txtCep.Size = new System.Drawing.Size(147, 20);
+            this.txtCep.TabIndex = 14;
+            this.txtCep.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // FrmCadastroMecanico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(576, 647);
+            this.Controls.Add(this.txtCep);
+            this.Controls.Add(this.txtTelefone);
+            this.Controls.Add(this.txtCnpj);
             this.Controls.Add(label1);
             this.Controls.Add(this.txtFantasia);
-            this.Controls.Add(this.txtCep);
             this.Controls.Add(this.grbConta);
             this.Controls.Add(this.txtComplemento);
             this.Controls.Add(this.txtBairro);
@@ -423,7 +430,6 @@
             this.Controls.Add(telefoneLabel);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.txtTelefone);
             this.Controls.Add(this.label6);
             this.Controls.Add(razaoSocialLabel);
             this.Controls.Add(this.label5);
@@ -431,7 +437,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtRazao);
             this.Controls.Add(this.txtIe);
-            this.Controls.Add(this.txtCnpj);
             this.Controls.Add(cnpjLabel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmCadastroMecanico";
@@ -453,7 +458,6 @@
         private System.Windows.Forms.BindingSource tcc_MecanicoBindingSource;
         private BancoTableAdapters.tcc_MecanicoTableAdapter tcc_MecanicoTableAdapter;
         private BancoTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.TextBox txtCep;
         private System.Windows.Forms.GroupBox grbConta;
         private System.Windows.Forms.TextBox txtComissao;
         private System.Windows.Forms.TextBox txtAgencia;
@@ -469,13 +473,14 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtTelefone;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtRazao;
         private System.Windows.Forms.TextBox txtIe;
-        private System.Windows.Forms.TextBox txtCnpj;
         private System.Windows.Forms.TextBox txtFantasia;
+        private System.Windows.Forms.MaskedTextBox txtCnpj;
+        private System.Windows.Forms.MaskedTextBox txtTelefone;
+        private System.Windows.Forms.MaskedTextBox txtCep;
     }
 }
