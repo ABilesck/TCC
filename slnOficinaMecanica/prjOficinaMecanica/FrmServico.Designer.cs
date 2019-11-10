@@ -1,6 +1,6 @@
 ﻿namespace prjOficinaMecanica
 {
-    partial class FrmServico
+    partial class Servico
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmServico));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Servico));
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnPesquisaCancelar = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
@@ -119,24 +119,24 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(1090, 48);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(80, 16);
+            this.label11.Size = new System.Drawing.Size(79, 16);
             this.label11.TabIndex = 25;
             this.label11.Text = "Pesquisar por:";
             // 
             // cmbFiltro
             // 
-            this.cmbFiltro.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFiltro.FormattingEnabled = true;
             this.cmbFiltro.Items.AddRange(new object[] {
-            "Código",
-            "Documento Social",
-            "Nome"});
+            "Descrição",
+            "Razão Social",
+            "Cliente",
+            "Veículo"});
             this.cmbFiltro.Location = new System.Drawing.Point(1093, 68);
             this.cmbFiltro.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmbFiltro.Name = "cmbFiltro";
             this.cmbFiltro.Size = new System.Drawing.Size(121, 24);
             this.cmbFiltro.TabIndex = 23;
-            this.cmbFiltro.Text = "Código";
             // 
             // txtPesquisa
             // 
@@ -347,7 +347,7 @@
             this.panel1.Size = new System.Drawing.Size(1202, 45);
             this.panel1.TabIndex = 36;
             // 
-            // FrmServico
+            // Servico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -366,7 +366,7 @@
             this.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "FrmServico";
+            this.Name = "Servico";
             this.Text = "FrmServico";
             this.Load += new System.EventHandler(this.FrmServico_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tcc_ServicoBindingSource)).EndInit();

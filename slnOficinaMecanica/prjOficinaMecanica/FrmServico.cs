@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace prjOficinaMecanica
 {
-    public partial class FrmServico : Form
+    public partial class Servico : Form
     {
         private int idOrcamento;
         private bool Finalizado;
@@ -21,7 +21,7 @@ namespace prjOficinaMecanica
         string Tema = ConfigurationManager.AppSettings.Get("tema");
         string Senha = ConfigurationManager.AppSettings.Get("senha");
 
-        public FrmServico()
+        public Servico()
         {
             InitializeComponent();
         }

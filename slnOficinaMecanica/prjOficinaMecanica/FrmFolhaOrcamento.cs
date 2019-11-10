@@ -12,6 +12,7 @@ namespace prjOficinaMecanica
 {
     public partial class FrmFolhaOrcamento : Form
     {
+        public int id;
         public FrmFolhaOrcamento()
         {
             InitializeComponent();
@@ -19,8 +20,10 @@ namespace prjOficinaMecanica
 
         private void FrmFolhaOrcamento_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'Banco.OrdemServico' table. You can move, or remove it, as needed.
-            this.RelOrcamentoTableAdapter.Fill(this.Banco.RelOrcamento);
+            if(id == 0)
+                this.RelOrcamentoTableAdapter.Fill(this.Banco.RelOrcamento);
+            else
+                this.RelOrcamentoTableAdapter.FillbyId(this.Banco.RelOrcamento, id);
 
             this.reportViewer1.RefreshReport();
         }

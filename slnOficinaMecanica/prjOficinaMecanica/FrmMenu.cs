@@ -7,6 +7,8 @@ using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using System.Configuration;
 using System.Collections.Specialized;
+using System.IO;
+using System.Diagnostics;
 
 namespace prjOficinaMecanica
 {
@@ -70,13 +72,13 @@ namespace prjOficinaMecanica
         {
             foreach (Form item in MdiChildren)
             {
-                if (item is FrmOrcamento)
+                if (item is Orcamento)
                 {
                     item.Focus();
                     return;
                 }
             }
-            FrmOrcamento frmOrcamento = new FrmOrcamento();
+            Orcamento frmOrcamento = new Orcamento();
             frmOrcamento.MdiParent = this;
             frmOrcamento.Show();
         }
@@ -100,13 +102,13 @@ namespace prjOficinaMecanica
         {
             foreach (Form item in MdiChildren)
             {
-                if (item is FrmServico)
+                if (item is Servico)
                 {
                     item.Focus();
                     return;
                 }
             }
-            FrmServico frmServico = new FrmServico();
+            Servico frmServico = new Servico();
             frmServico.MdiParent = this;
             frmServico.Show();
         }
@@ -286,7 +288,7 @@ namespace prjOficinaMecanica
         {
             foreach (Form item in MdiChildren)
             {
-                if(item is FrmRelacaoServicos)
+                if (item is FrmRelacaoServicos)
                 {
                     item.Focus();
                     return;
@@ -300,7 +302,7 @@ namespace prjOficinaMecanica
         {
             foreach (Form item in MdiChildren)
             {
-                if(item is FrmFolhaOrcamento)
+                if (item is FrmFolhaOrcamento)
                 {
                     item.Focus();
                     return;
@@ -314,6 +316,25 @@ namespace prjOficinaMecanica
         {
             Form1 form1 = new Form1() { MdiParent = this };
             form1.Show();
+        }
+
+        private void sobreToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            foreach (Form item in MdiChildren)
+            {
+                if (item is FrmAbout)
+                {
+                    item.Focus();
+                    return;
+                }
+            }
+            FrmAbout frmAbout = new FrmAbout() { MdiParent = this };
+            frmAbout.Show();
+        }
+
+        private void manualToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("Manual.pdf");
         }
     }
 }

@@ -14,7 +14,7 @@ using System.Windows.Forms;
 namespace prjOficinaMecanica
 {
 
-    public partial class FrmOrcamento : Form
+    public partial class Orcamento : Form
     {
         private int IdOrcamento;
         private int IdProduto;
@@ -24,7 +24,7 @@ namespace prjOficinaMecanica
 
         string Tema = ConfigurationManager.AppSettings.Get("tema");
         string Senha = ConfigurationManager.AppSettings.Get("senha");
-        public FrmOrcamento()
+        public Orcamento()
         {
             InitializeComponent();
         }
@@ -32,6 +32,8 @@ namespace prjOficinaMecanica
         public void Reload()
         {
             FrmOrcamento_Load(null, null);
+            tcc_ProdutoTableAdapter.Fill(banco.tcc_Produto);
+            iDProdutoComboBox_SelectedIndexChanged(null, null);
         }
 
         private void FrmOrcamento_Load(object sender, EventArgs e)
@@ -139,7 +141,7 @@ namespace prjOficinaMecanica
                 {
                     txtTotal.Text = "R$ 0,00";
                 }
-
+                iDProdutoComboBox_SelectedIndexChanged(null, null);
             }
             catch (NullReferenceException ex)
             {
@@ -275,6 +277,7 @@ namespace prjOficinaMecanica
                 PrecoTemporario);
                 MessageBox.Show("Produto inserido com sucesso!", "Atenção",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+                tcc_OrcamentoDataGridView_SelectionChanged(null, null);
             }
             catch (SqlException ex)
             {
@@ -328,7 +331,7 @@ namespace prjOficinaMecanica
             try
             {
                 var orcamento = (tcc_OrcamentoBindingSource.Current as DataRowView).Row as Banco.tcc_OrcamentoRow;
-                FrmServico frmServico = new FrmServico();
+                Servico frmServico = new Servico();
                 frmServico.CriarServicoPeloOrcamento(orcamento.IDOrcamento);
             }
             catch (NullReferenceException ex)
@@ -352,6 +355,13 @@ namespace prjOficinaMecanica
         {
             FrmOrcamento_Load(null, null);
             btnCancelar.Enabled = false;
+        }
+
+        private void btnFolha_Click(object sender, EventArgs e)
+        {
+            var orcamento = (tcc_OrcamentoBindingSource.Current as DataRowView).Row as Banco.tcc_OrcamentoRow;
+            FrmFolhaOrcamento folhaOrcamento = new FrmFolhaOrcamento() { id = orcamento.IDOrcamento };
+            folhaOrcamento.ShowDialog();
         }
     }
 }

@@ -95,7 +95,7 @@ namespace prjOficinaMecanica
         {
             try
             {
-                var form = Application.OpenForms.OfType<FrmServico>().Single();
+                var form = Application.OpenForms.OfType<Servico>().Single();
                 if (form != null)
                     form.Reload();
             }catch(InvalidOperationException ex)

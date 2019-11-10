@@ -1,6 +1,6 @@
 ﻿namespace prjOficinaMecanica
 {
-    partial class FrmOrcamento
+    partial class Orcamento
     {
         /// <summary>
         /// Required designer variable.
@@ -34,7 +34,7 @@
             System.Windows.Forms.Label precoUnitarioLabel;
             System.Windows.Forms.Label subtotalLabel;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmOrcamento));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Orcamento));
             this.btnNovo = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
@@ -79,6 +79,7 @@
             this.banco1 = new prjOficinaMecanica.Banco();
             this.tccProdutoBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnFolha = new System.Windows.Forms.Button();
             this.btnCriarServico = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.RichTextBox();
@@ -126,7 +127,7 @@
             precoUnitarioLabel.AutoSize = true;
             precoUnitarioLabel.Location = new System.Drawing.Point(605, 30);
             precoUnitarioLabel.Name = "precoUnitarioLabel";
-            precoUnitarioLabel.Size = new System.Drawing.Size(83, 16);
+            precoUnitarioLabel.Size = new System.Drawing.Size(82, 16);
             precoUnitarioLabel.TabIndex = 6;
             precoUnitarioLabel.Text = "preco Unitario:";
             // 
@@ -183,7 +184,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(710, 46);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 16);
+            this.label2.Size = new System.Drawing.Size(78, 16);
             this.label2.TabIndex = 5;
             this.label2.Text = "Perquisar por:";
             // 
@@ -508,6 +509,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btnFolha);
             this.panel1.Controls.Add(this.btnCriarServico);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.txtTotal);
@@ -515,6 +517,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(876, 52);
             this.panel1.TabIndex = 13;
+            // 
+            // btnFolha
+            // 
+            this.btnFolha.Font = new System.Drawing.Font("Bahnschrift SemiBold Condensed", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFolha.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnFolha.Location = new System.Drawing.Point(160, 8);
+            this.btnFolha.Name = "btnFolha";
+            this.btnFolha.Size = new System.Drawing.Size(151, 40);
+            this.btnFolha.TabIndex = 4;
+            this.btnFolha.Text = "Exportar orçamento";
+            this.btnFolha.UseVisualStyleBackColor = true;
+            this.btnFolha.Click += new System.EventHandler(this.btnFolha_Click);
             // 
             // btnCriarServico
             // 
@@ -548,7 +562,7 @@
             this.txtTotal.TabIndex = 1;
             this.txtTotal.Text = "R$ 0,00";
             // 
-            // FrmOrcamento
+            // Orcamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -568,7 +582,7 @@
             this.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "FrmOrcamento";
+            this.Name = "Orcamento";
             this.Text = "FrmOrcamento";
             this.Load += new System.EventHandler(this.FrmOrcamento_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrcamentos)).EndInit();
@@ -641,5 +655,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn descricao;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.Button btnFolha;
     }
 }

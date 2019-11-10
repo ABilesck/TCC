@@ -123,7 +123,7 @@ namespace prjOficinaMecanica
 
         private void FrmCadastroOrcamento_FormClosing(object sender, FormClosingEventArgs e)
         {
-            var form = Application.OpenForms.OfType<FrmOrcamento>().Single();
+            var form = Application.OpenForms.OfType<Orcamento>().Single();
             form.Reload();
         }
 

@@ -145,7 +145,6 @@
             this.tableAdapterManager.tcc_AutomovelTableAdapter = null;
             this.tableAdapterManager.tcc_ClienteTableAdapter = null;
             this.tableAdapterManager.tcc_MecanicoTableAdapter = null;
-            //this.tableAdapterManager.tcc_OrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_produtoOrcamentoTableAdapter = null;
             this.tableAdapterManager.tcc_ProdutoTableAdapter = this.tcc_ProdutoTableAdapter;
             this.tableAdapterManager.UpdateOrder = prjOficinaMecanica.BancoTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
@@ -157,6 +156,7 @@
             this.txtPreco.Name = "txtPreco";
             this.txtPreco.Size = new System.Drawing.Size(152, 20);
             this.txtPreco.TabIndex = 26;
+            this.txtPreco.Text = "0,00";
             this.txtPreco.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.txtPreco_MaskInputRejected);
             // 
             // FrmCadastroProduto
