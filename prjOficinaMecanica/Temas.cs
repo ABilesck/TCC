@@ -38,6 +38,14 @@ namespace prjOficinaMecanica
                     ((Button)item).BackColor = fundo;
                     ((Button)item).ForeColor = fonte;
                 }
+                if(item is DataGridView)
+                {
+                    ((DataGridView)item).EnableHeadersVisualStyles = false;
+                    ((DataGridView)item).DefaultCellStyle.ForeColor = fonte;
+                    ((DataGridView)item).DefaultCellStyle.BackColor = fundo;
+                    ((DataGridView)item).ColumnHeadersDefaultCellStyle.BackColor = fundo;
+                    ((DataGridView)item).ColumnHeadersDefaultCellStyle.ForeColor = fonte;
+                }
             }
             control.BackColor = fundo;
             control.ForeColor = fonte;

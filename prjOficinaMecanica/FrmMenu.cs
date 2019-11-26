@@ -9,6 +9,7 @@ using System.Configuration;
 using System.Collections.Specialized;
 using System.IO;
 using System.Diagnostics;
+using System.Data.OleDb;
 
 namespace prjOficinaMecanica
 {
@@ -16,6 +17,15 @@ namespace prjOficinaMecanica
     {
         public string Tema = ConfigurationManager.AppSettings.Get("tema");
         public string form = ConfigurationManager.AppSettings.Get("abrirForm");
+
+        #region banco
+        string nomeDb = "tcc_OficinaMecanica";
+        string sql;
+        string Conn = "Provider=SQLOLEDB;" + Properties.Settings.Default.tcc_OficinaMecanicaConnectionString;
+        OleDbConnection conexao;
+        OleDbCommand comando;
+        #endregion
+
         public FrmMenu()
         {
             InitializeComponent();
@@ -145,6 +155,13 @@ namespace prjOficinaMecanica
             {
                 e.Cancel = true;
             }
+            else
+            {
+                AutoBackupDB();
+                FrmLoad frmLoad = new FrmLoad();
+                frmLoad.ShowDialog();
+            }
+
         }
 
         public void FrmMenu_Load(object sender, EventArgs e)
@@ -330,6 +347,28 @@ namespace prjOficinaMecanica
         {
             // Finally Show the Created PDF from resources 
             Process.Start("Manual.pdf");
+        }
+
+        private void AutoBackupDB()
+        {
+            conexao = new OleDbConnection(Conn);
+
+            string AppPath = Path.GetDirectoryName(Application.ExecutablePath);
+            //string AppPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
+            sql = $"BACKUP DATABASE {nomeDb} TO DISK =  '{AppPath}\\Medicaro_arquivo_backup.bak'";
+            comando = new OleDbCommand(sql, conexao);
+            comando.CommandText = sql;
+            try
+            {
+                conexao.Open();
+                comando.ExecuteNonQuery();
+                //MessageBox.Show("Backup realizado com sucesso!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            } catch (Exception ex)
+            {
+                MessageBox.Show("Não foi possivel criar o arquivo de backup.\n" +
+                    "erro: " + ex.Message, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

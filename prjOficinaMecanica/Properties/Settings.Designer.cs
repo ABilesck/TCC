@@ -12,7 +12,7 @@ namespace prjOficinaMecanica.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.3.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -26,8 +26,8 @@ namespace prjOficinaMecanica.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=motorhead;Initial Catalog=db_05068_14_A_1_2017;Persist Security Info=" +
-            "True;User ID=05068_14_A_1_2017;Password=luiz-flavio123")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=desktop-alex;Initial Catalog=tcc_OficinaMecanica;Persist Security Inf" +
+            "o=True;User ID=alex;Password=alex123")]
         public string tcc_OficinaMecanicaConnectionString {
             get {
                 return ((string)(this["tcc_OficinaMecanicaConnectionString"]));

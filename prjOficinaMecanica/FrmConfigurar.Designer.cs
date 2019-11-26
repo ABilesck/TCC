@@ -37,11 +37,12 @@
             this.rbtNao = new System.Windows.Forms.RadioButton();
             this.cmbForm = new System.Windows.Forms.ComboBox();
             this.grpSenha = new System.Windows.Forms.GroupBox();
+            this.chbUsarSenha = new System.Windows.Forms.CheckBox();
             this.txtRepetirSenha = new System.Windows.Forms.TextBox();
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSenha = new System.Windows.Forms.Button();
-            this.chbUsarSenha = new System.Windows.Forms.CheckBox();
+            this.btnbackup = new System.Windows.Forms.Button();
             this.grpSenha.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,12 +66,12 @@
             "Escuro"});
             this.cmbTema.Location = new System.Drawing.Point(53, 12);
             this.cmbTema.Name = "cmbTema";
-            this.cmbTema.Size = new System.Drawing.Size(237, 21);
+            this.cmbTema.Size = new System.Drawing.Size(340, 21);
             this.cmbTema.TabIndex = 1;
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(215, 252);
+            this.btnCancelar.Location = new System.Drawing.Point(314, 303);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 2;
@@ -80,7 +81,7 @@
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(134, 252);
+            this.btnSalvar.Location = new System.Drawing.Point(233, 303);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 23);
             this.btnSalvar.TabIndex = 3;
@@ -136,7 +137,7 @@
             "Serviço"});
             this.cmbForm.Location = new System.Drawing.Point(19, 72);
             this.cmbForm.Name = "cmbForm";
-            this.cmbForm.Size = new System.Drawing.Size(271, 21);
+            this.cmbForm.Size = new System.Drawing.Size(374, 21);
             this.cmbForm.TabIndex = 7;
             // 
             // grpSenha
@@ -146,47 +147,12 @@
             this.grpSenha.Controls.Add(this.txtSenha);
             this.grpSenha.Controls.Add(this.label3);
             this.grpSenha.Enabled = false;
-            this.grpSenha.Location = new System.Drawing.Point(19, 129);
+            this.grpSenha.Location = new System.Drawing.Point(19, 180);
             this.grpSenha.Name = "grpSenha";
-            this.grpSenha.Size = new System.Drawing.Size(271, 117);
+            this.grpSenha.Size = new System.Drawing.Size(370, 117);
             this.grpSenha.TabIndex = 8;
             this.grpSenha.TabStop = false;
             this.grpSenha.Text = "Definir Senha:";
-            // 
-            // txtRepetirSenha
-            // 
-            this.txtRepetirSenha.Location = new System.Drawing.Point(10, 60);
-            this.txtRepetirSenha.Name = "txtRepetirSenha";
-            this.txtRepetirSenha.PasswordChar = '*';
-            this.txtRepetirSenha.Size = new System.Drawing.Size(241, 20);
-            this.txtRepetirSenha.TabIndex = 2;
-            // 
-            // txtSenha
-            // 
-            this.txtSenha.Location = new System.Drawing.Point(10, 18);
-            this.txtSenha.Name = "txtSenha";
-            this.txtSenha.PasswordChar = '*';
-            this.txtSenha.Size = new System.Drawing.Size(241, 20);
-            this.txtSenha.TabIndex = 1;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 43);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Repetir Senha:";
-            // 
-            // btnSenha
-            // 
-            this.btnSenha.Location = new System.Drawing.Point(19, 100);
-            this.btnSenha.Name = "btnSenha";
-            this.btnSenha.Size = new System.Drawing.Size(271, 23);
-            this.btnSenha.TabIndex = 9;
-            this.btnSenha.Text = "Alterar Senha";
-            this.btnSenha.UseVisualStyleBackColor = true;
-            this.btnSenha.Click += new System.EventHandler(this.btnSenha_Click);
             // 
             // chbUsarSenha
             // 
@@ -200,11 +166,57 @@
             this.chbUsarSenha.Text = "Sempre verificar senha";
             this.chbUsarSenha.UseVisualStyleBackColor = true;
             // 
+            // txtRepetirSenha
+            // 
+            this.txtRepetirSenha.Location = new System.Drawing.Point(10, 60);
+            this.txtRepetirSenha.Name = "txtRepetirSenha";
+            this.txtRepetirSenha.PasswordChar = '*';
+            this.txtRepetirSenha.Size = new System.Drawing.Size(354, 20);
+            this.txtRepetirSenha.TabIndex = 2;
+            // 
+            // txtSenha
+            // 
+            this.txtSenha.Location = new System.Drawing.Point(10, 18);
+            this.txtSenha.Name = "txtSenha";
+            this.txtSenha.PasswordChar = '*';
+            this.txtSenha.Size = new System.Drawing.Size(354, 20);
+            this.txtSenha.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 43);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(78, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Repetir Senha:";
+            // 
+            // btnSenha
+            // 
+            this.btnSenha.Location = new System.Drawing.Point(19, 151);
+            this.btnSenha.Name = "btnSenha";
+            this.btnSenha.Size = new System.Drawing.Size(374, 23);
+            this.btnSenha.TabIndex = 9;
+            this.btnSenha.Text = "Alterar Senha";
+            this.btnSenha.UseVisualStyleBackColor = true;
+            this.btnSenha.Click += new System.EventHandler(this.btnSenha_Click);
+            // 
+            // btnbackup
+            // 
+            this.btnbackup.Location = new System.Drawing.Point(19, 112);
+            this.btnbackup.Name = "btnbackup";
+            this.btnbackup.Size = new System.Drawing.Size(374, 23);
+            this.btnbackup.TabIndex = 10;
+            this.btnbackup.Text = "Fazer Backup manual";
+            this.btnbackup.UseVisualStyleBackColor = true;
+            this.btnbackup.Click += new System.EventHandler(this.btnbackup_Click);
+            // 
             // FrmConfigurar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(298, 281);
+            this.ClientSize = new System.Drawing.Size(401, 338);
+            this.Controls.Add(this.btnbackup);
             this.Controls.Add(this.btnSenha);
             this.Controls.Add(this.grpSenha);
             this.Controls.Add(this.cmbForm);
@@ -244,5 +256,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSenha;
         private System.Windows.Forms.CheckBox chbUsarSenha;
+        private System.Windows.Forms.Button btnbackup;
     }
 }

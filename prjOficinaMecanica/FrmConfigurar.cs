@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +20,12 @@ namespace prjOficinaMecanica
         string Tema = ConfigurationManager.AppSettings.Get("tema");
         string Senha = ConfigurationManager.AppSettings.Get("senha");
         string usar = ConfigurationManager.AppSettings.Get("usarSenha");
+
+        string nomeDb = "tcc_OficinaMecanica";
+        string sql;
+        string Conn = "Provider=SQLOLEDB;" + Properties.Settings.Default.tcc_OficinaMecanicaConnectionString;
+        OleDbConnection conexao;
+        OleDbCommand comando;
         public FrmConfigurar()
         {
             InitializeComponent();
@@ -123,6 +131,29 @@ namespace prjOficinaMecanica
                     MessageBox.Show("Senha incorreta!", "Atenção", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void btnbackup_Click(object sender, EventArgs e)
+        {
+            conexao = new OleDbConnection(Conn);
+
+            string AppPath = Path.GetDirectoryName(Application.ExecutablePath);
+            //string AppPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
+            sql = $"BACKUP DATABASE {nomeDb} TO DISK =  '{AppPath}\\Medicaro_arquivo_backup.bak'";
+            comando = new OleDbCommand(sql, conexao);
+            comando.CommandText = sql;
+            try
+            {
+                conexao.Open();
+                comando.ExecuteNonQuery();
+                MessageBox.Show("Backup realizado com sucesso!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Não foi possivel criar o arquivo de backup.\n" +
+                    "erro: " + ex.Message, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

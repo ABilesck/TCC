@@ -5,10 +5,10 @@
     <Setting Name="tcc_OficinaMecanicaConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=motorhead;Initial Catalog=db_05068_14_A_1_2017;Persist Security Info=True;User ID=05068_14_A_1_2017;Password=luiz-flavio123&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Data Source=desktop-alex;Initial Catalog=tcc_OficinaMecanica;Persist Security Info=True;User ID=alex;Password=alex123&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=motorhead;Initial Catalog=db_05068_14_A_1_2017;Persist Security Info=True;User ID=05068_14_A_1_2017;Password=luiz-flavio123</Value>
+      <Value Profile="(Default)">Data Source=desktop-alex;Initial Catalog=tcc_OficinaMecanica;Persist Security Info=True;User ID=alex;Password=alex123</Value>
     </Setting>
   </Settings>
 </SettingsFile>
