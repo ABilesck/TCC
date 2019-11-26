@@ -38,10 +38,10 @@
             // 
             // loadbar
             // 
-            this.loadbar.Location = new System.Drawing.Point(15, 29);
-            this.loadbar.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.loadbar.Location = new System.Drawing.Point(11, 15);
+            this.loadbar.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.loadbar.Name = "loadbar";
-            this.loadbar.Size = new System.Drawing.Size(585, 93);
+            this.loadbar.Size = new System.Drawing.Size(483, 33);
             this.loadbar.TabIndex = 0;
             // 
             // timer1
@@ -52,9 +52,10 @@
             // mainLabel
             // 
             this.mainLabel.AutoSize = true;
-            this.mainLabel.Location = new System.Drawing.Point(181, 0);
+            this.mainLabel.Location = new System.Drawing.Point(153, 0);
+            this.mainLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.mainLabel.Name = "mainLabel";
-            this.mainLabel.Size = new System.Drawing.Size(227, 29);
+            this.mainLabel.Size = new System.Drawing.Size(176, 23);
             this.mainLabel.TabIndex = 1;
             this.mainLabel.Text = "Saindo com segurança";
             this.mainLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -66,23 +67,24 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.mainLabel, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(13, 132);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(11, 66);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(590, 39);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(483, 31);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // FrmLoad
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(615, 183);
+            this.ClientSize = new System.Drawing.Size(503, 108);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.loadbar);
-            this.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "FrmLoad";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmLoad";

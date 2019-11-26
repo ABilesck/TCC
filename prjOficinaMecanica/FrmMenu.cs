@@ -166,6 +166,8 @@ namespace prjOficinaMecanica
 
         public void FrmMenu_Load(object sender, EventArgs e)
         {
+            RestaurarDb();
+
             if (Tema.Equals("Claro"))
                 Temas.AplicarTema(this, Color.White, Color.Black);
             else
@@ -355,7 +357,7 @@ namespace prjOficinaMecanica
 
             string AppPath = Path.GetDirectoryName(Application.ExecutablePath);
             //string AppPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
-            sql = $"BACKUP DATABASE {nomeDb} TO DISK =  '{AppPath}\\Medicaro_arquivo_backup.bak'";
+            sql = $"BACKUP DATABASE {nomeDb} TO DISK =  '{AppPath}\\Medicaro_arquivo_backup.bak' with DIFFERENTIAL";
             comando = new OleDbCommand(sql, conexao);
             comando.CommandText = sql;
             try
@@ -369,6 +371,14 @@ namespace prjOficinaMecanica
                 MessageBox.Show("Não foi possivel criar o arquivo de backup.\n" +
                     "erro: " + ex.Message, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void RestaurarDb()
+        {
+            conexao = new OleDbConnection(Conn);
+
+            string AppPath = Path.GetDirectoryName(Application.ExecutablePath);
+            sql = $"RESTORE DATABASE {nomeDb} FROM DISK '{AppPath}\\Medicaro_arquivo_backup.bak' with NORECOVERY\n go";
         }
     }
 }

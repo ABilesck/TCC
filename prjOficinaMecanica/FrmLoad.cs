@@ -20,7 +20,7 @@ namespace prjOficinaMecanica
         private void timer1_Tick(object sender, EventArgs e)
         {
             loadbar.PerformStep();
-            if (loadbar.Value == 60)
+            if (loadbar.Value == 40)
                 mainLabel.Text = "Criando arquivo de backup";
             if(loadbar.Value == 100)
             {
